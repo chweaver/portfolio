@@ -1,0 +1,78 @@
+import { Section } from './Section';
+import { profile } from '@/data/portfolio';
+
+export function Contact() {
+  return (
+    <Section
+      id="contact"
+      eyebrow="10 / Contact"
+      title="Let's talk"
+      subtitle="Available for tier-1 service desk, help desk, technical alignment, or junior systems administration roles in the Indianapolis metro. On-site, hybrid, or remote with on-site option. Reachable Monday-Friday and most weekends."
+    >
+      <div className="card p-8 md:p-10">
+        <div className="grid gap-8 md:grid-cols-2">
+          <div>
+            <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">Open to</div>
+            <ul className="space-y-2 text-ink">
+              <li className="flex gap-2">
+                <span className="font-mono text-signal-green">→</span>
+                <span>Tier-1 service desk / help desk technician</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="font-mono text-signal-green">→</span>
+                <span>Technical alignment specialist</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="font-mono text-signal-green">→</span>
+                <span>NOC technician</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="font-mono text-signal-green">→</span>
+                <span>Junior systems administrator</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">Reach me</div>
+            <div className="space-y-3">
+              <a
+                href={`mailto:${profile.email}`}
+                className="flex items-center justify-between rounded-lg border border-bg-border bg-bg-elevated px-4 py-3 hover:border-accent/40 hover:bg-accent/5 transition-colors group"
+              >
+                <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">email</span>
+                <span className="font-mono text-sm text-ink group-hover:text-accent">{profile.email}</span>
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between rounded-lg border border-bg-border bg-bg-elevated px-4 py-3 hover:border-accent/40 hover:bg-accent/5 transition-colors group"
+              >
+                <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">linkedin</span>
+                <span className="font-mono text-sm text-ink group-hover:text-accent">/in/charlie-weaver-it</span>
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between rounded-lg border border-bg-border bg-bg-elevated px-4 py-3 hover:border-accent/40 hover:bg-accent/5 transition-colors group"
+              >
+                <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">github</span>
+                <span className="font-mono text-sm text-ink group-hover:text-accent">/chweaver</span>
+              </a>
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(profile.location)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between rounded-lg border border-bg-border bg-bg-elevated px-4 py-3 hover:border-accent/40 hover:bg-accent/5 transition-colors group"
+              >
+                <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">location</span>
+                <span className="font-mono text-sm text-ink group-hover:text-accent">{profile.location}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}

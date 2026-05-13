@@ -1,0 +1,485 @@
+export const profile = {
+  name: 'Charles "Charlie" Weaver',
+  shortName: 'Charlie Weaver',
+  location: 'Carmel, IN 46032',
+  email: 'charliewgz6@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/charlie-weaver-it/',
+  github: 'https://github.com/chweaver',
+  age: 20,
+  tagline: 'MSP-bound IT generalist with a routed two-subnet pfSense lab and Python in production.',
+  docVersion: '2.0',
+  lastUpdated: 'May 13, 2026',
+  labPhase: 'Phase 2 complete, Phase 3 in design',
+} as const;
+
+export const summary = {
+  built: [
+    'Windows 11 host running VMware Workstation Pro 25H2u1',
+    'pfSense CE 2.7.2 routing two private /24 subnets',
+    'Three Linux VMs (Ubuntu, Debian, Rocky) across the subnets',
+    'Three firewall rules with documented verification commands',
+    'Named snapshots at every clean state',
+    'Packet Tracer foundation scene (2960, VLAN1 SVI, two PCs)',
+  ],
+  planned: [
+    'Windows Server 2022 DC: AD DS, AD-integrated DNS, file server, GPOs',
+    'Two Windows 11 clients domain-joined for GPO testing',
+    'Zabbix or LibreNMS monitoring pfSense + DC',
+    'Nested Proxmox VE inside VMware (Phase 4)',
+    'Packet Tracer phases 2-7 and Eve-NG ramp (Phase 5)',
+  ],
+  honesty:
+    'No professional MSP tenure yet. Everything marked "built" is built. Everything marked "planned" is planned.',
+};
+
+export const subnets = [
+  {
+    name: 'LAN',
+    cidr: '192.168.100.0/24',
+    gateway: '192.168.100.1',
+    vmnet: 'VMnet2',
+    color: 'cyan',
+  },
+  {
+    name: 'LAB200',
+    cidr: '192.168.200.0/24',
+    gateway: '192.168.200.1',
+    vmnet: 'VMnet3',
+    color: 'green',
+  },
+] as const;
+
+export const ipTable = [
+  { asset: 'pfSense WAN', nic: 'VMnet8 (NAT)', address: 'DHCP', mask: '/24', role: 'Uplink to host NAT' },
+  { asset: 'pfSense LAN', nic: 'VMnet2', address: '192.168.100.1', mask: '/24', role: 'LAN gateway' },
+  { asset: 'pfSense LAB200', nic: 'VMnet3', address: '192.168.200.1', mask: '/24', role: 'LAB gateway' },
+  { asset: 'debian-.11', nic: 'VMnet2', address: '192.168.100.11', mask: '/24', role: 'LAN test client' },
+  { asset: 'ubuntu-.10', nic: 'VMnet3', address: '192.168.200.10', mask: '/24', role: 'LAB SSH target' },
+  { asset: 'rocky-.12', nic: 'VMnet3', address: '192.168.200.12', mask: '/24', role: 'LAB second host' },
+];
+
+export const hostSpec = [
+  { label: 'CPU', value: 'AMD Ryzen 9 7950X3D', note: '16C/32T, SVM enabled for nested virt' },
+  { label: 'RAM', value: '32 GB DDR5', note: '64 GB upgrade planned for Phase 3+4' },
+  { label: 'GPU', value: 'NVIDIA RTX 4070 Ti', note: 'Not allocated to lab' },
+  { label: 'Storage', value: 'NVMe Gen4 SSD', note: 'VMs under C:\\VMs\\Lab1-Foundations\\' },
+  { label: 'OS', value: 'Windows 11 Pro 25H2', note: 'Hyper-V disabled (VMware conflict)' },
+  { label: 'Hypervisor', value: 'VMware Workstation Pro 25H2u1', note: 'Type 2, free personal-use tier' },
+];
+
+export const vmInventory = [
+  {
+    name: 'pfsense',
+    os: 'pfSense CE 2.7.2',
+    vcpu: 2,
+    ram: '2 GB',
+    disk: '20 GB',
+    nics: 'WAN/VMnet8, LAN/VMnet2, OPT1/VMnet3',
+    ips: ['WAN DHCP', '192.168.100.1', '192.168.200.1'],
+    role: 'Router & firewall',
+    snapshot: 'clean-rules-applied',
+  },
+  {
+    name: 'ubuntu-.10',
+    os: 'Ubuntu Server 22.04 LTS',
+    vcpu: 2,
+    ram: '2 GB',
+    disk: '20 GB',
+    nics: 'VMnet3',
+    ips: ['192.168.200.10'],
+    role: 'LAB SSH target',
+    snapshot: 'ssh-baseline',
+  },
+  {
+    name: 'debian-.11',
+    os: 'Debian 12 (bookworm)',
+    vcpu: 1,
+    ram: '1 GB',
+    disk: '15 GB',
+    nics: 'VMnet2',
+    ips: ['192.168.100.11'],
+    role: 'LAN test client',
+    snapshot: 'pristine',
+  },
+  {
+    name: 'rocky-.12',
+    os: 'Rocky Linux 9',
+    vcpu: 1,
+    ram: '1 GB',
+    disk: '15 GB',
+    nics: 'VMnet3',
+    ips: ['192.168.200.12'],
+    role: 'LAB second host (east-west tests)',
+    snapshot: 'pristine',
+  },
+];
+
+export const firewallRules = [
+  {
+    id: 1,
+    interface: 'LAN',
+    action: 'pass' as const,
+    proto: 'TCP',
+    source: 'LAN net',
+    destination: '192.168.200.10',
+    port: '22',
+    intent: 'Allow SSH from LAN clients into the LAB SSH target.',
+    verification: 'ssh charlie@192.168.200.10 from debian-.11 connects and authenticates.',
+  },
+  {
+    id: 2,
+    interface: 'LAN',
+    action: 'block' as const,
+    proto: 'ICMP',
+    source: 'LAN net',
+    destination: '192.168.200.0/24',
+    port: 'any',
+    intent: 'Drop ping from LAN into LAB200 to prove ICMP can be filtered independently of TCP.',
+    verification: 'ping 192.168.200.10 shows 100% loss while SSH on the same host works.',
+  },
+  {
+    id: 3,
+    interface: 'LAB200',
+    action: 'pass' as const,
+    proto: 'any',
+    source: 'LAB200 net',
+    destination: 'any (WAN)',
+    port: 'any',
+    intent: 'Permit outbound internet so LAB hosts can pull updates and run health checks.',
+    verification: 'curl -s https://ifconfig.me from rocky-.12 returns the WAN-side IP.',
+  },
+];
+
+export const implicitBehavior = [
+  'LAB200 -> LAN traffic blocked by default deny. ssh from rocky-.12 to debian-.11 times out.',
+  'ICMP LAB200 -> LAN also blocked. ping from ubuntu-.10 to debian-.11 returns no replies.',
+  'LAB200 -> internet works via rule 3. LAN -> internet works via default LAN allow.',
+];
+
+export const verificationLog = `# From debian-.11 (192.168.100.11):
+$ ping -c 3 192.168.200.10
+3 packets transmitted, 0 received, 100% packet loss
+
+$ ssh charlie@192.168.200.10
+charlie@192.168.200.10's password:
+Last login: ...
+charlie@ubuntu-10:~$
+
+$ traceroute -n 192.168.200.10
+ 1  192.168.100.1   0.412 ms
+ 2  192.168.200.10  0.901 ms
+
+# From rocky-.12 (192.168.200.12):
+$ curl -s https://ifconfig.me
+<host NAT WAN address>
+
+$ ssh -o ConnectTimeout=5 charlie@192.168.100.11
+ssh: connect to host 192.168.100.11 port 22: Connection timed out`;
+
+export const pfsenseLog = `Action  Time     Iface   Rule  Source                 Destination            Proto
+block   12:01:14 LAN     #2    192.168.100.11         192.168.200.10         ICMP
+pass    12:01:22 LAN     #1    192.168.100.11:51842   192.168.200.10:22      TCP:S
+pass    12:01:45 LAB200  #3    192.168.200.12:43219   1.1.1.1:443            TCP:S`;
+
+export type SkillRow = {
+  element: string;
+  aplus: string;
+  netplus: string;
+  ccna: string;
+  msp: string;
+  category: 'hardware' | 'network' | 'security' | 'ops' | 'cisco';
+};
+
+export const skillsMatrix: SkillRow[] = [
+  {
+    element: 'Custom PC build (Ryzen 9, DDR5, NVMe, PSU sizing)',
+    aplus: '1101 3.4, 3.5, 3.7, 3.8, 3.9',
+    netplus: '—',
+    ccna: '—',
+    msp: 'Workstation builds, hardware swaps, BIOS/UEFI, repair vs replace decisions',
+    category: 'hardware',
+  },
+  {
+    element: 'VMware Workstation Pro install and config',
+    aplus: '1101 4.2, 1102 1.1',
+    netplus: '1.2',
+    ccna: '—',
+    msp: 'Spinning up disposable VMs to reproduce client issues, test patches',
+    category: 'ops',
+  },
+  {
+    element: 'Subnetting two private /24 networks',
+    aplus: '1101 2.5',
+    netplus: '1.4, 1.6',
+    ccna: '1.6, 1.7',
+    msp: 'Designing client LAN segments, sizing DHCP scopes, guest vs corp separation',
+    category: 'network',
+  },
+  {
+    element: 'pfSense as inter-subnet router',
+    aplus: '1101 2.5, 2.6',
+    netplus: '2.1',
+    ccna: '3.1, 3.3',
+    msp: 'Inter-VLAN routing, SVI configuration on L3 switches',
+    category: 'network',
+  },
+  {
+    element: 'pfSense as stateful firewall',
+    aplus: '1102 2.5, 2.6',
+    netplus: '4.3, 4.4',
+    ccna: '5.5, 5.6',
+    msp: 'Implementing client firewall policy changes with documentation',
+    category: 'security',
+  },
+  {
+    element: 'Firewall rule design (3 rules + implicit deny)',
+    aplus: '1102 2.5, 2.6',
+    netplus: '4.3, 4.4',
+    ccna: '5.5',
+    msp: 'Reading rulesets, adding rules with change documentation',
+    category: 'security',
+  },
+  {
+    element: 'Linux install, package mgmt, network config (3 distros)',
+    aplus: '1102 1.10, 1.11',
+    netplus: '3.1, 3.2',
+    ccna: '4.8',
+    msp: 'Tier-1 Linux triage: systemctl, journalctl, package install, log review',
+    category: 'ops',
+  },
+  {
+    element: 'OpenSSH server hardening (pw -> key -> port -> fail2ban)',
+    aplus: '1102 2.7, 4.8',
+    netplus: '4.1, 4.3',
+    ccna: '4.8, 5.3',
+    msp: 'Remote server access, jump hosts, MFA for admin sessions',
+    category: 'security',
+  },
+  {
+    element: 'Snapshot strategy (pre-change, named, rolled back)',
+    aplus: '1102 4.3',
+    netplus: '3.2, 3.3',
+    ccna: '—',
+    msp: 'Pre-change snapshots on Hyper-V/VMware/Proxmox at client sites',
+    category: 'ops',
+  },
+  {
+    element: 'Documentation (this portfolio)',
+    aplus: '1102 4.1',
+    netplus: '3.2',
+    ccna: '—',
+    msp: 'Runbooks, knowledge base articles, client environment docs',
+    category: 'ops',
+  },
+  {
+    element: 'Cisco Packet Tracer foundation (2960, SVI, 2 PCs)',
+    aplus: '—',
+    netplus: '2.3, 2.4',
+    ccna: '2.1, 2.2, 2.4',
+    msp: 'Reading switch configs, switch refresh support, VLAN troubleshooting',
+    category: 'cisco',
+  },
+  {
+    element: 'Eve-NG Pro installed (post-A+ activation)',
+    aplus: '1101 4.2',
+    netplus: '—',
+    ccna: '6.1',
+    msp: 'Pre-deployment device labs, recreating client topology to test changes',
+    category: 'cisco',
+  },
+];
+
+export const certCoverage = [
+  { exam: 'A+ 220-1101 (Core 1)', coverage: 40, notes: 'Strong on virt and networking hardware. Weaker on mobile, printers.' },
+  { exam: 'A+ 220-1102 (Core 2)', coverage: 35, notes: 'Strong on Linux, backup, remote access. Weaker on Windows specifics.' },
+  { exam: 'Network+ N10-009', coverage: 50, notes: 'Strong on subnetting, routing, firewall. Weaker on wireless, cloud, WAN.' },
+  { exam: 'CCNA 200-301 v1.1', coverage: 25, notes: 'Phase 5 closes most gaps (IOS, OSPF, services, ACLs).' },
+];
+
+export const phases = [
+  {
+    id: 1,
+    title: 'Foundation',
+    status: 'complete' as const,
+    period: 'Prior to doc',
+    summary: 'Host build, VMware install, Packet Tracer foundation scene.',
+    items: [
+      'Built Ryzen 9 host',
+      'Installed Windows 11 Pro + VMware Workstation Pro',
+      'Cisco Packet Tracer: 2960 + VLAN1 SVI + 2 PCs',
+    ],
+  },
+  {
+    id: 2,
+    title: 'pfSense & Multi-Subnet Lab',
+    status: 'complete' as const,
+    period: '~3 weeks of evenings',
+    summary: 'Two routed /24 subnets behind pfSense with three firewall rules and named snapshots.',
+    items: [
+      'pfSense CE 2.7.2 routing LAN + LAB200',
+      'Ubuntu/Debian/Rocky VMs distributed across subnets',
+      'Three firewall rules + documented implicit deny',
+      'Snapshot strategy: clean-install, baseline, pre-change',
+    ],
+  },
+  {
+    id: 3,
+    title: 'Windows Server, AD, GPO, Monitoring',
+    status: 'planned' as const,
+    period: 'Aug-Oct 2026 (post-A+)',
+    summary: 'AD-integrated DNS, GPO testing across subnets, file server, Zabbix/LibreNMS.',
+    items: [
+      'Windows Server 2022 DC at lab.weaver.local',
+      'OUs: Users, Computers, Groups, Service Accounts, Disabled',
+      '5+ GPOs: password policy, banner, drive mapping, lock, audit',
+      'File share with AGDLP-style permissions',
+      'Zabbix/LibreNMS: pfSense SNMP + DC agent',
+    ],
+  },
+  {
+    id: 4,
+    title: 'Nested Proxmox',
+    status: 'planned' as const,
+    period: 'Nov 2026 - Jan 2027',
+    summary: 'Proxmox VE nested under VMware to prove nested virt and learn the platform.',
+    items: [
+      'Proxmox VE inside VMware (SVM/nested enabled)',
+      '60 GB nested disk, two Debian guests',
+      'Proxmox CLI + web UI fluency',
+    ],
+  },
+  {
+    id: 5,
+    title: 'Cisco Labs (Packet Tracer + Eve-NG)',
+    status: 'planned' as const,
+    period: 'Jan-Jul 2027, parallel to CCNA',
+    summary: 'Seven-phase Packet Tracer plan plus Eve-NG ramp with real IOSv images.',
+    items: [
+      'VLANs + 802.1Q trunking',
+      'Router-on-a-stick + inter-VLAN routing',
+      'Static routing -> OSPF (single area, then multi-area)',
+      'DHCP/NTP/SSH on IOS',
+      'Extended ACLs, port security, BPDU guard',
+    ],
+  },
+];
+
+export const certs = [
+  {
+    name: 'CompTIA A+',
+    code: '220-1201 / 220-1202',
+    status: 'scheduled' as const,
+    target: 'May 2026',
+    why: 'Baseline credential, MSP gatekeeper for tier-1 hire.',
+  },
+  {
+    name: 'Cisco CCNA',
+    code: '200-301 v1.1',
+    status: 'queued' as const,
+    target: 'Q3-Q4 2027',
+    why: 'Real network engineering credential, MSP tier-2 / NOC eligibility.',
+  },
+  {
+    name: 'CompTIA Network+',
+    code: 'N10-009',
+    status: 'optional' as const,
+    target: 'TBD',
+    why: 'Useful if a specific employer requires it; CCNA exceeds the blueprint.',
+  },
+  {
+    name: 'Cisco CCNP Enterprise',
+    code: '350-401 ENCOR + concentration',
+    status: 'long-term' as const,
+    target: '2028-2029',
+    why: 'Career goal, network engineer track.',
+  },
+  {
+    name: 'CompTIA Security+',
+    code: 'SY0-701',
+    status: 'long-term' as const,
+    target: 'TBD',
+    why: 'Cybersecurity as secondary specialization, MSSP path.',
+  },
+];
+
+export const careerStages = [
+  {
+    title: 'MSP Entry-Level',
+    horizon: 'Next 0-18 months',
+    roles: ['Tier-1 service desk', 'Help desk technician', 'Technical alignment specialist', 'NOC technician', 'Junior sysadmin'],
+    bringing: [
+      'Hands-on virtualization + networking that maps to real client environments',
+      'Linux server fluency at help-desk depth',
+      'Documentation discipline (this portfolio)',
+      'Custom PC build background',
+      'Python scripting for automation',
+      'A+ in hand by start date',
+    ],
+    learning: [
+      'PSA/RMM stack (ConnectWise, Datto, Kaseya, NinjaOne)',
+      'Microsoft 365 admin in production (Exchange, SharePoint, Intune)',
+      'Ticketing flow and SLA discipline at MSP pace',
+      'Client-facing communication standards',
+    ],
+  },
+  {
+    title: 'Network Engineer',
+    horizon: '~2029-2030',
+    roles: ['MSP network engineer', 'Enterprise NetOps', 'Regional NOC engineer'],
+    bringing: [
+      'CCNA done, CCNP in progress',
+      '18-24 months production network experience',
+      'Documented ticket and project track record',
+      'Lab grown into used-enterprise rack with real Cisco gear',
+    ],
+    learning: [],
+  },
+  {
+    title: 'MSSP Founder',
+    horizon: 'Late 20s to early 30s',
+    roles: ['Founder of central-Indiana managed security service provider'],
+    bringing: [
+      'Deep technical foundation: networking, systems, security',
+      'Real ops experience inside an established MSP/MSSP',
+      'Capital and a strong professional network in Indy',
+    ],
+    learning: ['Client relationship + business operations skills (separate track)'],
+  },
+];
+
+export const tradingBot = {
+  name: 'Python Polymarket Trading Bot',
+  status: 'In production today, scheduled jobs against live positions.',
+  components: [
+    {
+      name: 'Execution engine',
+      role: 'Polymarket API auth, order placement, position management, structured logging of every transaction',
+    },
+    {
+      name: 'Signal & probability engine',
+      role: 'Real-time data from Kalshi, The Odds API, Binance, and FedWatch -> blended signal estimates',
+    },
+  ],
+  skills: [
+    'API authentication across multiple providers (OAuth, API keys, signed requests)',
+    'Scheduled job design (cron-like, idempotency, missed-run handling)',
+    'Structured logging (JSON, levels, rotation)',
+    'Error handling under real conditions (network failures, rate limits, partial fills)',
+    'Multi-source data fusion into a single internal model',
+    'Production operability: it runs, it is observable, it recovers',
+  ],
+  honesty: "Solo project. Doesn't demonstrate team workflows, code review at scale, or CI/CD pipelines.",
+};
+
+export const bashApp = {
+  name: 'Bash Learning App',
+  pitch: 'Twelve bash topics, 8-12 exercises each, scenarios tied back to the home lab.',
+  exercises: [
+    { topic: 'File operations', sample: 'Find all .conf files in /etc modified in the last 7 days; copy to timestamped backup dir.' },
+    { topic: 'Process management', sample: 'Find every ssh process owned by charlie, sort by CPU, write top 3 PIDs to a file.' },
+    { topic: 'Text processing', sample: 'Parse /var/log/auth.log; count failed login attempts per source IP.' },
+    { topic: 'Network commands', sample: 'Ping every host in 192.168.200.0/24, report which are alive.' },
+    { topic: 'Scripting basics', sample: 'Snapshot a list of VM names via VMware CLI, with rollback on failure.' },
+    { topic: 'Permissions', sample: 'Set up a directory where two users can share files but neither can delete the other.' },
+  ],
+};
