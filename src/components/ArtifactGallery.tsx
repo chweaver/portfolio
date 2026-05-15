@@ -8,6 +8,8 @@ type Artifact = {
   file: string;
   alt: string;
   caption: string;
+  width: number;
+  height: number;
 };
 
 const ARTIFACTS: Artifact[] = [
@@ -15,31 +17,45 @@ const ARTIFACTS: Artifact[] = [
     file: 'Firewall Rules.png',
     alt: 'pfSense firewall ruleset, captured from lab',
     caption: 'Firewall rules',
+    width: 1920,
+    height: 1080,
   },
   {
     file: 'Firewall Log.png',
     alt: 'Firewall log showing block and pass events',
     caption: 'Firewall log',
+    width: 1920,
+    height: 1080,
   },
   {
     file: 'Interface Assignments.png',
     alt: 'Interface assignments: WAN, LAN, LAB200',
     caption: 'Interface assignments',
+    width: 1920,
+    height: 1080,
   },
   {
     file: 'Dashboard.png',
     alt: 'pfSense dashboard, current lab state',
     caption: 'Dashboard',
+    width: 2560,
+    height: 1440,
   },
   {
     file: 'SSH with no ping back from 192.168.100.10.png',
     alt: 'SSH success and ICMP block from LAN host',
     caption: 'SSH passes, ICMP blocks',
+    width: 2560,
+    height: 1440,
   },
 ];
 
-function srcFor(file: string): string {
+function pngSrc(file: string): string {
   return publicAsset(`logs/${file}`);
+}
+
+function webpSrc(file: string): string {
+  return publicAsset(`logs/${file.replace(/\.png$/i, '.webp')}`);
 }
 
 export function ArtifactGallery() {
@@ -75,7 +91,7 @@ export function ArtifactGallery() {
     <Section
       id="artifacts"
       eyebrow="Evidence"
-      title="Captured from the lab. Not stock images."
+      title="Captured from the lab."
       subtitle="Direct exports from the pfSense web UI on the running lab. Click any thumbnail for full size. Additional captures, full unredacted logs, and live walkthroughs available on request."
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -87,13 +103,18 @@ export function ArtifactGallery() {
             className="card group overflow-hidden p-0 text-left hover:border-accent/40 transition-colors"
           >
             <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={srcFor(a.file)}
-                alt={a.alt}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-              />
+              <picture>
+                <source srcSet={webpSrc(a.file)} type="image/webp" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={pngSrc(a.file)}
+                  alt={a.alt}
+                  width={a.width}
+                  height={a.height}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </picture>
             </div>
             <div className="flex items-center justify-between px-4 py-3">
               <div>
@@ -153,12 +174,17 @@ export function ArtifactGallery() {
             className="max-w-6xl w-full max-h-[88vh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={srcFor(ARTIFACTS[openIndex].file)}
-              alt={ARTIFACTS[openIndex].alt}
-              className="max-h-[80vh] w-auto max-w-full rounded-lg border border-bg-border shadow-2xl object-contain bg-bg-card"
-            />
+            <picture>
+              <source srcSet={webpSrc(ARTIFACTS[openIndex].file)} type="image/webp" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={pngSrc(ARTIFACTS[openIndex].file)}
+                alt={ARTIFACTS[openIndex].alt}
+                width={ARTIFACTS[openIndex].width}
+                height={ARTIFACTS[openIndex].height}
+                className="max-h-[80vh] w-auto max-w-full rounded-lg border border-bg-border shadow-2xl object-contain bg-bg-card"
+              />
+            </picture>
             <figcaption className="mt-3 text-center font-mono text-xs text-ink-dim">
               {ARTIFACTS[openIndex].caption}
               <span className="mx-2 text-ink-faint">·</span>

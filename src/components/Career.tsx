@@ -6,8 +6,8 @@ export function Career() {
     <Section
       id="career"
       eyebrow="08 / Trajectory"
-      title="Honest about timelines"
-      subtitle="I'm 20 and the gap between 'tier-1 service desk' and 'senior engineer' is real, not aspirational fluff. Including the long horizon because honest trajectory beats vague 'growth-minded' language — and because it explains why the cert path goes A+ → CCNA → CCNP → security, not A+ → cloud."
+      title="Timeline"
+      subtitle="The gap between 'tier-1 service desk' and 'senior engineer' is real, not aspirational fluff. The long horizon is here because honest trajectory beats vague 'growth-minded' language, and because it explains why the cert path goes A+ → CCNA → CCNP → security, not A+ → cloud."
     >
       <div className="grid gap-6 md:grid-cols-3">
         {careerStages.map((stage, i) => (

@@ -6,14 +6,14 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/charlie-weaver-it/',
   github: 'https://github.com/chweaver',
   age: 20,
-  tagline: 'MSP-bound IT generalist with a routed two-subnet pfSense lab and Python in production.',
+  tagline: 'MSP-bound IT generalist with a routed two-subnet pfSense lab and Python automation.',
   labPhase: 'Phase 2 complete, Phase 3 in design',
 } as const;
 
 export const summary = {
   built: [
     'Windows 11 host running VMware Workstation Pro 25H2u1',
-    'pfSense CE 2.7.2 routing two private /24 subnets',
+    'pfSense CE 2.7.x routing two private /24 subnets',
     'Three Linux VMs (Ubuntu, Debian, Rocky) across the subnets',
     'Three firewall rules with documented verification commands',
     'Named snapshots at every clean state',
@@ -68,7 +68,7 @@ export const hostSpec = [
 export const vmInventory = [
   {
     name: 'pfsense-base',
-    os: 'pfSense CE 2.7.2',
+    os: 'pfSense CE 2.7.x',
     vcpu: 2,
     ram: '2 GB',
     disk: '20 GB',
@@ -291,45 +291,52 @@ export const skillsMatrix: SkillRow[] = [
   },
 ];
 
-export type CoverageLevel = 'light' | 'moderate' | 'strong' | 'comprehensive';
+export type CoverageLevel = 'light' | 'light-to-moderate' | 'moderate' | 'strong';
 
-export const certCoverage: { exam: string; coverage: number; notes: string }[] = [
+export const certCoverage: { exam: string; band: string; level: CoverageLevel; notes: string }[] = [
   {
     exam: 'A+ 220-1101 (Core 1)',
-    coverage: 30,
+    band: 'Moderate',
+    level: 'moderate',
     notes: 'Virtualization and PC hardware are direct. Mobile devices, printers, and OS imaging are not in the lab.',
   },
   {
     exam: 'A+ 220-1102 (Core 2)',
-    coverage: 25,
+    band: 'Light-to-moderate',
+    level: 'light-to-moderate',
     notes: 'Linux features, backup, and remote access are direct. Most Windows-side OS, mobile, and macOS objectives are not.',
   },
   {
     exam: 'Network+ N10-009',
-    coverage: 30,
+    band: 'Moderate',
+    level: 'moderate',
     notes: 'Subnetting, routing, basic firewall, and L1-L7 troubleshooting are direct. Wireless, cloud, WAN/SDN, and IPv6 are not in the lab.',
   },
   {
     exam: 'CCNA 200-301 v1.1',
-    coverage: 10,
+    band: 'Light',
+    level: 'light',
     notes: 'Single Packet Tracer scene to date. IOS configuration, OSPF, services on IOS, security, wireless, and automation are the Phase 5 ramp.',
   },
 ];
 
-export const coverageLegend: { label: string; range: string; level: CoverageLevel; min: number; max: number }[] = [
-  { label: 'Light', range: '0-15%', level: 'light', min: 0, max: 15 },
-  { label: 'Moderate', range: '16-35%', level: 'moderate', min: 16, max: 35 },
-  { label: 'Strong', range: '36-60%', level: 'strong', min: 36, max: 60 },
-  { label: 'Comprehensive', range: '61%+', level: 'comprehensive', min: 61, max: 100 },
-];
-
-export function levelForCoverage(pct: number): CoverageLevel {
-  const match = coverageLegend.find((l) => pct >= l.min && pct <= l.max);
-  return match?.level ?? 'light';
-}
-
 export const coverageMethodology =
-  'Self-assessed against the published blueprints. Percentages reflect what the lab and prior work directly cover; study and exam prep close the remainder. Not a substitute for the exams themselves.';
+  'Self-assessed against the published blueprints. Bands reflect what the lab and prior work directly cover; study and exam prep close the remainder. Not a substitute for the exams themselves.';
+
+export const skillsOverview = [
+  {
+    column: 'Operating Systems',
+    items: ['Windows', 'Linux (Ubuntu, Debian, Rocky)', 'Basic shell'],
+  },
+  {
+    column: 'Networking',
+    items: ['TCP/IP', 'DNS', 'DHCP', 'Switching', 'VLANs', 'Firewall rules', 'OSI model'],
+  },
+  {
+    column: 'Identity and Tooling',
+    items: ['Active Directory', 'ServiceNow', 'Jira', 'Microsoft 365'],
+  },
+];
 
 export const phases = [
   {
@@ -351,7 +358,7 @@ export const phases = [
     period: '~3 weeks of evenings',
     summary: 'Two routed /24 subnets behind pfSense with three firewall rules and named snapshots.',
     items: [
-      'pfSense CE 2.7.2 routing LAN + LAB200',
+      'pfSense CE 2.7.x routing LAN + LAB200',
       'Ubuntu/Debian/Rocky VMs distributed across subnets',
       'Three firewall rules + documented implicit deny',
       'Snapshot strategy: clean-install, baseline, pre-change',
@@ -473,31 +480,30 @@ export const careerStages = [
   },
   {
     title: 'Long-term',
-    horizon: 'Senior network or security engineering role, possibly entrepreneurial',
+    horizon: 'Senior network or security engineering role',
     roles: [],
     bringing: [
       'Deep technical foundation across networking, systems, and security',
       'Years of MSP/NOC ops experience by this point',
       'A strong professional network in the Indianapolis tech scene',
     ],
-    learning: [
-      'Business operations and client relationship skills if the entrepreneurial path materializes',
-    ],
+    learning: [],
   },
 ];
 
 export const tradingBot = {
-  name: 'Python Polymarket Trading Bot',
-  status: 'In production today, scheduled jobs against live positions.',
-  repoStatus: 'Private repo — code review available on request.',
+  name: 'Python Scheduled Automation Project',
+  lead: 'Scheduled Python service covering API authentication, structured logging, error handling, and retry logic against rate limits and intermittent failures.',
+  target: 'Target API is Polymarket.',
+  repoStatus: 'Private repo, code review available on request.',
   components: [
     {
       name: 'Execution engine',
-      role: 'Polymarket API auth, order placement, position management, structured logging of every transaction',
+      role: 'API authentication, order placement, position management, structured logging of every transaction',
     },
     {
-      name: 'Signal & probability engine',
-      role: 'Real-time data from Kalshi, The Odds API, Binance, and FedWatch -> blended signal estimates',
+      name: 'Signal and probability engine',
+      role: 'Real-time data from Kalshi, The Odds API, Binance, and FedWatch, blended into signal estimates',
     },
   ],
   skills: [
@@ -506,7 +512,7 @@ export const tradingBot = {
     'Structured logging (JSON, levels, rotation)',
     'Error handling under real conditions (network failures, rate limits, partial fills)',
     'Multi-source data fusion into a single internal model',
-    'Production operability: it runs, it is observable, it recovers',
+    'Observability and recovery: structured logs, retries with backoff, idempotent reruns',
   ],
   honesty: "Solo project. Doesn't demonstrate team workflows, code review at scale, or CI/CD pipelines.",
 };
@@ -514,7 +520,7 @@ export const tradingBot = {
 export const bashApp = {
   name: 'Bash Learning App',
   pitch: 'Twelve bash topics, 8-12 exercises each, scenarios tied back to the home lab.',
-  repoStatus: 'Private repo — walkthrough available on request.',
+  repoStatus: 'Private repo, walkthrough available on request.',
   exercises: [
     { topic: 'File operations', sample: 'Find all .conf files in /etc modified in the last 7 days; copy to timestamped backup dir.' },
     { topic: 'Process management', sample: 'Find every ssh process owned by charlie, sort by CPU, write top 3 PIDs to a file.' },

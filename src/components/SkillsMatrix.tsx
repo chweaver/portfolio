@@ -4,10 +4,9 @@ import { useState, useMemo } from 'react';
 import { Section } from './Section';
 import {
   skillsMatrix,
+  skillsOverview,
   certCoverage,
   coverageMethodology,
-  coverageLegend,
-  levelForCoverage,
   type SkillRow,
   type CoverageLevel,
 } from '@/data/portfolio';
@@ -35,9 +34,27 @@ export function SkillsMatrix() {
     <Section
       id="skills"
       eyebrow="05 / Skills"
-      title="Lab elements mapped to exam objectives"
-      subtitle="Every lab element traced to A+ 220-1101/1102, Network+ N10-009, CCNA 200-301 v1.1, and the MSP tier-1 duty it speaks to. Filter by area if you only care about one cert."
+      title="Skills coverage"
+      subtitle="A three-column overview at the top, then every lab element traced to A+ 220-1101/1102, Network+ N10-009, CCNA 200-301 v1.1, and the MSP tier-1 application it speaks to. Filter by area if you only care about one cert."
     >
+      <div className="mb-10 grid gap-4 md:grid-cols-3">
+        {skillsOverview.map((col) => (
+          <div key={col.column} className="card p-5">
+            <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
+              {col.column}
+            </div>
+            <ul className="space-y-1.5 text-sm text-ink-dim">
+              {col.items.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span className="font-mono text-accent">→</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
       <div className="flex flex-wrap gap-2 mb-6">
         {FILTERS.map((f) => (
           <button
@@ -63,7 +80,7 @@ export function SkillsMatrix() {
                 <th className="px-4 py-3 font-normal">A+</th>
                 <th className="px-4 py-3 font-normal">Net+</th>
                 <th className="px-4 py-3 font-normal">CCNA</th>
-                <th className="px-4 py-3 font-normal min-w-[260px]">MSP duty</th>
+                <th className="px-4 py-3 font-normal min-w-[260px]">MSP application</th>
               </tr>
             </thead>
             <tbody>
@@ -90,55 +107,28 @@ export function SkillsMatrix() {
         </div>
         <p className="text-xs text-ink-faint mb-4 max-w-3xl">{coverageMethodology}</p>
         <div className="space-y-3">
-          {certCoverage.map((c) => {
-            const level = levelForCoverage(c.coverage);
-            return (
-              <div key={c.exam} className="card p-4">
-                <div className="flex items-center justify-between gap-3 mb-2 flex-wrap">
-                  <div className="font-mono text-sm text-ink">{c.exam}</div>
-                  <div className="flex items-center gap-2.5">
-                    <CoveragePill level={level} />
-                    <span className="font-mono text-sm text-accent tabular-nums">{c.coverage}%</span>
-                  </div>
-                </div>
-                <div className="h-1.5 rounded-full bg-bg-elevated overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-accent-dim to-accent"
-                    style={{ width: `${c.coverage}%` }}
-                  />
-                </div>
-                <div className="mt-2 text-xs text-ink-faint leading-relaxed">{c.notes}</div>
+          {certCoverage.map((c) => (
+            <div key={c.exam} className="card p-4">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="font-mono text-sm text-ink">{c.exam}</div>
+                <CoveragePill level={c.level} band={c.band} />
               </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-5 card p-4">
-          <div className="font-mono text-[11px] uppercase tracking-widest text-ink-faint mb-3">
-            Legend
-          </div>
-          <div className="flex flex-wrap gap-2.5">
-            {coverageLegend.map((l) => (
-              <div key={l.label} className="flex items-center gap-2">
-                <CoveragePill level={l.level} />
-                <span className="font-mono text-xs text-ink-dim">{l.range}</span>
-              </div>
-            ))}
-          </div>
+              <div className="mt-2 text-xs text-ink-faint leading-relaxed">{c.notes}</div>
+            </div>
+          ))}
         </div>
       </div>
     </Section>
   );
 }
 
-const LEVEL_STYLE: Record<CoverageLevel, { label: string; cls: string }> = {
-  light: { label: 'Light', cls: 'pill-amber' },
-  moderate: { label: 'Moderate', cls: 'pill-accent' },
-  strong: { label: 'Strong', cls: 'pill-green' },
-  comprehensive: { label: 'Comprehensive', cls: 'pill-green' },
+const LEVEL_CLASS: Record<CoverageLevel, string> = {
+  light: 'pill-amber',
+  'light-to-moderate': 'pill-amber',
+  moderate: 'pill-accent',
+  strong: 'pill-green',
 };
 
-function CoveragePill({ level }: { level: CoverageLevel }) {
-  const s = LEVEL_STYLE[level];
-  return <span className={`pill ${s.cls} uppercase`}>{s.label}</span>;
+function CoveragePill({ level, band }: { level: CoverageLevel; band: string }) {
+  return <span className={`pill ${LEVEL_CLASS[level]} uppercase`}>{band}</span>;
 }

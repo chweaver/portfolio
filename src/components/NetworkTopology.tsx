@@ -124,7 +124,7 @@ function TopologySVG() {
       <g>
         <rect x="340" y="208" width="200" height="64" rx="8" fill="#0f141b" stroke="#22d3ee" strokeWidth="1.5" />
         <text x="440" y="230" textAnchor="middle" fill="#22d3ee" fontSize="12" fontFamily="ui-monospace" fontWeight="600">
-          pfSense CE 2.7.2
+          pfSense CE 2.7.x
         </text>
         <text x="440" y="248" textAnchor="middle" fill="#9ca3af" fontSize="10" fontFamily="ui-monospace">
           LAN  192.168.100.1/24

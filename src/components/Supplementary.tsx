@@ -6,24 +6,21 @@ export function Supplementary() {
     <Section
       id="supp"
       eyebrow="09 / Side work"
-      title="What I do when nobody's grading me"
+      title="Side projects"
       subtitle="Not lab work, but worth including because they show what I produce on my own time."
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="card p-6 flex flex-col">
           <div className="flex items-center gap-2 mb-2">
             <span className="pill pill-accent">Python</span>
-            <span className="pill pill-green">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-green" />
-              live
-            </span>
           </div>
           <h3 className="text-lg font-semibold text-ink mt-2">{tradingBot.name}</h3>
-          <p className="text-sm text-ink-dim mt-2 leading-relaxed">{tradingBot.status}</p>
+          <p className="text-sm text-ink-dim mt-2 leading-relaxed">{tradingBot.lead}</p>
+          <p className="text-sm text-ink-dim mt-2 leading-relaxed">{tradingBot.target}</p>
           <div className="mt-3 flex items-center gap-2 text-xs font-mono text-ink-faint">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-amber" />
             <span>{tradingBot.repoStatus}</span>
-            <a className="link ml-auto" href={`mailto:${profile.email}?subject=Trading%20bot%20code%20review`}>
+            <a className="link ml-auto" href={`mailto:${profile.email}?subject=Automation%20project%20code%20review`}>
               request →
             </a>
           </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { profile } from '@/data/portfolio';
 
 const NAV_LINKS = [
   { href: '#lab', label: 'Lab' },
@@ -11,7 +12,6 @@ const NAV_LINKS = [
   { href: '#roadmap', label: 'Roadmap' },
   { href: '#certs', label: 'Certs' },
   { href: '#career', label: 'Career' },
-  { href: '#contact', label: 'Contact' },
 ];
 
 export function Navigation() {
@@ -33,7 +33,7 @@ export function Navigation() {
           : 'border-b border-transparent bg-transparent'
       }`}
     >
-      <div className="container-narrow flex h-14 items-center justify-between">
+      <div className="container-narrow flex h-14 items-center justify-between gap-3">
         <a href="#top" className="group flex items-center gap-2 font-mono text-sm">
           <span className="inline-block h-2 w-2 rounded-full bg-signal-green shadow-glow animate-pulse-slow" />
           <span className="text-ink-dim group-hover:text-ink transition-colors">charlie@homelab</span>
@@ -50,6 +50,12 @@ export function Navigation() {
             </a>
           ))}
         </nav>
+        <a
+          href={`mailto:${profile.email}`}
+          className="hidden md:inline-flex rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 font-mono text-xs text-accent hover:bg-accent hover:text-bg transition-colors"
+        >
+          Email Charlie
+        </a>
         <button
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
@@ -71,6 +77,13 @@ export function Navigation() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={`mailto:${profile.email}`}
+              onClick={() => setOpen(false)}
+              className="col-span-3 rounded border border-accent/40 bg-accent/10 px-3 py-2 text-sm font-mono text-accent text-center hover:bg-accent hover:text-bg transition-colors"
+            >
+              Email Charlie
+            </a>
           </div>
         </div>
       )}

@@ -1,4 +1,5 @@
 import { profile, summary } from '@/data/portfolio';
+import { publicAsset } from '@/lib/paths';
 
 const STATS = [
   { label: 'VMs running', value: '4', sub: 'pfSense + 3 Linux' },
@@ -23,13 +24,13 @@ export function Hero() {
             {profile.shortName}
           </h1>
           <p className="mt-4 font-mono text-sm text-accent">
-            MSP-bound · pfSense lab operator · Python in production
+            MSP-bound · pfSense lab operator · Python automation
           </p>
           <p className="mt-6 text-lg leading-relaxed text-ink-dim">{profile.tagline}</p>
           <p className="mt-4 text-ink-dim leading-relaxed">
-            I&apos;m {profile.age}, based in {profile.location.split(',')[0]}, and applying to MSPs across the
-            Indianapolis metro for a tier-1 service desk or technical alignment role. CompTIA A+ is on the
-            books for May 2026 and CCNA is queued right behind it.
+            Based in {profile.location.split(',')[0]}, applying to MSPs across the Indianapolis metro for a
+            tier-1 service desk or technical alignment role. CompTIA A+ is on the books for May 2026 and CCNA
+            is queued right behind it.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
@@ -59,6 +60,13 @@ export function Hero() {
               className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors"
             >
               GitHub
+            </a>
+            <a
+              href={publicAsset('/Charlie-Weaver-Resume.pdf')}
+              download
+              className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors"
+            >
+              Resume (PDF) ↓
             </a>
           </div>
         </div>

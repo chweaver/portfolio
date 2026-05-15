@@ -1,5 +1,9 @@
 import { Section } from './Section';
 import { profile } from '@/data/portfolio';
+import { publicAsset } from '@/lib/paths';
+
+const PHONE_DISPLAY = '(463) 710-5540';
+const PHONE_TEL = '+14637105540';
 
 export function Contact() {
   return (
@@ -7,7 +11,7 @@ export function Contact() {
       id="contact"
       eyebrow="10 / Contact"
       title="Let's talk"
-      subtitle="Available for tier-1 service desk, help desk, technical alignment, or junior systems administration roles in the Indianapolis metro. On-site, hybrid, or remote with on-site option. Reachable Monday-Friday and most weekends."
+      subtitle="Available for tier-1 service desk, help desk, technical alignment, or junior systems administration roles in the Indianapolis metro. On-site, hybrid, or remote with on-site option. Reachable weekdays."
     >
       <div className="card p-8 md:p-10">
         <div className="grid gap-8 md:grid-cols-2">
@@ -43,6 +47,13 @@ export function Contact() {
                 <span className="font-mono text-sm text-ink group-hover:text-accent">{profile.email}</span>
               </a>
               <a
+                href={`tel:${PHONE_TEL}`}
+                className="flex items-center justify-between rounded-lg border border-bg-border bg-bg-elevated px-4 py-3 hover:border-accent/40 hover:bg-accent/5 transition-colors group"
+              >
+                <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">phone</span>
+                <span className="font-mono text-sm text-ink group-hover:text-accent">{PHONE_DISPLAY}</span>
+              </a>
+              <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
@@ -71,6 +82,22 @@ export function Contact() {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3 border-t border-bg-border pt-6">
+          <a
+            href={publicAsset('/Charlie-Weaver-Resume.pdf')}
+            download
+            className="rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-medium text-bg hover:bg-accent-glow transition-colors"
+          >
+            Download resume (PDF) ↓
+          </a>
+          <a
+            href={`mailto:${profile.email}`}
+            className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors"
+          >
+            Email Charlie
+          </a>
         </div>
       </div>
     </Section>
