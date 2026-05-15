@@ -81,3 +81,47 @@ body {
     @apply rounded-lg border border-bg-border bg-black/40 p-4 font-mono text-[13px] leading-relaxed text-ink overflow-x-auto;
   }
 }
+
+.log-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 240ms ease;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .log-background {
+    display: block;
+  }
+}
+
+.log-background-stream {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #4ade80;
+  white-space: pre;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  animation: log-scroll 180s linear infinite;
+  will-change: transform;
+}
+
+@keyframes log-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .log-background-stream {
+    animation: none;
+  }
+}

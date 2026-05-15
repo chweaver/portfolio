@@ -7,7 +7,7 @@ export function Career() {
       id="career"
       eyebrow="08 / Trajectory"
       title="Honest about timelines"
-      subtitle="I'm 20 and the gap between 'applying to MSPs' and 'running an MSSP' is real, not aspirational fluff. Including the long horizon because honest trajectory beats vague 'growth-minded' language — and because it explains why the cert path goes A+ → CCNA → CCNP → security, not A+ → cloud."
+      subtitle="I'm 20 and the gap between 'tier-1 service desk' and 'senior engineer' is real, not aspirational fluff. Including the long horizon because honest trajectory beats vague 'growth-minded' language — and because it explains why the cert path goes A+ → CCNA → CCNP → security, not A+ → cloud."
     >
       <div className="grid gap-6 md:grid-cols-3">
         {careerStages.map((stage, i) => (
@@ -16,14 +16,16 @@ export function Career() {
             <h3 className="text-lg font-semibold text-ink">{stage.title}</h3>
             <div className="font-mono text-xs text-accent mt-1">{stage.horizon}</div>
 
-            <div className="mt-4">
-              <div className="text-xs uppercase tracking-wider text-ink-faint font-mono mb-2">Target roles</div>
-              <div className="flex flex-wrap gap-1.5">
-                {stage.roles.map((r) => (
-                  <span key={r} className="pill">{r}</span>
-                ))}
+            {stage.roles.length > 0 && (
+              <div className="mt-4">
+                <div className="text-xs uppercase tracking-wider text-ink-faint font-mono mb-2">Target roles</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {stage.roles.map((r) => (
+                    <span key={r} className="pill">{r}</span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {stage.bringing.length > 0 && (
               <div className="mt-4">

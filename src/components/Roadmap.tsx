@@ -22,7 +22,7 @@ export function Roadmap() {
   );
 }
 
-type Phase = typeof phases[number];
+type Phase = (typeof phases)[number] & { note?: string };
 
 function PhaseRow({ phase, side }: { phase: Phase; side: 'left' | 'right' }) {
   const complete = phase.status === 'complete';
@@ -60,6 +60,11 @@ function PhaseRow({ phase, side }: { phase: Phase; side: 'left' | 'right' }) {
               </li>
             ))}
           </ul>
+          {phase.note && (
+            <p className="mt-4 pt-3 border-t border-bg-border text-xs italic text-ink-faint">
+              {phase.note}
+            </p>
+          )}
         </div>
       </div>
     </div>

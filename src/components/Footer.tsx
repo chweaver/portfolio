@@ -16,7 +16,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container-narrow mt-4 font-mono text-xs text-ink-faint">
-        Portfolio v{profile.docVersion} · {profile.labPhase}
+        Phase 2 complete · Phase 3 in design
       </div>
     </footer>
   );

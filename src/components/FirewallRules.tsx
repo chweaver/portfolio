@@ -1,5 +1,5 @@
 import { Section } from './Section';
-import { firewallRules, implicitBehavior, verificationLog, pfsenseLog } from '@/data/portfolio';
+import { firewallRules, implicitBehavior, verificationLog, pfsenseLog, profile } from '@/data/portfolio';
 
 export function FirewallRules() {
   return (
@@ -59,6 +59,22 @@ export function FirewallRules() {
         rule change on a real client firewall: write the rule, snapshot the config, generate the test traffic,
         watch the log, document the result, close the ticket.
       </p>
+
+      <div className="mt-8 card p-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div className="font-mono text-xs uppercase tracking-widest text-accent">Artifacts on request</div>
+          <p className="mt-1 text-sm text-ink-dim max-w-2xl">
+            pfSense GUI screenshots, full unredacted firewall log exports, and live VM walkthroughs can be
+            shared during an interview or sent on request — keeping IP and config off a public site by default.
+          </p>
+        </div>
+        <a
+          href={`mailto:${profile.email}?subject=Lab%20artifacts%20request`}
+          className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors flex-shrink-0"
+        >
+          Request artifacts →
+        </a>
+      </div>
     </Section>
   );
 }

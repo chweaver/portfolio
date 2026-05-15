@@ -7,8 +7,6 @@ export const profile = {
   github: 'https://github.com/chweaver',
   age: 20,
   tagline: 'MSP-bound IT generalist with a routed two-subnet pfSense lab and Python in production.',
-  docVersion: '2.0',
-  lastUpdated: 'May 13, 2026',
   labPhase: 'Phase 2 complete, Phase 3 in design',
 } as const;
 
@@ -289,12 +287,45 @@ export const skillsMatrix: SkillRow[] = [
   },
 ];
 
-export const certCoverage = [
-  { exam: 'A+ 220-1101 (Core 1)', coverage: 40, notes: 'Strong on virt and networking hardware. Weaker on mobile, printers.' },
-  { exam: 'A+ 220-1102 (Core 2)', coverage: 35, notes: 'Strong on Linux, backup, remote access. Weaker on Windows specifics.' },
-  { exam: 'Network+ N10-009', coverage: 50, notes: 'Strong on subnetting, routing, firewall. Weaker on wireless, cloud, WAN.' },
-  { exam: 'CCNA 200-301 v1.1', coverage: 25, notes: 'Phase 5 closes most gaps (IOS, OSPF, services, ACLs).' },
+export type CoverageLevel = 'light' | 'moderate' | 'strong' | 'comprehensive';
+
+export const certCoverage: { exam: string; coverage: number; notes: string }[] = [
+  {
+    exam: 'A+ 220-1101 (Core 1)',
+    coverage: 30,
+    notes: 'Virtualization and PC hardware are direct. Mobile devices, printers, and OS imaging are not in the lab.',
+  },
+  {
+    exam: 'A+ 220-1102 (Core 2)',
+    coverage: 25,
+    notes: 'Linux features, backup, and remote access are direct. Most Windows-side OS, mobile, and macOS objectives are not.',
+  },
+  {
+    exam: 'Network+ N10-009',
+    coverage: 30,
+    notes: 'Subnetting, routing, basic firewall, and L1-L7 troubleshooting are direct. Wireless, cloud, WAN/SDN, and IPv6 are not in the lab.',
+  },
+  {
+    exam: 'CCNA 200-301 v1.1',
+    coverage: 10,
+    notes: 'Single Packet Tracer scene to date. IOS configuration, OSPF, services on IOS, security, wireless, and automation are the Phase 5 ramp.',
+  },
 ];
+
+export const coverageLegend: { label: string; range: string; level: CoverageLevel; min: number; max: number }[] = [
+  { label: 'Light', range: '0-15%', level: 'light', min: 0, max: 15 },
+  { label: 'Moderate', range: '16-35%', level: 'moderate', min: 16, max: 35 },
+  { label: 'Strong', range: '36-60%', level: 'strong', min: 36, max: 60 },
+  { label: 'Comprehensive', range: '61%+', level: 'comprehensive', min: 61, max: 100 },
+];
+
+export function levelForCoverage(pct: number): CoverageLevel {
+  const match = coverageLegend.find((l) => pct >= l.min && pct <= l.max);
+  return match?.level ?? 'light';
+}
+
+export const coverageMethodology =
+  'Self-assessed against the published blueprints. Percentages reflect what the lab and prior work directly cover; study and exam prep close the remainder. Not a substitute for the exams themselves.';
 
 export const phases = [
   {
@@ -326,8 +357,9 @@ export const phases = [
     id: 3,
     title: 'Windows Server, AD, GPO, Monitoring',
     status: 'planned' as const,
-    period: 'Aug-Oct 2026 (post-A+)',
-    summary: 'AD-integrated DNS, GPO testing across subnets, file server, Zabbix/LibreNMS.',
+    period: 'Aug 2026 - Feb 2027 (post-A+)',
+    summary:
+      'Six-month window covering AD-integrated DNS, GPO testing across subnets, a file server, and a lightweight monitoring stack. Wider scope than 3 months because juggling Phase 3 with a new MSP job means evenings, not full days.',
     items: [
       'Windows Server 2022 DC at lab.weaver.local',
       'OUs: Users, Computers, Groups, Service Accounts, Disabled',
@@ -335,6 +367,7 @@ export const phases = [
       'File share with AGDLP-style permissions',
       'Zabbix/LibreNMS: pfSense SNMP + DC agent',
     ],
+    note: 'Scope may narrow based on what gets used at work first.',
   },
   {
     id: 4,
@@ -398,7 +431,7 @@ export const certs = [
     code: 'SY0-701',
     status: 'long-term' as const,
     target: 'TBD',
-    why: 'Cybersecurity as secondary specialization, MSSP path.',
+    why: 'Cybersecurity as secondary specialization on a security engineering track.',
   },
 ];
 
@@ -435,21 +468,24 @@ export const careerStages = [
     learning: [],
   },
   {
-    title: 'MSSP Founder',
-    horizon: 'Late 20s to early 30s',
-    roles: ['Founder of central-Indiana managed security service provider'],
+    title: 'Long-term',
+    horizon: 'Senior network or security engineering role, possibly entrepreneurial',
+    roles: [],
     bringing: [
-      'Deep technical foundation: networking, systems, security',
-      'Real ops experience inside an established MSP/MSSP',
-      'Capital and a strong professional network in Indy',
+      'Deep technical foundation across networking, systems, and security',
+      'Years of MSP/NOC ops experience by this point',
+      'A strong professional network in the Indianapolis tech scene',
     ],
-    learning: ['Client relationship + business operations skills (separate track)'],
+    learning: [
+      'Business operations and client relationship skills if the entrepreneurial path materializes',
+    ],
   },
 ];
 
 export const tradingBot = {
   name: 'Python Polymarket Trading Bot',
   status: 'In production today, scheduled jobs against live positions.',
+  repoStatus: 'Private repo — code review available on request.',
   components: [
     {
       name: 'Execution engine',
@@ -474,6 +510,7 @@ export const tradingBot = {
 export const bashApp = {
   name: 'Bash Learning App',
   pitch: 'Twelve bash topics, 8-12 exercises each, scenarios tied back to the home lab.',
+  repoStatus: 'Private repo — walkthrough available on request.',
   exercises: [
     { topic: 'File operations', sample: 'Find all .conf files in /etc modified in the last 7 days; copy to timestamped backup dir.' },
     { topic: 'Process management', sample: 'Find every ssh process owned by charlie, sort by CPU, write top 3 PIDs to a file.' },

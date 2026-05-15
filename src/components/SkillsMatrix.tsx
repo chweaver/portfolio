@@ -2,7 +2,15 @@
 
 import { useState, useMemo } from 'react';
 import { Section } from './Section';
-import { skillsMatrix, certCoverage, type SkillRow } from '@/data/portfolio';
+import {
+  skillsMatrix,
+  certCoverage,
+  coverageMethodology,
+  coverageLegend,
+  levelForCoverage,
+  type SkillRow,
+  type CoverageLevel,
+} from '@/data/portfolio';
 
 type Filter = 'all' | SkillRow['category'];
 
@@ -77,27 +85,60 @@ export function SkillsMatrix() {
       </div>
 
       <div className="mt-10">
-        <div className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
-          Lab coverage of each exam blueprint (estimate)
+        <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">
+          Lab coverage of each exam blueprint
         </div>
+        <p className="text-xs text-ink-faint mb-4 max-w-3xl">{coverageMethodology}</p>
         <div className="space-y-3">
-          {certCoverage.map((c) => (
-            <div key={c.exam} className="card p-4">
-              <div className="flex items-center justify-between gap-3 mb-2">
-                <div className="font-mono text-sm text-ink">{c.exam}</div>
-                <div className="font-mono text-sm text-accent">{c.coverage}%</div>
+          {certCoverage.map((c) => {
+            const level = levelForCoverage(c.coverage);
+            return (
+              <div key={c.exam} className="card p-4">
+                <div className="flex items-center justify-between gap-3 mb-2 flex-wrap">
+                  <div className="font-mono text-sm text-ink">{c.exam}</div>
+                  <div className="flex items-center gap-2.5">
+                    <CoveragePill level={level} />
+                    <span className="font-mono text-sm text-accent tabular-nums">{c.coverage}%</span>
+                  </div>
+                </div>
+                <div className="h-1.5 rounded-full bg-bg-elevated overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-accent-dim to-accent"
+                    style={{ width: `${c.coverage}%` }}
+                  />
+                </div>
+                <div className="mt-2 text-xs text-ink-faint leading-relaxed">{c.notes}</div>
               </div>
-              <div className="h-1.5 rounded-full bg-bg-elevated overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-accent-dim to-accent"
-                  style={{ width: `${c.coverage}%` }}
-                />
+            );
+          })}
+        </div>
+
+        <div className="mt-5 card p-4">
+          <div className="font-mono text-[11px] uppercase tracking-widest text-ink-faint mb-3">
+            Legend
+          </div>
+          <div className="flex flex-wrap gap-2.5">
+            {coverageLegend.map((l) => (
+              <div key={l.label} className="flex items-center gap-2">
+                <CoveragePill level={l.level} />
+                <span className="font-mono text-xs text-ink-dim">{l.range}</span>
               </div>
-              <div className="mt-2 text-xs text-ink-faint">{c.notes}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </Section>
   );
+}
+
+const LEVEL_STYLE: Record<CoverageLevel, { label: string; cls: string }> = {
+  light: { label: 'Light', cls: 'pill-amber' },
+  moderate: { label: 'Moderate', cls: 'pill-accent' },
+  strong: { label: 'Strong', cls: 'pill-green' },
+  comprehensive: { label: 'Comprehensive', cls: 'pill-green' },
+};
+
+function CoveragePill({ level }: { level: CoverageLevel }) {
+  const s = LEVEL_STYLE[level];
+  return <span className={`pill ${s.cls} uppercase`}>{s.label}</span>;
 }

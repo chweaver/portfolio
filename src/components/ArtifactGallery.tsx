@@ -1,0 +1,172 @@
+'use client';
+
+import { useEffect, useState, useCallback } from 'react';
+import { Section } from './Section';
+import { publicAsset } from '@/lib/paths';
+
+type Artifact = {
+  file: string;
+  alt: string;
+  caption: string;
+};
+
+const ARTIFACTS: Artifact[] = [
+  {
+    file: 'Firewall Rules.png',
+    alt: 'pfSense firewall ruleset, captured from lab',
+    caption: 'Firewall rules',
+  },
+  {
+    file: 'Firewall Log.png',
+    alt: 'Firewall log showing block and pass events',
+    caption: 'Firewall log',
+  },
+  {
+    file: 'Interface Assignments.png',
+    alt: 'Interface assignments: WAN, LAN, LAB200',
+    caption: 'Interface assignments',
+  },
+  {
+    file: 'Dashboard.png',
+    alt: 'pfSense dashboard, current lab state',
+    caption: 'Dashboard',
+  },
+  {
+    file: 'SSH with no ping back from 192.168.100.10.png',
+    alt: 'SSH success and ICMP block from LAN host',
+    caption: 'SSH passes, ICMP blocks',
+  },
+];
+
+function srcFor(file: string): string {
+  return publicAsset(`logs/${file}`);
+}
+
+export function ArtifactGallery() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const close = useCallback(() => setOpenIndex(null), []);
+  const prev = useCallback(
+    () => setOpenIndex((i) => (i === null ? null : (i - 1 + ARTIFACTS.length) % ARTIFACTS.length)),
+    []
+  );
+  const next = useCallback(
+    () => setOpenIndex((i) => (i === null ? null : (i + 1) % ARTIFACTS.length)),
+    []
+  );
+
+  useEffect(() => {
+    if (openIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') prev();
+      else if (e.key === 'ArrowRight') next();
+    };
+    document.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [openIndex, close, prev, next]);
+
+  return (
+    <Section
+      id="artifacts"
+      eyebrow="Evidence"
+      title="Captured from the lab. Not stock images."
+      subtitle="Direct exports from the pfSense web UI on the running lab. Click any thumbnail for full size. Additional captures, full unredacted logs, and live walkthroughs available on request."
+    >
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {ARTIFACTS.map((a, i) => (
+          <button
+            key={a.file}
+            type="button"
+            onClick={() => setOpenIndex(i)}
+            className="card group overflow-hidden p-0 text-left hover:border-accent/40 transition-colors"
+          >
+            <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={srcFor(a.file)}
+                alt={a.alt}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+            </div>
+            <div className="flex items-center justify-between px-4 py-3">
+              <div>
+                <div className="text-sm text-ink">{a.caption}</div>
+                <div className="font-mono text-[11px] text-ink-faint">PNG · click to enlarge</div>
+              </div>
+              <span className="font-mono text-xs text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                open →
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {openIndex !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={ARTIFACTS[openIndex].alt}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-8"
+          onClick={close}
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
+            aria-label="Previous artifact"
+            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-bg-border bg-bg-elevated/80 p-2 font-mono text-ink hover:text-accent hover:border-accent/40 transition-colors"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
+            aria-label="Next artifact"
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-bg-border bg-bg-elevated/80 p-2 font-mono text-ink hover:text-accent hover:border-accent/40 transition-colors"
+          >
+            ›
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              close();
+            }}
+            aria-label="Close"
+            className="absolute right-4 top-4 rounded-md border border-bg-border bg-bg-elevated/80 px-3 py-1.5 font-mono text-xs text-ink hover:text-accent hover:border-accent/40 transition-colors"
+          >
+            close esc
+          </button>
+          <figure
+            className="max-w-6xl w-full max-h-[88vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={srcFor(ARTIFACTS[openIndex].file)}
+              alt={ARTIFACTS[openIndex].alt}
+              className="max-h-[80vh] w-auto max-w-full rounded-lg border border-bg-border shadow-2xl object-contain bg-bg-card"
+            />
+            <figcaption className="mt-3 text-center font-mono text-xs text-ink-dim">
+              {ARTIFACTS[openIndex].caption}
+              <span className="mx-2 text-ink-faint">·</span>
+              <span className="text-ink-faint">{openIndex + 1} / {ARTIFACTS.length}</span>
+            </figcaption>
+          </figure>
+        </div>
+      )}
+    </Section>
+  );
+}

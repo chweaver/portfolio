@@ -3,6 +3,7 @@ node_modules/
 out/
 .DS_Store
 *.log
+!public/logs/*.log
 .env*.local
 .vercel
 next-env.d.ts

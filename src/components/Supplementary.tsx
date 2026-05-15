@@ -1,5 +1,5 @@
 import { Section } from './Section';
-import { tradingBot, bashApp } from '@/data/portfolio';
+import { tradingBot, bashApp, profile } from '@/data/portfolio';
 
 export function Supplementary() {
   return (
@@ -20,6 +20,13 @@ export function Supplementary() {
           </div>
           <h3 className="text-lg font-semibold text-ink mt-2">{tradingBot.name}</h3>
           <p className="text-sm text-ink-dim mt-2 leading-relaxed">{tradingBot.status}</p>
+          <div className="mt-3 flex items-center gap-2 text-xs font-mono text-ink-faint">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-amber" />
+            <span>{tradingBot.repoStatus}</span>
+            <a className="link ml-auto" href={`mailto:${profile.email}?subject=Trading%20bot%20code%20review`}>
+              request →
+            </a>
+          </div>
 
           <div className="mt-5">
             <div className="text-xs uppercase tracking-wider text-ink-faint font-mono mb-2">Components</div>
@@ -57,6 +64,13 @@ export function Supplementary() {
           </div>
           <h3 className="text-lg font-semibold text-ink mt-2">{bashApp.name}</h3>
           <p className="text-sm text-ink-dim mt-2 leading-relaxed">{bashApp.pitch}</p>
+          <div className="mt-3 flex items-center gap-2 text-xs font-mono text-ink-faint">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-amber" />
+            <span>{bashApp.repoStatus}</span>
+            <a className="link ml-auto" href={`mailto:${profile.email}?subject=Bash%20learning%20app%20walkthrough`}>
+              request →
+            </a>
+          </div>
 
           <div className="mt-5">
             <div className="text-xs uppercase tracking-wider text-ink-faint font-mono mb-2">Sample exercises</div>

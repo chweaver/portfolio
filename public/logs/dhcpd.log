@@ -1,0 +1,1570 @@
+May  1 01:10:53 pfSense dhclient[39875]: PREINIT
+May  1 01:10:54 pfSense dhclient[39004]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May  1 01:10:55 pfSense dhclient[39004]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May  1 01:10:55 pfSense dhclient[39004]: DHCPOFFER from 192.168.19.254
+May  1 01:10:55 pfSense dhclient[3421]: ARPSEND
+May  1 01:10:55 pfSense dhclient[39004]: connection closed
+May  1 01:10:55 pfSense dhclient[39004]: exiting.
+May  1 01:10:56 pfSense dhclient[35768]: PREINIT
+May  1 01:10:56 pfSense dhclient[34391]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 2
+May  1 01:10:56 pfSense dhclient[34391]: DHCPOFFER from 192.168.19.254
+May  1 01:10:56 pfSense dhclient[38343]: ARPSEND
+May  1 01:10:58 pfSense dhclient[87024]: ARPCHECK
+May  1 01:10:58 pfSense dhclient[34391]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 01:10:58 pfSense dhclient[34391]: DHCPACK from 192.168.19.254
+May  1 01:10:58 pfSense dhclient[89270]: BOUND
+May  1 01:10:58 pfSense dhclient[90558]: Starting add_new_address()
+May  1 01:10:58 pfSense dhclient[91934]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 01:10:58 pfSense dhclient[93211]: New IP Address (em0): 192.168.19.133
+May  1 01:10:58 pfSense dhclient[93750]: New Subnet Mask (em0): 255.255.255.0
+May  1 01:10:58 pfSense dhclient[94729]: New Broadcast Address (em0): 192.168.19.255
+May  1 01:10:58 pfSense dhclient[95725]: New Routers (em0): 192.168.19.2
+May  1 01:10:58 pfSense dhclient[97336]: Adding new routes to interface: em0
+May  1 01:10:59 pfSense dhclient[98691]: Creating resolv.conf
+May  1 01:10:59 pfSense dhclient[34391]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 01:10:59 pfSense dhcp6c[3040]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 01:10:59 pfSense dhcp6c[3040]: failed initialize control message authentication
+May  1 01:10:59 pfSense dhcp6c[3040]: skip opening control port
+May  1 01:11:00 pfSense dhcp6c[3565]: Sending Solicit
+May  1 01:11:01 pfSense dhcp6c[3565]: Sending Solicit
+May  1 01:11:03 pfSense dhcp6c[3565]: Sending Solicit
+May  1 01:11:07 pfSense dhcp6c[3565]: Sending Solicit
+May  1 01:11:15 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:11:24 pfSense dhcpd[99829]: Internet Systems Consortium DHCP Server 4.4.3-P1
+May  1 05:11:24 pfSense dhcpd[99829]: Copyright 2004-2022 Internet Systems Consortium.
+May  1 05:11:24 pfSense dhcpd[99829]: All rights reserved.
+May  1 05:11:24 pfSense dhcpd[99829]: For info, please visit https://www.isc.org/software/dhcp/
+May  1 05:11:24 pfSense dhcpd[99829]: Config file: /etc/dhcpd.conf
+May  1 05:11:24 pfSense dhcpd[99829]: Database file: /var/db/dhcpd.leases
+May  1 05:11:24 pfSense dhcpd[99829]: PID file: /var/run/dhcpd.pid
+May  1 05:11:24 pfSense dhcpd[99829]: Internet Systems Consortium DHCP Server 4.4.3-P1
+May  1 05:11:24 pfSense dhcpd[99829]: Copyright 2004-2022 Internet Systems Consortium.
+May  1 05:11:24 pfSense dhcpd[99829]: All rights reserved.
+May  1 05:11:24 pfSense dhcpd[99829]: For info, please visit https://www.isc.org/software/dhcp/
+May  1 05:11:24 pfSense dhcpd[99829]: Wrote 0 class decls to leases file.
+May  1 05:11:24 pfSense dhcpd[99829]: Wrote 0 leases to leases file.
+May  1 05:11:24 pfSense dhcpd[99829]: Listening on BPF/em1/XX:XX:XX:XX:XX:XX/24
+May  1 05:11:24 pfSense dhcpd[99829]: Sending on   BPF/em1/XX:XX:XX:XX:XX:XX/24
+May  1 05:11:24 pfSense dhcpd[99829]: Sending on   Socket/fallback/fallback-net
+May  1 05:11:24 pfSense dhcpd[99829]: Server starting service.
+May  1 05:11:24 pfSense dhclient[358]: EXPIRE
+May  1 05:11:24 pfSense dhclient[1511]: Deleting old routes
+May  1 05:11:24 pfSense dhclient[4295]: PREINIT
+May  1 05:11:24 pfSense dhclient[34391]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 2
+May  1 05:11:24 pfSense dhclient[34391]: DHCPOFFER from 192.168.19.254
+May  1 05:11:24 pfSense dhclient[7044]: ARPSEND
+May  1 05:11:26 pfSense dhclient[22317]: ARPCHECK
+May  1 05:11:26 pfSense dhclient[34391]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 05:11:26 pfSense dhclient[34391]: DHCPACK from 192.168.19.254
+May  1 05:11:26 pfSense dhclient[23285]: BOUND
+May  1 05:11:26 pfSense dhclient[23959]: Starting add_new_address()
+May  1 05:11:26 pfSense dhclient[24805]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 05:11:26 pfSense dhclient[25354]: New IP Address (em0): 192.168.19.133
+May  1 05:11:26 pfSense dhclient[25949]: New Subnet Mask (em0): 255.255.255.0
+May  1 05:11:26 pfSense dhclient[26565]: New Broadcast Address (em0): 192.168.19.255
+May  1 05:11:26 pfSense dhclient[27523]: New Routers (em0): 192.168.19.2
+May  1 05:11:26 pfSense dhclient[28114]: Adding new routes to interface: em0
+May  1 05:11:26 pfSense dhclient[29912]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 05:11:26 pfSense dhclient[31114]: /sbin/route add default 192.168.19.2
+May  1 05:11:26 pfSense dhclient[31872]: Creating resolv.conf
+May  1 05:11:26 pfSense dhclient[34391]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 05:11:33 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:12:05 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:13:10 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:15:09 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:17:01 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:19:05 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:20:56 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:22:57 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:24:45 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:26:26 pfSense dhclient[34391]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 05:26:26 pfSense dhclient[34391]: DHCPACK from 192.168.19.254
+May  1 05:26:26 pfSense dhclient[5975]: RENEW
+May  1 05:26:26 pfSense dhclient[6944]: Creating resolv.conf
+May  1 05:26:26 pfSense dhclient[34391]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 05:26:36 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:28:34 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:30:32 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:32:21 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:34:20 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:36:19 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:38:07 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:40:17 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:41:26 pfSense dhclient[34391]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 05:41:26 pfSense dhclient[34391]: DHCPACK from 192.168.19.254
+May  1 05:41:26 pfSense dhclient[85770]: RENEW
+May  1 05:41:26 pfSense dhclient[86524]: Creating resolv.conf
+May  1 05:41:26 pfSense dhclient[34391]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 05:42:09 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:44:19 pfSense dhcp6c[3565]: Sending Solicit
+May  1 05:45:31 pfSense dhcpd[99829]: DHCPREQUEST for 192.168.145.1 from XX:XX:XX:XX:XX:XX via em1: wrong network.
+May  1 05:45:31 pfSense dhcpd[99829]: DHCPNAK on 192.168.145.1 to XX:XX:XX:XX:XX:XX via em1
+May  1 05:45:31 pfSense dhclient[34391]: em0 link state up -> down
+May  1 05:45:33 pfSense dhclient[34391]: connection closed
+May  1 05:45:33 pfSense dhclient[34391]: exiting.
+May  1 05:45:34 pfSense dhcp6c[3565]: exit without release
+May  1 05:45:34 pfSense dhcp6c[68218]: lstat failed: No such file or directory
+May  1 05:45:34 pfSense dhcp6c[68218]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  1 05:45:34 pfSense dhcp6c[3565]: exiting
+May  1 05:45:37 pfSense dhclient[5946]: PREINIT
+May  1 05:45:37 pfSense dhclient[5045]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 05:45:37 pfSense dhclient[5045]: DHCPACK from 192.168.19.254
+May  1 05:45:37 pfSense dhclient[6961]: REBOOT
+May  1 05:45:37 pfSense dhclient[7380]: Starting add_new_address()
+May  1 05:45:37 pfSense dhclient[8168]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 05:45:37 pfSense dhclient[9086]: New IP Address (em0): 192.168.19.133
+May  1 05:45:37 pfSense dhclient[9677]: New Subnet Mask (em0): 255.255.255.0
+May  1 05:45:37 pfSense dhclient[10208]: New Broadcast Address (em0): 192.168.19.255
+May  1 05:45:37 pfSense dhclient[10992]: New Routers (em0): 192.168.19.2
+May  1 05:45:37 pfSense dhclient[12211]: Adding new routes to interface: em0
+May  1 05:45:37 pfSense dhclient[13812]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 05:45:37 pfSense dhclient[14926]: /sbin/route add default 192.168.19.2
+May  1 05:45:37 pfSense dhclient[15884]: Creating resolv.conf
+May  1 05:45:37 pfSense dhclient[5045]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 05:45:37 pfSense dhcp6c[17247]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 05:45:37 pfSense dhcp6c[17247]: failed initialize control message authentication
+May  1 05:45:37 pfSense dhcp6c[17247]: skip opening control port
+May  1 05:45:38 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:45:39 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:45:41 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:45:45 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:45:53 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:46:10 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:46:42 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:47:46 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:49:45 pfSense dhcp6c[17384]: Sending Solicit
+May  1 05:54:35 pfSense dhclient[46470]: PREINIT
+May  1 05:54:37 pfSense dhclient[45351]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 05:54:37 pfSense dhclient[45351]: DHCPACK from 192.168.19.254
+May  1 05:54:37 pfSense dhclient[81481]: REBOOT
+May  1 05:54:37 pfSense dhclient[82693]: Starting add_new_address()
+May  1 05:54:37 pfSense dhclient[83781]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 05:54:37 pfSense dhclient[85529]: New IP Address (em0): 192.168.19.133
+May  1 05:54:37 pfSense dhclient[86709]: New Subnet Mask (em0): 255.255.255.0
+May  1 05:54:37 pfSense dhclient[87546]: New Broadcast Address (em0): 192.168.19.255
+May  1 05:54:37 pfSense dhclient[88742]: New Routers (em0): 192.168.19.2
+May  1 05:54:37 pfSense dhclient[89697]: Adding new routes to interface: em0
+May  1 05:54:37 pfSense dhclient[92605]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 05:54:37 pfSense dhclient[93702]: /sbin/route add default 192.168.19.2
+May  1 05:54:37 pfSense dhclient[95095]: Creating resolv.conf
+May  1 05:54:37 pfSense dhclient[45351]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 05:54:38 pfSense dhclient[45351]: connection closed
+May  1 05:54:38 pfSense dhclient[45351]: exiting.
+May  1 05:54:39 pfSense dhclient[47079]: PREINIT
+May  1 05:54:39 pfSense dhclient[45550]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 05:54:39 pfSense dhclient[45550]: DHCPACK from 192.168.19.254
+May  1 05:54:39 pfSense dhclient[49703]: REBOOT
+May  1 05:54:39 pfSense dhclient[50635]: Starting add_new_address()
+May  1 05:54:39 pfSense dhclient[51840]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 05:54:39 pfSense dhclient[53785]: New IP Address (em0): 192.168.19.133
+May  1 05:54:39 pfSense dhclient[55260]: New Subnet Mask (em0): 255.255.255.0
+May  1 05:54:39 pfSense dhclient[55930]: New Broadcast Address (em0): 192.168.19.255
+May  1 05:54:39 pfSense dhclient[56898]: New Routers (em0): 192.168.19.2
+May  1 05:54:39 pfSense dhclient[58369]: Adding new routes to interface: em0
+May  1 05:54:39 pfSense dhclient[60865]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 05:54:39 pfSense dhclient[62092]: /sbin/route add default 192.168.19.2
+May  1 05:54:39 pfSense dhclient[64224]: Creating resolv.conf
+May  1 05:54:39 pfSense dhclient[45550]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 05:54:39 pfSense dhcp6c[69104]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 05:54:39 pfSense dhcp6c[69104]: failed initialize control message authentication
+May  1 05:54:39 pfSense dhcp6c[69104]: skip opening control port
+May  1 05:54:40 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:54:41 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:54:43 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:54:47 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:54:56 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:55:02 pfSense dhcpd[19534]: Internet Systems Consortium DHCP Server 4.4.3-P1
+May  1 05:55:02 pfSense dhcpd[19534]: Copyright 2004-2022 Internet Systems Consortium.
+May  1 05:55:02 pfSense dhcpd[19534]: All rights reserved.
+May  1 05:55:02 pfSense dhcpd[19534]: For info, please visit https://www.isc.org/software/dhcp/
+May  1 05:55:02 pfSense dhcpd[19534]: Config file: /etc/dhcpd.conf
+May  1 05:55:02 pfSense dhcpd[19534]: Database file: /var/db/dhcpd.leases
+May  1 05:55:02 pfSense dhcpd[19534]: PID file: /var/run/dhcpd.pid
+May  1 05:55:02 pfSense dhcpd[19534]: Internet Systems Consortium DHCP Server 4.4.3-P1
+May  1 05:55:02 pfSense dhcpd[19534]: Copyright 2004-2022 Internet Systems Consortium.
+May  1 05:55:02 pfSense dhcpd[19534]: All rights reserved.
+May  1 05:55:02 pfSense dhcpd[19534]: For info, please visit https://www.isc.org/software/dhcp/
+May  1 05:55:02 pfSense dhcpd[19534]: Wrote 0 class decls to leases file.
+May  1 05:55:02 pfSense dhcpd[19534]: Wrote 0 leases to leases file.
+May  1 05:55:02 pfSense dhcpd[19534]: Listening on BPF/em1/XX:XX:XX:XX:XX:XX/24
+May  1 05:55:02 pfSense dhcpd[19534]: Sending on   BPF/em1/XX:XX:XX:XX:XX:XX/24
+May  1 05:55:02 pfSense dhcpd[19534]: Sending on   Socket/fallback/fallback-net
+May  1 05:55:02 pfSense dhcpd[19534]: Server starting service.
+May  1 05:55:12 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:55:44 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:56:48 pfSense dhcp6c[69968]: Sending Solicit
+May  1 05:58:47 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:00:40 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:02:43 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:04:35 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:06:35 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:08:24 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:09:39 pfSense dhclient[45550]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 06:09:39 pfSense dhclient[45550]: DHCPACK from 192.168.19.254
+May  1 06:09:39 pfSense dhclient[49272]: RENEW
+May  1 06:09:39 pfSense dhclient[50042]: Creating resolv.conf
+May  1 06:09:39 pfSense dhclient[45550]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 06:10:15 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:12:13 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:14:11 pfSense dhcp6c[69968]: Sending Solicit
+May  1 06:14:23 pfSense dhclient[45550]: em0 link state up -> down
+May  1 06:14:25 pfSense dhclient[45550]: connection closed
+May  1 06:14:25 pfSense dhclient[45550]: exiting.
+May  1 06:14:26 pfSense dhcp6c[69968]: exit without release
+May  1 06:14:26 pfSense dhcp6c[27242]: lstat failed: No such file or directory
+May  1 06:14:26 pfSense dhcp6c[27242]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  1 06:14:26 pfSense dhcp6c[69968]: exiting
+May  1 06:14:29 pfSense dhclient[60788]: PREINIT
+May  1 06:14:29 pfSense dhclient[60278]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 06:14:29 pfSense dhclient[60278]: DHCPACK from 192.168.19.254
+May  1 06:14:29 pfSense dhclient[61969]: REBOOT
+May  1 06:14:29 pfSense dhclient[62853]: Starting add_new_address()
+May  1 06:14:29 pfSense dhclient[63578]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 06:14:29 pfSense dhclient[64597]: New IP Address (em0): 192.168.19.133
+May  1 06:14:29 pfSense dhclient[64852]: New Subnet Mask (em0): 255.255.255.0
+May  1 06:14:29 pfSense dhclient[65558]: New Broadcast Address (em0): 192.168.19.255
+May  1 06:14:29 pfSense dhclient[66431]: New Routers (em0): 192.168.19.2
+May  1 06:14:29 pfSense dhclient[67038]: Adding new routes to interface: em0
+May  1 06:14:29 pfSense dhclient[68086]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 06:14:29 pfSense dhclient[69839]: /sbin/route add default 192.168.19.2
+May  1 06:14:29 pfSense dhclient[70996]: Creating resolv.conf
+May  1 06:14:29 pfSense dhclient[60278]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 06:14:29 pfSense dhcp6c[73054]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 06:14:29 pfSense dhcp6c[73054]: failed initialize control message authentication
+May  1 06:14:29 pfSense dhcp6c[73054]: skip opening control port
+May  1 06:14:30 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:14:32 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:14:34 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:14:38 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:14:46 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:15:02 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:15:34 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:16:39 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:18:38 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:20:30 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:22:34 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:24:25 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:26:25 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:27:08 pfSense dhclient[60278]: My address (192.168.19.133) was deleted, dhclient exiting
+May  1 02:27:08 pfSense dhclient[82027]: FAIL
+May  1 06:27:08 pfSense dhclient[60278]: connection closed
+May  1 06:27:08 pfSense dhclient[60278]: exiting.
+May  1 02:27:08 pfSense dhclient[83263]: PREINIT
+May  1 02:27:08 pfSense dhclient[82500]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 02:27:08 pfSense dhclient[82500]: DHCPACK from 192.168.19.254
+May  1 02:27:08 pfSense dhclient[84417]: REBOOT
+May  1 02:27:08 pfSense dhclient[85463]: Starting add_new_address()
+May  1 02:27:08 pfSense dhclient[86055]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 02:27:08 pfSense dhclient[87341]: New IP Address (em0): 192.168.19.133
+May  1 02:27:08 pfSense dhclient[87882]: New Subnet Mask (em0): 255.255.255.0
+May  1 02:27:08 pfSense dhclient[88703]: New Broadcast Address (em0): 192.168.19.255
+May  1 02:27:08 pfSense dhclient[89400]: New Routers (em0): 192.168.19.2
+May  1 02:27:08 pfSense dhclient[89947]: Adding new routes to interface: em0
+May  1 02:27:08 pfSense dhclient[91783]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 02:27:08 pfSense dhclient[92916]: /sbin/route add default 192.168.19.2
+May  1 02:27:08 pfSense dhclient[93680]: Creating resolv.conf
+May  1 02:27:08 pfSense dhclient[82500]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 06:28:14 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:30:05 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:32:03 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:34:01 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:35:50 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:37:49 pfSense dhcp6c[73063]: Sending Solicit
+May  1 06:39:48 pfSense dhcp6c[73063]: Sending Solicit
+May  1 02:54:35 pfsense dhclient[41532]: PREINIT
+May  1 02:54:37 pfsense dhclient[41120]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 02:54:37 pfsense dhclient[41120]: DHCPACK from 192.168.19.254
+May  1 02:54:37 pfsense dhclient[80755]: REBOOT
+May  1 02:54:37 pfsense dhclient[82353]: Starting add_new_address()
+May  1 02:54:37 pfsense dhclient[83623]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 02:54:37 pfsense dhclient[85435]: New IP Address (em0): 192.168.19.133
+May  1 02:54:37 pfsense dhclient[86464]: New Subnet Mask (em0): 255.255.255.0
+May  1 02:54:37 pfsense dhclient[87479]: New Broadcast Address (em0): 192.168.19.255
+May  1 02:54:37 pfsense dhclient[89106]: New Routers (em0): 192.168.19.2
+May  1 02:54:37 pfsense dhclient[90089]: Adding new routes to interface: em0
+May  1 02:54:37 pfsense dhclient[92688]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 02:54:37 pfsense dhclient[94122]: /sbin/route add default 192.168.19.2
+May  1 02:54:37 pfsense dhclient[95991]: Creating resolv.conf
+May  1 02:54:37 pfsense dhclient[41120]: short write: wanted 20 got 0 bytes
+May  1 02:54:37 pfsense dhclient[41120]: exiting.
+May  1 02:54:38 pfsense dhclient[13593]: PREINIT
+May  1 02:54:38 pfsense dhclient[12648]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 02:54:38 pfsense dhclient[12648]: DHCPACK from 192.168.19.254
+May  1 02:54:38 pfsense dhclient[16669]: REBOOT
+May  1 02:54:38 pfsense dhclient[18233]: Starting add_new_address()
+May  1 02:54:38 pfsense dhclient[19267]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 02:54:38 pfsense dhclient[21016]: New IP Address (em0): 192.168.19.133
+May  1 02:54:38 pfsense dhclient[22138]: New Subnet Mask (em0): 255.255.255.0
+May  1 02:54:38 pfsense dhclient[23655]: New Broadcast Address (em0): 192.168.19.255
+May  1 02:54:38 pfsense dhclient[24987]: New Routers (em0): 192.168.19.2
+May  1 02:54:38 pfsense dhclient[26478]: Adding new routes to interface: em0
+May  1 02:54:38 pfsense dhclient[30984]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 02:54:38 pfsense dhclient[32921]: /sbin/route add default 192.168.19.2
+May  1 02:54:38 pfsense dhclient[34532]: Creating resolv.conf
+May  1 02:54:38 pfsense dhclient[12648]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 02:54:38 pfsense dhcp6c[37433]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 02:54:38 pfsense dhcp6c[37433]: failed initialize control message authentication
+May  1 02:54:38 pfsense dhcp6c[37433]: skip opening control port
+May  1 02:54:39 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:54:40 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:54:42 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:54:46 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:54:55 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:55:11 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:55:43 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:56:48 pfsense dhcp6c[38921]: Sending Solicit
+May  1 02:58:47 pfsense dhcp6c[38921]: Sending Solicit
+May  1 03:00:39 pfsense dhcp6c[38921]: Sending Solicit
+May  1 03:02:42 pfsense dhclient[12648]: connection closed
+May  1 03:02:42 pfsense dhclient[12648]: exiting.
+May  1 03:02:43 pfsense dhcp6c[38921]: Sending Solicit
+May  1 03:02:43 pfsense dhcp6c[38921]: exit without release
+May  1 03:02:43 pfsense dhcp6c[90775]: lstat failed: No such file or directory
+May  1 03:02:43 pfsense dhcp6c[90775]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  1 03:02:43 pfsense dhcp6c[38921]: exiting
+May  1 03:02:44 pfsense dhclient[94436]: PREINIT
+May  1 03:02:44 pfsense dhclient[93835]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 03:02:44 pfsense dhclient[93835]: DHCPACK from 192.168.19.254
+May  1 03:02:44 pfsense dhclient[98157]: REBOOT
+May  1 03:02:44 pfsense dhclient[98480]: Starting add_new_address()
+May  1 03:02:44 pfsense dhclient[99273]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 03:02:44 pfsense dhclient[7]: New IP Address (em0): 192.168.19.133
+May  1 03:02:44 pfsense dhclient[293]: New Subnet Mask (em0): 255.255.255.0
+May  1 03:02:44 pfsense dhclient[1404]: New Broadcast Address (em0): 192.168.19.255
+May  1 03:02:44 pfsense dhclient[2185]: New Routers (em0): 192.168.19.2
+May  1 03:02:44 pfsense dhclient[2857]: Adding new routes to interface: em0
+May  1 03:02:44 pfsense dhclient[4442]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 03:02:44 pfsense dhclient[5349]: /sbin/route add default 192.168.19.2
+May  1 03:02:44 pfsense dhclient[6471]: Creating resolv.conf
+May  1 03:02:44 pfsense dhclient[93835]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 03:02:44 pfsense dhcp6c[8350]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 03:02:44 pfsense dhcp6c[8350]: failed initialize control message authentication
+May  1 03:02:44 pfsense dhcp6c[8350]: skip opening control port
+May  1 03:02:45 pfsense dhcp6c[8382]: Sending Solicit
+May  1 03:02:46 pfsense dhcp6c[8382]: Sending Solicit
+May  1 03:02:48 pfsense dhcp6c[8382]: Sending Solicit
+May  1 03:02:52 pfsense dhcp6c[8382]: Sending Solicit
+May  1 03:03:00 pfsense dhcp6c[8382]: Sending Solicit
+May  1 03:03:17 pfsense dhcp6c[8382]: Sending Solicit
+May  1 03:03:49 pfsense dhcp6c[8382]: Sending Solicit
+May  1 19:07:08 pfsense dhclient[44576]: PREINIT
+May  1 19:07:09 pfsense dhclient[81618]: EXPIRE
+May  1 19:07:10 pfsense dhclient[83591]: Deleting old routes
+May  1 19:07:10 pfsense dhclient[43948]: short write: wanted 20 got 0 bytes
+May  1 19:07:10 pfsense dhclient[43948]: exiting.
+May  1 19:07:11 pfsense dhclient[10608]: PREINIT
+May  1 19:07:11 pfsense dhclient[13049]: EXPIRE
+May  1 19:07:11 pfsense dhclient[14942]: Deleting old routes
+May  1 19:07:11 pfsense dhclient[16988]: PREINIT
+May  1 19:07:11 pfsense dhclient[9555]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May  1 19:07:12 pfsense dhclient[9555]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May  1 19:07:12 pfsense dhclient[9555]: DHCPOFFER from 192.168.19.254
+May  1 19:07:12 pfsense dhclient[43250]: ARPSEND
+May  1 19:07:12 pfsense dhclient[9555]: DHCPOFFER from 192.168.19.254
+May  1 19:07:12 pfsense dhclient[9555]: DHCPOFFER already seen.
+May  1 19:07:14 pfsense dhclient[7]: ARPCHECK
+May  1 19:07:14 pfsense dhclient[9555]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 19:07:14 pfsense dhclient[9555]: DHCPACK from 192.168.19.254
+May  1 19:07:14 pfsense dhclient[1287]: BOUND
+May  1 19:07:14 pfsense dhclient[3395]: Starting add_new_address()
+May  1 19:07:14 pfsense dhclient[4974]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 19:07:14 pfsense dhclient[7098]: New IP Address (em0): 192.168.19.133
+May  1 19:07:14 pfsense dhclient[8180]: New Subnet Mask (em0): 255.255.255.0
+May  1 19:07:14 pfsense dhclient[9843]: New Broadcast Address (em0): 192.168.19.255
+May  1 19:07:14 pfsense dhclient[10749]: New Routers (em0): 192.168.19.2
+May  1 19:07:14 pfsense dhclient[12117]: Adding new routes to interface: em0
+May  1 19:07:14 pfsense dhclient[12820]: Creating resolv.conf
+May  1 19:07:14 pfsense dhclient[9555]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 19:07:14 pfsense dhcp6c[14894]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 19:07:14 pfsense dhcp6c[14894]: failed initialize control message authentication
+May  1 19:07:14 pfsense dhcp6c[14894]: skip opening control port
+May  1 19:07:15 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:07:16 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:07:18 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:07:22 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:07:31 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:07:47 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:08:19 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:09:23 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:11:22 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:13:15 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:15:18 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:17:09 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:19:10 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:20:59 pfsense dhcp6c[15861]: Sending Solicit
+May  1 19:21:12 pfsense dhclient[9555]: connection closed
+May  1 19:21:12 pfsense dhclient[9555]: exiting.
+May  1 19:21:14 pfsense dhcp6c[15861]: exit without release
+May  1 19:21:14 pfsense dhcp6c[71567]: lstat failed: No such file or directory
+May  1 19:21:14 pfsense dhcp6c[71567]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  1 19:21:14 pfsense dhcp6c[15861]: exiting
+May  1 19:21:16 pfsense dhclient[75367]: PREINIT
+May  1 19:21:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  1 19:21:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 19:21:16 pfsense dhclient[76601]: REBOOT
+May  1 19:21:16 pfsense dhclient[77336]: Starting add_new_address()
+May  1 19:21:16 pfsense dhclient[78192]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  1 19:21:16 pfsense dhclient[79440]: New IP Address (em0): 192.168.19.133
+May  1 19:21:16 pfsense dhclient[79834]: New Subnet Mask (em0): 255.255.255.0
+May  1 19:21:16 pfsense dhclient[80465]: New Broadcast Address (em0): 192.168.19.255
+May  1 19:21:16 pfsense dhclient[81399]: New Routers (em0): 192.168.19.2
+May  1 19:21:16 pfsense dhclient[82349]: Adding new routes to interface: em0
+May  1 19:21:16 pfsense dhclient[83885]: /sbin/route add -host 192.168.19.2 -iface em0
+May  1 19:21:16 pfsense dhclient[85139]: /sbin/route add default 192.168.19.2
+May  1 19:21:16 pfsense dhclient[86236]: Creating resolv.conf
+May  1 19:21:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 19:21:16 pfsense dhcp6c[87855]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  1 19:21:16 pfsense dhcp6c[87855]: failed initialize control message authentication
+May  1 19:21:16 pfsense dhcp6c[87855]: skip opening control port
+May  1 19:21:17 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:21:17 pfsense dhcp6c[88046]: transmit failed: Can't assign requested address
+May  1 19:21:18 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:21:20 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:21:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:21:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:21:48 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:22:20 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:23:25 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:25:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:27:16 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:29:20 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:31:11 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:33:12 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:35:00 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:36:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 19:36:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 19:36:16 pfsense dhclient[67319]: RENEW
+May  1 19:36:16 pfsense dhclient[68351]: Creating resolv.conf
+May  1 19:36:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 19:36:51 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:38:49 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:40:47 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:42:36 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:44:35 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:46:34 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:48:23 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:50:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:51:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 19:51:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 19:51:16 pfsense dhclient[68064]: RENEW
+May  1 19:51:16 pfsense dhclient[68763]: Creating resolv.conf
+May  1 19:51:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 19:52:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:54:34 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:56:43 pfsense dhcp6c[88046]: Sending Solicit
+May  1 19:58:46 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:00:55 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:02:48 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:04:41 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:06:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 20:06:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 20:06:16 pfsense dhclient[65464]: RENEW
+May  1 20:06:16 pfsense dhclient[66541]: Creating resolv.conf
+May  1 20:06:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 20:06:30 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:08:30 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:10:38 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:12:42 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:14:43 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:16:52 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:18:48 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:20:40 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:21:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 20:21:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 20:21:16 pfsense dhclient[49616]: RENEW
+May  1 20:21:16 pfsense dhclient[50494]: Creating resolv.conf
+May  1 20:21:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 20:22:36 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:24:26 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:26:33 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:28:33 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:30:43 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:32:53 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:34:42 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:36:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 20:36:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 20:36:16 pfsense dhclient[49903]: RENEW
+May  1 20:36:16 pfsense dhclient[50693]: Creating resolv.conf
+May  1 20:36:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 20:36:33 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:38:26 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:40:29 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:42:30 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:44:28 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:46:19 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:48:10 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:50:09 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:51:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 20:51:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 20:51:16 pfsense dhclient[51381]: RENEW
+May  1 20:51:16 pfsense dhclient[52115]: Creating resolv.conf
+May  1 20:51:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 20:52:01 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:53:57 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:55:53 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:57:42 pfsense dhcp6c[88046]: Sending Solicit
+May  1 20:59:33 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:01:31 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:03:25 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:05:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:06:16 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 21:06:16 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 21:06:16 pfsense dhclient[33590]: RENEW
+May  1 21:06:16 pfsense dhclient[34017]: Creating resolv.conf
+May  1 21:06:16 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 21:07:28 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:09:38 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:11:33 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:13:29 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:15:28 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:17:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:19:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:21:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 21:21:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 21:21:17 pfsense dhclient[39981]: RENEW
+May  1 21:21:17 pfsense dhclient[41225]: Creating resolv.conf
+May  1 21:21:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 21:21:39 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:23:43 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:25:34 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:27:36 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:29:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:31:25 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:33:29 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:35:30 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:36:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 21:36:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 21:36:17 pfsense dhclient[40901]: RENEW
+May  1 21:36:17 pfsense dhclient[41742]: Creating resolv.conf
+May  1 21:36:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 21:37:26 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:39:35 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:41:28 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:43:16 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:45:12 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:47:11 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:49:03 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:51:13 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:51:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 21:51:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 21:51:17 pfsense dhclient[44028]: RENEW
+May  1 21:51:17 pfsense dhclient[44781]: Creating resolv.conf
+May  1 21:51:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 21:53:21 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:55:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:57:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 21:59:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:01:42 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:03:51 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:05:47 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:06:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 22:06:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 22:06:17 pfsense dhclient[19380]: RENEW
+May  1 22:06:17 pfsense dhclient[20443]: Creating resolv.conf
+May  1 22:06:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 22:07:43 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:09:44 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:11:38 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:13:45 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:15:35 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:17:40 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:19:31 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:21:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 22:21:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 22:21:17 pfsense dhclient[12748]: RENEW
+May  1 22:21:17 pfsense dhclient[13977]: Creating resolv.conf
+May  1 22:21:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 22:21:41 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:23:45 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:25:55 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:27:48 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:29:42 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:31:41 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:33:39 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:35:49 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:36:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 22:36:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 22:36:17 pfsense dhclient[17193]: RENEW
+May  1 22:36:17 pfsense dhclient[18261]: Creating resolv.conf
+May  1 22:36:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 22:38:01 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:40:11 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:42:23 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:44:19 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:46:10 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:48:10 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:50:21 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:51:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 22:51:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 22:51:17 pfsense dhclient[88117]: RENEW
+May  1 22:51:17 pfsense dhclient[89034]: Creating resolv.conf
+May  1 22:51:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 22:52:20 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:54:18 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:56:25 pfsense dhcp6c[88046]: Sending Solicit
+May  1 22:58:20 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:00:29 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:02:33 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:04:25 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:06:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 23:06:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 23:06:17 pfsense dhclient[87962]: RENEW
+May  1 23:06:17 pfsense dhclient[88689]: Creating resolv.conf
+May  1 23:06:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 23:06:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:08:22 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:10:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:12:24 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:14:20 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:16:21 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:18:22 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:20:15 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:21:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 23:21:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 23:21:17 pfsense dhclient[82753]: RENEW
+May  1 23:21:17 pfsense dhclient[83457]: Creating resolv.conf
+May  1 23:21:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 23:22:23 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:24:27 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:26:35 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:28:42 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:30:51 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:32:46 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:34:39 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:36:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 23:36:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 23:36:17 pfsense dhclient[78847]: RENEW
+May  1 23:36:17 pfsense dhclient[79179]: Creating resolv.conf
+May  1 23:36:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 23:36:38 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:38:35 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:40:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:42:30 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:44:26 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:46:32 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:48:36 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:50:44 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:51:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  1 23:51:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  1 23:51:17 pfsense dhclient[59747]: RENEW
+May  1 23:51:17 pfsense dhclient[60822]: Creating resolv.conf
+May  1 23:51:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  1 23:52:49 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:54:40 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:56:35 pfsense dhcp6c[88046]: Sending Solicit
+May  1 23:58:34 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:00:32 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:02:28 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:04:24 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:06:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 00:06:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 00:06:17 pfsense dhclient[54650]: RENEW
+May  2 00:06:17 pfsense dhclient[55456]: Creating resolv.conf
+May  2 00:06:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 00:06:30 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:08:25 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:10:23 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:12:19 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:14:25 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:16:35 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:18:25 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:20:24 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:21:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 00:21:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 00:21:17 pfsense dhclient[59926]: RENEW
+May  2 00:21:17 pfsense dhclient[60737]: Creating resolv.conf
+May  2 00:21:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 00:22:15 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:24:25 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:26:21 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:28:12 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:30:21 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:32:18 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:34:16 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:36:10 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:36:17 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 00:36:17 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 00:36:17 pfsense dhclient[39781]: RENEW
+May  2 00:36:17 pfsense dhclient[40761]: Creating resolv.conf
+May  2 00:36:17 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 00:38:18 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:40:25 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:42:32 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:44:30 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:46:26 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:48:27 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:50:21 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:51:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 00:51:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 00:51:18 pfsense dhclient[40233]: RENEW
+May  2 00:51:18 pfsense dhclient[40864]: Creating resolv.conf
+May  2 00:51:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 00:52:13 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:54:11 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:56:08 pfsense dhcp6c[88046]: Sending Solicit
+May  2 00:58:11 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:00:01 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:02:12 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:04:23 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:06:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 01:06:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 01:06:18 pfsense dhclient[49783]: RENEW
+May  2 01:06:18 pfsense dhclient[50481]: Creating resolv.conf
+May  2 01:06:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 01:06:24 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:08:29 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:10:27 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:12:19 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:14:12 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:16:04 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:17:54 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:19:49 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:21:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 01:21:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 01:21:18 pfsense dhclient[51453]: RENEW
+May  2 01:21:18 pfsense dhclient[51958]: Creating resolv.conf
+May  2 01:21:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 01:21:57 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:23:50 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:25:46 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:27:38 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:29:39 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:31:31 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:33:36 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:35:47 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:36:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 01:36:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 01:36:18 pfsense dhclient[24729]: RENEW
+May  2 01:36:18 pfsense dhclient[25586]: Creating resolv.conf
+May  2 01:36:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 01:37:50 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:39:55 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:42:05 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:44:03 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:45:53 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:47:48 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:49:39 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:51:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 01:51:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 01:51:18 pfsense dhclient[21800]: RENEW
+May  2 01:51:18 pfsense dhclient[22876]: Creating resolv.conf
+May  2 01:51:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 01:51:35 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:53:35 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:55:35 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:57:44 pfsense dhcp6c[88046]: Sending Solicit
+May  2 01:59:35 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:01:41 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:03:29 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:05:24 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:06:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 02:06:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 02:06:18 pfsense dhclient[23366]: RENEW
+May  2 02:06:18 pfsense dhclient[23898]: Creating resolv.conf
+May  2 02:06:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:07:22 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:09:28 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:11:32 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:13:35 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:15:26 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:17:14 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:19:18 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:21:17 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:21:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 02:21:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 02:21:18 pfsense dhclient[10556]: RENEW
+May  2 02:21:18 pfsense dhclient[11666]: Creating resolv.conf
+May  2 02:21:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:23:05 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:24:54 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:27:05 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:29:01 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:31:03 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:32:59 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:34:48 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:36:18 pfsense dhclient[74647]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 02:36:18 pfsense dhclient[74647]: DHCPACK from 192.168.19.254
+May  2 02:36:18 pfsense dhclient[17686]: RENEW
+May  2 02:36:18 pfsense dhclient[18255]: Creating resolv.conf
+May  2 02:36:18 pfsense dhclient[74647]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:36:53 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:39:03 pfsense dhclient[74647]: em0 link state up -> down
+May  2 02:39:03 pfsense dhcp6c[88046]: Sending Solicit
+May  2 02:39:03 pfsense dhcp6c[88046]: transmit failed: Network is down
+May  2 02:39:04 pfsense dhclient[74647]: connection closed
+May  2 02:39:04 pfsense dhclient[74647]: exiting.
+May  2 02:39:05 pfsense dhcp6c[88046]: exit without release
+May  2 02:39:05 pfsense dhcp6c[84734]: lstat failed: No such file or directory
+May  2 02:39:05 pfsense dhcp6c[84734]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  2 02:39:05 pfsense dhcp6c[88046]: exiting
+May  2 02:39:09 pfsense dhclient[22386]: PREINIT
+May  2 02:39:09 pfsense dhclient[21303]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 02:39:09 pfsense dhclient[21303]: DHCPACK from 192.168.19.254
+May  2 02:39:09 pfsense dhclient[23691]: REBOOT
+May  2 02:39:09 pfsense dhclient[24365]: Starting add_new_address()
+May  2 02:39:09 pfsense dhclient[25119]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 02:39:09 pfsense dhclient[26166]: New IP Address (em0): 192.168.19.133
+May  2 02:39:09 pfsense dhclient[26688]: New Subnet Mask (em0): 255.255.255.0
+May  2 02:39:09 pfsense dhclient[27144]: New Broadcast Address (em0): 192.168.19.255
+May  2 02:39:09 pfsense dhclient[27753]: New Routers (em0): 192.168.19.2
+May  2 02:39:09 pfsense dhclient[28628]: Adding new routes to interface: em0
+May  2 02:39:09 pfsense dhclient[30124]: /sbin/route add -host 192.168.19.2 -iface em0
+May  2 02:39:09 pfsense dhclient[31121]: /sbin/route add default 192.168.19.2
+May  2 02:39:09 pfsense dhclient[31626]: Creating resolv.conf
+May  2 02:39:09 pfsense dhclient[21303]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:39:09 pfsense dhcp6c[33235]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  2 02:39:09 pfsense dhcp6c[33235]: failed initialize control message authentication
+May  2 02:39:09 pfsense dhcp6c[33235]: skip opening control port
+May  2 02:39:10 pfsense dhcp6c[33491]: Sending Solicit
+May  2 02:39:11 pfsense dhcp6c[33491]: Sending Solicit
+May  2 02:39:13 pfsense dhclient[21303]: em0 link state up -> down
+May  2 02:39:13 pfsense dhcp6c[33491]: Sending Solicit
+May  2 02:39:13 pfsense dhcp6c[33491]: transmit failed: Network is down
+May  2 02:39:14 pfsense dhclient[21303]: connection closed
+May  2 02:39:14 pfsense dhclient[21303]: exiting.
+May  2 02:39:15 pfsense dhcp6c[33491]: exit without release
+May  2 02:39:15 pfsense dhcp6c[39294]: lstat failed: No such file or directory
+May  2 02:39:15 pfsense dhcp6c[39294]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  2 02:39:15 pfsense dhcp6c[33491]: exiting
+May  2 02:39:18 pfsense dhclient[93033]: PREINIT
+May  2 02:39:18 pfsense dhclient[91927]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 02:39:18 pfsense dhclient[91927]: DHCPACK from 192.168.19.254
+May  2 02:39:18 pfsense dhclient[94384]: REBOOT
+May  2 02:39:18 pfsense dhclient[95565]: Starting add_new_address()
+May  2 02:39:18 pfsense dhclient[96589]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 02:39:18 pfsense dhclient[97522]: New IP Address (em0): 192.168.19.133
+May  2 02:39:18 pfsense dhclient[98160]: New Subnet Mask (em0): 255.255.255.0
+May  2 02:39:18 pfsense dhclient[98857]: New Broadcast Address (em0): 192.168.19.255
+May  2 02:39:18 pfsense dhclient[99945]: New Routers (em0): 192.168.19.2
+May  2 02:39:18 pfsense dhclient[531]: Adding new routes to interface: em0
+May  2 02:39:18 pfsense dhclient[1800]: /sbin/route add -host 192.168.19.2 -iface em0
+May  2 02:39:18 pfsense dhclient[2660]: /sbin/route add default 192.168.19.2
+May  2 02:39:18 pfsense dhclient[3127]: Creating resolv.conf
+May  2 02:39:18 pfsense dhclient[91927]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:39:20 pfsense dhcp6c[43441]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  2 02:39:20 pfsense dhcp6c[43441]: failed initialize control message authentication
+May  2 02:39:20 pfsense dhcp6c[43441]: skip opening control port
+May  2 02:39:21 pfsense dhcp6c[43664]: Sending Solicit
+May  2 02:39:22 pfsense dhcp6c[43664]: Sending Solicit
+May  2 02:39:22 pfsense dhcp6c[43664]: transmit failed: Network is down
+May  2 02:39:22 pfsense dhclient[91927]: em0 link state up -> down
+May  2 02:39:24 pfsense dhclient[91927]: connection closed
+May  2 02:39:24 pfsense dhclient[91927]: exiting.
+May  2 02:39:24 pfsense dhcp6c[43664]: Sending Solicit
+May  2 02:39:24 pfsense dhcp6c[43664]: transmit failed: Network is down
+May  2 02:39:25 pfsense dhcp6c[43664]: exit without release
+May  2 02:39:25 pfsense dhcp6c[73772]: lstat failed: No such file or directory
+May  2 02:39:25 pfsense dhcp6c[73772]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  2 02:39:25 pfsense dhcp6c[43664]: exiting
+May  2 02:39:39 pfsense dhclient[22367]: PREINIT
+May  2 02:39:39 pfsense dhclient[19757]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 02:39:39 pfsense dhclient[19757]: DHCPACK from 192.168.19.254
+May  2 02:39:39 pfsense dhclient[23270]: REBOOT
+May  2 02:39:39 pfsense dhclient[24403]: Starting add_new_address()
+May  2 02:39:39 pfsense dhclient[25181]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 02:39:39 pfsense dhclient[25989]: New IP Address (em0): 192.168.19.133
+May  2 02:39:39 pfsense dhclient[26748]: New Subnet Mask (em0): 255.255.255.0
+May  2 02:39:39 pfsense dhclient[27342]: New Broadcast Address (em0): 192.168.19.255
+May  2 02:39:39 pfsense dhclient[28057]: New Routers (em0): 192.168.19.2
+May  2 02:39:39 pfsense dhclient[28867]: Adding new routes to interface: em0
+May  2 02:39:39 pfsense dhclient[30493]: /sbin/route add -host 192.168.19.2 -iface em0
+May  2 02:39:39 pfsense dhclient[31662]: /sbin/route add default 192.168.19.2
+May  2 02:39:39 pfsense dhclient[32484]: Creating resolv.conf
+May  2 02:39:39 pfsense dhclient[19757]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:39:39 pfsense dhcp6c[33735]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  2 02:39:39 pfsense dhcp6c[33735]: failed initialize control message authentication
+May  2 02:39:39 pfsense dhcp6c[33735]: skip opening control port
+May  2 02:39:39 pfsense dhclient[19757]: em0 link state up -> down
+May  2 02:39:40 pfsense dhcp6c[33821]: Sending Solicit
+May  2 02:39:40 pfsense dhcp6c[33821]: transmit failed: Network is down
+May  2 02:39:41 pfsense dhcp6c[33821]: Sending Solicit
+May  2 02:39:41 pfsense dhcp6c[33821]: transmit failed: Network is down
+May  2 02:39:43 pfsense dhclient[19757]: connection closed
+May  2 02:39:43 pfsense dhclient[19757]: exiting.
+May  2 02:39:43 pfsense dhcp6c[33821]: Sending Solicit
+May  2 02:39:43 pfsense dhcp6c[33821]: transmit failed: Network is down
+May  2 02:39:44 pfsense dhcp6c[33821]: exit without release
+May  2 02:39:44 pfsense dhcp6c[80399]: lstat failed: No such file or directory
+May  2 02:39:44 pfsense dhcp6c[80399]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  2 02:39:44 pfsense dhcp6c[33821]: exiting
+May  2 02:39:45 pfsense dhclient[16326]: PREINIT
+May  2 02:39:45 pfsense dhclient[15753]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 02:39:45 pfsense dhclient[15753]: DHCPACK from 192.168.19.254
+May  2 02:39:45 pfsense dhclient[17946]: REBOOT
+May  2 02:39:45 pfsense dhclient[19555]: Starting add_new_address()
+May  2 02:39:45 pfsense dhclient[21281]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 02:39:45 pfsense dhclient[22236]: New IP Address (em0): 192.168.19.133
+May  2 02:39:45 pfsense dhclient[22789]: New Subnet Mask (em0): 255.255.255.0
+May  2 02:39:45 pfsense dhclient[23078]: New Broadcast Address (em0): 192.168.19.255
+May  2 02:39:45 pfsense dhclient[23755]: New Routers (em0): 192.168.19.2
+May  2 02:39:45 pfsense dhclient[24882]: Adding new routes to interface: em0
+May  2 02:39:45 pfsense dhclient[25938]: /sbin/route add -host 192.168.19.2 -iface em0
+May  2 02:39:45 pfsense dhclient[26848]: /sbin/route add default 192.168.19.2
+May  2 02:39:45 pfsense dhclient[27922]: Creating resolv.conf
+May  2 02:39:45 pfsense dhclient[15753]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:39:47 pfsense dhcp6c[10577]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  2 02:39:47 pfsense dhcp6c[10577]: failed initialize control message authentication
+May  2 02:39:47 pfsense dhcp6c[10577]: skip opening control port
+May  2 02:39:48 pfsense dhcp6c[10596]: Sending Solicit
+May  2 02:39:49 pfsense dhcp6c[10596]: Sending Solicit
+May  2 02:39:49 pfsense dhclient[15753]: connection closed
+May  2 02:39:49 pfsense dhclient[15753]: exiting.
+May  2 02:39:50 pfsense dhcp6c[10596]: exit without release
+May  2 02:39:50 pfsense dhcp6c[66148]: lstat failed: No such file or directory
+May  2 02:39:50 pfsense dhcp6c[66148]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  2 02:39:50 pfsense dhcp6c[10596]: exiting
+May  2 02:39:51 pfsense dhclient[3705]: PREINIT
+May  2 02:39:51 pfsense dhclient[2619]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 02:39:51 pfsense dhclient[2619]: DHCPACK from 192.168.19.254
+May  2 02:39:51 pfsense dhclient[5531]: REBOOT
+May  2 02:39:51 pfsense dhclient[7133]: Starting add_new_address()
+May  2 02:39:51 pfsense dhclient[7815]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 02:39:51 pfsense dhclient[8332]: New IP Address (em0): 192.168.19.133
+May  2 02:39:51 pfsense dhclient[8657]: New Subnet Mask (em0): 255.255.255.0
+May  2 02:39:51 pfsense dhclient[9557]: New Broadcast Address (em0): 192.168.19.255
+May  2 02:39:51 pfsense dhclient[10058]: New Routers (em0): 192.168.19.2
+May  2 02:39:51 pfsense dhclient[11306]: Adding new routes to interface: em0
+May  2 02:39:51 pfsense dhclient[12337]: /sbin/route add -host 192.168.19.2 -iface em0
+May  2 02:39:51 pfsense dhclient[13434]: /sbin/route add default 192.168.19.2
+May  2 02:39:51 pfsense dhclient[14596]: Creating resolv.conf
+May  2 02:39:51 pfsense dhclient[2619]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:39:53 pfsense dhcp6c[88661]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  2 02:39:53 pfsense dhcp6c[88661]: failed initialize control message authentication
+May  2 02:39:53 pfsense dhcp6c[88661]: skip opening control port
+May  2 02:39:54 pfsense dhcp6c[88815]: Sending Solicit
+May  2 02:39:55 pfsense dhcp6c[88815]: Sending Solicit
+May  2 02:39:55 pfsense dhclient[2619]: connection closed
+May  2 02:39:55 pfsense dhclient[2619]: exiting.
+May  2 02:39:56 pfsense dhcp6c[88815]: exit without release
+May  2 02:39:56 pfsense dhcp6c[36462]: lstat failed: No such file or directory
+May  2 02:39:56 pfsense dhcp6c[36462]: script "/var/etc/dhcp6c_wan_script.sh" cannot be executed safely
+May  2 02:39:56 pfsense dhcp6c[88815]: exiting
+May  2 02:39:57 pfsense dhclient[73469]: PREINIT
+May  2 02:39:57 pfsense dhclient[72388]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 02:39:57 pfsense dhclient[72388]: DHCPACK from 192.168.19.254
+May  2 02:39:57 pfsense dhclient[74563]: REBOOT
+May  2 02:39:57 pfsense dhclient[76266]: Starting add_new_address()
+May  2 02:39:57 pfsense dhclient[76815]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 02:39:57 pfsense dhclient[77771]: New IP Address (em0): 192.168.19.133
+May  2 02:39:57 pfsense dhclient[78422]: New Subnet Mask (em0): 255.255.255.0
+May  2 02:39:57 pfsense dhclient[79362]: New Broadcast Address (em0): 192.168.19.255
+May  2 02:39:57 pfsense dhclient[80195]: New Routers (em0): 192.168.19.2
+May  2 02:39:57 pfsense dhclient[81061]: Adding new routes to interface: em0
+May  2 02:39:57 pfsense dhclient[82228]: /sbin/route add -host 192.168.19.2 -iface em0
+May  2 02:39:57 pfsense dhclient[83131]: /sbin/route add default 192.168.19.2
+May  2 02:39:57 pfsense dhclient[84018]: Creating resolv.conf
+May  2 02:39:57 pfsense dhclient[72388]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:39:59 pfsense dhcp6c[48485]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  2 02:39:59 pfsense dhcp6c[48485]: failed initialize control message authentication
+May  2 02:39:59 pfsense dhcp6c[48485]: skip opening control port
+May  2 02:40:00 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:40:01 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:40:03 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:40:07 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:40:15 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:40:32 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:41:04 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:42:08 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:44:07 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:46:00 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:48:03 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:49:54 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:51:55 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:53:44 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:54:57 pfsense dhclient[72388]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 02:54:57 pfsense dhclient[72388]: DHCPACK from 192.168.19.254
+May  2 02:54:57 pfsense dhclient[16819]: RENEW
+May  2 02:54:57 pfsense dhclient[17368]: Creating resolv.conf
+May  2 02:54:57 pfsense dhclient[72388]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 02:55:35 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:57:33 pfsense dhcp6c[48554]: Sending Solicit
+May  2 02:59:31 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:01:20 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:03:19 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:05:18 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:07:06 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:09:16 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:09:57 pfsense dhclient[72388]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 03:09:57 pfsense dhclient[72388]: DHCPACK from 192.168.19.254
+May  2 03:09:57 pfsense dhclient[16964]: RENEW
+May  2 03:09:57 pfsense dhclient[17697]: Creating resolv.conf
+May  2 03:09:57 pfsense dhclient[72388]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 03:11:08 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:13:18 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:15:26 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:17:29 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:19:38 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:21:32 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:23:24 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:24:57 pfsense dhclient[72388]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 03:24:57 pfsense dhclient[72388]: DHCPACK from 192.168.19.254
+May  2 03:24:57 pfsense dhclient[20049]: RENEW
+May  2 03:24:57 pfsense dhclient[21144]: Creating resolv.conf
+May  2 03:24:57 pfsense dhclient[72388]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 03:25:14 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:27:14 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:29:21 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:31:26 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:33:27 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:35:36 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:37:31 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:39:23 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:39:57 pfsense dhclient[72388]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 03:39:57 pfsense dhclient[72388]: DHCPACK from 192.168.19.254
+May  2 03:39:57 pfsense dhclient[2045]: RENEW
+May  2 03:39:57 pfsense dhclient[2736]: Creating resolv.conf
+May  2 03:39:57 pfsense dhclient[72388]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 03:41:19 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:43:09 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:45:16 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:47:17 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:49:27 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:51:37 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:53:26 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:54:57 pfsense dhclient[72388]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May  2 03:54:57 pfsense dhclient[72388]: DHCPACK from 192.168.19.254
+May  2 03:54:57 pfsense dhclient[12441]: RENEW
+May  2 03:54:57 pfsense dhclient[13686]: Creating resolv.conf
+May  2 03:54:57 pfsense dhclient[72388]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 03:55:16 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:57:10 pfsense dhcp6c[48554]: Sending Solicit
+May  2 03:59:13 pfsense dhcp6c[48554]: Sending Solicit
+May  2 04:01:14 pfsense dhcp6c[48554]: Sending Solicit
+May  2 04:03:21 pfsense dhclient[46688]: PREINIT
+May  2 04:03:22 pfsense dhclient[45409]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 04:03:22 pfsense dhclient[45409]: DHCPACK from 192.168.19.254
+May  2 04:03:22 pfsense dhclient[84677]: REBOOT
+May  2 04:03:22 pfsense dhclient[86415]: Starting add_new_address()
+May  2 04:03:22 pfsense dhclient[87514]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 04:03:22 pfsense dhclient[89574]: New IP Address (em0): 192.168.19.133
+May  2 04:03:22 pfsense dhclient[91005]: New Subnet Mask (em0): 255.255.255.0
+May  2 04:03:22 pfsense dhclient[92455]: New Broadcast Address (em0): 192.168.19.255
+May  2 04:03:22 pfsense dhclient[93377]: New Routers (em0): 192.168.19.2
+May  2 04:03:22 pfsense dhclient[94667]: Adding new routes to interface: em0
+May  2 04:03:22 pfsense dhclient[95522]: Creating resolv.conf
+May  2 04:03:22 pfsense dhclient[45409]: short write: wanted 20 got 0 bytes
+May  2 04:03:22 pfsense dhclient[45409]: exiting.
+May  2 04:03:23 pfsense dhclient[19147]: PREINIT
+May  2 04:03:23 pfsense dhclient[17727]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May  2 04:03:23 pfsense dhclient[17727]: DHCPACK from 192.168.19.254
+May  2 04:03:23 pfsense dhclient[21602]: REBOOT
+May  2 04:03:23 pfsense dhclient[23043]: Starting add_new_address()
+May  2 04:03:23 pfsense dhclient[24513]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May  2 04:03:23 pfsense dhclient[26484]: New IP Address (em0): 192.168.19.133
+May  2 04:03:23 pfsense dhclient[27049]: New Subnet Mask (em0): 255.255.255.0
+May  2 04:03:23 pfsense dhclient[30240]: New Broadcast Address (em0): 192.168.19.255
+May  2 04:03:23 pfsense dhclient[31292]: New Routers (em0): 192.168.19.2
+May  2 04:03:23 pfsense dhclient[32961]: Adding new routes to interface: em0
+May  2 04:03:23 pfsense dhclient[34507]: Creating resolv.conf
+May  2 04:03:23 pfsense dhclient[17727]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May  2 04:03:23 pfsense dhcp6c[37056]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May  2 04:03:23 pfsense dhcp6c[37056]: failed initialize control message authentication
+May  2 04:03:24 pfsense dhcp6c[37056]: skip opening control port
+May  2 04:03:24 pfsense dhcp6c[38033]: Sending Solicit
+May  2 04:03:26 pfsense dhcp6c[38033]: Sending Solicit
+May  2 04:03:28 pfsense dhcp6c[38033]: Sending Solicit
+May  2 04:03:32 pfsense dhcp6c[38033]: Sending Solicit
+May  2 04:03:40 pfsense dhcp6c[38033]: Sending Solicit
+May  2 04:03:56 pfsense dhcp6c[38033]: Sending Solicit
+May  2 04:04:28 pfsense dhcp6c[38033]: Sending Solicit
+May  2 04:05:32 pfsense dhcp6c[38033]: Sending Solicit
+May 10 19:50:44 pfsense dhclient[35838]: PREINIT
+May 10 19:50:46 pfsense dhclient[73672]: EXPIRE
+May 10 19:50:46 pfsense dhclient[75000]: Deleting old routes
+May 10 19:50:46 pfsense dhclient[34901]: short write: wanted 20 got 0 bytes
+May 10 19:50:46 pfsense dhclient[34901]: exiting.
+May 10 19:50:47 pfsense dhclient[3853]: PREINIT
+May 10 19:50:47 pfsense dhclient[5924]: EXPIRE
+May 10 19:50:47 pfsense dhclient[8725]: Deleting old routes
+May 10 19:50:47 pfsense dhclient[11333]: PREINIT
+May 10 19:50:47 pfsense dhclient[2467]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May 10 19:50:48 pfsense dhclient[2467]: DHCPOFFER from 192.168.19.254
+May 10 19:50:48 pfsense dhclient[36278]: ARPSEND
+May 10 19:50:50 pfsense dhclient[92070]: ARPCHECK
+May 10 19:50:50 pfsense dhclient[2467]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May 10 19:50:50 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 19:50:50 pfsense dhclient[94401]: BOUND
+May 10 19:50:50 pfsense dhclient[96220]: Starting add_new_address()
+May 10 19:50:50 pfsense dhclient[97309]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May 10 19:50:50 pfsense dhclient[99773]: New IP Address (em0): 192.168.19.133
+May 10 19:50:50 pfsense dhclient[704]: New Subnet Mask (em0): 255.255.255.0
+May 10 19:50:50 pfsense dhclient[2299]: New Broadcast Address (em0): 192.168.19.255
+May 10 19:50:50 pfsense dhclient[3492]: New Routers (em0): 192.168.19.2
+May 10 19:50:50 pfsense dhclient[5041]: Adding new routes to interface: em0
+May 10 19:50:50 pfsense dhclient[6361]: Creating resolv.conf
+May 10 19:50:50 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 19:50:50 pfsense dhcp6c[8811]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May 10 19:50:50 pfsense dhcp6c[8811]: failed initialize control message authentication
+May 10 19:50:50 pfsense dhcp6c[8811]: skip opening control port
+May 10 19:50:51 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:50:52 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:50:54 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:50:58 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:51:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:51:23 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:51:55 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:52:59 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:54:58 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:56:51 pfsense dhcp6c[9864]: Sending Solicit
+May 10 19:58:54 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:00:45 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:02:46 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:04:35 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:05:50 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 20:05:50 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 20:05:50 pfsense dhclient[39849]: RENEW
+May 10 20:05:50 pfsense dhclient[40882]: Creating resolv.conf
+May 10 20:05:50 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 20:06:26 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:08:24 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:10:22 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:12:11 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:14:10 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:16:09 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:17:57 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:20:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:20:50 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 20:20:50 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 20:20:50 pfsense dhclient[41848]: RENEW
+May 10 20:20:50 pfsense dhclient[42670]: Creating resolv.conf
+May 10 20:20:50 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 20:21:59 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:24:09 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:26:17 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:28:20 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:30:29 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:32:23 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:34:15 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:35:50 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 20:35:50 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 20:35:50 pfsense dhclient[6705]: RENEW
+May 10 20:35:50 pfsense dhclient[7805]: Creating resolv.conf
+May 10 20:35:50 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 20:36:05 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:38:05 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:40:12 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:42:17 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:44:18 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:46:27 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:48:22 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:50:14 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:50:50 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 20:50:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 20:50:51 pfsense dhclient[84284]: RENEW
+May 10 20:50:51 pfsense dhclient[85255]: Creating resolv.conf
+May 10 20:50:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 20:52:10 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:54:00 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:56:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 20:58:08 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:00:18 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:02:28 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:04:17 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:05:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 21:05:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 21:05:51 pfsense dhclient[86096]: RENEW
+May 10 21:05:51 pfsense dhclient[86800]: Creating resolv.conf
+May 10 21:05:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 21:06:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:08:01 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:10:04 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:12:05 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:14:03 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:15:53 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:17:45 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:19:44 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:20:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 21:20:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 21:20:51 pfsense dhclient[87631]: RENEW
+May 10 21:20:51 pfsense dhclient[88699]: Creating resolv.conf
+May 10 21:20:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 21:21:36 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:23:31 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:25:28 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:27:17 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:29:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:31:05 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:32:59 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:34:58 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:35:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 21:35:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 21:35:51 pfsense dhclient[74188]: RENEW
+May 10 21:35:51 pfsense dhclient[75148]: Creating resolv.conf
+May 10 21:35:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 21:37:02 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:39:13 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:41:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:43:03 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:45:03 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:46:58 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:49:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:50:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 21:50:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 21:50:51 pfsense dhclient[74917]: RENEW
+May 10 21:50:51 pfsense dhclient[75266]: Creating resolv.conf
+May 10 21:50:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 21:51:14 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:53:17 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:55:08 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:57:10 pfsense dhcp6c[9864]: Sending Solicit
+May 10 21:59:06 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:00:59 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:03:03 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:05:05 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:05:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 22:05:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 22:05:51 pfsense dhclient[80077]: RENEW
+May 10 22:05:51 pfsense dhclient[80993]: Creating resolv.conf
+May 10 22:05:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 22:07:00 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:09:10 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:11:02 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:12:51 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:14:46 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:16:45 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:18:37 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:20:48 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:20:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 22:20:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 22:20:51 pfsense dhclient[66223]: RENEW
+May 10 22:20:51 pfsense dhclient[67115]: Creating resolv.conf
+May 10 22:20:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 22:22:55 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:24:59 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:26:58 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:29:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:31:17 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:33:26 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:35:21 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:35:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 22:35:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 22:35:51 pfsense dhclient[61241]: RENEW
+May 10 22:35:51 pfsense dhclient[62270]: Creating resolv.conf
+May 10 22:35:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 22:37:18 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:39:19 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:41:12 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:43:20 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:45:10 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:47:14 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:49:05 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:50:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 22:50:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 22:50:51 pfsense dhclient[63186]: RENEW
+May 10 22:50:51 pfsense dhclient[64038]: Creating resolv.conf
+May 10 22:50:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 22:51:15 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:53:19 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:55:29 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:57:23 pfsense dhcp6c[9864]: Sending Solicit
+May 10 22:59:17 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:01:15 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:03:13 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:05:24 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:05:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 23:05:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 23:05:51 pfsense dhclient[65531]: RENEW
+May 10 23:05:51 pfsense dhclient[66672]: Creating resolv.conf
+May 10 23:05:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 23:07:35 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:09:45 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:11:57 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:13:54 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:15:44 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:17:44 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:19:55 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:20:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 23:20:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 23:20:51 pfsense dhclient[50764]: RENEW
+May 10 23:20:51 pfsense dhclient[51888]: Creating resolv.conf
+May 10 23:20:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 23:21:54 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:23:52 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:25:59 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:27:54 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:30:03 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:32:07 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:33:59 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:35:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 23:35:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 23:35:51 pfsense dhclient[57122]: RENEW
+May 10 23:35:51 pfsense dhclient[57638]: Creating resolv.conf
+May 10 23:35:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 23:36:06 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:37:57 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:39:58 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:41:58 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:43:54 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:45:55 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:47:56 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:49:49 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:50:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 10 23:50:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 10 23:50:51 pfsense dhclient[53703]: RENEW
+May 10 23:50:51 pfsense dhclient[54455]: Creating resolv.conf
+May 10 23:50:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 10 23:51:57 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:54:01 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:56:10 pfsense dhcp6c[9864]: Sending Solicit
+May 10 23:58:16 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:00:25 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:02:20 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:04:13 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:05:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 00:05:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 00:05:51 pfsense dhclient[36203]: RENEW
+May 11 00:05:51 pfsense dhclient[36888]: Creating resolv.conf
+May 11 00:05:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 00:06:12 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:08:09 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:10:06 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:12:04 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:14:01 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:16:06 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:18:10 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:20:19 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:20:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 00:20:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 00:20:51 pfsense dhclient[31514]: RENEW
+May 11 00:20:51 pfsense dhclient[32246]: Creating resolv.conf
+May 11 00:20:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 00:22:23 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:24:15 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:26:09 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:28:09 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:30:06 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:32:02 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:33:58 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:35:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 00:35:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 00:35:51 pfsense dhclient[35413]: RENEW
+May 11 00:35:51 pfsense dhclient[36631]: Creating resolv.conf
+May 11 00:35:51 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 00:36:04 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:37:59 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:39:57 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:41:53 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:43:59 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:46:10 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:47:59 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:49:59 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:50:51 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 00:50:51 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 00:50:52 pfsense dhclient[39956]: RENEW
+May 11 00:50:52 pfsense dhclient[40709]: Creating resolv.conf
+May 11 00:50:52 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 00:51:50 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:53:59 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:55:55 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:57:47 pfsense dhcp6c[9864]: Sending Solicit
+May 11 00:59:55 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:01:52 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:03:50 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:05:44 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:05:52 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 01:05:52 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 01:05:52 pfsense dhclient[15677]: RENEW
+May 11 01:05:52 pfsense dhclient[16437]: Creating resolv.conf
+May 11 01:05:52 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 01:07:52 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:10:00 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:12:07 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:14:04 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:16:01 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:18:01 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:19:55 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:20:52 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 01:20:52 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 01:20:52 pfsense dhclient[13143]: RENEW
+May 11 01:20:52 pfsense dhclient[14042]: Creating resolv.conf
+May 11 01:20:52 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 01:21:48 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:23:45 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:25:42 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:27:46 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:29:35 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:31:46 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:33:57 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:35:52 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 01:35:52 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 01:35:52 pfsense dhclient[13475]: RENEW
+May 11 01:35:52 pfsense dhclient[14446]: Creating resolv.conf
+May 11 01:35:52 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 01:35:58 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:38:04 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:40:02 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:41:53 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:43:47 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:45:39 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:47:28 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:49:23 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:50:52 pfsense dhclient[2467]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 11 01:50:52 pfsense dhclient[2467]: DHCPACK from 192.168.19.254
+May 11 01:50:52 pfsense dhclient[90563]: RENEW
+May 11 01:50:52 pfsense dhclient[91576]: Creating resolv.conf
+May 11 01:50:52 pfsense dhclient[2467]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 11 01:51:31 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:53:24 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:55:20 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:57:12 pfsense dhcp6c[9864]: Sending Solicit
+May 11 01:59:13 pfsense dhcp6c[9864]: Sending Solicit
+May 12 04:14:54 pfsense dhclient[42712]: PREINIT
+May 12 04:14:55 pfsense dhclient[76505]: EXPIRE
+May 12 04:14:55 pfsense dhclient[78079]: Deleting old routes
+May 12 04:14:55 pfsense dhclient[41613]: short write: wanted 20 got 0 bytes
+May 12 04:14:55 pfsense dhclient[41613]: exiting.
+May 12 04:14:56 pfsense dhclient[6274]: PREINIT
+May 12 04:14:56 pfsense dhclient[8936]: EXPIRE
+May 12 04:14:56 pfsense dhclient[11024]: Deleting old routes
+May 12 04:14:56 pfsense dhclient[13022]: PREINIT
+May 12 04:14:56 pfsense dhclient[4502]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May 12 04:14:57 pfsense dhclient[4502]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May 12 04:14:57 pfsense dhclient[4502]: DHCPOFFER from 192.168.19.254
+May 12 04:14:57 pfsense dhclient[39017]: ARPSEND
+May 12 04:14:57 pfsense dhclient[4502]: DHCPOFFER from 192.168.19.254
+May 12 04:14:57 pfsense dhclient[4502]: DHCPOFFER already seen.
+May 12 04:14:59 pfsense dhclient[84826]: ARPCHECK
+May 12 04:14:59 pfsense dhclient[4502]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May 12 04:14:59 pfsense dhclient[4502]: DHCPACK from 192.168.19.254
+May 12 04:14:59 pfsense dhclient[86352]: BOUND
+May 12 04:14:59 pfsense dhclient[87784]: Starting add_new_address()
+May 12 04:14:59 pfsense dhclient[89233]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May 12 04:14:59 pfsense dhclient[91439]: New IP Address (em0): 192.168.19.133
+May 12 04:14:59 pfsense dhclient[93021]: New Subnet Mask (em0): 255.255.255.0
+May 12 04:14:59 pfsense dhclient[93893]: New Broadcast Address (em0): 192.168.19.255
+May 12 04:14:59 pfsense dhclient[94926]: New Routers (em0): 192.168.19.2
+May 12 04:15:00 pfsense dhclient[96500]: Adding new routes to interface: em0
+May 12 04:15:00 pfsense dhclient[97540]: Creating resolv.conf
+May 12 04:15:00 pfsense dhclient[4502]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 12 04:15:00 pfsense dhcp6c[7]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May 12 04:15:00 pfsense dhcp6c[7]: failed initialize control message authentication
+May 12 04:15:00 pfsense dhcp6c[7]: skip opening control port
+May 12 04:15:01 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:15:02 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:15:04 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:15:08 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:15:16 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:15:32 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:16:04 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:17:09 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:19:08 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:21:01 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:23:04 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:24:55 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:26:56 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:28:44 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:29:59 pfsense dhclient[4502]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 12 04:29:59 pfsense dhclient[4502]: DHCPACK from 192.168.19.254
+May 12 04:29:59 pfsense dhclient[91211]: RENEW
+May 12 04:29:59 pfsense dhclient[92006]: Creating resolv.conf
+May 12 04:29:59 pfsense dhclient[4502]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 12 04:30:35 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:32:33 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:34:32 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:36:20 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:38:19 pfsense dhcp6c[1344]: Sending Solicit
+May 12 04:40:18 pfsense dhcp6c[1344]: Sending Solicit
+May 13 20:59:54 pfsense dhclient[43101]: PREINIT
+May 13 20:59:55 pfsense dhclient[78534]: EXPIRE
+May 13 20:59:55 pfsense dhclient[80260]: Deleting old routes
+May 13 20:59:55 pfsense dhclient[42397]: short write: wanted 20 got 0 bytes
+May 13 20:59:55 pfsense dhclient[42397]: exiting.
+May 13 20:59:56 pfsense dhclient[5829]: PREINIT
+May 13 20:59:56 pfsense dhclient[7832]: EXPIRE
+May 13 20:59:56 pfsense dhclient[9955]: Deleting old routes
+May 13 20:59:56 pfsense dhclient[11598]: PREINIT
+May 13 20:59:56 pfsense dhclient[4353]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 1
+May 13 20:59:57 pfsense dhclient[4353]: DHCPDISCOVER on em0 to 255.255.255.255 port 67 interval 2
+May 13 20:59:57 pfsense dhclient[4353]: DHCPOFFER from 192.168.19.254
+May 13 20:59:57 pfsense dhclient[36051]: ARPSEND
+May 13 20:59:57 pfsense dhclient[4353]: DHCPOFFER from 192.168.19.254
+May 13 20:59:57 pfsense dhclient[4353]: DHCPOFFER already seen.
+May 13 20:59:59 pfsense dhclient[86151]: ARPCHECK
+May 13 20:59:59 pfsense dhclient[4353]: DHCPREQUEST on em0 to 255.255.255.255 port 67
+May 13 20:59:59 pfsense dhclient[4353]: DHCPACK from 192.168.19.254
+May 13 20:59:59 pfsense dhclient[88104]: BOUND
+May 13 20:59:59 pfsense dhclient[89023]: Starting add_new_address()
+May 13 20:59:59 pfsense dhclient[90262]: ifconfig em0 inet 192.168.19.133 netmask 255.255.255.0 broadcast 192.168.19.255 
+May 13 20:59:59 pfsense dhclient[91969]: New IP Address (em0): 192.168.19.133
+May 13 20:59:59 pfsense dhclient[93038]: New Subnet Mask (em0): 255.255.255.0
+May 13 21:00:00 pfsense dhclient[93898]: New Broadcast Address (em0): 192.168.19.255
+May 13 21:00:00 pfsense dhclient[95160]: New Routers (em0): 192.168.19.2
+May 13 21:00:00 pfsense dhclient[96841]: Adding new routes to interface: em0
+May 13 21:00:00 pfsense dhclient[97916]: Creating resolv.conf
+May 13 21:00:00 pfsense dhclient[4353]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 13 21:00:00 pfsense dhcp6c[487]: failed to open /usr/local/etc/dhcp6cctlkey: No such file or directory
+May 13 21:00:00 pfsense dhcp6c[487]: failed initialize control message authentication
+May 13 21:00:00 pfsense dhcp6c[487]: skip opening control port
+May 13 21:00:01 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:00:02 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:00:04 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:00:08 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:00:16 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:00:32 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:01:04 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:02:09 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:04:08 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:06:00 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:08:04 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:09:55 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:11:56 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:13:44 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:14:59 pfsense dhclient[4353]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 13 21:14:59 pfsense dhclient[4353]: DHCPACK from 192.168.19.254
+May 13 21:14:59 pfsense dhclient[58238]: RENEW
+May 13 21:14:59 pfsense dhclient[59237]: Creating resolv.conf
+May 13 21:14:59 pfsense dhclient[4353]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 13 21:15:35 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:17:33 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:19:31 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:21:20 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:23:19 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:25:18 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:27:07 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:29:16 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:29:59 pfsense dhclient[4353]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 13 21:29:59 pfsense dhclient[4353]: DHCPACK from 192.168.19.254
+May 13 21:29:59 pfsense dhclient[39837]: RENEW
+May 13 21:29:59 pfsense dhclient[40609]: Creating resolv.conf
+May 13 21:29:59 pfsense dhclient[4353]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 13 21:31:08 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:33:18 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:35:27 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:37:30 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:39:39 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:41:32 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:43:25 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:44:59 pfsense dhclient[4353]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 13 21:44:59 pfsense dhclient[4353]: DHCPACK from 192.168.19.254
+May 13 21:44:59 pfsense dhclient[42086]: RENEW
+May 13 21:44:59 pfsense dhclient[42685]: Creating resolv.conf
+May 13 21:44:59 pfsense dhclient[4353]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 13 21:45:14 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:47:14 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:49:22 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:51:26 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:53:27 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:55:36 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:57:32 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:59:24 pfsense dhcp6c[1668]: Sending Solicit
+May 13 21:59:59 pfsense dhclient[4353]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 13 21:59:59 pfsense dhclient[4353]: DHCPACK from 192.168.19.254
+May 13 21:59:59 pfsense dhclient[40146]: RENEW
+May 13 21:59:59 pfsense dhclient[41236]: Creating resolv.conf
+May 13 21:59:59 pfsense dhclient[4353]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 13 22:01:20 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:03:10 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:05:17 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:07:17 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:09:27 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:11:37 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:13:26 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:14:59 pfsense dhclient[4353]: DHCPREQUEST on em0 to 192.168.19.254 port 67
+May 13 22:14:59 pfsense dhclient[4353]: DHCPACK from 192.168.19.254
+May 13 22:14:59 pfsense dhclient[23168]: RENEW
+May 13 22:14:59 pfsense dhclient[23988]: Creating resolv.conf
+May 13 22:14:59 pfsense dhclient[4353]: bound to 192.168.19.133 -- renewal in 900 seconds.
+May 13 22:15:17 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:17:10 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:19:14 pfsense dhcp6c[1668]: Sending Solicit
+May 13 22:21:14 pfsense dhcp6c[1668]: Sending Solicit
