@@ -107,7 +107,7 @@ body {
   white-space: pre;
   margin: 0;
   padding: 1rem 1.5rem;
-  animation: log-scroll 180s linear infinite;
+  animation: log-scroll 600s linear infinite;
   will-change: transform;
 }
 
