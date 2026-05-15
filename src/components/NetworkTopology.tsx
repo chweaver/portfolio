@@ -54,9 +54,9 @@ export function NetworkTopology() {
             DNS path
           </div>
           <div className="text-sm text-ink-dim leading-relaxed">
-            pfSense Unbound listens on both internal interfaces and forwards to{' '}
+            pfSense Unbound listens on both internal interfaces and forwards to Cloudflare{' '}
             <code className="font-mono text-accent">1.1.1.1</code> and{' '}
-            <code className="font-mono text-accent">9.9.9.9</code>. Each VM&apos;s{' '}
+            <code className="font-mono text-accent">1.0.0.1</code>. Each VM&apos;s{' '}
             <code className="font-mono text-ink">/etc/resolv.conf</code> points at its default gateway.
           </div>
         </div>
@@ -134,54 +134,54 @@ function TopologySVG() {
         </text>
       </g>
 
-      {/* LAN cloud */}
+      {/* LAN cloud (ubuntu-base + debian-base) */}
       <g>
         <rect x="80" y="300" width="280" height="120" rx="12" fill="url(#lan)" stroke="#22d3ee" strokeOpacity="0.3" />
         <text x="100" y="324" fill="#22d3ee" fontSize="10" fontFamily="ui-monospace" letterSpacing="1">
           LAN · VMnet2 · 192.168.100.0/24
         </text>
-        <g transform="translate(140, 340)">
-          <rect width="160" height="60" rx="6" fill="#141b24" stroke="#1f2937" />
-          <text x="80" y="22" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
-            debian-.11
-          </text>
-          <text x="80" y="40" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace">
-            192.168.100.11
-          </text>
-          <text x="80" y="54" textAnchor="middle" fill="#6b7280" fontSize="9" fontFamily="ui-monospace">
-            LAN test client
-          </text>
-        </g>
-      </g>
-
-      {/* LAB cloud */}
-      <g>
-        <rect x="520" y="300" width="280" height="120" rx="12" fill="url(#lab)" stroke="#10b981" strokeOpacity="0.3" />
-        <text x="540" y="324" fill="#10b981" fontSize="10" fontFamily="ui-monospace" letterSpacing="1">
-          LAB200 · VMnet3 · 192.168.200.0/24
-        </text>
-        <g transform="translate(540, 340)">
+        <g transform="translate(100, 340)">
           <rect width="118" height="60" rx="6" fill="#141b24" stroke="#1f2937" />
           <text x="59" y="22" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
-            ubuntu-.10
+            ubuntu-base
           </text>
-          <text x="59" y="40" textAnchor="middle" fill="#10b981" fontSize="11" fontFamily="ui-monospace">
-            .200.10
+          <text x="59" y="40" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace">
+            .100.10
           </text>
           <text x="59" y="54" textAnchor="middle" fill="#6b7280" fontSize="9" fontFamily="ui-monospace">
             SSH target
           </text>
         </g>
-        <g transform="translate(670, 340)">
+        <g transform="translate(230, 340)">
           <rect width="118" height="60" rx="6" fill="#141b24" stroke="#1f2937" />
           <text x="59" y="22" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
-            rocky-.12
+            debian-base
           </text>
-          <text x="59" y="40" textAnchor="middle" fill="#10b981" fontSize="11" fontFamily="ui-monospace">
-            .200.12
+          <text x="59" y="40" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace">
+            .100.11
           </text>
           <text x="59" y="54" textAnchor="middle" fill="#6b7280" fontSize="9" fontFamily="ui-monospace">
-            east-west
+            second host
+          </text>
+        </g>
+      </g>
+
+      {/* LAB cloud (rocky-base) */}
+      <g>
+        <rect x="520" y="300" width="280" height="120" rx="12" fill="url(#lab)" stroke="#10b981" strokeOpacity="0.3" />
+        <text x="540" y="324" fill="#10b981" fontSize="10" fontFamily="ui-monospace" letterSpacing="1">
+          LAB200 · VMnet3 · 192.168.200.0/24
+        </text>
+        <g transform="translate(600, 340)">
+          <rect width="160" height="60" rx="6" fill="#141b24" stroke="#1f2937" />
+          <text x="80" y="22" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
+            rocky-base
+          </text>
+          <text x="80" y="40" textAnchor="middle" fill="#10b981" fontSize="11" fontFamily="ui-monospace">
+            192.168.200.12
+          </text>
+          <text x="80" y="54" textAnchor="middle" fill="#6b7280" fontSize="9" fontFamily="ui-monospace">
+            test client
           </text>
         </g>
       </g>

@@ -48,12 +48,12 @@ export const subnets = [
 ] as const;
 
 export const ipTable = [
-  { asset: 'pfSense WAN', nic: 'VMnet8 (NAT)', address: 'DHCP', mask: '/24', role: 'Uplink to host NAT' },
+  { asset: 'pfSense WAN', nic: 'VMnet8 (NAT)', address: '192.168.19.133 (DHCP)', mask: '/24', role: 'Uplink to host NAT pool' },
   { asset: 'pfSense LAN', nic: 'VMnet2', address: '192.168.100.1', mask: '/24', role: 'LAN gateway' },
-  { asset: 'pfSense LAB200', nic: 'VMnet3', address: '192.168.200.1', mask: '/24', role: 'LAB gateway' },
-  { asset: 'debian-.11', nic: 'VMnet2', address: '192.168.100.11', mask: '/24', role: 'LAN test client' },
-  { asset: 'ubuntu-.10', nic: 'VMnet3', address: '192.168.200.10', mask: '/24', role: 'LAB SSH target' },
-  { asset: 'rocky-.12', nic: 'VMnet3', address: '192.168.200.12', mask: '/24', role: 'LAB second host' },
+  { asset: 'pfSense LAB200', nic: 'VMnet3', address: '192.168.200.1', mask: '/24', role: 'LAB200 gateway' },
+  { asset: 'ubuntu-base', nic: 'VMnet2', address: '192.168.100.10', mask: '/24', role: 'LAN SSH target' },
+  { asset: 'debian-base', nic: 'VMnet2', address: '192.168.100.11', mask: '/24', role: 'LAN second host' },
+  { asset: 'rocky-base', nic: 'VMnet3', address: '192.168.200.12', mask: '/24', role: 'LAB200 test client (originates inter-subnet traffic)' },
 ];
 
 export const hostSpec = [
@@ -67,47 +67,47 @@ export const hostSpec = [
 
 export const vmInventory = [
   {
-    name: 'pfsense',
+    name: 'pfsense-base',
     os: 'pfSense CE 2.7.2',
     vcpu: 2,
     ram: '2 GB',
     disk: '20 GB',
     nics: 'WAN/VMnet8, LAN/VMnet2, OPT1/VMnet3',
-    ips: ['WAN DHCP', '192.168.100.1', '192.168.200.1'],
+    ips: ['WAN 192.168.19.133', '192.168.100.1', '192.168.200.1'],
     role: 'Router & firewall',
     snapshot: 'clean-rules-applied',
   },
   {
-    name: 'ubuntu-.10',
-    os: 'Ubuntu Server 22.04 LTS',
+    name: 'ubuntu-base',
+    os: 'Ubuntu Server 24.04.4 LTS',
     vcpu: 2,
     ram: '2 GB',
     disk: '20 GB',
-    nics: 'VMnet3',
-    ips: ['192.168.200.10'],
-    role: 'LAB SSH target',
+    nics: 'VMnet2',
+    ips: ['192.168.100.10'],
+    role: 'LAN SSH target',
     snapshot: 'ssh-baseline',
   },
   {
-    name: 'debian-.11',
+    name: 'debian-base',
     os: 'Debian 12 (bookworm)',
     vcpu: 1,
     ram: '1 GB',
     disk: '15 GB',
     nics: 'VMnet2',
     ips: ['192.168.100.11'],
-    role: 'LAN test client',
+    role: 'LAN second host',
     snapshot: 'pristine',
   },
   {
-    name: 'rocky-.12',
-    os: 'Rocky Linux 9',
+    name: 'rocky-base',
+    os: 'Rocky Linux 10.1 (Red Quartz)',
     vcpu: 1,
     ram: '1 GB',
     disk: '15 GB',
     nics: 'VMnet3',
     ips: ['192.168.200.12'],
-    role: 'LAB second host (east-west tests)',
+    role: 'LAB200 test client (originates inter-subnet traffic)',
     snapshot: 'pristine',
   },
 ];
@@ -115,69 +115,73 @@ export const vmInventory = [
 export const firewallRules = [
   {
     id: 1,
-    interface: 'LAN',
+    name: 'Allow rocky SSH to ubuntu',
+    pfsenseId: '1778460476',
+    interface: 'LAB200',
     action: 'pass' as const,
     proto: 'TCP',
-    source: 'LAN net',
-    destination: '192.168.200.10',
+    source: 'LAB200 net',
+    destination: '192.168.100.10',
     port: '22',
-    intent: 'Allow SSH from LAN clients into the LAB SSH target.',
-    verification: 'ssh charlie@192.168.200.10 from debian-.11 connects and authenticates.',
+    intent: 'Punch a single TCP/22 hole from LAB200 to the ubuntu host on LAN. Specific permit, evaluated before the broader block on rule 2.',
+    verification: 'ssh vybz@192.168.100.10 from rocky-base (192.168.200.12) connects and authenticates.',
   },
   {
     id: 2,
-    interface: 'LAN',
+    name: 'Block LAB200 to LAN',
+    pfsenseId: '1778460176',
+    interface: 'LAB200',
     action: 'block' as const,
-    proto: 'ICMP',
-    source: 'LAN net',
-    destination: '192.168.200.0/24',
+    proto: 'any',
+    source: 'LAB200 net',
+    destination: '192.168.100.0/24',
     port: 'any',
-    intent: 'Drop ping from LAN into LAB200 to prove ICMP can be filtered independently of TCP.',
-    verification: 'ping 192.168.200.10 shows 100% loss while SSH on the same host works.',
+    intent: 'Block everything else from LAB200 toward LAN. ICMP, UDP, and any TCP port outside the explicit pass above are dropped.',
+    verification: 'ping -c 4 192.168.100.10 from rocky-base returns 100% packet loss while SSH to the same host still succeeds.',
   },
   {
     id: 3,
+    name: 'LAB200 default permit',
+    pfsenseId: '1778459597',
     interface: 'LAB200',
     action: 'pass' as const,
     proto: 'any',
     source: 'LAB200 net',
-    destination: 'any (WAN)',
+    destination: 'any',
     port: 'any',
-    intent: 'Permit outbound internet so LAB hosts can pull updates and run health checks.',
-    verification: 'curl -s https://ifconfig.me from rocky-.12 returns the WAN-side IP.',
+    intent: 'Default permit for LAB200 outbound. LAN destinations were already handled by rules 1 and 2, so this rule catches everything else (internet, NTP, DNS upstream).',
+    verification: 'curl -s https://ifconfig.me from rocky-base returns the WAN-side IP.',
   },
 ];
 
 export const implicitBehavior = [
-  'LAB200 -> LAN traffic blocked by default deny. ssh from rocky-.12 to debian-.11 times out.',
-  'ICMP LAB200 -> LAN also blocked. ping from ubuntu-.10 to debian-.11 returns no replies.',
-  'LAB200 -> internet works via rule 3. LAN -> internet works via default LAN allow.',
+  'LAN → LAB200 has no explicit permit on the LAN ruleset, so the LAN default-deny applies. SSH from ubuntu-base to rocky-base times out.',
+  'pfSense rule order is top-down, first match wins. The TCP/22 permit (rule 1) lands before the broader LAB200 → LAN block (rule 2), which is why SSH punches through while ping does not.',
+  'LAB200 → internet works via rule 3. LAN → internet works via the default LAN-allow rule pfSense ships with.',
 ];
 
-export const verificationLog = `# From debian-.11 (192.168.100.11):
-$ ping -c 3 192.168.200.10
-3 packets transmitted, 0 received, 100% packet loss
+export const verificationLog = `# From rocky-base (LAB200, 192.168.200.12):
 
-$ ssh charlie@192.168.200.10
-charlie@192.168.200.10's password:
-Last login: ...
-charlie@ubuntu-10:~$
+[vybz@rocky-base ~]$ ssh vybz@192.168.100.10
+vybz@192.168.100.10's password:
+Welcome to Ubuntu 24.04.4 LTS (GNU/Linux 6.8.0-111-generic x86_64)
+Last login: Fri May 15 05:00:53 2026 from 192.168.200.12
+vybz@ubuntu-base:~$ exit
+Connection to 192.168.100.10 closed.
 
-$ traceroute -n 192.168.200.10
- 1  192.168.100.1   0.412 ms
- 2  192.168.200.10  0.901 ms
+[vybz@rocky-base ~]$ ping -c 4 192.168.100.10
+PING 192.168.100.10 (192.168.100.10) 56(84) bytes of data.
+--- 192.168.100.10 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3105ms
 
-# From rocky-.12 (192.168.200.12):
-$ curl -s https://ifconfig.me
-<host NAT WAN address>
+[vybz@rocky-base ~]$ curl -s https://ifconfig.me
+192.168.19.133`;
 
-$ ssh -o ConnectTimeout=5 charlie@192.168.100.11
-ssh: connect to host 192.168.100.11 port 22: Connection timed out`;
-
-export const pfsenseLog = `Action  Time     Iface   Rule  Source                 Destination            Proto
-block   12:01:14 LAN     #2    192.168.100.11         192.168.200.10         ICMP
-pass    12:01:22 LAN     #1    192.168.100.11:51842   192.168.200.10:22      TCP:S
-pass    12:01:45 LAB200  #3    192.168.200.12:43219   1.1.1.1:443            TCP:S`;
+// Three representative lines drawn from public/logs/filter.log,
+// one per LAB200 rule. em2 = OPT1/LAB200. Real filterlog CSV simplified for display.
+export const pfsenseLog = `2026-05-10 20:48:54  LAB200(em2)  pass    rule 1778460476  TCP   192.168.200.12:41370 → 192.168.100.10:22   SYN
+2026-05-10 20:51:04  LAB200(em2)  block   rule 1778460176  ICMP  192.168.200.12         → 192.168.100.10        echo request
+2026-05-10 20:48:34  LAB200(em2)  pass    rule 1778459597  UDP   192.168.200.12:39017   → 66.42.71.197:123      NTP`;
 
 export type SkillRow = {
   element: string;

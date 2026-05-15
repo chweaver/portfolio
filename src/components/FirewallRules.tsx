@@ -7,7 +7,7 @@ export function FirewallRules() {
       id="firewall"
       eyebrow="03 / Firewall"
       title="Three rules and an implicit deny"
-      subtitle="Each rule has an intent and a verification command. The default-deny at the bottom of every pfSense ruleset matters too — it's why LAB200 traffic toward LAN times out without an explicit drop rule. This rule pair (block ICMP, pass SSH) proves the firewall is doing per-protocol matching, not just routing."
+      subtitle="Three rules on the LAB200 interface, evaluated top-down. Rule 1 is a tiny exception (TCP/22 to one ubuntu host on LAN). Rule 2 is a broad block of everything else from LAB200 to LAN. Rule 3 is a default permit to anywhere else (internet). Deny by default, permit by exception — the canonical pattern, and the log proves the firewall does per-protocol matching, not just routing."
     >
       <div className="grid gap-4 lg:grid-cols-3">
         {firewallRules.map((rule) => (
@@ -62,17 +62,21 @@ export function FirewallRules() {
 
       <div className="mt-8 card p-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="font-mono text-xs uppercase tracking-widest text-accent">Artifacts on request</div>
+          <div className="font-mono text-xs uppercase tracking-widest text-accent">More evidence</div>
           <p className="mt-1 text-sm text-ink-dim max-w-2xl">
-            pfSense GUI screenshots, full unredacted firewall log exports, and live VM walkthroughs can be
-            shared during an interview or sent on request — keeping IP and config off a public site by default.
+            The Evidence section at the top has pfSense screenshots and{' '}
+            <code className="font-mono text-ink">public/logs/</code> ships{' '}
+            <code className="font-mono text-ink">filter.log</code>,{' '}
+            <code className="font-mono text-ink">dhcpd.log</code>, and{' '}
+            <code className="font-mono text-ink">system.log</code>. Full unredacted exports or a live walkthrough
+            on request.
           </p>
         </div>
         <a
           href={`mailto:${profile.email}?subject=Lab%20artifacts%20request`}
           className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors flex-shrink-0"
         >
-          Request artifacts →
+          Request a walkthrough →
         </a>
       </div>
     </Section>
@@ -91,6 +95,11 @@ function RuleCard({ rule }: { rule: Rule }) {
       <div className="flex items-center justify-between mb-3">
         <span className="font-mono text-xs text-ink-faint">RULE #{rule.id}</span>
         <span className={`pill ${actionClass} uppercase`}>{action}</span>
+      </div>
+
+      <div className="mb-3">
+        <div className="text-sm text-ink font-medium">{rule.name}</div>
+        <div className="font-mono text-[11px] text-ink-faint mt-0.5">pf id {rule.pfsenseId}</div>
       </div>
 
       <div className="space-y-2 text-sm">
