@@ -20,6 +20,20 @@ body {
   background-attachment: fixed;
 }
 
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 80%);
+}
+
 ::selection {
   background: rgba(34, 211, 238, 0.25);
   color: #f0f9ff;
@@ -50,11 +64,50 @@ body {
   }
 
   .section-eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-accent;
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-2;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
   }
 
   .card {
-    @apply rounded-xl border border-bg-border bg-bg-card/60 backdrop-blur-sm shadow-card;
+    @apply rounded-xl border border-bg-border bg-bg-card/60 backdrop-blur-sm shadow-card transition-all duration-200;
+  }
+  .card:hover {
+    @apply border-accent/30;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 8px 24px rgba(0, 0, 0, 0.35),
+      0 0 24px rgba(34, 211, 238, 0.08);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .card:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .accent-line {
+    background: linear-gradient(90deg, #67e8f9 0%, #22d3ee 50%, #a5f3fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn-primary {
+    @apply rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-medium text-bg transition-all duration-200;
+  }
+  .btn-primary:hover {
+    @apply bg-accent-glow;
+    box-shadow: 0 0 0 1px rgba(103, 232, 249, 0.4), 0 0 24px rgba(34, 211, 238, 0.35);
+  }
+
+  .btn-secondary {
+    @apply rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink transition-colors hover:border-accent/40 hover:text-accent;
   }
 
   .pill {

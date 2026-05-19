@@ -23,49 +23,29 @@ export function Hero() {
           <h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-ink leading-[1.05]">
             {profile.shortName}
           </h1>
-          <p className="mt-4 font-mono text-sm text-accent">
+          <p className="mt-4 font-mono text-sm accent-line">
             MSP-bound · pfSense lab operator · Python automation
           </p>
           <p className="mt-6 text-lg leading-relaxed text-ink-dim">{profile.tagline}</p>
           <p className="mt-4 text-ink-dim leading-relaxed">
             Based in {profile.location.split(',')[0]}, applying to MSPs across the Indianapolis metro for a
-            tier-1 service desk or technical alignment role. CompTIA A+ is on the books for May 2026 and CCNA
-            is queued right behind it.
+            tier-1 service desk or technical alignment role. Passed CompTIA A+ Core 1 on May 18, 2026. Core 2
+            follows in mid-June and CCNA is queued behind it.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="#lab"
-              className="rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-medium text-bg hover:bg-accent-glow transition-colors"
-            >
+            <a href="#lab" className="btn-primary">
               See the lab →
             </a>
-            <a
-              href={`mailto:${profile.email}`}
-              className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors"
-            >
+            <a href={`mailto:${profile.email}`} className="btn-secondary">
               {profile.email}
             </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors"
-            >
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="btn-secondary">
               LinkedIn
             </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors"
-            >
+            <a href={profile.github} target="_blank" rel="noreferrer" className="btn-secondary">
               GitHub
             </a>
-            <a
-              href={publicAsset('/Charlie-Weaver-Resume.pdf')}
-              download
-              className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors"
-            >
+            <a href={publicAsset('/Charlie-Weaver-Resume.pdf')} download className="btn-secondary">
               Resume (PDF) ↓
             </a>
           </div>
@@ -74,7 +54,7 @@ export function Hero() {
         <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-4">
           {STATS.map((s) => (
             <div key={s.label} className="card p-5">
-              <div className="font-mono text-3xl text-accent">{s.value}</div>
+              <div className="font-mono text-3xl text-accent tabular-nums">{s.value}</div>
               <div className="mt-1 text-sm text-ink">{s.label}</div>
               <div className="font-mono text-xs text-ink-faint">{s.sub}</div>
             </div>

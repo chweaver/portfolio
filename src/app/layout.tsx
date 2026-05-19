@@ -36,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
       <body className="min-h-screen font-sans antialiased">
+        <div className="bg-grid" aria-hidden="true" />
         <LogBackground />
         <Navigation />
         <main>{children}</main>

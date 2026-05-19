@@ -2,6 +2,8 @@ import { Section } from './Section';
 import { certs } from '@/data/portfolio';
 
 const STATUS_STYLE: Record<string, { label: string; cls: string; dot: string }> = {
+  passed: { label: 'Passed', cls: 'pill-green', dot: 'bg-signal-green' },
+  'in-progress': { label: 'In Progress', cls: 'pill-accent', dot: 'bg-accent' },
   scheduled: { label: 'Scheduled', cls: 'pill-green', dot: 'bg-signal-green' },
   queued: { label: 'Queued', cls: 'pill-accent', dot: 'bg-accent' },
   optional: { label: 'Optional', cls: 'pill-amber', dot: 'bg-signal-amber' },
@@ -38,13 +40,13 @@ export function Certifications() {
 
       <div className="mt-8 card p-6">
         <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
-          A+ study plan — 8-week ramp into May 2026
+          A+ Core 2 study plan: 4-week ramp into mid-June 2026
         </div>
         <p className="text-sm text-ink-dim leading-relaxed">
-          The lab covers a chunk of the blueprint, so study time is weighted toward what it doesn&apos;t: mobile
-          devices, printers, Windows-specific OS features, and software troubleshooting. Resources: Professor
-          Messer + Mike Meyers book + Jason Dion practice tests. Target before booking: consistent 85%+ on
-          practice exams.
+          Core 1 (passed May 18, 2026) covered hardware, networking, and virtualization, most of which the lab
+          handled directly. Core 2 weights study time toward what the lab doesn&apos;t: Windows-specific OS,
+          mobile devices, macOS, and software troubleshooting. Resources: Professor Messer + Mike Meyers book +
+          Jason Dion practice tests. Target before booking: consistent 85%+ on practice exams.
         </p>
       </div>
     </Section>

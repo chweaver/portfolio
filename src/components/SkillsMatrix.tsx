@@ -35,7 +35,7 @@ export function SkillsMatrix() {
       id="skills"
       eyebrow="05 / Skills"
       title="Skills coverage"
-      subtitle="A three-column overview at the top, then every lab element traced to A+ 220-1101/1102, Network+ N10-009, CCNA 200-301 v1.1, and the MSP tier-1 application it speaks to. Filter by area if you only care about one cert."
+      subtitle="A three-column overview at the top, then every lab element traced to A+ 220-1201/1202, Network+ N10-009, CCNA 200-301 v1.1, and the MSP tier-1 application it speaks to. Filter by area if you only care about one cert."
     >
       <div className="mb-10 grid gap-4 md:grid-cols-3">
         {skillsOverview.map((col) => (

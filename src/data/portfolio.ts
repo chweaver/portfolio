@@ -195,7 +195,7 @@ export type SkillRow = {
 export const skillsMatrix: SkillRow[] = [
   {
     element: 'Custom PC build (Ryzen 9, DDR5, NVMe, PSU sizing)',
-    aplus: '1101 3.4, 3.5, 3.7, 3.8, 3.9',
+    aplus: '1201 3.3, 3.4, 3.5, 3.6',
     netplus: '—',
     ccna: '—',
     msp: 'Workstation builds, hardware swaps, BIOS/UEFI, repair vs replace decisions',
@@ -203,7 +203,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'VMware Workstation Pro install and config',
-    aplus: '1101 4.2, 1102 1.1',
+    aplus: '1201 4.1, 1202 1.10',
     netplus: '1.2',
     ccna: '—',
     msp: 'Spinning up disposable VMs to reproduce client issues, test patches',
@@ -211,7 +211,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'Subnetting two private /24 networks',
-    aplus: '1101 2.5',
+    aplus: '1201 2.6',
     netplus: '1.4, 1.6',
     ccna: '1.6, 1.7',
     msp: 'Designing client LAN segments, sizing DHCP scopes, guest vs corp separation',
@@ -219,7 +219,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'pfSense as inter-subnet router',
-    aplus: '1101 2.5, 2.6',
+    aplus: '1201 2.5, 2.6',
     netplus: '2.1',
     ccna: '3.1, 3.3',
     msp: 'Inter-VLAN routing, SVI configuration on L3 switches',
@@ -227,7 +227,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'pfSense as stateful firewall',
-    aplus: '1102 2.5, 2.6',
+    aplus: '1202 2.10',
     netplus: '4.3, 4.4',
     ccna: '5.5, 5.6',
     msp: 'Implementing client firewall policy changes with documentation',
@@ -235,7 +235,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'Firewall rule design (3 rules + implicit deny)',
-    aplus: '1102 2.5, 2.6',
+    aplus: '1202 2.10',
     netplus: '4.3, 4.4',
     ccna: '5.5',
     msp: 'Reading rulesets, adding rules with change documentation',
@@ -243,7 +243,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'Linux install, package mgmt, network config (3 distros)',
-    aplus: '1102 1.10, 1.11',
+    aplus: '1202 1.2, 1.9',
     netplus: '3.1, 3.2',
     ccna: '4.8',
     msp: 'Tier-1 Linux triage: systemctl, journalctl, package install, log review',
@@ -251,7 +251,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'OpenSSH server hardening (pw -> key -> port -> fail2ban)',
-    aplus: '1102 2.7, 4.8',
+    aplus: '1202 2.7, 4.9',
     netplus: '4.1, 4.3',
     ccna: '4.8, 5.3',
     msp: 'Remote server access, jump hosts, MFA for admin sessions',
@@ -259,7 +259,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'Snapshot strategy (pre-change, named, rolled back)',
-    aplus: '1102 4.3',
+    aplus: '1202 4.2, 4.3',
     netplus: '3.2, 3.3',
     ccna: '—',
     msp: 'Pre-change snapshots on Hyper-V/VMware/Proxmox at client sites',
@@ -267,7 +267,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'Documentation (this portfolio)',
-    aplus: '1102 4.1',
+    aplus: '1202 4.1',
     netplus: '3.2',
     ccna: '—',
     msp: 'Runbooks, knowledge base articles, client environment docs',
@@ -283,7 +283,7 @@ export const skillsMatrix: SkillRow[] = [
   },
   {
     element: 'Eve-NG Pro installed (post-A+ activation)',
-    aplus: '1101 4.2',
+    aplus: '1201 4.1',
     netplus: '—',
     ccna: '6.1',
     msp: 'Pre-deployment device labs, recreating client topology to test changes',
@@ -295,13 +295,13 @@ export type CoverageLevel = 'light' | 'light-to-moderate' | 'moderate' | 'strong
 
 export const certCoverage: { exam: string; band: string; level: CoverageLevel; notes: string }[] = [
   {
-    exam: 'A+ 220-1101 (Core 1)',
+    exam: 'A+ 220-1201 (Core 1)',
     band: 'Moderate',
     level: 'moderate',
     notes: 'Virtualization and PC hardware are direct. Mobile devices, printers, and OS imaging are not in the lab.',
   },
   {
-    exam: 'A+ 220-1102 (Core 2)',
+    exam: 'A+ 220-1202 (Core 2)',
     band: 'Light-to-moderate',
     level: 'light-to-moderate',
     notes: 'Linux features, backup, and remote access are direct. Most Windows-side OS, mobile, and macOS objectives are not.',
@@ -410,11 +410,18 @@ export const phases = [
 
 export const certs = [
   {
-    name: 'CompTIA A+',
-    code: '220-1201 / 220-1202',
-    status: 'scheduled' as const,
-    target: 'May 2026',
-    why: 'Baseline credential, MSP gatekeeper for tier-1 hire.',
+    name: 'CompTIA A+ Core 1',
+    code: '220-1201',
+    status: 'passed' as const,
+    target: 'Passed May 18, 2026',
+    why: 'Hardware, networking, virtualization, mobile devices. First half of the MSP gatekeeper cert.',
+  },
+  {
+    name: 'CompTIA A+ Core 2',
+    code: '220-1202',
+    status: 'in-progress' as const,
+    target: 'Mid-June 2026',
+    why: 'Operating systems, security, software troubleshooting, operational procedures. Second half of the A+.',
   },
   {
     name: 'Cisco CCNA',
