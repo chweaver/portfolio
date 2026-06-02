@@ -471,6 +471,7 @@ export const careerStages = [
     bringing: [
       'A+ in hand by start date',
       'Documentation discipline (this portfolio proves it)',
+      'Practical AI utilization: I drive AI to accelerate research and documentation, then verify the output, like the live AD lab guide I built and maintain',
       'Linux server fluency at help-desk depth',
       'Hands-on virtualization and networking that maps to real client environments',
       'Custom PC build background',

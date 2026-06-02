@@ -16,11 +16,12 @@ export function ADLabProgress() {
 
   const subtitle = (
     <>
-      The phase status below is read from a separate{' '}
+      The status below reads live from the{' '}
       <a href={adLab.guideBaseUrl} target="_blank" rel="noreferrer" className="text-accent underline-offset-2 hover:underline">
-        guide
+        AD lab guide
       </a>{' '}
-      and updates whenever the guide is updated. No manual sync on this page.
+      I built and document myself, using AI as a research and documentation accelerator that I
+      direct and verify. It updates whenever I push to the guide, with no manual sync on this page.
     </>
   );
 
