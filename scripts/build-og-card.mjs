@@ -32,8 +32,8 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
 
   <text x="80" y="314" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="600" fill="#22d3ee">MSP tier-1 service desk candidate</text>
 
-  <text x="80" y="372" font-family="'JetBrains Mono', monospace" font-size="25" fill="#9ca3af">Live Active Directory domain  ·  pfSense + firewall lab</text>
-  <text x="80" y="408" font-family="'JetBrains Mono', monospace" font-size="25" fill="#9ca3af">CompTIA A+ Core 1 passed  ·  documented and verified</text>
+  <text x="80" y="374" font-family="Inter, Arial, sans-serif" font-size="28" fill="#9ca3af">Live Active Directory domain  ·  pfSense + firewall lab</text>
+  <text x="80" y="414" font-family="Inter, Arial, sans-serif" font-size="28" fill="#9ca3af">CompTIA A+ Core 1 passed  ·  documented and verified</text>
 
   <text x="80" y="556" font-family="'JetBrains Mono', monospace" font-size="22" fill="#6b7280">Carmel, IN  ·  Indianapolis metro</text>
   <text x="1120" y="556" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="700" fill="#22d3ee">chweaver.github.io/portfolio</text>
