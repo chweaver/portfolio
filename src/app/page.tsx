@@ -6,6 +6,7 @@ import { FirewallRules } from '@/components/FirewallRules';
 import { VMInventory } from '@/components/VMInventory';
 import { SkillsMatrix } from '@/components/SkillsMatrix';
 import { Roadmap } from '@/components/Roadmap';
+import { ADLabProgress } from '@/components/ADLabProgress';
 import { Certifications } from '@/components/Certifications';
 import { Career } from '@/components/Career';
 import { Supplementary } from '@/components/Supplementary';
@@ -22,6 +23,7 @@ export default function Home() {
       <VMInventory />
       <SkillsMatrix />
       <Roadmap />
+      <ADLabProgress />
       <Certifications />
       <Career />
       <Supplementary />
