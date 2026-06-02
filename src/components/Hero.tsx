@@ -2,10 +2,10 @@ import { profile, summary } from '@/data/portfolio';
 import { publicAsset } from '@/lib/paths';
 
 const STATS = [
-  { label: 'VMs running', value: '4', sub: 'pfSense + 3 Linux' },
+  { label: 'AD build-out', value: '6/12', sub: 'phases done, #7 next' },
   { label: 'Subnets routed', value: '2', sub: 'LAN + LAB200' },
   { label: 'Firewall rules', value: '3', sub: 'pass / block / pass' },
-  { label: 'Lab phase', value: '2/5', sub: 'Phase 3 in design' },
+  { label: 'Network lab VMs', value: '4', sub: 'pfSense + 3 Linux' },
 ];
 
 export function Hero() {
@@ -24,7 +24,7 @@ export function Hero() {
             {profile.shortName}
           </h1>
           <p className="mt-4 font-mono text-sm accent-line">
-            MSP-bound · pfSense lab operator · Python automation
+            MSP-bound · pfSense network lab · live Active Directory domain
           </p>
           <p className="mt-6 text-lg leading-relaxed text-ink-dim">{profile.tagline}</p>
           <p className="mt-4 text-ink-dim leading-relaxed">

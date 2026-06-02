@@ -12,23 +12,24 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/charlie-weaver-it/',
   github: 'https://github.com/chweaver',
   age: 20,
-  tagline: 'MSP-bound IT generalist with a routed two-subnet pfSense lab and Python automation.',
-  labPhase: 'Phase 2 complete, Phase 3 in design',
+  tagline: 'MSP-bound IT generalist with a routed, firewalled pfSense lab and a live Active Directory domain.',
+  labPhase: 'Network lab complete, Active Directory lab in progress (6 of 12 build-out phases)',
 } as const;
 
 export const summary = {
   built: [
-    'Windows 11 host running VMware Workstation Pro 25H2u1',
+    'Windows Server 2022 promoted to a domain controller on a new AD DS forest (lab.weaver.local)',
+    'Active Directory OU structure, user accounts, and AGDLP security groups',
     'pfSense CE 2.7.x routing two private /24 subnets',
     'Three Linux VMs (Ubuntu, Debian, Rocky) across the subnets',
     'Three firewall rules with documented verification commands',
     'Named snapshots at every clean state',
+    'Windows 11 host running VMware Workstation Pro 25H2u1',
     'Packet Tracer foundation scene (2960, VLAN1 SVI, two PCs)',
   ],
   planned: [
-    'Windows Server 2022 DC: AD DS, AD-integrated DNS, file server, GPOs',
-    'Two Windows 11 clients domain-joined for GPO testing',
-    'Zabbix or LibreNMS monitoring pfSense + DC',
+    'Domain-join a Windows client (WS01), then Group Policy, file shares, folder redirection, and help-desk drills (AD phases 7-12)',
+    'Zabbix or LibreNMS monitoring pfSense + the domain controller',
     'Nested Proxmox VE inside VMware (Phase 4)',
     'Packet Tracer phases 2-7 and Eve-NG ramp (Phase 5)',
   ],
@@ -340,7 +341,10 @@ export const skillsOverview = [
   },
   {
     column: 'Identity and Tooling',
-    items: ['Active Directory', 'ServiceNow', 'Jira', 'Microsoft 365'],
+    items: [
+      'Active Directory: domain controller, OUs, users, AGDLP groups',
+      'Microsoft 365, ServiceNow, Jira: familiar, not yet hands-on',
+    ],
   },
 ];
 
@@ -372,19 +376,19 @@ export const phases = [
   },
   {
     id: 3,
-    title: 'Windows Server, AD, GPO, Monitoring',
-    status: 'planned' as const,
-    period: 'Aug 2026 - Feb 2027 (post-A+)',
+    title: 'Windows Server & Active Directory',
+    status: 'in-progress' as const,
+    period: 'In progress, 6 of 12 build-out phases done',
     summary:
-      'Six-month window covering AD-integrated DNS, GPO testing across subnets, a file server, and a lightweight monitoring stack. Wider scope than 3 months because juggling Phase 3 with a new MSP job means evenings, not full days.',
+      'A live Active Directory domain on Windows Server 2022. Phases 1-6 are done: server install, promotion to a domain controller on a new forest, OU structure, user accounts, and AGDLP security groups. Phase 7 (domain-join a client) is next, then Group Policy, file shares, folder redirection, and help-desk drills.',
     items: [
-      'Windows Server 2022 DC at lab.weaver.local',
-      'OUs: Users, Computers, Groups, Service Accounts, Disabled',
-      '5+ GPOs: password policy, banner, drive mapping, lock, audit',
-      'File share with AGDLP-style permissions',
-      'Zabbix/LibreNMS: pfSense SNMP + DC agent',
+      'Done: Windows Server 2022 DC on a new AD DS forest (lab.weaver.local)',
+      'Done: OU structure, user accounts, AGDLP security groups',
+      'Next: domain-join Windows client WS01 (phase 7)',
+      'Then: Group Policy, file shares, folder redirection, login scripts (phases 8-12)',
+      'Stretch: DHCP role, RDP, AD backup and restore, second DC with replication',
     ],
-    note: 'Scope may narrow based on what gets used at work first.',
+    note: 'Tracked live on this site from the lab status feed.',
   },
   {
     id: 4,
@@ -469,7 +473,7 @@ export const careerStages = [
       'Linux server fluency at help-desk depth',
       'Documentation discipline (this portfolio)',
       'Custom PC build background',
-      'Python scripting for automation',
+      'Bash and shell scripting from hands-on Linux work',
       'A+ in hand by start date',
     ],
     learning: [
@@ -504,42 +508,4 @@ export const careerStages = [
   },
 ];
 
-export const tradingBot = {
-  name: 'Python Scheduled Automation Project',
-  lead: 'Scheduled Python service covering API authentication, structured logging, error handling, and retry logic against rate limits and intermittent failures.',
-  target: 'Target API is Polymarket.',
-  repoStatus: 'Private repo, code review available on request.',
-  components: [
-    {
-      name: 'Execution engine',
-      role: 'API authentication, order placement, position management, structured logging of every transaction',
-    },
-    {
-      name: 'Signal and probability engine',
-      role: 'Real-time data from Kalshi, The Odds API, Binance, and FedWatch, blended into signal estimates',
-    },
-  ],
-  skills: [
-    'API authentication across multiple providers (OAuth, API keys, signed requests)',
-    'Scheduled job design (cron-like, idempotency, missed-run handling)',
-    'Structured logging (JSON, levels, rotation)',
-    'Error handling under real conditions (network failures, rate limits, partial fills)',
-    'Multi-source data fusion into a single internal model',
-    'Observability and recovery: structured logs, retries with backoff, idempotent reruns',
-  ],
-  honesty: "Solo project. Doesn't demonstrate team workflows, code review at scale, or CI/CD pipelines.",
-};
-
-export const bashApp = {
-  name: 'Bash Learning App',
-  pitch: 'Twelve bash topics, 8-12 exercises each, scenarios tied back to the home lab.',
-  repoStatus: 'Private repo, walkthrough available on request.',
-  exercises: [
-    { topic: 'File operations', sample: 'Find all .conf files in /etc modified in the last 7 days; copy to timestamped backup dir.' },
-    { topic: 'Process management', sample: 'Find every ssh process owned by charlie, sort by CPU, write top 3 PIDs to a file.' },
-    { topic: 'Text processing', sample: 'Parse /var/log/auth.log; count failed login attempts per source IP.' },
-    { topic: 'Network commands', sample: 'Ping every host in 192.168.200.0/24, report which are alive.' },
-    { topic: 'Scripting basics', sample: 'Snapshot a list of VM names via VMware CLI, with rollback on failure.' },
-    { topic: 'Permissions', sample: 'Set up a directory where two users can share files but neither can delete the other.' },
-  ],
-};
+// Side-projects section removed in v2 to keep the focus on the labs.

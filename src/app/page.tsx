@@ -9,7 +9,6 @@ import { Roadmap } from '@/components/Roadmap';
 import { ADLabProgress } from '@/components/ADLabProgress';
 import { Certifications } from '@/components/Certifications';
 import { Career } from '@/components/Career';
-import { Supplementary } from '@/components/Supplementary';
 import { Contact } from '@/components/Contact';
 
 export default function Home() {
@@ -26,7 +25,6 @@ export default function Home() {
       <ADLabProgress />
       <Certifications />
       <Career />
-      <Supplementary />
       <Contact />
     </>
   );
