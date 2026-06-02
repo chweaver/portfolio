@@ -25,7 +25,13 @@ export function ADLabProgress() {
   );
 
   return (
-    <Section id="ad-lab" eyebrow="Live · AD Lab" title="Active Directory lab, live status" subtitle={subtitle}>
+    <Section
+      id="ad-lab"
+      eyebrow="Live · AD Lab"
+      title="Active Directory lab, live status"
+      subtitle={subtitle}
+      contextCard="A live Active Directory forest with a domain controller, organizational units, user accounts, and AGDLP security groups. The identity layer every Windows MSP client runs on. Permissions follow AGDLP: accounts into global groups, global groups into domain-local groups, and permissions on the domain-local group, the pattern that keeps access manageable as a client grows."
+    >
       {!data && !failed && (
         <div className="text-ink-faint text-sm font-mono">Loading lab status...</div>
       )}

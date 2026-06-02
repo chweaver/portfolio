@@ -11,7 +11,8 @@ import { publicAsset } from '@/lib/paths';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', display: 'swap' });
 
-const siteTitle = `${profile.shortName}, Home Lab and MSP Career Portfolio`;
+const siteTitle = `${profile.shortName}, MSP Tier-1 Service Desk Candidate | Active Directory + pfSense Lab | CompTIA A+ | ${profile.location.split(',')[0]} (Indianapolis metro)`;
+const siteDescription = `Entry-level MSP candidate, ${profile.age}. Live Active Directory domain, routed pfSense lab, CompTIA A+ Core 1 passed, documented and verified. No professional MSP tenure yet.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chweaver.github.io'),
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: profile.shortName }],
   openGraph: {
     title: siteTitle,
-    description: profile.tagline,
+    description: siteDescription,
     url: 'https://chweaver.github.io/portfolio/',
     type: 'website',
     images: [{ url: publicAsset('/og-card.png'), width: 1200, height: 630 }],
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: siteTitle,
-    description: profile.tagline,
+    description: siteDescription,
     images: [publicAsset('/og-card.png')],
   },
 };

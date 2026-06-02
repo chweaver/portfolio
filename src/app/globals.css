@@ -10,6 +10,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Visible keyboard focus on every interactive element. The near-black theme makes
+   the browser default outline easy to lose, so set an explicit accent ring. */
+:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* Respect prefers-reduced-motion. The rest of this file only opts motion IN
    under no-preference, so without this reset the bare transition and animation
    utilities (the AD lab progress bar fill, the nav pulse dot, smooth anchor

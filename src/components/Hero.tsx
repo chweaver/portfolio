@@ -1,8 +1,8 @@
 import { profile, summary } from '@/data/portfolio';
 import { publicAsset } from '@/lib/paths';
+import { HeroLabStat } from './HeroLabStat';
 
 const STATS = [
-  { label: 'AD build-out', value: '6/12', sub: 'phases done, #7 next' },
   { label: 'Subnets routed', value: '2', sub: 'LAN + LAB200' },
   { label: 'Firewall rules', value: '3', sub: 'pass / block / pass' },
   { label: 'Network lab VMs', value: '4', sub: 'pfSense + 3 Linux' },
@@ -10,7 +10,7 @@ const STATS = [
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-24">
+    <section id="top" className="relative overflow-hidden pt-16 pb-16 md:pt-24 md:pb-24">
       <div
         className="pointer-events-none absolute inset-x-0 -top-16 h-72 bg-[radial-gradient(closest-side,rgba(34,211,238,0.18),transparent_70%)] blur-3xl"
         aria-hidden
@@ -18,44 +18,50 @@ export function Hero() {
       <div className="container-narrow relative">
         <div className="max-w-3xl">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
-            {profile.location}
+            {profile.shortName} · {profile.location}
           </p>
-          <h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-ink leading-[1.05]">
-            {profile.shortName}
+          <h1 className="mt-4 text-3xl md:text-5xl font-semibold tracking-tight text-ink leading-[1.12]">
+            {profile.headline}
           </h1>
-          <p className="mt-4 font-mono text-sm accent-line">
-            MSP-bound · pfSense network lab · live Active Directory domain
+          <p className="mt-5 font-mono text-sm accent-line">
+            pfSense network lab · live Active Directory domain · CompTIA A+ Core 1 passed
           </p>
-          <p className="mt-6 text-lg leading-relaxed text-ink-dim">{profile.tagline}</p>
-          <p className="mt-4 text-ink-dim leading-relaxed">
-            Based in {profile.location.split(',')[0]}, applying to MSPs across the Indianapolis metro for a
-            tier-1 service desk or technical alignment role. Passed CompTIA A+ Core 1 on May 18, 2026. Core 2
-            follows in mid-June and CCNA is queued behind it.
+          <p className="mt-5 text-ink-dim leading-relaxed">
+            Carmel-based, applying across the Indianapolis metro for a tier-1 service desk or
+            technical alignment role. Passed CompTIA A+ Core 1 on May 18, 2026. Core 2 follows in
+            mid-June and CCNA is queued behind it. The lab below is built to mirror the
+            environments an MSP team manages: subnets, firewall policy, multi-distro Linux, and
+            domain infrastructure.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a href="#lab" className="btn-primary">
               See the lab →
             </a>
             <a href={`mailto:${profile.email}`} className="btn-secondary">
-              {profile.email}
-            </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="btn-secondary">
-              LinkedIn
-            </a>
-            <a href={profile.github} target="_blank" rel="noreferrer" className="btn-secondary">
-              GitHub
+              Email
             </a>
             <a href={publicAsset('/Charlie-Weaver-Resume.pdf')} download className="btn-secondary">
               Resume (PDF) ↓
             </a>
+            <span className="flex items-center gap-4 pl-1 text-sm">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="link">
+                LinkedIn
+              </a>
+              <a href={profile.github} target="_blank" rel="noreferrer" className="link">
+                GitHub
+              </a>
+            </span>
           </div>
         </div>
 
         <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <HeroLabStat />
           {STATS.map((s) => (
             <div key={s.label} className="card p-5">
-              <div className="font-mono text-3xl text-accent tabular-nums">{s.value}</div>
-              <div className="mt-1 text-sm text-ink">{s.label}</div>
+              <div className="font-mono text-5xl md:text-6xl text-ink tabular-nums leading-none">
+                {s.value}
+              </div>
+              <div className="mt-2 text-sm text-ink">{s.label}</div>
               <div className="font-mono text-xs text-ink-faint">{s.sub}</div>
             </div>
           ))}

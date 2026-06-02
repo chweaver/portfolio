@@ -92,7 +92,7 @@ export function ArtifactGallery() {
       id="artifacts"
       eyebrow="Evidence"
       title="Captured from the lab."
-      subtitle="Direct exports from the pfSense web UI on the running lab. Click any thumbnail for full size. Additional captures, full unredacted logs, and live walkthroughs available on request."
+      subtitle="Every screenshot is a direct export from the pfSense web UI on the running lab, and public/logs ships the real filter.log, dhcpd.log, and system.log. Click any thumbnail for full size. Ask for unredacted exports or a live walkthrough and I will send them."
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {ARTIFACTS.map((a, i) => (
@@ -166,6 +166,7 @@ export function ArtifactGallery() {
               close();
             }}
             aria-label="Close"
+            autoFocus
             className="absolute right-4 top-4 rounded-md border border-bg-border bg-bg-elevated/80 px-3 py-1.5 font-mono text-xs text-ink hover:text-accent hover:border-accent/40 transition-colors"
           >
             close esc

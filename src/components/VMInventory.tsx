@@ -7,7 +7,7 @@ export function VMInventory() {
       id="vms"
       eyebrow="04 / VMs"
       title="Virtual machine inventory"
-      subtitle="Three different Linux distros on purpose. Ubuntu uses netplan, Debian uses ifupdown, Rocky uses NetworkManager via nmcli — three different network-config models. That fluency shows up the first time someone hands me a ticket that says 'the Linux box can't reach the printer.'"
+      contextCard="Three Linux distros on purpose, because client shops run mixed Linux. Ubuntu uses netplan, Debian uses ifupdown, Rocky uses NetworkManager via nmcli: three different network-config models I have configured by hand. That is the fluency behind a ticket that says the Linux box cannot reach the printer."
     >
       <div className="grid gap-4 md:grid-cols-2">
         {vmInventory.map((vm) => (

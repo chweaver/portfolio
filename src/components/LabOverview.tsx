@@ -7,7 +7,7 @@ export function LabOverview() {
       id="lab"
       eyebrow="01 / Lab"
       title="The host and the hypervisor"
-      subtitle="Daily-driver Windows 11 workstation running VMware Workstation Pro. Three custom VMnets carry the lab; the host's physical NIC stays on its own network. Why VMware and not Hyper-V or Proxmox: friendlier vNIC editor, Windows 11 has to keep running for everything else, and nested Proxmox is the Phase 4 plan."
+      contextCard="The physical substrate the rest of the lab runs on: a custom Ryzen 9 / 32 GB workstation running Windows 11 Pro with VMware Workstation Pro, nested virtualization enabled for the Proxmox phase. VMware over Hyper-V because Windows 11 has to keep running for everything else and the vNIC editor is friendlier."
     >
       <div className="grid gap-3 md:grid-cols-2">
         {hostSpec.map((s) => (

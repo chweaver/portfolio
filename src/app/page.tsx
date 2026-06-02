@@ -16,13 +16,13 @@ export default function Home() {
     <>
       <Hero />
       <ArtifactGallery />
+      <ADLabProgress />
       <LabOverview />
       <NetworkTopology />
       <FirewallRules />
       <VMInventory />
       <SkillsMatrix />
       <Roadmap />
-      <ADLabProgress />
       <Certifications />
       <Career />
       <Contact />

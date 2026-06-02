@@ -1,5 +1,5 @@
 import { Section } from './Section';
-import { careerStages } from '@/data/portfolio';
+import { careerStages, profile } from '@/data/portfolio';
 
 export function Career() {
   return (
@@ -10,9 +10,8 @@ export function Career() {
       subtitle="The gap between 'tier-1 service desk' and 'senior engineer' is real, not aspirational fluff. The long horizon is here because honest trajectory beats vague 'growth-minded' language, and because it explains why the cert path goes A+ → CCNA → CCNP → security, not A+ → cloud."
     >
       <div className="grid gap-6 md:grid-cols-3">
-        {careerStages.map((stage, i) => (
-          <div key={stage.title} className="card p-6 relative">
-            <div className="absolute top-6 right-6 font-mono text-3xl text-bg-border">{String(i + 1).padStart(2, '0')}</div>
+        {careerStages.map((stage) => (
+          <div key={stage.title} className="card p-6">
             <h3 className="text-lg font-semibold text-ink">{stage.title}</h3>
             <div className="font-mono text-xs text-accent mt-1">{stage.horizon}</div>
 
@@ -57,6 +56,14 @@ export function Career() {
           </div>
         ))}
       </div>
+
+      <p className="mt-8 max-w-2xl text-sm text-ink-dim">
+        That is the path. The near-term ask is simple: a tier-1 seat where I can start shipping tickets.{' '}
+        <a href={`mailto:${profile.email}`} className="link">
+          Email me
+        </a>{' '}
+        and let us talk.
+      </p>
     </Section>
   );
 }

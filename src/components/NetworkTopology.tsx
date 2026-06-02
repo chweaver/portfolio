@@ -7,7 +7,7 @@ export function NetworkTopology() {
       id="network"
       eyebrow="02 / Network"
       title="Topology and IP plan"
-      subtitle="pfSense routes between two private /24 subnets. WAN gets DHCP from the host NAT pool. LAN and LAB200 each run their own DHCP scope inside pfSense (.50-.200), with the lab VMs sitting on static IPs below the scope so firewall rules and SSH targets stay predictable."
+      contextCard="Two routed subnets with enforced separation. The same skill behind guest-versus-corp and dev-versus-prod segmentation at a client site. pfSense is the single router and DHCP authority, and the lab VMs sit on static IPs below the scope so rules and SSH targets stay predictable."
     >
       <div className="card p-6 overflow-hidden">
         <TopologySVG />
@@ -21,26 +21,26 @@ export function NetworkTopology() {
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-bg-elevated/40 text-left">
-              <tr className="text-ink-faint font-mono text-xs uppercase tracking-wider">
-                <th className="px-5 py-3 font-normal">Asset</th>
-                <th className="px-5 py-3 font-normal">VMware NIC</th>
-                <th className="px-5 py-3 font-normal">Address</th>
-                <th className="px-5 py-3 font-normal">Mask</th>
-                <th className="px-5 py-3 font-normal">Role</th>
+            <thead className="bg-bg-elevated text-left">
+              <tr className="text-ink-dim font-mono text-xs uppercase tracking-wider">
+                <th className="px-5 py-4 font-normal">Asset</th>
+                <th className="px-5 py-4 font-normal">VMware NIC</th>
+                <th className="px-5 py-4 font-normal">Address</th>
+                <th className="px-5 py-4 font-normal">Mask</th>
+                <th className="px-5 py-4 font-normal">Role</th>
               </tr>
             </thead>
             <tbody>
               {ipTable.map((row, i) => (
                 <tr
                   key={row.asset}
-                  className={i % 2 === 0 ? 'bg-bg-card/40' : ''}
+                  className={i % 2 === 0 ? 'bg-bg-card/60' : ''}
                 >
-                  <td className="px-5 py-3 font-mono text-ink">{row.asset}</td>
-                  <td className="px-5 py-3 font-mono text-ink-dim">{row.nic}</td>
-                  <td className="px-5 py-3 font-mono text-accent">{row.address}</td>
-                  <td className="px-5 py-3 font-mono text-ink-faint">{row.mask}</td>
-                  <td className="px-5 py-3 text-ink-dim">{row.role}</td>
+                  <td className="px-5 py-4 font-mono text-ink">{row.asset}</td>
+                  <td className="px-5 py-4 font-mono text-ink-dim">{row.nic}</td>
+                  <td className="px-5 py-4 font-mono text-accent">{row.address}</td>
+                  <td className="px-5 py-4 font-mono text-ink-faint">{row.mask}</td>
+                  <td className="px-5 py-4 text-ink-dim">{row.role}</td>
                 </tr>
               ))}
             </tbody>

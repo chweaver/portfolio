@@ -7,13 +7,19 @@ export function FirewallRules() {
       id="firewall"
       eyebrow="03 / Firewall"
       title="Three rules and an implicit deny"
-      subtitle="Three rules on the LAB200 interface, evaluated top-down. Rule 1 is a tiny exception (TCP/22 to one ubuntu host on LAN). Rule 2 is a broad block of everything else from LAB200 to LAN. Rule 3 is a default permit to anywhere else (internet). Deny by default, permit by exception — the canonical pattern, and the log proves the firewall does per-protocol matching, not just routing."
+      contextCard="Change-management proof: I write the rule, test it, document the intent, and verify it in the firewall log. The same workflow a client firewall change needs. Three rules on the LAB200 interface, deny by default and permit by exception."
     >
       <div className="grid gap-4 lg:grid-cols-3">
         {firewallRules.map((rule) => (
           <RuleCard key={rule.id} rule={rule} />
         ))}
       </div>
+
+      <p className="mt-6 max-w-3xl border-l-4 border-accent bg-accent/5 px-4 py-3 text-sm text-ink-dim">
+        <span className="font-semibold text-ink">Order matters.</span> Rule 1 (the TCP/22 permit) sits
+        above rule 2 (the broad block) on purpose. Flip them and the block shadows the permit, so SSH
+        would fail. That is the same first-match evaluation mistake that breaks client ACLs.
+      </p>
 
       <div className="mt-8 card p-6">
         <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">

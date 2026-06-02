@@ -13,6 +13,7 @@ export const profile = {
   github: 'https://github.com/chweaver',
   age: 20,
   tagline: 'MSP-bound IT generalist with a routed, firewalled pfSense lab and a live Active Directory domain.',
+  headline: 'I run a live Active Directory domain and a firewalled, multi-subnet network lab, and I am ready for a tier-1 MSP seat.',
   labPhase: 'Network lab complete, Active Directory lab in progress (6 of 12 build-out phases)',
 } as const;
 
@@ -253,7 +254,7 @@ export const skillsMatrix: SkillRow[] = [
     aplus: '1202 1.2, 1.9',
     netplus: '3.1, 3.2',
     ccna: '4.8',
-    msp: 'Tier-1 Linux triage: systemctl, journalctl, package install, log review',
+    msp: 'Tier-1 Linux triage (systemctl, journalctl, package install, log review): the first response when a Linux box stops serving',
     category: 'ops',
   },
   {
@@ -261,7 +262,7 @@ export const skillsMatrix: SkillRow[] = [
     aplus: '1202 2.7, 4.9',
     netplus: '4.1, 4.3',
     ccna: '4.8, 5.3',
-    msp: 'Remote server access, jump hosts, MFA for admin sessions',
+    msp: 'Remote server access, jump hosts, MFA for admin sessions: how you reach client firewalls and routers without exposing credentials',
     category: 'security',
   },
   {
@@ -378,17 +379,16 @@ export const phases = [
     id: 3,
     title: 'Windows Server & Active Directory',
     status: 'in-progress' as const,
-    period: 'In progress, 6 of 12 build-out phases done',
+    period: 'In progress, tracked live above',
     summary:
-      'A live Active Directory domain on Windows Server 2022. Phases 1-6 are done: server install, promotion to a domain controller on a new forest, OU structure, user accounts, and AGDLP security groups. Phase 7 (domain-join a client) is next, then Group Policy, file shares, folder redirection, and help-desk drills.',
+      'A live Active Directory domain on Windows Server 2022. Done so far: server install, promotion to a domain controller on a new forest, an OU structure, user accounts, and AGDLP security groups. Next: domain-join a Windows client, then Group Policy, file shares, folder redirection, and help-desk drills. The live status section above always shows the current phase count.',
     items: [
       'Done: Windows Server 2022 DC on a new AD DS forest (lab.weaver.local)',
       'Done: OU structure, user accounts, AGDLP security groups',
-      'Next: domain-join Windows client WS01 (phase 7)',
-      'Then: Group Policy, file shares, folder redirection, login scripts (phases 8-12)',
-      'Stretch: DHCP role, RDP, AD backup and restore, second DC with replication',
+      'Next: domain-join a Windows client, then Group Policy and file shares',
+      'See the live status section above for the current build-out phase count',
     ],
-    note: 'Tracked live on this site from the lab status feed.',
+    note: 'The live status section above is the source of truth for AD progress.',
   },
   {
     id: 4,
@@ -469,12 +469,12 @@ export const careerStages = [
     horizon: 'Next 0-18 months',
     roles: ['Tier-1 service desk', 'Help desk technician', 'Technical alignment specialist', 'NOC technician', 'Junior sysadmin'],
     bringing: [
-      'Hands-on virtualization + networking that maps to real client environments',
+      'A+ in hand by start date',
+      'Documentation discipline (this portfolio proves it)',
       'Linux server fluency at help-desk depth',
-      'Documentation discipline (this portfolio)',
+      'Hands-on virtualization and networking that maps to real client environments',
       'Custom PC build background',
       'Bash and shell scripting from hands-on Linux work',
-      'A+ in hand by start date',
     ],
     learning: [
       'PSA/RMM stack (ConnectWise, Datto, Kaseya, NinjaOne)',
