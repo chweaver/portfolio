@@ -1,3 +1,9 @@
+export const adLab = {
+  guideRepo: 'ad-lab-guide',
+  guideBaseUrl: 'https://chweaver.github.io/ad-lab-guide/',
+  statusUrl: 'https://chweaver.github.io/ad-lab-guide/lab-status.json',
+} as const;
+
 export const profile = {
   name: 'Charles "Charlie" Weaver',
   shortName: 'Charlie Weaver',
