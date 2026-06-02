@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Navigation } from '@/components/Navigation';
+import { LabProgressStrip } from '@/components/LabProgressStrip';
 import { Footer } from '@/components/Footer';
 import { LogBackground } from '@/components/LogBackground';
 import { profile } from '@/data/portfolio';
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="bg-grid" aria-hidden="true" />
         <LogBackground />
         <Navigation />
+        <LabProgressStrip />
         <main>{children}</main>
         <Footer />
       </body>

@@ -10,7 +10,7 @@ interface SectionProps {
 
 export function Section({ id, eyebrow, title, subtitle, children }: SectionProps) {
   return (
-    <section id={id} className="scroll-mt-20 py-20 md:py-28">
+    <section id={id} className="scroll-mt-28 py-20 md:py-28">
       <div className="container-narrow">
         <header className="mb-10 max-w-3xl">
           <p className="section-eyebrow">{eyebrow}</p>

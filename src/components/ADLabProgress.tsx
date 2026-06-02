@@ -1,33 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Section } from './Section';
 import { adLab } from '@/data/portfolio';
-
-type PhaseStatus = 'done' | 'next' | 'planned' | 'stretch';
-
-interface LabPhase {
-  id: number;
-  title: string;
-  status: PhaseStatus;
-  track: 'build-out' | 'stretch';
-  path: string;
-}
-
-interface LabStatus {
-  generatedAt: string;
-  guideBaseUrl: string;
-  summary: {
-    total: number;
-    buildOutTotal: number;
-    buildOutDone: number;
-    done: number;
-    next: number;
-    planned: number;
-    stretch: number;
-  };
-  phases: LabPhase[];
-}
+import { useLabStatus, type LabPhase, type LabStatus, type PhaseStatus } from '@/lib/useLabStatus';
 
 const STATUS_PILL: Record<PhaseStatus, { className: string; label: string }> = {
   done: { className: 'pill-green', label: '✓ done' },
@@ -37,23 +12,7 @@ const STATUS_PILL: Record<PhaseStatus, { className: string; label: string }> = {
 };
 
 export function ADLabProgress() {
-  const [data, setData] = useState<LabStatus | null>(null);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch(adLab.statusUrl)
-      .then((r) => (r.ok ? (r.json() as Promise<LabStatus>) : Promise.reject(new Error('fetch failed'))))
-      .then((json) => {
-        if (!cancelled) setData(json);
-      })
-      .catch(() => {
-        if (!cancelled) setFailed(true);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const { data, failed } = useLabStatus();
 
   const subtitle = (
     <>
@@ -88,11 +47,18 @@ export function ADLabProgress() {
   );
 }
 
+function formatUpdated(iso: string): string | null {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+}
+
 function Loaded({ data }: { data: LabStatus }) {
   const { buildOutDone, buildOutTotal } = data.summary;
   const pct = buildOutTotal === 0 ? 0 : Math.round((buildOutDone / buildOutTotal) * 100);
   const buildOut = data.phases.filter((p) => p.track === 'build-out');
   const stretch = data.phases.filter((p) => p.track === 'stretch');
+  const updated = formatUpdated(data.generatedAt);
 
   return (
     <div className="space-y-10">
@@ -111,6 +77,9 @@ function Loaded({ data }: { data: LabStatus }) {
             aria-label={`${pct}% complete`}
           />
         </div>
+        {updated && (
+          <p className="mt-3 font-mono text-xs text-ink-faint">Last updated {updated}</p>
+        )}
       </div>
 
       <PhaseGroup heading="Build-out" phases={buildOut} guideBaseUrl={data.guideBaseUrl} />

@@ -10,6 +10,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Respect prefers-reduced-motion. The rest of this file only opts motion IN
+   under no-preference, so without this reset the bare transition and animation
+   utilities (the AD lab progress bar fill, the nav pulse dot, smooth anchor
+   scrolling) would still play for users who asked for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   background: #0a0e14;
   color: #e5e7eb;
