@@ -68,6 +68,9 @@ export), `start`, `lint`.
 |- scripts/
 |   |- convert-screenshots.mjs    png -> webp for public/logs (run when adding artifacts)
 |   |- build-og-card.mjs          renders public/og-card.png from an inline SVG via sharp
+|- _deliverables/                 standalone task plans / runbooks not wired into the site
+|                                 (e.g., lab user rename, pfSense repo sanitization). Markdown
+|                                 only, no build output. Safe to add or remove as work lands.
 |- public/
 |   |- .nojekyll                  required so GitHub Pages serves _next/ assets
 |   |- Charlie-Weaver-Resume.pdf  linked from the hero (Resume CTA)
