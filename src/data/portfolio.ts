@@ -14,13 +14,15 @@ export const profile = {
   age: 20,
   tagline: 'MSP-bound IT generalist with a routed, firewalled pfSense lab and a live Active Directory domain.',
   headline: 'I run a live Active Directory domain and a firewalled, multi-subnet network lab, and I am ready for a tier-1 MSP seat.',
-  labPhase: 'Network lab complete, Active Directory lab in progress (6 of 12 build-out phases)',
+  labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
 
 export const summary = {
   built: [
-    'Windows Server 2022 promoted to a domain controller on a new AD DS forest (lab.weaver.local)',
+    'Windows Server 2022 promoted to a domain controller on a new AD DS forest (corp.lab)',
     'Active Directory OU structure, user accounts, and AGDLP security groups',
+    'Windows 11 client (WS01) domain-joined to corp.lab',
+    'First Group Policy linked to the Departments OU, inheritance verified across child OUs',
     'pfSense CE 2.7.x routing two private /24 subnets',
     'Three Linux VMs (Ubuntu, Debian, Rocky) across the subnets',
     'Three firewall rules with documented verification commands',
@@ -29,7 +31,7 @@ export const summary = {
     'Packet Tracer foundation scene (2960, VLAN1 SVI, two PCs)',
   ],
   planned: [
-    'Domain-join a Windows client (WS01), then Group Policy, file shares, folder redirection, and help-desk drills (AD phases 7-12)',
+    'File shares, home folders with folder redirection, login scripts, and help-desk drills (AD phases 9-12)',
     'Zabbix or LibreNMS monitoring pfSense + the domain controller',
     'Nested Proxmox VE inside VMware (Phase 4)',
     'Packet Tracer phases 2-7 and Eve-NG ramp (Phase 5)',
@@ -381,11 +383,12 @@ export const phases = [
     status: 'in-progress' as const,
     period: 'In progress, tracked live above',
     summary:
-      'A live Active Directory domain on Windows Server 2022. Done so far: server install, promotion to a domain controller on a new forest, an OU structure, user accounts, and AGDLP security groups. Next: domain-join a Windows client, then Group Policy, file shares, folder redirection, and help-desk drills. The live status section above always shows the current phase count.',
+      'A live Active Directory domain on Windows Server 2022. Done so far: server install, promotion to a domain controller on a new forest, an OU structure, user accounts, AGDLP security groups, a domain-joined Windows 11 client (WS01), and a first Group Policy with inheritance verified. Next: file shares, home folders and folder redirection, login scripts, and help-desk drills. The live status section above always shows the current phase count.',
     items: [
-      'Done: Windows Server 2022 DC on a new AD DS forest (lab.weaver.local)',
+      'Done: Windows Server 2022 DC on a new AD DS forest (corp.lab)',
       'Done: OU structure, user accounts, AGDLP security groups',
-      'Next: domain-join a Windows client, then Group Policy and file shares',
+      'Done: WS01 domain-joined, first GPO applied with inheritance verified',
+      'Next: file shares, then home folders, login scripts, and help-desk drills',
       'See the live status section above for the current build-out phase count',
     ],
     note: 'The live status section above is the source of truth for AD progress.',

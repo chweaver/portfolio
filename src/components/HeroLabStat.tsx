@@ -6,7 +6,7 @@ import { useLabStatus } from '@/lib/useLabStatus';
 // sticky strip and the AD section, so "live" is literally true. Falls back to the
 // last-known snapshot while loading or on a failed fetch, and only shows the live
 // dot and the "updated" line when fresh feed data is actually in hand.
-const SNAPSHOT = { done: 6, total: 12 };
+const SNAPSHOT = { done: 8, total: 12 };
 
 function updatedAgo(iso: string): string | null {
   const then = new Date(iso).getTime();
