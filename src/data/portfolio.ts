@@ -12,33 +12,61 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/charlie-weaver-it/',
   github: 'https://github.com/chweaver',
   age: 20,
-  tagline: 'MSP-bound IT generalist with a routed, firewalled pfSense lab and a live Active Directory domain.',
-  headline: 'I run a live Active Directory domain and a firewalled, multi-subnet network lab, and I am ready for a tier-1 MSP seat.',
+  tagline: 'Entry-level IT technician for tier-1 MSP, help desk, and NOC roles in the Indianapolis metro, with hands-on Active Directory, pfSense, and Linux lab experience.',
+  headline: 'Entry-level IT technician ready for tier-1 MSP work, with hands-on Active Directory, pfSense, Linux, and documentation experience.',
   labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
 
 export const summary = {
   built: [
-    'Windows Server 2022 promoted to a domain controller on a new AD DS forest (corp.lab)',
-    'Active Directory OU structure, user accounts, and AGDLP security groups',
-    'Windows 11 client (WS01) domain-joined to corp.lab',
-    'First Group Policy linked to the Departments OU, inheritance verified across child OUs',
-    'pfSense CE 2.7.x routing two private /24 subnets',
-    'Three Linux VMs (Ubuntu, Debian, Rocky) across the subnets',
-    'Three firewall rules with documented verification commands',
-    'Named snapshots at every clean state',
-    'Windows 11 host running VMware Workstation Pro 25H2u1',
-    'Packet Tracer foundation scene (2960, VLAN1 SVI, two PCs)',
+    'Live Active Directory domain (corp.lab): domain controller, OUs, users, AGDLP groups, a domain-joined Windows 11 client, and a verified first GPO',
+    'Segmented pfSense lab routing two subnets, with three firewall rules tested and logged',
+    'Ubuntu, Debian, and Rocky Linux VMs with hand-configured networking',
+    'Public documentation: this site, the AD lab guide, and named snapshots at every clean state',
   ],
   planned: [
-    'File shares, home folders with folder redirection, login scripts, and help-desk drills (AD phases 9-12)',
-    'Zabbix or LibreNMS monitoring pfSense + the domain controller',
-    'Nested Proxmox VE inside VMware (Phase 4)',
-    'Packet Tracer phases 2-7 and Eve-NG ramp (Phase 5)',
+    'AD file shares, home folders, login scripts, and help-desk drills (phases 9-12)',
+    'Monitoring for pfSense and the domain controller',
+    'Proxmox and Cisco lab phases alongside CCNA study',
   ],
   honesty:
-    'No professional MSP tenure yet. Everything marked "built" is built. Everything marked "planned" is planned.',
+    'No professional MSP tenure yet. Built items are complete and verified; planned items are labeled separately.',
 };
+
+export const readiness = [
+  {
+    kicker: 'systems',
+    text: 'Windows, Linux, Active Directory basics, and network troubleshooting',
+  },
+  {
+    kicker: 'network',
+    text: 'Built and documented a segmented pfSense lab with verified firewall rules',
+  },
+  {
+    kicker: 'directory',
+    text: 'Practiced users, OUs, groups, domain controller setup, and AD structure',
+  },
+  {
+    kicker: 'documentation',
+    text: 'Writes clear documentation and separates built work from planned work',
+  },
+  {
+    kicker: 'tooling',
+    text: 'Comfortable learning PSA/RMM and Microsoft 365 workflows on the job',
+  },
+  {
+    kicker: 'target roles',
+    text: 'Service desk, help desk, NOC, technical alignment, and junior sysadmin',
+  },
+] as const;
+
+export const howIWork = [
+  'Verify before claiming',
+  'Document steps and outcomes',
+  'Keep changes reversible with snapshots and checkpoints',
+  'Ask clear questions and escalate with useful notes',
+  'Translate technical work into plain English',
+] as const;
 
 export const subnets = [
   {
@@ -66,58 +94,53 @@ export const ipTable = [
   { asset: 'rocky-base', nic: 'VMnet3', address: '192.168.200.12', mask: '/24', role: 'LAB200 test client (originates inter-subnet traffic)' },
 ];
 
-export const hostSpec = [
-  { label: 'CPU', value: 'AMD Ryzen 9 7950X3D', note: '16C/32T, SVM enabled for nested virt' },
-  { label: 'RAM', value: '32 GB DDR5', note: '64 GB upgrade planned for Phase 3+4' },
-  { label: 'GPU', value: 'NVIDIA RTX 4070 Ti', note: 'Not allocated to lab' },
-  { label: 'Storage', value: 'NVMe Gen4 SSD', note: 'VMs under C:\\VMs\\Lab1-Foundations\\' },
-  { label: 'OS', value: 'Windows 11 Pro 25H2', note: 'Hyper-V disabled (VMware conflict)' },
-  { label: 'Hypervisor', value: 'VMware Workstation Pro 25H2u1', note: 'Type 2, free personal-use tier' },
-];
+export const labEnvironment = {
+  purpose:
+    'I built and maintain a local virtualization lab to practice common MSP tasks safely: domain work, firewall changes, Linux triage, and rollbacks, without touching anything in production.',
+  platforms: [
+    'Windows 11 Pro',
+    'VMware Workstation Pro',
+    'Windows Server 2022',
+    'pfSense CE',
+    'Ubuntu Server',
+    'Debian',
+    'Rocky Linux',
+  ],
+  hardwareNote:
+    'Host: custom Ryzen 9 build, 32 GB DDR5, NVMe storage. The VM load runs well under host capacity, with named snapshots before every risky change.',
+} as const;
 
 export const vmInventory = [
   {
     name: 'pfsense-base',
     os: 'pfSense CE 2.7.x',
-    vcpu: 2,
-    ram: '2 GB',
-    disk: '20 GB',
-    nics: 'WAN/VMnet8, LAN/VMnet2, OPT1/VMnet3',
-    ips: ['WAN 192.168.19.133', '192.168.100.1', '192.168.200.1'],
-    role: 'Router & firewall',
+    proves: 'Routing, firewall policy, and DHCP/DNS authority for both subnets',
+    spec: '2 vCPU · 2 GB · WAN/VMnet8 + LAN/VMnet2 + OPT1/VMnet3',
+    ips: ['192.168.100.1', '192.168.200.1'],
     snapshot: 'clean-rules-applied',
   },
   {
     name: 'ubuntu-base',
     os: 'Ubuntu Server 24.04.4 LTS',
-    vcpu: 2,
-    ram: '2 GB',
-    disk: '20 GB',
-    nics: 'VMnet2',
+    proves: 'SSH target and day-to-day Linux troubleshooting practice',
+    spec: '2 vCPU · 2 GB · VMnet2',
     ips: ['192.168.100.10'],
-    role: 'LAN SSH target',
     snapshot: 'ssh-baseline',
   },
   {
     name: 'debian-base',
     os: 'Debian 12 (bookworm)',
-    vcpu: 1,
-    ram: '1 GB',
-    disk: '15 GB',
-    nics: 'VMnet2',
+    proves: 'Second LAN host: package and network-config differences from Ubuntu',
+    spec: '1 vCPU · 1 GB · VMnet2',
     ips: ['192.168.100.11'],
-    role: 'LAN second host',
     snapshot: 'pristine',
   },
   {
     name: 'rocky-base',
     os: 'Rocky Linux 10.1 (Red Quartz)',
-    vcpu: 1,
-    ram: '1 GB',
-    disk: '15 GB',
-    nics: 'VMnet3',
+    proves: 'RHEL-family exposure and the cross-subnet test traffic the firewall rules act on',
+    spec: '1 vCPU · 1 GB · VMnet3',
     ips: ['192.168.200.12'],
-    role: 'LAB200 test client (originates inter-subnet traffic)',
     snapshot: 'pristine',
   },
 ];
@@ -206,8 +229,8 @@ export const skillsMatrix: SkillRow[] = [
   {
     element: 'Custom PC build (Ryzen 9, DDR5, NVMe, PSU sizing)',
     aplus: '1201 3.3, 3.4, 3.5, 3.6',
-    netplus: '—',
-    ccna: '—',
+    netplus: 'n/a',
+    ccna: 'n/a',
     msp: 'Workstation builds, hardware swaps, BIOS/UEFI, repair vs replace decisions',
     category: 'hardware',
   },
@@ -215,7 +238,7 @@ export const skillsMatrix: SkillRow[] = [
     element: 'VMware Workstation Pro install and config',
     aplus: '1201 4.1, 1202 1.10',
     netplus: '1.2',
-    ccna: '—',
+    ccna: 'n/a',
     msp: 'Spinning up disposable VMs to reproduce client issues, test patches',
     category: 'ops',
   },
@@ -271,7 +294,7 @@ export const skillsMatrix: SkillRow[] = [
     element: 'Snapshot strategy (pre-change, named, rolled back)',
     aplus: '1202 4.2, 4.3',
     netplus: '3.2, 3.3',
-    ccna: '—',
+    ccna: 'n/a',
     msp: 'Pre-change snapshots on Hyper-V/VMware/Proxmox at client sites',
     category: 'ops',
   },
@@ -279,13 +302,13 @@ export const skillsMatrix: SkillRow[] = [
     element: 'Documentation (this portfolio)',
     aplus: '1202 4.1',
     netplus: '3.2',
-    ccna: '—',
+    ccna: 'n/a',
     msp: 'Runbooks, knowledge base articles, client environment docs',
     category: 'ops',
   },
   {
     element: 'Cisco Packet Tracer foundation (2960, SVI, 2 PCs)',
-    aplus: '—',
+    aplus: 'n/a',
     netplus: '2.3, 2.4',
     ccna: '2.1, 2.2, 2.4',
     msp: 'Reading switch configs, switch refresh support, VLAN troubleshooting',
@@ -294,7 +317,7 @@ export const skillsMatrix: SkillRow[] = [
   {
     element: 'Eve-NG Pro installed (post-A+ activation)',
     aplus: '1201 4.1',
-    netplus: '—',
+    netplus: 'n/a',
     ccna: '6.1',
     msp: 'Pre-deployment device labs, recreating client topology to test changes',
     category: 'cisco',
@@ -351,75 +374,37 @@ export const skillsOverview = [
   },
 ];
 
-export const phases = [
+export const nearTermPlan = [
   {
-    id: 1,
-    title: 'Foundation',
-    status: 'complete' as const,
-    period: 'Prior to doc',
-    summary: 'Host build, VMware install, Packet Tracer foundation scene.',
-    items: [
-      'Built Ryzen 9 host',
-      'Installed Windows 11 Pro + VMware Workstation Pro',
-      'Cisco Packet Tracer: 2960 + VLAN1 SVI + 2 PCs',
-    ],
-  },
-  {
-    id: 2,
-    title: 'pfSense & Multi-Subnet Lab',
-    status: 'complete' as const,
-    period: '~3 weeks of evenings',
-    summary: 'Two routed /24 subnets behind pfSense with three firewall rules and named snapshots.',
-    items: [
-      'pfSense CE 2.7.x routing LAN + LAB200',
-      'Ubuntu/Debian/Rocky VMs distributed across subnets',
-      'Three firewall rules + documented implicit deny',
-      'Snapshot strategy: clean-install, baseline, pre-change',
-    ],
-  },
-  {
-    id: 3,
-    title: 'Windows Server & Active Directory',
+    label: 'Finish A+ Core 2',
+    detail: 'Core 1 passed May 18, 2026. Core 2 exam targeted for mid-June.',
     status: 'in-progress' as const,
-    period: 'In progress, tracked live above',
-    summary:
-      'A live Active Directory domain on Windows Server 2022. Done so far: server install, promotion to a domain controller on a new forest, an OU structure, user accounts, AGDLP security groups, a domain-joined Windows 11 client (WS01), and a first Group Policy with inheritance verified. Next: file shares, home folders and folder redirection, login scripts, and help-desk drills. The live status section above always shows the current phase count.',
-    items: [
-      'Done: Windows Server 2022 DC on a new AD DS forest (corp.lab)',
-      'Done: OU structure, user accounts, AGDLP security groups',
-      'Done: WS01 domain-joined, first GPO applied with inheritance verified',
-      'Next: file shares, then home folders, login scripts, and help-desk drills',
-      'See the live status section above for the current build-out phase count',
-    ],
-    note: 'The live status section above is the source of truth for AD progress.',
   },
   {
-    id: 4,
-    title: 'Nested Proxmox',
-    status: 'planned' as const,
-    period: 'Nov 2026 - Jan 2027',
-    summary: 'Proxmox VE nested under VMware to prove nested virt and learn the platform.',
-    items: [
-      'Proxmox VE inside VMware (SVM/nested enabled)',
-      '60 GB nested disk, two Debian guests',
-      'Proxmox CLI + web UI fluency',
-    ],
+    label: 'Complete the AD lab build-out',
+    detail:
+      'Group Policy is done. File shares, home folders, login scripts, and help-desk drills are next (phases 9-12, tracked live above).',
+    status: 'in-progress' as const,
   },
   {
-    id: 5,
-    title: 'Cisco Labs (Packet Tracer + Eve-NG)',
+    label: 'Practice ticket-style troubleshooting drills',
+    detail: 'Password resets, account lockouts, drive mappings, and GPO checks, written up like tickets.',
     status: 'planned' as const,
-    period: 'Jan-Jul 2027, parallel to CCNA',
-    summary: 'Seven-phase Packet Tracer plan plus Eve-NG ramp with real IOSv images.',
-    items: [
-      'VLANs + 802.1Q trunking',
-      'Router-on-a-stick + inter-VLAN routing',
-      'Static routing -> OSPF (single area, then multi-area)',
-      'DHCP/NTP/SSH on IOS',
-      'Extended ACLs, port security, BPDU guard',
-    ],
+  },
+  {
+    label: 'Earn a tier-1 MSP, help desk, or NOC seat',
+    detail: 'Indianapolis metro. Learn the PSA/RMM stack and ticket flow at production pace.',
+    status: 'planned' as const,
+  },
+  {
+    label: 'Continue CCNA study',
+    detail: 'Networking depth alongside the day job, with Packet Tracer and Eve-NG labs in the background.',
+    status: 'planned' as const,
   },
 ];
+
+export const planClose =
+  'Near-term focus: earn a tier-1 MSP, help desk, or NOC role, build production experience, and keep growing toward network support.';
 
 export const certs = [
   {
@@ -440,76 +425,13 @@ export const certs = [
     name: 'Cisco CCNA',
     code: '200-301 v1.1',
     status: 'queued' as const,
-    target: 'Q3-Q4 2027',
-    why: 'Real network engineering credential, MSP tier-2 / NOC eligibility.',
-  },
-  {
-    name: 'CompTIA Network+',
-    code: 'N10-009',
-    status: 'optional' as const,
-    target: 'TBD',
-    why: 'Useful if a specific employer requires it; CCNA exceeds the blueprint.',
-  },
-  {
-    name: 'Cisco CCNP Enterprise',
-    code: '350-401 ENCOR + concentration',
-    status: 'long-term' as const,
-    target: '2028-2029',
-    why: 'Career goal, network engineer track.',
-  },
-  {
-    name: 'CompTIA Security+',
-    code: 'SY0-701',
-    status: 'long-term' as const,
-    target: 'TBD',
-    why: 'Cybersecurity as secondary specialization on a security engineering track.',
+    target: 'In study after Core 2',
+    why: 'Networking depth for NOC and network-support work, studied alongside the lab.',
   },
 ];
 
-export const careerStages = [
-  {
-    title: 'MSP Entry-Level',
-    horizon: 'Next 0-18 months',
-    roles: ['Tier-1 service desk', 'Help desk technician', 'Technical alignment specialist', 'NOC technician', 'Junior sysadmin'],
-    bringing: [
-      'A+ in hand by start date',
-      'Documentation discipline (this portfolio proves it)',
-      'Practical AI utilization: I drive AI to accelerate research and documentation, then verify the output, like the live AD lab guide I built and maintain',
-      'Linux server fluency at help-desk depth',
-      'Hands-on virtualization and networking that maps to real client environments',
-      'Custom PC build background',
-      'Bash and shell scripting from hands-on Linux work',
-    ],
-    learning: [
-      'PSA/RMM stack (ConnectWise, Datto, Kaseya, NinjaOne)',
-      'Microsoft 365 admin in production (Exchange, SharePoint, Intune)',
-      'Ticketing flow and SLA discipline at MSP pace',
-      'Client-facing communication standards',
-    ],
-  },
-  {
-    title: 'Network Engineer',
-    horizon: '~2029-2030',
-    roles: ['MSP network engineer', 'Enterprise NetOps', 'Regional NOC engineer'],
-    bringing: [
-      'CCNA done, CCNP in progress',
-      '18-24 months production network experience',
-      'Documented ticket and project track record',
-      'Lab grown into used-enterprise rack with real Cisco gear',
-    ],
-    learning: [],
-  },
-  {
-    title: 'Long-term',
-    horizon: 'Senior network or security engineering role',
-    roles: [],
-    bringing: [
-      'Deep technical foundation across networking, systems, and security',
-      'Years of MSP/NOC ops experience by this point',
-      'A strong professional network in the Indianapolis tech scene',
-    ],
-    learning: [],
-  },
-];
+export const laterCerts =
+  'Later, as the role calls for it: Network+ (if an employer requires it), CCNP Enterprise, and Security+.';
 
-// Side-projects section removed in v2 to keep the focus on the labs.
+// careerStages removed in v4: the three-stage timeline read as future-heavy for an
+// entry-level screen. Near-term focus now lives in nearTermPlan above.

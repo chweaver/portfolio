@@ -5,21 +5,43 @@ export function NetworkTopology() {
   return (
     <Section
       id="network"
-      eyebrow="02 / Network"
-      title="Topology and IP plan"
-      contextCard="Two routed subnets with enforced separation. The same skill behind guest-versus-corp and dev-versus-prod segmentation at a client site. pfSense is the single router and DHCP authority, and the lab VMs sit on static IPs below the scope so rules and SSH targets stay predictable."
+      eyebrow="03 / Network"
+      title="Two routed subnets, enforced separation"
+      contextCard="The same skill behind guest-versus-corp and dev-versus-prod segmentation at a client site. pfSense is the single router and DHCP authority; lab VMs sit on static IPs below the scope so rules and SSH targets stay predictable."
     >
       <div className="card p-6 overflow-hidden">
         <TopologySVG />
       </div>
 
-      <div className="mt-8 card overflow-hidden">
-        <div className="border-b border-bg-border bg-bg-elevated px-5 py-3">
-          <div className="font-mono text-xs uppercase tracking-widest text-accent">
-            IP addressing table
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <div className="card p-5">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">DNS path</div>
+          <div className="text-sm text-ink-dim leading-relaxed">
+            pfSense Unbound listens on both internal interfaces and forwards to Cloudflare{' '}
+            <code className="font-mono text-accent">1.1.1.1</code>. Each VM resolves through its default
+            gateway.
           </div>
         </div>
-        <div className="overflow-x-auto">
+        <div className="card p-5">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">
+            DHCP authority
+          </div>
+          <div className="text-sm text-ink-dim leading-relaxed">
+            VMware DHCP is off on both VMnets so pfSense is the single authority. Two DHCP servers would
+            mean duplicate offers and unpredictable leases.
+          </div>
+        </div>
+      </div>
+
+      <details className="group mt-6">
+        <summary className="card flex cursor-pointer list-none items-center justify-between p-4 hover:border-accent/40">
+          <span className="font-mono text-xs uppercase tracking-widest text-accent">
+            IP addressing table
+          </span>
+          <span className="font-mono text-xs text-ink-faint group-open:hidden">show ↓</span>
+          <span className="hidden font-mono text-xs text-ink-faint group-open:inline">hide ↑</span>
+        </summary>
+        <div className="card mt-3 overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="bg-bg-elevated text-left">
               <tr className="text-ink-dim font-mono text-xs uppercase tracking-wider">
@@ -32,10 +54,7 @@ export function NetworkTopology() {
             </thead>
             <tbody>
               {ipTable.map((row, i) => (
-                <tr
-                  key={row.asset}
-                  className={i % 2 === 0 ? 'bg-bg-card/60' : ''}
-                >
+                <tr key={row.asset} className={i % 2 === 0 ? 'bg-bg-card/60' : ''}>
                   <td className="px-5 py-4 font-mono text-ink">{row.asset}</td>
                   <td className="px-5 py-4 font-mono text-ink-dim">{row.nic}</td>
                   <td className="px-5 py-4 font-mono text-accent">{row.address}</td>
@@ -46,30 +65,7 @@ export function NetworkTopology() {
             </tbody>
           </table>
         </div>
-      </div>
-
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <div className="card p-5">
-          <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">
-            DNS path
-          </div>
-          <div className="text-sm text-ink-dim leading-relaxed">
-            pfSense Unbound listens on both internal interfaces and forwards to Cloudflare{' '}
-            <code className="font-mono text-accent">1.1.1.1</code> and{' '}
-            <code className="font-mono text-accent">1.0.0.1</code>. Each VM&apos;s{' '}
-            <code className="font-mono text-ink">/etc/resolv.conf</code> points at its default gateway.
-          </div>
-        </div>
-        <div className="card p-5">
-          <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">
-            DHCP authority
-          </div>
-          <div className="text-sm text-ink-dim leading-relaxed">
-            VMware DHCP is disabled on VMnet2 and VMnet3 so pfSense is the single authority. If both ran DHCP
-            you&apos;d get duplicate offers and unpredictable leases.
-          </div>
-        </div>
-      </div>
+      </details>
     </Section>
   );
 }

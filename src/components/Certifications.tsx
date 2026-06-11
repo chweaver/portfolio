@@ -1,5 +1,5 @@
 import { Section } from './Section';
-import { certs } from '@/data/portfolio';
+import { certs, laterCerts } from '@/data/portfolio';
 
 const STATUS_STYLE: Record<string, { label: string; cls: string; dot: string }> = {
   passed: { label: 'Passed', cls: 'pill-green', dot: 'bg-signal-green' },
@@ -15,8 +15,8 @@ export function Certifications() {
     <Section
       id="certs"
       eyebrow="07 / Certifications"
-      title="A+, then CCNA, then deeper"
-      subtitle="Three certs in the near to mid term, one more in the long term, security as the secondary specialization. The cert path is deliberate: network and security depth is the long game, not cloud breadth."
+      title="A+ now, CCNA next"
+      subtitle="The near-term cert path, no padding. A+ in hand or in progress, CCNA studied alongside the lab."
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {certs.map((cert) => {
@@ -38,15 +38,17 @@ export function Certifications() {
         })}
       </div>
 
-      <div className="mt-8 card p-6">
+      <p className="mt-6 max-w-3xl text-sm text-ink-faint">{laterCerts}</p>
+
+      <div className="mt-6 card p-6">
         <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
-          A+ Core 2 study plan: 4-week ramp into mid-June 2026
+          A+ Core 2: on track for mid-June 2026
         </div>
         <p className="text-sm text-ink-dim leading-relaxed">
           Core 1 (passed May 18, 2026) covered hardware, networking, and virtualization, most of which the lab
-          handled directly. Core 2 weights study time toward what the lab doesn&apos;t: Windows-specific OS,
-          mobile devices, macOS, and software troubleshooting. Resources: Professor Messer + Mike Meyers book +
-          Jason Dion practice tests. Target before booking: consistent 85%+ on practice exams.
+          handled directly. Core 2 study targets what the lab does not: Windows-specific OS, mobile, macOS, and
+          software troubleshooting. Prep: Professor Messer, the Mike Meyers book, and Jason Dion practice tests,
+          booking once practice scores hold above 85%.
         </p>
       </div>
     </Section>

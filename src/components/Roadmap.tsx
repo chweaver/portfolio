@@ -1,76 +1,46 @@
 import { Section } from './Section';
-import { phases } from '@/data/portfolio';
+import { nearTermPlan, planClose } from '@/data/portfolio';
+
+const STATUS_MARK: Record<string, { mark: string; cls: string; pill: string; label: string }> = {
+  'in-progress': { mark: '◐', cls: 'text-accent', pill: 'pill-accent', label: 'in progress' },
+  planned: { mark: '○', cls: 'text-signal-amber', pill: 'pill-amber', label: 'planned' },
+};
 
 export function Roadmap() {
   return (
     <Section
-      id="roadmap"
-      eyebrow="06 / Roadmap"
-      title="Five phases: two complete, Active Directory in progress"
-      subtitle="Phases 1 and 2 are built. Phase 3, the Active Directory domain, is in progress now and tracked live on this site. Phases 4 and 5 are designed, not built."
+      id="plan"
+      eyebrow="08 / Plan"
+      title="The near-term plan"
+      contextCard={planClose}
     >
-      <div className="relative">
-        <div className="absolute left-4 md:left-1/2 top-2 bottom-2 w-px bg-gradient-to-b from-accent/40 via-bg-border to-bg-border" />
+      <ol className="space-y-3 max-w-3xl">
+        {nearTermPlan.map((step, i) => {
+          const status = STATUS_MARK[step.status];
+          return (
+            <li key={step.label} className="card p-5 flex items-start gap-4">
+              <span className="font-mono text-xs text-ink-faint tabular-nums pt-1">
+                0{i + 1}
+              </span>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <h3 className="text-sm font-semibold text-ink">{step.label}</h3>
+                  <span className={`pill ${status.pill} uppercase`}>
+                    <span className={`font-mono ${status.cls}`}>{status.mark}</span>
+                    {status.label}
+                  </span>
+                </div>
+                <p className="mt-1.5 text-sm text-ink-dim leading-relaxed">{step.detail}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
 
-        <div className="space-y-8">
-          {phases.map((phase, i) => (
-            <PhaseRow key={phase.id} phase={phase} side={i % 2 === 0 ? 'left' : 'right'} />
-          ))}
-        </div>
-      </div>
+      <p className="mt-6 max-w-3xl font-mono text-xs text-ink-faint">
+        Stretch lab goals (nested Proxmox, Packet Tracer and Eve-NG phases) continue in the
+        background and ramp with CCNA study.
+      </p>
     </Section>
-  );
-}
-
-type Phase = (typeof phases)[number] & { note?: string };
-
-function PhaseRow({ phase, side }: { phase: Phase; side: 'left' | 'right' }) {
-  const complete = phase.status === 'complete';
-  const inProgress = phase.status === 'in-progress';
-  const statusClass = complete ? 'pill-green' : inProgress ? 'pill-accent' : 'pill-amber';
-  const dotClass = complete ? 'bg-signal-green' : inProgress ? 'bg-accent' : 'bg-signal-amber';
-  const statusLabel = complete ? '✓ complete' : inProgress ? '◐ in progress' : '○ planned';
-  const itemMark = complete ? '✓' : inProgress ? '◐' : '○';
-  const itemColor = complete ? 'text-signal-green' : inProgress ? 'text-accent' : 'text-signal-amber';
-
-  return (
-    <div className="relative md:grid md:grid-cols-2 md:gap-12 pl-12 md:pl-0">
-      <div
-        className={`absolute left-4 md:left-1/2 top-5 -translate-x-1/2 h-3 w-3 rounded-full ${dotClass} ring-4 ring-bg`}
-      />
-
-      <div className={side === 'left' ? 'md:text-right md:pr-8' : 'md:col-start-2 md:pl-8'}>
-        <div
-          className={`card p-6 ${
-            side === 'left' ? 'md:ml-auto md:max-w-md md:text-left' : 'md:mr-auto md:max-w-md'
-          }`}
-        >
-          <div className="flex items-center justify-between gap-3 mb-2">
-            <div className="font-mono text-xs text-ink-faint">PHASE {phase.id}</div>
-            <span className={`pill ${statusClass} uppercase`}>
-              {statusLabel}
-            </span>
-          </div>
-          <h3 className="text-lg font-semibold text-ink">{phase.title}</h3>
-          <div className="font-mono text-xs text-accent mt-1">{phase.period}</div>
-          <p className="mt-3 text-sm text-ink-dim leading-relaxed">{phase.summary}</p>
-          <ul className="mt-4 space-y-1.5 text-sm text-ink-dim">
-            {phase.items.map((item) => (
-              <li key={item} className="flex gap-2">
-                <span className={`font-mono ${itemColor}`}>
-                  {itemMark}
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          {phase.note && (
-            <p className="mt-4 pt-3 border-t border-bg-border text-xs italic text-ink-faint">
-              {phase.note}
-            </p>
-          )}
-        </div>
-      </div>
-    </div>
   );
 }

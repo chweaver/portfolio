@@ -1,13 +1,13 @@
 import { Section } from './Section';
-import { firewallRules, implicitBehavior, verificationLog, pfsenseLog, profile } from '@/data/portfolio';
+import { firewallRules, implicitBehavior, verificationLog, pfsenseLog } from '@/data/portfolio';
 
 export function FirewallRules() {
   return (
     <Section
       id="firewall"
-      eyebrow="03 / Firewall"
-      title="Three rules and an implicit deny"
-      contextCard="Change-management proof: I write the rule, test it, document the intent, and verify it in the firewall log. The same workflow a client firewall change needs. Three rules on the LAB200 interface, deny by default and permit by exception."
+      eyebrow="02 / Firewall"
+      title="Define, test, document, explain"
+      contextCard="The point of this section: I can write a firewall rule, test it, document the intent, and verify it in the log. The same workflow a client firewall change needs. Three rules on the LAB200 interface, deny by default and permit by exception."
     >
       <div className="grid gap-4 lg:grid-cols-3">
         {firewallRules.map((rule) => (
@@ -18,73 +18,51 @@ export function FirewallRules() {
       <p className="mt-6 max-w-3xl border-l-4 border-accent bg-accent/5 px-4 py-3 text-sm text-ink-dim">
         <span className="font-semibold text-ink">Order matters.</span> Rule 1 (the TCP/22 permit) sits
         above rule 2 (the broad block) on purpose. Flip them and the block shadows the permit, so SSH
-        would fail. That is the same first-match evaluation mistake that breaks client ACLs.
+        would fail. That is the same first-match mistake that breaks client ACLs.
       </p>
 
-      <div className="mt-8 card p-6">
-        <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
-          Implicit default-deny behavior
-        </div>
-        <ul className="space-y-2 text-sm text-ink-dim">
-          {implicitBehavior.map((line) => (
-            <li key={line} className="flex gap-2">
-              <span className="font-mono text-signal-red">×</span>
-              <span>{line}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <details className="group mt-6">
+        <summary className="card flex cursor-pointer list-none items-center justify-between p-4 hover:border-accent/40">
+          <span className="font-mono text-xs uppercase tracking-widest text-accent">
+            Verification, logs, and implicit deny
+          </span>
+          <span className="font-mono text-xs text-ink-faint group-open:hidden">show ↓</span>
+          <span className="hidden font-mono text-xs text-ink-faint group-open:inline">hide ↑</span>
+        </summary>
 
-      <div className="mt-8 grid gap-4 lg:grid-cols-2">
-        <div className="card overflow-hidden">
-          <div className="border-b border-bg-border bg-bg-elevated px-5 py-3 flex items-center justify-between">
-            <div className="font-mono text-xs uppercase tracking-widest text-accent">
+        <div className="mt-4 grid gap-4 lg:grid-cols-2">
+          <div className="card overflow-hidden">
+            <div className="border-b border-bg-border bg-bg-elevated px-5 py-3 font-mono text-xs uppercase tracking-widest text-accent">
               Verification (captured from lab)
             </div>
-            <span className="font-mono text-xs text-ink-faint">bash</span>
+            <pre className="overflow-x-auto whitespace-pre p-5 font-mono text-[12px] leading-relaxed text-ink">
+              {verificationLog}
+            </pre>
           </div>
-          <pre className="font-mono text-[12px] leading-relaxed text-ink p-5 overflow-x-auto whitespace-pre">
-            {verificationLog}
-          </pre>
-        </div>
-        <div className="card overflow-hidden">
-          <div className="border-b border-bg-border bg-bg-elevated px-5 py-3 flex items-center justify-between">
-            <div className="font-mono text-xs uppercase tracking-widest text-accent">
+          <div className="card overflow-hidden">
+            <div className="border-b border-bg-border bg-bg-elevated px-5 py-3 font-mono text-xs uppercase tracking-widest text-accent">
               pfSense firewall log
             </div>
-            <span className="font-mono text-xs text-ink-faint">Status → System Logs → Firewall</span>
+            <pre className="overflow-x-auto whitespace-pre p-5 font-mono text-[12px] leading-relaxed text-ink">
+              {pfsenseLog}
+            </pre>
           </div>
-          <pre className="font-mono text-[12px] leading-relaxed text-ink p-5 overflow-x-auto whitespace-pre">
-            {pfsenseLog}
-          </pre>
         </div>
-      </div>
 
-      <p className="mt-6 text-sm italic text-ink-faint border-l-2 border-accent/40 pl-4 max-w-3xl">
-        Three lines, three rules, three intents. The log is the audit trail. This is how I&apos;d validate a
-        rule change on a real client firewall: write the rule, snapshot the config, generate the test traffic,
-        watch the log, document the result, close the ticket.
-      </p>
-
-      <div className="mt-8 card p-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div>
-          <div className="font-mono text-xs uppercase tracking-widest text-accent">More evidence</div>
-          <p className="mt-1 text-sm text-ink-dim max-w-2xl">
-            The Evidence section at the top has pfSense screenshots and{' '}
-            <code className="font-mono text-ink">public/logs/</code> ships{' '}
-            <code className="font-mono text-ink">filter.log</code>,{' '}
-            <code className="font-mono text-ink">dhcpd.log</code>, and{' '}
-            <code className="font-mono text-ink">system.log</code>. Full unredacted exports or a live walkthrough
-            on request.
-          </p>
+        <div className="mt-4 card p-5">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
+            Implicit default-deny behavior
+          </div>
+          <ul className="space-y-2 text-sm text-ink-dim">
+            {implicitBehavior.map((line) => (
+              <li key={line} className="flex gap-2">
+                <span className="font-mono text-signal-red">×</span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <a
-          href={`mailto:${profile.email}?subject=Lab%20artifacts%20request`}
-          className="rounded-md border border-bg-border bg-bg-elevated px-4 py-2 font-mono text-sm text-ink hover:border-accent/40 hover:text-accent transition-colors flex-shrink-0"
-        >
-          Request a walkthrough →
-        </a>
-      </div>
+      </details>
     </Section>
   );
 }

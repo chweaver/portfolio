@@ -4,14 +4,13 @@ import { useEffect, useState } from 'react';
 import { profile } from '@/data/portfolio';
 
 const NAV_LINKS = [
-  { href: '#lab', label: 'Lab' },
-  { href: '#network', label: 'Network' },
+  { href: '#readiness', label: 'Readiness' },
+  { href: '#ad-lab', label: 'AD Lab' },
+  { href: '#artifacts', label: 'Evidence' },
   { href: '#firewall', label: 'Firewall' },
-  { href: '#vms', label: 'VMs' },
   { href: '#skills', label: 'Skills' },
-  { href: '#roadmap', label: 'Roadmap' },
   { href: '#certs', label: 'Certs' },
-  { href: '#career', label: 'Career' },
+  { href: '#plan', label: 'Plan' },
 ];
 
 export function Navigation() {

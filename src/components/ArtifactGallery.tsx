@@ -14,37 +14,37 @@ type Artifact = {
 
 const ARTIFACTS: Artifact[] = [
   {
+    file: 'SSH with no ping back from 192.168.100.10.png',
+    alt: 'SSH succeeds while ICMP is blocked from the same LAN host',
+    caption: 'Verified: SSH allowed, ICMP blocked from the same host',
+    width: 2560,
+    height: 1440,
+  },
+  {
     file: 'Firewall Rules.png',
-    alt: 'pfSense firewall ruleset, captured from lab',
-    caption: 'Firewall rules',
+    alt: 'pfSense LAB200 ruleset with the SSH permit above the broad block',
+    caption: 'Ordered ruleset: SSH permit sits above the broad block',
     width: 1920,
     height: 1080,
   },
   {
     file: 'Firewall Log.png',
-    alt: 'Firewall log showing block and pass events',
-    caption: 'Firewall log',
+    alt: 'pfSense firewall log showing pass and block events',
+    caption: 'Firewall log proving pass and block behavior',
     width: 1920,
     height: 1080,
   },
   {
     file: 'Interface Assignments.png',
-    alt: 'Interface assignments: WAN, LAN, LAB200',
-    caption: 'Interface assignments',
+    alt: 'pfSense interface assignments for WAN, LAN, and LAB200',
+    caption: 'pfSense routing LAN and LAB200 on separate interfaces',
     width: 1920,
     height: 1080,
   },
   {
     file: 'Dashboard.png',
-    alt: 'pfSense dashboard, current lab state',
-    caption: 'Dashboard',
-    width: 2560,
-    height: 1440,
-  },
-  {
-    file: 'SSH with no ping back from 192.168.100.10.png',
-    alt: 'SSH success and ICMP block from LAN host',
-    caption: 'SSH passes, ICMP blocks',
+    alt: 'pfSense dashboard showing services, interfaces, and uptime',
+    caption: 'Lab health: services, interfaces, and uptime at a glance',
     width: 2560,
     height: 1440,
   },
@@ -91,8 +91,8 @@ export function ArtifactGallery() {
     <Section
       id="artifacts"
       eyebrow="Evidence"
-      title="Captured from the lab."
-      subtitle="Every screenshot is a direct export from the pfSense web UI on the running lab, and public/logs ships the real filter.log, dhcpd.log, and system.log. Click any thumbnail for full size. Ask for unredacted exports or a live walkthrough and I will send them."
+      title="Captured from the running lab"
+      subtitle="Direct exports from the pfSense web UI, plus the real filter.log, dhcpd.log, and system.log under public/logs. Click any thumbnail for full size."
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {ARTIFACTS.map((a, i) => (

@@ -10,7 +10,7 @@ const STATS = [
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-16 pb-16 md:pt-24 md:pb-24">
+    <section id="top" className="relative overflow-hidden pt-16 pb-14 md:pt-24 md:pb-20">
       <div
         className="pointer-events-none absolute inset-x-0 -top-16 h-72 bg-[radial-gradient(closest-side,rgba(34,211,238,0.18),transparent_70%)] blur-3xl"
         aria-hidden
@@ -18,30 +18,28 @@ export function Hero() {
       <div className="container-narrow relative">
         <div className="max-w-3xl">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
-            {profile.shortName} · {profile.location}
+            {profile.shortName} · {profile.location} · Indianapolis metro
           </p>
           <h1 className="mt-4 text-3xl md:text-5xl font-semibold tracking-tight text-ink leading-[1.12]">
             {profile.headline}
           </h1>
           <p className="mt-5 font-mono text-sm accent-line">
-            pfSense network lab · live Active Directory domain · CompTIA A+ Core 1 passed
+            CompTIA A+ Core 1 passed · Core 2 in progress · CCNA next
           </p>
           <p className="mt-5 text-ink-dim leading-relaxed">
-            Carmel-based, applying across the Indianapolis metro for a tier-1 service desk or
-            technical alignment role. Passed CompTIA A+ Core 1 on May 18, 2026. Core 2 follows in
-            mid-June and CCNA is queued behind it. The lab below is built to mirror the
-            environments an MSP team manages: subnets, firewall policy, multi-distro Linux, and
-            domain infrastructure.
+            Applying for tier-1 service desk, help desk, NOC, and junior sysadmin roles across the
+            Indianapolis metro. The lab on this page is the proof: a live Active Directory domain, a
+            segmented pfSense network, and multi-distro Linux, all documented and verified.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#lab" className="btn-primary">
-              See the lab →
+            <a href={publicAsset('/Charlie-Weaver-Resume.pdf')} download className="btn-primary">
+              Download resume ↓
             </a>
             <a href={`mailto:${profile.email}`} className="btn-secondary">
-              Email
+              Contact Charlie
             </a>
-            <a href={publicAsset('/Charlie-Weaver-Resume.pdf')} download className="btn-secondary">
-              Resume (PDF) ↓
+            <a href="#ad-lab" className="btn-secondary">
+              See lab proof →
             </a>
             <span className="flex items-center gap-4 pl-1 text-sm">
               <a href={profile.linkedin} target="_blank" rel="noreferrer" className="link">
@@ -54,7 +52,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-4">
+        <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4">
           <HeroLabStat />
           {STATS.map((s) => (
             <div key={s.label} className="card p-5">
@@ -67,7 +65,7 @@ export function Hero() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           <div className="card p-6">
             <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-green" />
@@ -95,12 +93,11 @@ export function Hero() {
                 </li>
               ))}
             </ul>
+            <p className="mt-5 border-t border-bg-border pt-4 text-sm italic text-ink-faint">
+              {summary.honesty}
+            </p>
           </div>
         </div>
-
-        <p className="mt-8 max-w-3xl text-sm italic text-ink-faint border-l-2 border-bg-border pl-4">
-          {summary.honesty}
-        </p>
       </div>
     </section>
   );

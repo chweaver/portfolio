@@ -11,7 +11,7 @@ export function Contact() {
       id="contact"
       eyebrow="09 / Contact"
       title="Let's talk"
-      subtitle="Available for tier-1 service desk, help desk, technical alignment, or junior systems administration roles in the Indianapolis metro. On-site, hybrid, or remote with on-site option. Reachable weekdays."
+      subtitle="Available for tier-1 help desk, service desk, NOC, technical alignment, and junior sysadmin roles in the Indianapolis area. On-site, hybrid, or remote with an on-site option."
     >
       <div className="card p-8 md:p-10">
         <div className="grid gap-8 md:grid-cols-2">
