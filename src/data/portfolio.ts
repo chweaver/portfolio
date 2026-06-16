@@ -444,8 +444,28 @@ export const certs = [
   },
 ];
 
-export const laterCerts =
-  'Building toward owning and operating an MSP, the track favors breadth over single-domain depth. Beyond the foundation: Azure Solutions Architect (AZ-305) and deeper Microsoft 365 administration, virtualization (Hyper-V and VMware), backup and disaster recovery, MSP platform tooling (RMM and PSA: ConnectWise, NinjaOne, Datto), and the business side of client management and service delivery. Longer term and aspirational, on the security and governance side: Microsoft Cloud and AI Security Engineer (SC-500), GIAC Cloud Security Architecture and Design (GCAD), and the IAPP AI Governance Professional (AIGP).';
+export const beyondFoundation =
+  'Building toward owning and operating an MSP, the track favors breadth over single-domain depth.';
+
+export const mspBreadth = {
+  heading: 'MSP breadth · core direction',
+  items: [
+    'Azure Solutions Architect (AZ-305) and deeper Microsoft 365 administration',
+    'Virtualization (Hyper-V and VMware)',
+    'Backup and disaster recovery',
+    'MSP platform tooling (RMM/PSA: ConnectWise, NinjaOne, Datto)',
+    'Business operations: client management, sales, and service delivery',
+  ],
+};
+
+export const aspirationalCerts = {
+  heading: 'Long-term · security and governance',
+  items: [
+    'Microsoft Cloud and AI Security Engineer (SC-500)',
+    'GIAC Cloud Security Architecture and Design (GCAD)',
+    'IAPP AI Governance Professional (AIGP)',
+  ],
+};
 
 // careerStages removed in v4: the three-stage timeline read as future-heavy for an
 // entry-level screen. Near-term focus now lives in nearTermPlan above.

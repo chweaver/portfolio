@@ -1,5 +1,5 @@
 import { Section } from './Section';
-import { certs, laterCerts } from '@/data/portfolio';
+import { certs, beyondFoundation, mspBreadth, aspirationalCerts } from '@/data/portfolio';
 
 const STATUS_STYLE: Record<string, { label: string; cls: string; dot: string }> = {
   passed: { label: 'Passed', cls: 'pill-green', dot: 'bg-signal-green' },
@@ -38,8 +38,6 @@ export function Certifications() {
         })}
       </div>
 
-      <p className="mt-6 max-w-3xl text-sm text-ink-faint">{laterCerts}</p>
-
       <div className="mt-6 card p-6">
         <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
           A+ Core 2: on track for June 2026
@@ -50,6 +48,37 @@ export function Certifications() {
           software troubleshooting. Prep: Professor Messer, the Mike Meyers book, and Jason Dion practice tests,
           booking once practice scores hold above 85%.
         </p>
+      </div>
+
+      <p className="mt-8 max-w-3xl text-sm text-ink-dim leading-relaxed">{beyondFoundation}</p>
+
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        <div className="card p-6">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
+            {mspBreadth.heading}
+          </div>
+          <ul className="space-y-2 text-sm text-ink-dim leading-relaxed">
+            {mspBreadth.items.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="font-mono text-accent">·</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="card p-6">
+          <div className="font-mono text-xs uppercase tracking-widest text-ink-faint mb-3">
+            {aspirationalCerts.heading}
+          </div>
+          <ul className="space-y-2 text-sm text-ink-dim leading-relaxed">
+            {aspirationalCerts.items.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="font-mono text-ink-faint">·</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Section>
   );
