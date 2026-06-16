@@ -21,8 +21,8 @@ export function Certifications() {
     <Section
       id="certs"
       eyebrow="07 / Certifications"
-      title="A+ now, foundation next"
-      subtitle="The full cert roadmap behind an MSP-ownership track, no padding: A+ in hand, then a networking, cloud, and security foundation, then breadth over single-domain depth."
+      title="A+ in progress, foundation next"
+      subtitle="The full cert roadmap behind an MSP-ownership track, no padding: A+ Core 1 passed and Core 2 in progress, then a networking, cloud, and security foundation, then breadth over single-domain depth."
     >
       <div className="space-y-8">
         {certTierOrder.map((tier) => (
