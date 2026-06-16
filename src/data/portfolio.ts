@@ -406,11 +406,14 @@ export const nearTermPlan = [
 export const planClose =
   'Near-term focus: earn a tier-1 MSP, help desk, or NOC role and build production experience. The longer arc is breadth across networking, cloud, and security, building toward owning and operating an MSP.';
 
+export const certTierOrder = ['Completed', 'In progress', 'Foundation · next'] as const;
+
 export const certs = [
   {
     name: 'CompTIA A+ Core 1',
     code: '220-1201',
     status: 'passed' as const,
+    tier: 'Completed' as const,
     target: 'Passed May 18, 2026',
     why: 'Hardware, networking, virtualization, mobile devices. First half of the MSP gatekeeper cert.',
   },
@@ -418,6 +421,7 @@ export const certs = [
     name: 'CompTIA A+ Core 2',
     code: '220-1202',
     status: 'in-progress' as const,
+    tier: 'In progress' as const,
     target: 'Expected June 2026',
     why: 'Operating systems, security, software troubleshooting, operational procedures. Second half of the A+.',
   },
@@ -425,27 +429,30 @@ export const certs = [
     name: 'Cisco CCNA',
     code: '200-301 v1.1',
     status: 'queued' as const,
-    target: 'Foundation · next',
-    why: 'Networking foundation for the MSP track: routing, switching, and the fundamentals behind every client network.',
+    tier: 'Foundation · next' as const,
+    target: 'Networking foundation',
+    why: 'Routing, switching, and the fundamentals behind every client network.',
   },
   {
     name: 'Microsoft Azure Administrator',
     code: 'AZ-104',
     status: 'queued' as const,
-    target: 'Foundation · next',
+    tier: 'Foundation · next' as const,
+    target: 'Cloud and M365',
     why: 'Cloud and Microsoft 365 administration: identity, tenants, and the Azure and M365 stack MSPs run for clients.',
   },
   {
     name: 'CompTIA Security+',
     code: 'SY0-701',
     status: 'queued' as const,
-    target: 'Foundation · next',
-    why: 'Security baseline across threats, identity, and risk: the floor for client security work.',
+    tier: 'Foundation · next' as const,
+    target: 'Security baseline',
+    why: 'Threats, identity, and risk: the security floor for client work.',
   },
 ];
 
 export const beyondFoundation =
-  'Building toward owning and operating an MSP, the track favors breadth over single-domain depth.';
+  'Beyond the foundation, the track is breadth over single-domain depth, building toward owning and operating an MSP.';
 
 export const mspBreadth = {
   heading: 'MSP breadth · core direction',
