@@ -15,8 +15,8 @@ export function Certifications() {
     <Section
       id="certs"
       eyebrow="07 / Certifications"
-      title="A+ now, CCNA next"
-      subtitle="The near-term cert path, no padding. A+ in hand or in progress, CCNA studied alongside the lab."
+      title="A+ now, foundation next"
+      subtitle="The cert path behind an MSP-ownership track, no padding: A+ in hand, then a networking, cloud, and security foundation, with breadth over single-domain depth."
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {certs.map((cert) => {
@@ -42,7 +42,7 @@ export function Certifications() {
 
       <div className="mt-6 card p-6">
         <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
-          A+ Core 2: on track for mid-June 2026
+          A+ Core 2: on track for June 2026
         </div>
         <p className="text-sm text-ink-dim leading-relaxed">
           Core 1 (passed May 18, 2026) covered hardware, networking, and virtualization, most of which the lab

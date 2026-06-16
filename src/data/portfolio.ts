@@ -377,7 +377,7 @@ export const skillsOverview = [
 export const nearTermPlan = [
   {
     label: 'Finish A+ Core 2',
-    detail: 'Core 1 passed May 18, 2026. Core 2 exam targeted for mid-June.',
+    detail: 'Core 1 passed May 18, 2026. Core 2 exam expected June 2026.',
     status: 'in-progress' as const,
   },
   {
@@ -397,14 +397,14 @@ export const nearTermPlan = [
     status: 'planned' as const,
   },
   {
-    label: 'Continue CCNA study',
-    detail: 'Networking depth alongside the day job, with Packet Tracer and Eve-NG labs in the background.',
+    label: 'Start the foundation cert stack',
+    detail: 'CCNA, Azure Administrator (AZ-104), and Security+ alongside the day job: the networking, cloud, and security base for the MSP track, with Packet Tracer and Eve-NG labs in the background.',
     status: 'planned' as const,
   },
 ];
 
 export const planClose =
-  'Near-term focus: earn a tier-1 MSP, help desk, or NOC role, build production experience, and keep growing toward network support.';
+  'Near-term focus: earn a tier-1 MSP, help desk, or NOC role and build production experience. The longer arc is breadth across networking, cloud, and security, building toward owning and operating an MSP.';
 
 export const certs = [
   {
@@ -418,20 +418,34 @@ export const certs = [
     name: 'CompTIA A+ Core 2',
     code: '220-1202',
     status: 'in-progress' as const,
-    target: 'Mid-June 2026',
+    target: 'Expected June 2026',
     why: 'Operating systems, security, software troubleshooting, operational procedures. Second half of the A+.',
   },
   {
     name: 'Cisco CCNA',
     code: '200-301 v1.1',
     status: 'queued' as const,
-    target: 'In study after Core 2',
-    why: 'Networking depth for NOC and network-support work, studied alongside the lab.',
+    target: 'Foundation · next',
+    why: 'Networking foundation for the MSP track: routing, switching, and the fundamentals behind every client network.',
+  },
+  {
+    name: 'Microsoft Azure Administrator',
+    code: 'AZ-104',
+    status: 'queued' as const,
+    target: 'Foundation · next',
+    why: 'Cloud and Microsoft 365 administration: identity, tenants, and the Azure and M365 stack MSPs run for clients.',
+  },
+  {
+    name: 'CompTIA Security+',
+    code: 'SY0-701',
+    status: 'queued' as const,
+    target: 'Foundation · next',
+    why: 'Security baseline across threats, identity, and risk: the floor for client security work.',
   },
 ];
 
 export const laterCerts =
-  'Later, as the role calls for it: Network+ (if an employer requires it), CCNP Enterprise, and Security+.';
+  'Building toward owning and operating an MSP, the track favors breadth over single-domain depth. Beyond the foundation: Azure Solutions Architect (AZ-305) and deeper Microsoft 365 administration, virtualization (Hyper-V and VMware), backup and disaster recovery, MSP platform tooling (RMM and PSA: ConnectWise, NinjaOne, Datto), and the business side of client management and service delivery. Longer term and aspirational, on the security and governance side: Microsoft Cloud and AI Security Engineer (SC-500), GIAC Cloud Security Architecture and Design (GCAD), and the IAPP AI Governance Professional (AIGP).';
 
 // careerStages removed in v4: the three-stage timeline read as future-heavy for an
 // entry-level screen. Near-term focus now lives in nearTermPlan above.
