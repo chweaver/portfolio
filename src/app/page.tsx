@@ -19,17 +19,18 @@ export default function Home() {
       <Hero />
       <ReadyForWork />
       <ADLabProgress />
-      <LinuxLabProgress />
-      <ArtifactGallery />
       <FirewallRules />
       <NetworkTopology />
       <Projects />
       <VMInventory />
       <LabOverview />
       <SkillsMatrix />
+      <ArtifactGallery />
       <Certifications />
       <Roadmap />
       <Contact />
+      {/* Linux lab moved to the very bottom for now: the labs are not started yet. */}
+      <LinuxLabProgress />
     </>
   );
 }

@@ -20,8 +20,13 @@ export function Hero() {
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
             {profile.shortName} · {profile.location} · Indianapolis metro
           </p>
-          <h1 className="mt-4 text-3xl md:text-5xl font-semibold tracking-tight text-ink leading-[1.12]">
-            {profile.headline}
+          <h1 className="mt-4 tracking-tight text-ink">
+            <span className="block text-3xl md:text-5xl font-semibold leading-[1.12]">
+              {profile.headlineLead}
+            </span>
+            <span className="mt-3 block text-xl md:text-2xl font-normal leading-snug text-ink-dim">
+              {profile.headlineRest}
+            </span>
           </h1>
           <p className="mt-5 font-mono text-sm accent-line">
             CompTIA A+ Core 1 passed · Core 2 in progress · CCNA next

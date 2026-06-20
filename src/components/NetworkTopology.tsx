@@ -7,8 +7,8 @@ export function NetworkTopology() {
     <Section
       id="network"
       eyebrow="03 / Network"
-      title="One network: AD, Linux, and a live build status"
-      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) and the Linux side (a domain-joined Samba server, a BIND9 resolver, an rsync backup target) share one network, the way a real small shop runs. Each Linux server below lights up green the moment its lab is finished, read live from the Linux lab guide."
+      title="One network: AD and Linux behind a single pfSense"
+      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) runs the live AD domain; the Linux side (ubuntu and rocky) is in place as VMs, with the hardening labs (SSH, Samba, BIND9, rsync) planned and tracked at the bottom of this page."
     >
       <div className="card p-6 overflow-hidden">
         <TopologyGraph />
@@ -18,9 +18,6 @@ export function NetworkTopology() {
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> LAB200 192.168.200.0/24
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-signal-green">
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> green check = lab complete (live)
           </span>
           <a
             href={`${linuxLab.guideBaseUrl}topology/`}
@@ -38,9 +35,9 @@ export function NetworkTopology() {
           <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">DNS path</div>
           <div className="text-sm text-ink-dim leading-relaxed">
             pfSense Unbound listens on both internal interfaces and forwards to Cloudflare{' '}
-            <code className="font-mono text-accent">1.1.1.1</code>. The Linux DNS lab adds a BIND9 resolver on
-            rocky-base that conditionally forwards <code className="font-mono text-accent">corp.lab</code> to
-            DC01, so Linux hosts resolve the domain too.
+            <code className="font-mono text-accent">1.1.1.1</code>. The planned Linux DNS lab will add a BIND9 resolver on
+            rocky-base to conditionally forward <code className="font-mono text-accent">corp.lab</code> to
+            DC01.
           </div>
         </div>
         <div className="card p-5">
