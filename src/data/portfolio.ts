@@ -4,6 +4,57 @@ export const adLab = {
   statusUrl: 'https://chweaver.github.io/ad-lab-guide/lab-status.json',
 } as const;
 
+// The Linux lab guide reports status exactly like the AD lab guide: a small script
+// parses the per-phase `**Status:**` lines and publishes lab-status.json with the
+// site. The portfolio fetches it live on load (useLabStatus), so finishing a lab
+// and pushing the guide updates this page on the next visit, with no sync step.
+export const linuxLab = {
+  guideRepo: 'linux-lab-guide',
+  guideBaseUrl: 'https://chweaver.github.io/linux-lab-guide/',
+  statusUrl: 'https://chweaver.github.io/linux-lab-guide/lab-status.json',
+} as const;
+
+// Topology model for the live network graph (NetworkTopology / TopologyGraph).
+// Single source for the values still to confirm (marked VERIFY): the IoT segment,
+// and the AD addresses (DC01/WS01), which come from the separate ad-lab-guide.
+// `labs` lists the linux-lab-guide lab ids that build or harden a node; a node
+// whose labs are all complete gets the "done" treatment, read live from
+// linuxLab.statusUrl. Nodes with no labs are established infrastructure.
+export type TopoNodeType = 'firewall' | 'server' | 'workstation' | 'iot';
+
+export interface TopoSubnet {
+  id: string;
+  label: string;
+  color: string;
+}
+
+export interface TopoNode {
+  id: string;
+  type: TopoNodeType;
+  label: string;
+  ip: string;
+  subnet: string;
+  role?: string;
+  labs?: string[];
+  established?: boolean;
+  verify?: boolean;
+}
+
+export const topologySubnets: TopoSubnet[] = [
+  { id: 'lan', label: 'LAN · 192.168.100.0/24', color: '#22d3ee' },
+  { id: 'lab200', label: 'LAB200 · 192.168.200.0/24', color: '#10b981' },
+  { id: 'iot', label: 'IoT VLAN · 192.168.30.0/24 (VERIFY)', color: '#f59e0b' },
+];
+
+export const topologyNodes: TopoNode[] = [
+  { id: 'pfsense', type: 'firewall', label: 'pfSense CE 2.7.x', ip: '192.168.100.1 / .200.1', subnet: 'lan', role: 'Router + firewall + DHCP', established: true },
+  { id: 'dc01', type: 'server', label: 'DC01 (corp.lab)', ip: '192.168.100.5', subnet: 'lan', role: 'AD DS / DNS', established: true },
+  { id: 'ws01', type: 'workstation', label: 'WS01 (Win 11)', ip: '192.168.100.20', subnet: 'lan', role: 'Domain client', established: true },
+  { id: 'ubuntu', type: 'server', label: 'ubuntu-base', ip: '192.168.100.10', subnet: 'lan', role: 'Samba file server', labs: ['ssh', 'samba'] },
+  { id: 'rocky', type: 'server', label: 'rocky-base', ip: '192.168.200.12', subnet: 'lab200', role: 'BIND9 + rsync target', labs: ['bind9', 'rsync'] },
+  { id: 'iot-1', type: 'iot', label: 'IoT device (VERIFY)', ip: '192.168.30.x (VERIFY)', subnet: 'iot', role: 'Untrusted segment', verify: true },
+];
+
 export const profile = {
   name: 'Charles "Charlie" Weaver',
   shortName: 'Charlie Weaver',

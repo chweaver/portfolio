@@ -1,16 +1,39 @@
 import { Section } from './Section';
-import { ipTable } from '@/data/portfolio';
+import { TopologyGraph } from './TopologyGraph';
+import { ipTable, linuxLab } from '@/data/portfolio';
 
 export function NetworkTopology() {
   return (
     <Section
       id="network"
       eyebrow="03 / Network"
-      title="Two routed subnets, enforced separation"
-      contextCard="The same skill behind guest-versus-corp and dev-versus-prod segmentation at a client site. pfSense is the single router and DHCP authority; lab VMs sit on static IPs below the scope so rules and SSH targets stay predictable."
+      title="One network: AD, Linux, and a live build status"
+      contextCard="Two routed subnets plus an IoT segment behind a single pfSense. The Windows side (DC01, WS01) and the Linux side (a domain-joined Samba server, a BIND9 resolver, an rsync backup target) share one network, the way a real small shop runs. Each Linux server below lights up green the moment its lab is finished, read live from the Linux lab guide."
     >
       <div className="card p-6 overflow-hidden">
-        <TopologySVG />
+        <TopologyGraph />
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] text-ink-dim">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#22d3ee' }} /> LAN 192.168.100.0/24
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> LAB200 192.168.200.0/24
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#f59e0b' }} /> IoT VLAN 192.168.30.0/24
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-signal-green">
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> green check = lab complete (live)
+          </span>
+          <a
+            href={`${linuxLab.guideBaseUrl}topology/`}
+            target="_blank"
+            rel="noreferrer"
+            className="text-accent underline-offset-2 hover:underline"
+          >
+            open the guide topology &rarr;
+          </a>
+        </div>
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -18,8 +41,9 @@ export function NetworkTopology() {
           <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">DNS path</div>
           <div className="text-sm text-ink-dim leading-relaxed">
             pfSense Unbound listens on both internal interfaces and forwards to Cloudflare{' '}
-            <code className="font-mono text-accent">1.1.1.1</code>. Each VM resolves through its default
-            gateway.
+            <code className="font-mono text-accent">1.1.1.1</code>. The Linux DNS lab adds a BIND9 resolver on
+            rocky-base that conditionally forwards <code className="font-mono text-accent">corp.lab</code> to
+            DC01, so Linux hosts resolve the domain too.
           </div>
         </div>
         <div className="card p-5">
@@ -67,127 +91,5 @@ export function NetworkTopology() {
         </div>
       </details>
     </Section>
-  );
-}
-
-function TopologySVG() {
-  return (
-    <svg
-      viewBox="0 0 880 460"
-      className="w-full h-auto"
-      role="img"
-      aria-label="Network topology: internet to home router to VMware NAT to pfSense routing two subnets to three Linux VMs"
-    >
-      <defs>
-        <linearGradient id="lan" x1="0" x2="1">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.1" />
-        </linearGradient>
-        <linearGradient id="lab" x1="0" x2="1">
-          <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#10b981" stopOpacity="0.1" />
-        </linearGradient>
-        <marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M0,-5 L10,0 L0,5" fill="#475569" />
-        </marker>
-      </defs>
-
-      {/* Internet */}
-      <g>
-        <circle cx="440" cy="40" r="22" fill="#0f141b" stroke="#1f2937" />
-        <text x="440" y="44" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
-          internet
-        </text>
-      </g>
-
-      {/* Home router */}
-      <g>
-        <rect x="380" y="90" width="120" height="36" rx="6" fill="#0f141b" stroke="#1f2937" />
-        <text x="440" y="113" textAnchor="middle" fill="#9ca3af" fontSize="11" fontFamily="ui-monospace">
-          home router
-        </text>
-      </g>
-
-      {/* VMware NAT */}
-      <g>
-        <rect x="370" y="148" width="140" height="36" rx="6" fill="#0f141b" stroke="#1f2937" />
-        <text x="440" y="171" textAnchor="middle" fill="#9ca3af" fontSize="11" fontFamily="ui-monospace">
-          VMnet8 (NAT)
-        </text>
-      </g>
-
-      {/* pfSense */}
-      <g>
-        <rect x="340" y="208" width="200" height="64" rx="8" fill="#0f141b" stroke="#22d3ee" strokeWidth="1.5" />
-        <text x="440" y="230" textAnchor="middle" fill="#22d3ee" fontSize="12" fontFamily="ui-monospace" fontWeight="600">
-          pfSense CE 2.7.x
-        </text>
-        <text x="440" y="248" textAnchor="middle" fill="#9ca3af" fontSize="10" fontFamily="ui-monospace">
-          LAN  192.168.100.1/24
-        </text>
-        <text x="440" y="262" textAnchor="middle" fill="#9ca3af" fontSize="10" fontFamily="ui-monospace">
-          LAB200  192.168.200.1/24
-        </text>
-      </g>
-
-      {/* LAN cloud (ubuntu-base + debian-base) */}
-      <g>
-        <rect x="80" y="300" width="280" height="120" rx="12" fill="url(#lan)" stroke="#22d3ee" strokeOpacity="0.3" />
-        <text x="100" y="324" fill="#22d3ee" fontSize="10" fontFamily="ui-monospace" letterSpacing="1">
-          LAN · VMnet2 · 192.168.100.0/24
-        </text>
-        <g transform="translate(100, 340)">
-          <rect width="118" height="60" rx="6" fill="#141b24" stroke="#1f2937" />
-          <text x="59" y="22" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
-            ubuntu-base
-          </text>
-          <text x="59" y="40" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace">
-            .100.10
-          </text>
-          <text x="59" y="54" textAnchor="middle" fill="#6b7280" fontSize="9" fontFamily="ui-monospace">
-            SSH target
-          </text>
-        </g>
-        <g transform="translate(230, 340)">
-          <rect width="118" height="60" rx="6" fill="#141b24" stroke="#1f2937" />
-          <text x="59" y="22" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
-            debian-base
-          </text>
-          <text x="59" y="40" textAnchor="middle" fill="#22d3ee" fontSize="11" fontFamily="ui-monospace">
-            .100.11
-          </text>
-          <text x="59" y="54" textAnchor="middle" fill="#6b7280" fontSize="9" fontFamily="ui-monospace">
-            second host
-          </text>
-        </g>
-      </g>
-
-      {/* LAB cloud (rocky-base) */}
-      <g>
-        <rect x="520" y="300" width="280" height="120" rx="12" fill="url(#lab)" stroke="#10b981" strokeOpacity="0.3" />
-        <text x="540" y="324" fill="#10b981" fontSize="10" fontFamily="ui-monospace" letterSpacing="1">
-          LAB200 · VMnet3 · 192.168.200.0/24
-        </text>
-        <g transform="translate(600, 340)">
-          <rect width="160" height="60" rx="6" fill="#141b24" stroke="#1f2937" />
-          <text x="80" y="22" textAnchor="middle" fill="#e5e7eb" fontSize="11" fontFamily="ui-monospace">
-            rocky-base
-          </text>
-          <text x="80" y="40" textAnchor="middle" fill="#10b981" fontSize="11" fontFamily="ui-monospace">
-            192.168.200.12
-          </text>
-          <text x="80" y="54" textAnchor="middle" fill="#6b7280" fontSize="9" fontFamily="ui-monospace">
-            test client
-          </text>
-        </g>
-      </g>
-
-      {/* Connection lines */}
-      <line x1="440" y1="62" x2="440" y2="90" stroke="#475569" markerEnd="url(#arrow)" />
-      <line x1="440" y1="126" x2="440" y2="148" stroke="#475569" markerEnd="url(#arrow)" />
-      <line x1="440" y1="184" x2="440" y2="208" stroke="#475569" markerEnd="url(#arrow)" />
-      <line x1="380" y1="272" x2="220" y2="300" stroke="#22d3ee" strokeOpacity="0.5" />
-      <line x1="500" y1="272" x2="660" y2="300" stroke="#10b981" strokeOpacity="0.5" />
-    </svg>
   );
 }
