@@ -18,7 +18,9 @@ export const linuxLab = {
 // The AD addresses (DC01/WS01) come from the separate ad-lab-guide.
 // `labs` lists the linux-lab-guide lab ids that build or harden a node; a node
 // whose labs are all complete gets the "done" treatment, read live from
-// linuxLab.statusUrl. Nodes with no labs are established infrastructure.
+// linuxLab.statusUrl. Nodes with no labs render neutral: established AD
+// infrastructure, or Linux hosts whose hardening labs have not started yet
+// (restore the labs arrays and service roles when those labs begin).
 export type TopoNodeType = 'firewall' | 'server' | 'workstation';
 
 export interface TopoSubnet {
@@ -47,8 +49,8 @@ export const topologyNodes: TopoNode[] = [
   { id: 'pfsense', type: 'firewall', label: 'pfSense CE 2.7.x', ip: '192.168.100.1 / .200.1', subnet: 'lan', role: 'Router + firewall + DHCP', established: true },
   { id: 'dc01', type: 'server', label: 'DC01 (corp.lab)', ip: '192.168.100.5', subnet: 'lan', role: 'AD DS / DNS', established: true },
   { id: 'ws01', type: 'workstation', label: 'WS01 (Win 11)', ip: '192.168.100.20', subnet: 'lan', role: 'Domain client', established: true },
-  { id: 'ubuntu', type: 'server', label: 'ubuntu-base', ip: '192.168.100.10', subnet: 'lan', role: 'Samba file server', labs: ['ssh', 'samba'] },
-  { id: 'rocky', type: 'server', label: 'rocky-base', ip: '192.168.200.12', subnet: 'lab200', role: 'BIND9 + rsync target', labs: ['bind9', 'rsync'] },
+  { id: 'ubuntu', type: 'server', label: 'ubuntu-base', ip: '192.168.100.10', subnet: 'lan', role: 'Ubuntu Server (LAN)' },
+  { id: 'rocky', type: 'server', label: 'rocky-base', ip: '192.168.200.12', subnet: 'lab200', role: 'Rocky Linux (LAB200)' },
 ];
 
 export const profile = {
@@ -60,7 +62,11 @@ export const profile = {
   github: 'https://github.com/chweaver',
   age: 20,
   tagline: 'Entry-level IT technician for tier-1 MSP, help desk, and NOC roles in the Indianapolis metro, with hands-on Active Directory, pfSense, and Linux lab experience.',
+  // Full headline kept as the canonical string (SEO/meta). The hero renders it in
+  // two tiers for scannability: headlineLead large, headlineRest smaller.
   headline: 'Entry-level IT technician ready for tier-1 MSP work, with hands-on Active Directory, pfSense, Linux, and documentation experience.',
+  headlineLead: 'Entry-level IT technician ready for tier-1 MSP work',
+  headlineRest: 'with hands-on Active Directory, pfSense, Linux, and documentation experience.',
   labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
 
@@ -93,7 +99,7 @@ export const heroGlance = [
 // reads in a couple of seconds: result first, then problem / built / result and
 // the stack. The detailed sections below (Firewall, Network, the live AD and
 // Linux feeds) remain the underlying proof. Status is honest: done vs in-progress.
-export type ProjectStatus = 'done' | 'in-progress';
+export type ProjectStatus = 'done' | 'in-progress' | 'planned';
 
 export interface Project {
   title: string;
@@ -129,11 +135,11 @@ export const projects: Project[] = [
   },
   {
     title: 'Linux lab build (4 labs)',
-    outcome: 'SSH hardening → Samba/AD → BIND9 → rsync',
-    status: 'in-progress',
+    outcome: 'Planned: SSH hardening → Samba/AD → BIND9 → rsync',
+    status: 'planned',
     problem: 'Bridge Linux into the Windows domain the way a real mixed network runs.',
-    built: 'A dependency-chained four-lab build across Ubuntu and Rocky: hardened SSH keys feed rsync backups, while Samba and BIND9 both bridge into corp.lab.',
-    result: 'Labs 1-2 complete and documented, BIND9 in progress, all published with per-phase status.',
+    built: '',
+    result: 'Not started yet. Scoped as four dependency-chained labs across Ubuntu and Rocky: hardened SSH feeding rsync backups, with Samba and BIND9 bridging into corp.lab. Tracked live at the bottom of this page once it begins.',
     stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync'],
     repo: 'https://github.com/chweaver/linux-lab-guide',
   },

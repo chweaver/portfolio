@@ -3,15 +3,17 @@
 import { useEffect, useState } from 'react';
 import { profile } from '@/data/portfolio';
 
+// Curated jump list, ordered to match the page flow. Linux Lab is last because
+// that section now sits at the very bottom (labs not started yet).
 const NAV_LINKS = [
   { href: '#readiness', label: 'Readiness' },
   { href: '#ad-lab', label: 'AD Lab' },
-  { href: '#linux-lab', label: 'Linux Lab' },
-  { href: '#artifacts', label: 'Evidence' },
   { href: '#firewall', label: 'Firewall' },
   { href: '#skills', label: 'Skills' },
+  { href: '#artifacts', label: 'Evidence' },
   { href: '#certs', label: 'Certs' },
   { href: '#plan', label: 'Plan' },
+  { href: '#linux-lab', label: 'Linux Lab' },
 ];
 
 export function Navigation() {

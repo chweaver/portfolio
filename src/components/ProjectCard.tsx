@@ -8,9 +8,11 @@ import { type Project } from '@/data/portfolio';
 const STATUS_STYLE: Record<Project['status'], { className: string; label: string }> = {
   done: { className: 'pill-green', label: 'done' },
   'in-progress': { className: 'pill-accent', label: 'in progress' },
+  planned: { className: 'pill-amber', label: 'planned' },
 };
 
 function Field({ label, body }: { label: string; body: string }) {
+  if (!body) return null;
   return (
     <div>
       <div className="mb-1 font-mono text-[11px] uppercase tracking-[0.1em] text-ink-faint">{label}</div>
