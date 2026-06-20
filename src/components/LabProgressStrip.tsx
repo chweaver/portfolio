@@ -20,6 +20,9 @@ export function LabProgressStrip() {
   const loading = !data;
   const buildOutDone = data?.summary.buildOutDone ?? 0;
   const buildOutTotal = data?.summary.buildOutTotal ?? 0;
+  // Empty: the feed loaded but reports no build-out phases. Show a neutral line
+  // instead of a 0 / 0 bar. (Outright fetch failure still hides the strip above.)
+  const empty = !!data && buildOutTotal === 0;
   const pct = !data || buildOutTotal === 0 ? 0 : Math.round((buildOutDone / buildOutTotal) * 100);
 
   return (
@@ -29,7 +32,9 @@ export function LabProgressStrip() {
         aria-label={
           loading
             ? 'Active Directory lab build-out progress, loading'
-            : `Active Directory lab build-out: ${buildOutDone} of ${buildOutTotal} phases, ${pct} percent. Jump to live status.`
+            : empty
+              ? 'Active Directory lab status unavailable. Jump to live status.'
+              : `Active Directory lab build-out: ${buildOutDone} of ${buildOutTotal} phases, ${pct} percent. Jump to live status.`
         }
         className="group container-narrow flex items-center gap-3 py-2 transition-colors"
       >
@@ -38,10 +43,12 @@ export function LabProgressStrip() {
         <div
           className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-bg-elevated"
           role="progressbar"
-          aria-valuenow={loading ? undefined : pct}
+          aria-valuenow={loading || empty ? undefined : pct}
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-valuetext={loading ? 'Loading' : `${pct} percent, ${buildOutDone} of ${buildOutTotal} build-out phases`}
+          aria-valuetext={
+            loading ? 'Loading' : empty ? 'Unavailable' : `${pct} percent, ${buildOutDone} of ${buildOutTotal} build-out phases`
+          }
         >
           <div
             className="h-full rounded-full bg-accent transition-all duration-500"
@@ -52,6 +59,8 @@ export function LabProgressStrip() {
         <span className="shrink-0 font-mono text-xs tabular-nums">
           {loading ? (
             <span className="text-ink-faint">loading...</span>
+          ) : empty ? (
+            <span className="text-ink-faint">status unavailable</span>
           ) : (
             <>
               <span className="text-accent">{buildOutDone}</span>

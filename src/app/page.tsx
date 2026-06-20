@@ -5,6 +5,7 @@ import { LinuxLabProgress } from '@/components/LinuxLabProgress';
 import { ArtifactGallery } from '@/components/ArtifactGallery';
 import { FirewallRules } from '@/components/FirewallRules';
 import { NetworkTopology } from '@/components/NetworkTopology';
+import { Projects } from '@/components/Projects';
 import { VMInventory } from '@/components/VMInventory';
 import { LabOverview } from '@/components/LabOverview';
 import { SkillsMatrix } from '@/components/SkillsMatrix';
@@ -22,6 +23,7 @@ export default function Home() {
       <ArtifactGallery />
       <FirewallRules />
       <NetworkTopology />
+      <Projects />
       <VMInventory />
       <LabOverview />
       <SkillsMatrix />

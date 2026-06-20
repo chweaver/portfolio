@@ -1,4 +1,4 @@
-import { profile, summary } from '@/data/portfolio';
+import { profile, summary, heroGlance } from '@/data/portfolio';
 import { publicAsset } from '@/lib/paths';
 import { HeroLabStat } from './HeroLabStat';
 
@@ -31,6 +31,20 @@ export function Hero() {
             Indianapolis metro. The lab on this page is the proof: a live Active Directory domain, a
             segmented pfSense network, and multi-distro Linux, all documented and verified.
           </p>
+
+          {/* At-a-glance strip: the 5-second recruiter scan. Hairline-separated
+              cells via a 1px gap over a border-colored background. */}
+          <div className="mt-8 grid max-w-[880px] grid-cols-2 gap-px overflow-hidden rounded-xl border border-bg-border bg-bg-border md:grid-cols-4">
+            {heroGlance.map((g) => (
+              <div key={g.k} className="bg-bg-card px-4 py-3">
+                <div className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-ink-faint">
+                  {g.k}
+                </div>
+                <div className="mt-1 text-sm leading-snug text-ink">{g.v}</div>
+              </div>
+            ))}
+          </div>
+
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a href={publicAsset('/Charlie-Weaver-Resume.pdf')} download className="btn-primary">
               Download resume ↓

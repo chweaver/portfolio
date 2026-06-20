@@ -5,7 +5,7 @@ export function VMInventory() {
   return (
     <Section
       id="vms"
-      eyebrow="04 / VMs"
+      eyebrow="05 / VMs"
       title="What each VM proves"
       contextCard="Three Linux distros on purpose, because client shops run mixed Linux: Ubuntu uses netplan, Debian uses ifupdown, Rocky uses NetworkManager. Three network-config models, all configured by hand."
     >

@@ -9,7 +9,7 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      eyebrow="09 / Contact"
+      eyebrow="10 / Contact"
       title="Let's talk"
       subtitle="Available for tier-1 help desk, service desk, NOC, technical alignment, and junior sysadmin roles in the Indianapolis area. On-site, hybrid, or remote with an on-site option."
     >

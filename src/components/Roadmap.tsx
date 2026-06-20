@@ -10,7 +10,7 @@ export function Roadmap() {
   return (
     <Section
       id="plan"
-      eyebrow="08 / Plan"
+      eyebrow="09 / Plan"
       title="The near-term plan"
       contextCard={planClose}
     >

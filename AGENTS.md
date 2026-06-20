@@ -175,9 +175,18 @@ dark-theme only (`color-scheme: dark`, `darkMode: 'class'`).
 
 ## 6. Sections and components
 
-`src/app/page.tsx` renders the sections in this order. Numbered eyebrows run 01 to 09
+`src/app/page.tsx` renders the sections in this order. Numbered eyebrows run 01 to 10
 with no gap. `ArtifactGallery` ("Evidence") and `ADLabProgress` ("Live · AD Lab") are
 landmark sections without numbers.
+
+Note (redesign pass, supersedes the per-item numbers in the list below): an
+outcome-first `Projects` section (`04 / Projects`, `src/components/Projects.tsx` +
+`ProjectCard.tsx`, content in the `projects` export) now sits immediately after
+`NetworkTopology`. It is the scannable result-first index; the detailed sections stay
+the underlying proof. The numbered eyebrows after Network each shifted up by one (VMs
+05, Lab 06, Skills 07, Certs 08, Plan 09, Contact 10). The hero gained an at-a-glance
+scan strip (the `heroGlance` export), and the IoT VLAN placeholder was removed from the
+topology data and graph (LAN and LAB200 only).
 
 1. `Hero` (profile, summary; renders `HeroLabStat`): PROOF-LED. The H1 is
    `profile.headline` (the positioning), the name is a small mono eyebrow. A stat
