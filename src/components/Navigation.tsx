@@ -6,6 +6,7 @@ import { profile } from '@/data/portfolio';
 const NAV_LINKS = [
   { href: '#readiness', label: 'Readiness' },
   { href: '#ad-lab', label: 'AD Lab' },
+  { href: '#linux-lab', label: 'Linux Lab' },
   { href: '#artifacts', label: 'Evidence' },
   { href: '#firewall', label: 'Firewall' },
   { href: '#skills', label: 'Skills' },

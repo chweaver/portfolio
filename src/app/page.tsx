@@ -1,6 +1,7 @@
 import { Hero } from '@/components/Hero';
 import { ReadyForWork } from '@/components/ReadyForWork';
 import { ADLabProgress } from '@/components/ADLabProgress';
+import { LinuxLabProgress } from '@/components/LinuxLabProgress';
 import { ArtifactGallery } from '@/components/ArtifactGallery';
 import { FirewallRules } from '@/components/FirewallRules';
 import { NetworkTopology } from '@/components/NetworkTopology';
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <ReadyForWork />
       <ADLabProgress />
+      <LinuxLabProgress />
       <ArtifactGallery />
       <FirewallRules />
       <NetworkTopology />
