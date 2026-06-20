@@ -15,12 +15,11 @@ export const linuxLab = {
 } as const;
 
 // Topology model for the live network graph (NetworkTopology / TopologyGraph).
-// Single source for the values still to confirm (marked VERIFY): the IoT segment,
-// and the AD addresses (DC01/WS01), which come from the separate ad-lab-guide.
+// The AD addresses (DC01/WS01) come from the separate ad-lab-guide.
 // `labs` lists the linux-lab-guide lab ids that build or harden a node; a node
 // whose labs are all complete gets the "done" treatment, read live from
 // linuxLab.statusUrl. Nodes with no labs are established infrastructure.
-export type TopoNodeType = 'firewall' | 'server' | 'workstation' | 'iot';
+export type TopoNodeType = 'firewall' | 'server' | 'workstation';
 
 export interface TopoSubnet {
   id: string;
@@ -37,13 +36,11 @@ export interface TopoNode {
   role?: string;
   labs?: string[];
   established?: boolean;
-  verify?: boolean;
 }
 
 export const topologySubnets: TopoSubnet[] = [
   { id: 'lan', label: 'LAN · 192.168.100.0/24', color: '#22d3ee' },
   { id: 'lab200', label: 'LAB200 · 192.168.200.0/24', color: '#10b981' },
-  { id: 'iot', label: 'IoT VLAN · 192.168.30.0/24 (VERIFY)', color: '#f59e0b' },
 ];
 
 export const topologyNodes: TopoNode[] = [
@@ -52,7 +49,6 @@ export const topologyNodes: TopoNode[] = [
   { id: 'ws01', type: 'workstation', label: 'WS01 (Win 11)', ip: '192.168.100.20', subnet: 'lan', role: 'Domain client', established: true },
   { id: 'ubuntu', type: 'server', label: 'ubuntu-base', ip: '192.168.100.10', subnet: 'lan', role: 'Samba file server', labs: ['ssh', 'samba'] },
   { id: 'rocky', type: 'server', label: 'rocky-base', ip: '192.168.200.12', subnet: 'lab200', role: 'BIND9 + rsync target', labs: ['bind9', 'rsync'] },
-  { id: 'iot-1', type: 'iot', label: 'IoT device (VERIFY)', ip: '192.168.30.x (VERIFY)', subnet: 'iot', role: 'Untrusted segment', verify: true },
 ];
 
 export const profile = {
@@ -83,6 +79,65 @@ export const summary = {
   honesty:
     'No professional MSP tenure yet. Built items are complete and verified; planned items are labeled separately.',
 };
+
+// At-a-glance hero strip: the 5-second recruiter scan. Values trace to real data
+// (profile.location, the certs list, the lab stack, current availability).
+export const heroGlance = [
+  { k: 'Location', v: 'Carmel, IN · Indy metro' },
+  { k: 'Certs', v: 'A+ Core 1 passed · Core 2 June 2026' },
+  { k: 'Stack', v: 'AD · pfSense · Linux' },
+  { k: 'Status', v: 'Available now' },
+] as const;
+
+// Outcome-first projects grid. This is the scannable index a hiring manager
+// reads in a couple of seconds: result first, then problem / built / result and
+// the stack. The detailed sections below (Firewall, Network, the live AD and
+// Linux feeds) remain the underlying proof. Status is honest: done vs in-progress.
+export type ProjectStatus = 'done' | 'in-progress';
+
+export interface Project {
+  title: string;
+  outcome: string;
+  status: ProjectStatus;
+  problem: string;
+  built: string;
+  result: string;
+  stack: string[];
+  repo: string;
+}
+
+export const projects: Project[] = [
+  {
+    title: 'Active Directory domain',
+    outcome: 'corp.lab live: DC, OUs, AGDLP groups, first GPO',
+    status: 'in-progress',
+    problem: 'Stand up and run the identity layer a small shop depends on, end to end.',
+    built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, and a verified GPO.',
+    result: 'WS01 authenticates against corp.lab and policy applies on login. File shares, scripts, and help-desk drills (phases 9-12) are tracked live above.',
+    stack: ['Windows Server', 'Active Directory', 'GPO', 'DNS'],
+    repo: 'https://github.com/chweaver/ad-lab-guide',
+  },
+  {
+    title: 'Segmented pfSense network',
+    outcome: '3 firewall rules, tested and logged',
+    status: 'done',
+    problem: 'Design, apply, and verify a real client-style firewall policy.',
+    built: 'Two routed /24 subnets behind one pfSense, deny by default with permit by exception, plus DHCP and DNS authority.',
+    result: 'SSH from LAB200 punches through to LAN, ping is dropped, both confirmed in the pfSense filter log.',
+    stack: ['pfSense', 'TCP/IP', 'Firewall', 'VLAN', 'DHCP'],
+    repo: 'https://github.com/chweaver/portfolio',
+  },
+  {
+    title: 'Linux lab build (4 labs)',
+    outcome: 'SSH hardening → Samba/AD → BIND9 → rsync',
+    status: 'in-progress',
+    problem: 'Bridge Linux into the Windows domain the way a real mixed network runs.',
+    built: 'A dependency-chained four-lab build across Ubuntu and Rocky: hardened SSH keys feed rsync backups, while Samba and BIND9 both bridge into corp.lab.',
+    result: 'Labs 1-2 complete and documented, BIND9 in progress, all published with per-phase status.',
+    stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync'],
+    repo: 'https://github.com/chweaver/linux-lab-guide',
+  },
+];
 
 export const readiness = [
   {

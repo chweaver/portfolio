@@ -17,10 +17,11 @@ const pfBottom = chain.pfsense.y + chain.pfsense.h;
 
 const boxTop = 312;
 const boxH = 240;
+// Two subnets now fill the canvas: LAN (DC01, WS01, ubuntu) on the left,
+// LAB200 (rocky) on the right. LAN is wider because it holds more hosts.
 const boxes: Record<string, { x: number; w: number }> = {
-  lan: { x: 24, w: 470 },
-  lab200: { x: 514, w: 196 },
-  iot: { x: 730, w: 186 },
+  lan: { x: 24, w: 560 },
+  lab200: { x: 604, w: 312 },
 };
 
 const CARD_W = 138;
@@ -78,13 +79,6 @@ function Icon({ type, color }: { type: TopoNodeType; color: string }) {
           <path d="M5 11h4M7 9v2" {...common} />
         </g>
       );
-    case 'iot':
-      return (
-        <g>
-          <circle cx={7} cy={9} r={2} fill={color} />
-          <path d="M3 6a6 6 0 0 1 8 0 M5 8a3 3 0 0 1 4 0" fill="none" stroke={color} strokeWidth={1.3} />
-        </g>
-      );
   }
 }
 
@@ -110,7 +104,7 @@ export function TopologyGraph() {
       viewBox={`0 0 ${W} ${H}`}
       className="w-full h-auto"
       role="img"
-      aria-label="Homelab network topology: internet through pfSense to the LAN, LAB200, and IoT subnets, with Linux servers marked complete as their lab finishes"
+      aria-label="Homelab network topology: internet through pfSense to the LAN and LAB200 subnets, with Linux servers marked complete as their lab finishes"
     >
       <defs>
         <marker id="topo-arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="6" markerHeight="6" orient="auto">

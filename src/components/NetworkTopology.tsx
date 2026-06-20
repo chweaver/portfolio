@@ -8,7 +8,7 @@ export function NetworkTopology() {
       id="network"
       eyebrow="03 / Network"
       title="One network: AD, Linux, and a live build status"
-      contextCard="Two routed subnets plus an IoT segment behind a single pfSense. The Windows side (DC01, WS01) and the Linux side (a domain-joined Samba server, a BIND9 resolver, an rsync backup target) share one network, the way a real small shop runs. Each Linux server below lights up green the moment its lab is finished, read live from the Linux lab guide."
+      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) and the Linux side (a domain-joined Samba server, a BIND9 resolver, an rsync backup target) share one network, the way a real small shop runs. Each Linux server below lights up green the moment its lab is finished, read live from the Linux lab guide."
     >
       <div className="card p-6 overflow-hidden">
         <TopologyGraph />
@@ -18,9 +18,6 @@ export function NetworkTopology() {
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> LAB200 192.168.200.0/24
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#f59e0b' }} /> IoT VLAN 192.168.30.0/24
           </span>
           <span className="inline-flex items-center gap-1.5 text-signal-green">
             <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> green check = lab complete (live)

@@ -33,7 +33,7 @@ export function SkillsMatrix() {
   return (
     <Section
       id="skills"
-      eyebrow="06 / Skills"
+      eyebrow="07 / Skills"
       title="What I can work with"
       contextCard="The fast version is three columns. The full cert mapping (every lab element traced to A+, Network+, and CCNA objectives) is one click below for anyone who wants it."
     >

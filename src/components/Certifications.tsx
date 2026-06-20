@@ -20,7 +20,7 @@ export function Certifications() {
   return (
     <Section
       id="certs"
-      eyebrow="07 / Certifications"
+      eyebrow="08 / Certifications"
       title="A+ in progress, foundation next"
       subtitle="The full cert roadmap behind an MSP-ownership track, no padding: A+ Core 1 passed and Core 2 in progress, then a networking, cloud, and security foundation, then breadth over single-domain depth."
     >

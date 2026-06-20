@@ -5,7 +5,7 @@ export function LabOverview() {
   return (
     <Section
       id="lab"
-      eyebrow="05 / Lab environment"
+      eyebrow="06 / Lab environment"
       title="A safe place to practice MSP tasks"
       contextCard={labEnvironment.purpose}
     >
