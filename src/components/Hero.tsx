@@ -9,8 +9,11 @@ const STATS = [
 ];
 
 export function Hero() {
+  // scroll-mt-40 is larger than the sticky nav + lab strip stack, so a /#top load
+  // (and the nav logo link) clamps to scroll 0 instead of landing slightly scrolled
+  // down with the sticky bars overlapping the hero.
   return (
-    <section id="top" className="relative overflow-hidden pt-16 pb-14 md:pt-24 md:pb-20">
+    <section id="top" className="scroll-mt-40 relative overflow-hidden pt-16 pb-14 md:pt-24 md:pb-20">
       <div
         className="pointer-events-none absolute inset-x-0 -top-16 h-72 bg-[radial-gradient(closest-side,rgba(34,211,238,0.18),transparent_70%)] blur-3xl"
         aria-hidden
