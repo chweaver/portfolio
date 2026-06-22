@@ -64,7 +64,6 @@ src/
 │   ├── Roadmap.tsx         # Vertical phase timeline
 │   ├── Certifications.tsx
 │   ├── Career.tsx
-│   ├── Supplementary.tsx   # Trading bot + bash app
 │   ├── Contact.tsx
 │   └── Footer.tsx
 └── data/

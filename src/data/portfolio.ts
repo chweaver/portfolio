@@ -17,10 +17,12 @@ export const linuxLab = {
 // Topology model for the live network graph (NetworkTopology / TopologyGraph).
 // The AD addresses (DC01/WS01) come from the separate ad-lab-guide.
 // `labs` lists the linux-lab-guide lab ids that build or harden a node; a node
-// whose labs are all complete gets the "done" treatment, read live from
-// linuxLab.statusUrl. Nodes with no labs render neutral: established AD
-// infrastructure, or Linux hosts whose hardening labs have not started yet
-// (restore the labs arrays and service roles when those labs begin).
+// whose labs are all complete gets the "done" treatment (otherwise "in progress"
+// or "pending"), read live from linuxLab.statusUrl, so the graph updates on the
+// next visit when the guide is pushed. Nodes with no labs are established
+// infrastructure. The Linux roles stay generic (Ubuntu Server, Rocky Linux) until
+// the guide reports a lab, so a node never claims a service (Samba, BIND9, rsync)
+// the lab has not stood up yet, while still tracking the live status.
 export type TopoNodeType = 'firewall' | 'server' | 'workstation';
 
 export interface TopoSubnet {
@@ -49,8 +51,8 @@ export const topologyNodes: TopoNode[] = [
   { id: 'pfsense', type: 'firewall', label: 'pfSense CE 2.7.x', ip: '192.168.100.1 / .200.1', subnet: 'lan', role: 'Router + firewall + DHCP', established: true },
   { id: 'dc01', type: 'server', label: 'DC01 (corp.lab)', ip: '192.168.100.5', subnet: 'lan', role: 'AD DS / DNS', established: true },
   { id: 'ws01', type: 'workstation', label: 'WS01 (Win 11)', ip: '192.168.100.20', subnet: 'lan', role: 'Domain client', established: true },
-  { id: 'ubuntu', type: 'server', label: 'ubuntu-base', ip: '192.168.100.10', subnet: 'lan', role: 'Ubuntu Server (LAN)' },
-  { id: 'rocky', type: 'server', label: 'rocky-base', ip: '192.168.200.12', subnet: 'lab200', role: 'Rocky Linux (LAB200)' },
+  { id: 'ubuntu', type: 'server', label: 'ubuntu-base', ip: '192.168.100.10', subnet: 'lan', role: 'Ubuntu Server (LAN)', labs: ['ssh', 'samba'] },
+  { id: 'rocky', type: 'server', label: 'rocky-base', ip: '192.168.200.12', subnet: 'lab200', role: 'Rocky Linux (LAB200)', labs: ['bind9', 'rsync'] },
 ];
 
 export const profile = {
@@ -395,14 +397,6 @@ export const skillsMatrix: SkillRow[] = [
     category: 'ops',
   },
   {
-    element: 'OpenSSH server hardening (pw -> key -> port -> fail2ban)',
-    aplus: '1202 2.7, 4.9',
-    netplus: '4.1, 4.3',
-    ccna: '4.8, 5.3',
-    msp: 'Remote server access, jump hosts, MFA for admin sessions: how you reach client firewalls and routers without exposing credentials',
-    category: 'security',
-  },
-  {
     element: 'Snapshot strategy (pre-change, named, rolled back)',
     aplus: '1202 4.2, 4.3',
     netplus: '3.2, 3.3',
@@ -449,7 +443,7 @@ export const certCoverage: { exam: string; band: string; level: CoverageLevel; n
     exam: 'A+ 220-1202 (Core 2)',
     band: 'Light-to-moderate',
     level: 'light-to-moderate',
-    notes: 'Linux features, backup, and remote access are direct. Most Windows-side OS, mobile, and macOS objectives are not.',
+    notes: 'Linux install and config are direct. Remote-access hardening, backup, and most Windows-side OS, mobile, and macOS objectives are not in the lab yet.',
   },
   {
     exam: 'Network+ N10-009',
