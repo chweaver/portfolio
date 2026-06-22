@@ -1,54 +1,59 @@
 # AGENTS.md, Charlie Weaver Portfolio
 
-Operating guide for any AI or developer working on this site. Read this first. It
-covers the purpose, the stack, the full structure, the design system, how content
-flows, how to build and deploy, and the rules and methodology to follow when
-updating or polishing the site.
+Single source of truth for any AI agent or developer working in this repo. Read this
+first, then verify against the files it names. Everything here was audited against the
+real codebase, not assumed.
 
-Style note for everything you write here (copy, comments, commit messages): direct
-and concise, and no em dashes. Use commas, periods, colons, or parentheses.
-
----
-
-## 1. What this site is
-
-A personal career portfolio for Charles "Charlie" Weaver, aimed at landing an
-entry-level role at a networking-focused MSP (managed service provider): tier-1
-service desk, help desk, technical alignment, NOC, or junior sysadmin.
-
-The audience is a busy MSP hiring manager or technical recruiter who decides in
-about 20 seconds whether to interview. The site exists to prove, with evidence, that
-Charlie already works like a methodical junior tech: he builds, documents, verifies,
-and is honest about scope.
-
-Positioning thesis (everything on the page should serve it): the rare entry-level
-hire who already operates like a tech with a year on the job, proven by a live,
-routed, firewalled home lab and a live Active Directory domain documented to runbook
-standard, with CompTIA A+ Core 1 passed. The v3 rework leads with that proof rather
-than the name.
-
-Live URL: https://chweaver.github.io/portfolio/
-Repo: https://github.com/chweaver/portfolio (public)
+Writing rule for everything you add to this repo (copy, comments, commit messages, and
+this file): direct, concise, and no em dashes. Use commas, periods, colons,
+parentheses, or middots.
 
 ---
 
-## 2. Stack and tooling
+## 1. Project overview
 
-- Next.js 16 (App Router), statically exported (`output: 'export'`). There is no
-  server at runtime: the whole site is prerendered to static HTML in `out/`.
-- React 18, TypeScript (strict), Tailwind CSS 3.
-- Fonts: Inter (sans) and JetBrains Mono (mono) via `next/font/google`.
-- No state library, no UI kit, no animation library. Plain React + Tailwind. Do not
-  add heavy dependencies without a clear, stated reason.
-- Hosting: GitHub Pages, deployed by GitHub Actions on every push to `main`.
-- Image/asset scripts (use `sharp`, a dev dependency):
-  - `scripts/convert-screenshots.mjs` produces `.webp` copies of the lab screenshots
-    in `public/logs/`.
-  - `scripts/build-og-card.mjs` renders the Open Graph share card to
-    `public/og-card.png` from an inline SVG (1200x630). Rerun after editing its copy.
+A statically exported personal career portfolio for Charles "Charlie" Weaver, aimed at
+landing an entry-level role at a networking-focused MSP (managed service provider):
+tier-1 service desk, help desk, NOC, or junior sysadmin.
 
-npm scripts (`package.json`): `dev` (next dev), `build` (next build, the static
-export), `start`, `lint`.
+The audience is a busy MSP hiring manager or technical recruiter who decides in roughly
+20 seconds. The site proves, with evidence, that Charlie already works like a methodical
+junior tech: he builds, documents, verifies, and is honest about scope. The signature
+proof is a live, routed, firewalled home lab and a live Active Directory domain, with
+CompTIA A+ Core 1 passed.
+
+- Live URL: https://chweaver.github.io/portfolio/
+- Repo: https://github.com/chweaver/portfolio (public)
+- Default branch: `main`
+
+A distinguishing feature: two sibling "lab guide" repos publish a machine-readable
+`lab-status.json`, and this site fetches it live so lab progress updates without
+redeploying the portfolio. See section 6.
+
+---
+
+## 2. Tech stack
+
+Versions are exact, from `package.json` (not guessed).
+
+| Layer | Choice | Version |
+|---|---|---|
+| Framework | Next.js (App Router) | `^16.2.6` |
+| Build engine | Turbopack (Next 16 default) | bundled |
+| UI | React + React DOM | `18.3.1` (pinned) |
+| Language | TypeScript (strict) | `^5.6.3` |
+| Styling | Tailwind CSS 3 | `^3.4.15` |
+| PostCSS / autoprefixer | | `^8.4.49` / `^10.4.20` |
+| Image tooling | sharp (dev only, for scripts) | `^0.34.5` |
+| Types | @types/node, @types/react, @types/react-dom | `^20.17.6`, `^18.3.12`, `^18.3.1` |
+| Fonts | Inter + JetBrains Mono via `next/font/google` | n/a |
+
+- Build target: **static export** (`output: 'export'`), prerendered HTML in `out/`. No
+  server runtime.
+- Package manager: **npm** (lockfile is `package-lock.json`). Do not introduce pnpm or
+  yarn.
+- No state library, no UI kit, no animation library, no test framework. Plain React +
+  Tailwind. Do not add heavy dependencies without a clear, stated reason.
 
 ---
 
@@ -56,387 +61,470 @@ export), `start`, `lint`.
 
 ```
 .
-|- AGENTS.md                      this guide
-|- .github/workflows/deploy.yml   GitHub Actions: build + deploy to Pages on push to main
+|- AGENTS.md                      this guide (canonical; supersedes README.md on conflict)
+|- README.md                      short human-facing readme (PARTLY STALE, see section 14)
 |- next.config.mjs                output:'export', trailingSlash, images.unoptimized,
-|                                 basePath/assetPrefix from GITHUB_PAGES_REPO, sets
-|                                 NEXT_PUBLIC_BASE_PATH
-|- tailwind.config.ts             theme tokens (colors, fonts, shadows, animations)
-|- tsconfig.json                  @/* path alias -> ./src/*
-|- postcss.config.mjs, next-env.d.ts, package.json, package-lock.json
-|- README.md
+|                                 basePath/assetPrefix from GITHUB_PAGES_REPO, turbopack.root
+|- tsconfig.json                  strict TS, @/* -> ./src/* path alias
+|- tailwind.config.ts             design tokens (colors, fonts, shadows, animations)
+|- postcss.config.mjs             tailwindcss + autoprefixer
+|- package.json / package-lock.json
+|- next-env.d.ts                  generated, git-ignored, do not edit
+|- .github/workflows/deploy.yml   GitHub Actions: build + deploy to Pages on push to main
+|- .gitignore                     ignores node_modules, .next, out, .claude/, *.log (keeps public/logs/*.log)
 |- scripts/
-|   |- convert-screenshots.mjs    png -> webp for public/logs (run when adding artifacts)
-|   |- build-og-card.mjs          renders public/og-card.png from an inline SVG via sharp
-|- _deliverables/                 standalone task plans / runbooks not wired into the site
-|                                 (e.g., lab user rename, pfSense repo sanitization). Markdown
-|                                 only, no build output. Safe to add or remove as work lands.
+|   |- build-og-card.mjs          renders public/og-card.png (1200x630) from an inline SVG via sharp
+|   |- convert-screenshots.mjs    converts public/logs/*.png -> .webp (quality 80) via sharp
+|- _deliverables/                 standalone markdown task plans/runbooks, NOT wired into the site
 |- public/
 |   |- .nojekyll                  required so GitHub Pages serves _next/ assets
 |   |- Charlie-Weaver-Resume.pdf  linked from the hero (Resume CTA)
-|   |- og-card.png                Open Graph / Twitter card (1200x630), GENERATED by
-|   |                             scripts/build-og-card.mjs (do not hand-edit the PNG)
-|   |- logs/                      lab evidence: screenshots (.png + .webp) and raw
-|                                 logs (filter.log, dhcpd.log, system.log)
+|   |- og-card.png                Open Graph card, GENERATED by scripts/build-og-card.mjs (do not hand-edit)
+|   |- logs/                      lab evidence: screenshots (.png + .webp) and raw logs (filter.log, dhcpd.log, system.log)
 |- src/
     |- app/
-    |   |- layout.tsx             root layout, metadata/SEO/OG, fonts, renders
-    |   |                         Navigation + LabProgressStrip + main + Footer
-    |   |- page.tsx               the one page: imports and orders every section
-    |   |- globals.css            Tailwind layers, the design-system component classes,
-    |   |                         the reduced-motion reset, and the focus-visible ring
-    |- components/                one file per section/UI piece (see section 6)
+    |   |- layout.tsx             root layout: fonts, SEO/OG metadata (from profile), renders
+    |   |                         bg-grid + LogBackground + Navigation + LabProgressStrip + main + Footer
+    |   |- page.tsx               the one page: imports and orders every section (see section 7)
+    |   |- globals.css            Tailwind layers, design-system component classes, reduced-motion reset, focus ring
+    |- components/                one file per section / UI piece (22 files, see section 7)
     |- data/
     |   |- portfolio.ts           THE content spine. Almost all copy and data live here
     |- lib/
-        |- paths.ts               basePath() and publicAsset() for fetch/img URLs
-        |- useLabStatus.ts        shared client hook for the live AD lab status feed
+        |- paths.ts               basePath() and publicAsset() helpers for raw fetch / <img> URLs
+        |- useLabStatus.ts        client hook + TS types for the live lab-status feeds (section 6)
 ```
 
-Build artifacts (`out/`, `.next/`) and `node_modules/` are git-ignored and should
-never be edited by hand.
+Build artifacts (`out/`, `.next/`), `node_modules/`, and `.claude/` are git-ignored and
+must never be edited or committed by hand.
+
+There is **no** `pages/` dir (App Router only), **no** `src/styles` dir, and **no**
+Python or `lab-status.json` in this repo (the status feeds are external, see section 6).
 
 ---
 
-## 4. Where content lives (the content spine)
+## 4. Setup and development commands
 
-`src/data/portfolio.ts` is the single source of truth for almost all content. Each
-named export feeds one or more components. To change wording, numbers, lists, certs,
-phases, skills, etc., edit `portfolio.ts`, not the components.
+Package manager is npm. There is no `.nvmrc` or `engines` field. CI uses **Node 20**;
+use Node 20 LTS locally to match CI (newer LTS such as 22 or 24 also works, this repo
+was last verified on Node 24 locally).
 
-Exports and their consumers:
+```bash
+npm install            # install dependencies (uses package-lock.json)
+npm run dev            # next dev, http://localhost:3000
+npm run build          # next build -> static export to ./out (this is the CI gate)
+npx tsc --noEmit       # standalone TypeScript typecheck (tsconfig has noEmit:true)
+```
 
-| Export | Consumed by | Holds |
+Script reference (`package.json` "scripts"), exact:
+
+| Script | Command | Notes |
 |---|---|---|
-| `profile` | Hero, HeroLabStat, Navigation, Footer, Contact, Career, layout (SEO) | name, location, email, links, tagline, `headline` (the proof-led hero H1), labPhase |
-| `summary` | Hero | `built` / `planned` lists + an `honesty` line |
-| `adLab` | ADLabProgress, useLabStatus | guide base URL + the lab-status.json URL |
-| `subnets`, `ipTable` | NetworkTopology | network addressing |
-| `hostSpec` | LabOverview | host hardware/hypervisor spec |
-| `vmInventory` | VMInventory | per-VM table |
-| `firewallRules`, `implicitBehavior`, `verificationLog`, `pfsenseLog` | FirewallRules | the 3 rules with intent + verification, plus real terminal and filter.log evidence |
-| `skillsMatrix`, `skillsOverview`, `certCoverage`, `coverageMethodology` | SkillsMatrix | the lab-element to cert to MSP table (with scenario-anchored MSP column), the 3-col overview, and exam coverage bands |
-| `phases` | Roadmap | the 5-phase roadmap (status: complete / in-progress / planned). Phase 3 (AD) is in-progress and DEFERS to the live feed: it carries no hardcoded phase count |
-| `certs` | Certifications | cert cards (status: passed / in-progress / queued / optional / long-term) |
-| `careerStages` | Career | entry / network-engineer / long-term, each with bringing vs learning (entry "bringing" leads with de-risk signals and includes practical AI utilization) |
+| `dev` | `next dev` | local dev server, Turbopack, port 3000 |
+| `build` | `next build` | static export to `out/`, runs the TS typecheck (the real quality gate) |
+| `start` | `next start` | present but NOT meaningful for `output: 'export'`; do not rely on it |
+| `lint` | `next lint` | effectively dead: `next lint` is deprecated/removed in Next 16 and there is no ESLint config. Use `npx tsc --noEmit` + `npm run build` instead |
 
-Exception: `ArtifactGallery.tsx` defines its artifact list inline (it maps the image
-files in `public/logs/`), not in `portfolio.ts`. To add an artifact, add the image to
-`public/logs/`, run `scripts/convert-screenshots.mjs`, then add an entry in
-`ArtifactGallery.tsx`.
+A clean build prints `Compiled successfully`, `Running TypeScript` with no errors, and
+`Generating static pages`. Always run `npm run build` before committing.
+
+Helper scripts (Node, not part of the build):
+
+```bash
+node scripts/build-og-card.mjs       # regenerate public/og-card.png after editing its copy/brand
+node scripts/convert-screenshots.mjs # regenerate .webp for any new PNG in public/logs/
+```
 
 ---
 
-## 5. Design system
+## 5. Build and deployment
 
-Defined in `tailwind.config.ts` (tokens) and `src/app/globals.css` (component
-classes). Reuse these. Do not invent new colors or one-off class soup.
+Static export, GitHub Pages, GitHub Actions.
 
-Color tokens (Tailwind theme):
-- `bg`: DEFAULT `#0a0e14`, `elevated #0f141b`, `card #141b24`, `border #1f2937`
-- `accent`: DEFAULT `#22d3ee` (cyan), `dim #0891b2`, `glow #67e8f9`
-- `ink`: DEFAULT `#e5e7eb`, `dim #9ca3af`, `faint #6b7280`
-- `signal`: `green #10b981`, `amber #f59e0b`, `red #ef4444`
-
-Use them as Tailwind utilities: `bg-bg-elevated`, `text-ink-dim`, `border-bg-border`,
-`text-accent`, `bg-signal-green`, etc.
-
-Component classes (in `globals.css` under `@layer components`):
-- `.container-narrow`: page width wrapper (max-w-6xl + padding). Wrap section content.
-- `.section-eyebrow`: small mono uppercase label with a leading dash, the kicker above
-  each section title.
-- `.section-title`: section heading.
-- `.card`: the standard surface (rounded, bordered, subtle blur and shadow, hover lift
-  gated on prefers-reduced-motion).
-- `.pill`, `.pill-accent`, `.pill-green`, `.pill-amber`: status badges.
-- `.btn-primary`, `.btn-secondary`: the two button styles (used in the hero CTAs).
-- `.link`, `.codeblock`, `.accent-line`: inline link, code block, gradient text.
-
-Section wrapper: `src/components/Section.tsx` is the shared frame for every numbered
-section. Props: `id` (anchor), `eyebrow`, `title`, `subtitle`, `contextCard`,
-`children`. `contextCard` renders a left-accent callout (`border-l-4 border-accent
-bg-accent/5`) under the title: a one-line, plain-language, MSP-relevant "so-what" for
-skimmers. Where a section uses `contextCard`, prefer it INSTEAD of a long prose
-`subtitle` (one framing block, not two). It applies `scroll-mt-28` so anchor jumps
-clear the fixed nav + the sticky lab strip. Use it for any new section.
-
-Typography pattern: sans (Inter) is the voice of human takeaways (headings, role,
-contextCards, body); mono (JetBrains Mono) is the voice of evidence and terminal
-chrome (IPs, rule ids, logs, the hero eyebrow, the OG card prompt and footer URL).
-Stat values render at display size (`text-5xl/6xl tabular-nums`).
-
-Motion and accessibility: `globals.css` has a global `prefers-reduced-motion: reduce`
-reset that neutralizes transitions, animations, and smooth scroll, and a global
-`:focus-visible` rule (2px accent outline) so keyboard focus is visible on the dark
-theme. Keep both. Any new motion should degrade under reduced motion. The page is
-dark-theme only (`color-scheme: dark`, `darkMode: 'class'`).
+- `next.config.mjs` (verified):
+  - `output: 'export'` (static HTML to `out/`), `images: { unoptimized: true }` (required
+    for export), `trailingSlash: true`, `turbopack: { root: __dirname }`.
+  - `basePath` and `assetPrefix` are set **only when** `NODE_ENV === 'production'` **and**
+    `GITHUB_PAGES_REPO` is non-empty: `basePath = '/' + repo`, `assetPrefix = '/' + repo + '/'`.
+  - `env.NEXT_PUBLIC_BASE_PATH` mirrors `basePath` for client code (`src/lib/paths.ts`).
+- Base-path behavior:
+  - Local `npm run dev` and a local `npm run build`: `GITHUB_PAGES_REPO` is unset, so
+    **basePath is empty** ("").
+  - CI build: the workflow sets `GITHUB_PAGES_REPO` to the repo name (`portfolio`), so
+    **basePath is `/portfolio`** in production. The deployed site lives under
+    `/portfolio/`.
+  - If you ever host at the root (repo named `chweaver.github.io`), leave
+    `GITHUB_PAGES_REPO` unset and basePath stays empty.
+- Deploy flow (`.github/workflows/deploy.yml`, verified):
+  - Trigger: `push` to `main`, or manual `workflow_dispatch`. Concurrency group `pages`
+    (no in-progress cancel).
+  - `build` job: checkout, setup Node 20 (npm cache), `npm ci`, `npm run build` with
+    `GITHUB_PAGES_REPO=${{ github.event.repository.name }}`, upload `./out` as the Pages
+    artifact.
+  - `deploy` job: `actions/deploy-pages@v4` to the `github-pages` environment.
+  - Pages "Source" must be set to **GitHub Actions** in repo settings.
+  - Typical run is about 40 to 60 seconds.
+- After merging to `main`, verify the run is green (Actions tab) then hard-refresh
+  https://chweaver.github.io/portfolio/.
 
 ---
 
-## 6. Sections and components
+## 6. Lab status pipeline (architecture): READ CAREFULLY
 
-`src/app/page.tsx` renders the sections in this order. Numbered eyebrows run 01 to 10
-with no gap. `ArtifactGallery` ("Evidence") and `ADLabProgress` ("Live · AD Lab") are
-landmark sections without numbers.
+This is the least obvious part of the codebase, and the user's mental model of it is a
+common trap. The correction:
 
-Note (redesign pass, supersedes the per-item numbers in the list below): an
-outcome-first `Projects` section (`04 / Projects`, `src/components/Projects.tsx` +
-`ProjectCard.tsx`, content in the `projects` export) now sits immediately after
-`NetworkTopology`. It is the scannable result-first index; the detailed sections stay
-the underlying proof. The numbered eyebrows after Network each shifted up by one (VMs
-05, Lab 06, Skills 07, Certs 08, Plan 09, Contact 10). The hero gained an at-a-glance
-scan strip (the `heroGlance` export), and the IoT VLAN placeholder was removed from the
-topology data and graph (LAN and LAB200 only).
+> There is **NO** `gen_status.py` and **NO** `lab-status.json` in this repo. This repo
+> only **consumes** status. The JSON is generated and published by two **separate
+> sibling repos**. This portfolio fetches it live at runtime over the network.
 
-1. `Hero` (profile, summary; renders `HeroLabStat`): PROOF-LED. The H1 is
-   `profile.headline` (the positioning), the name is a small mono eyebrow. A stat
-   strip leads with the live AD build-out card, then static stats (subnets, firewall
-   rules, network VMs) at display size. One primary CTA (See the lab) plus quiet
-   secondaries (email, resume, LinkedIn, GitHub). Keeps the green "Built and verified"
-   and amber "Designed, not yet built" cards and the honesty line.
-2. `ArtifactGallery` (eyebrow "Evidence", inline data + `public/logs`): screenshots
-   that prove the lab exists, with an active-transparency subtitle and a lightbox that
-   takes initial focus.
-3. `ADLabProgress` (Live · AD Lab, adLab + useLabStatus): PROMOTED to slot 3 (the
-   rarest signal). Live build-out progress bar and per-phase list from the feed. The
-   subtitle attributes the guide to Charlie and surfaces practical AI utilization (he
-   built and documents the guide using AI as a research/documentation accelerator he
-   directs and verifies). A contextCard explains the AGDLP group-nesting "why."
-4. `LabOverview` (01 / Lab, hostSpec): host hardware and hypervisor, with a substrate
-   contextCard.
-5. `NetworkTopology` (02 / Network, ipTable + subnets): the two routed /24 subnets and
-   the IP addressing; segmentation contextCard; higher-contrast IP table.
-6. `FirewallRules` (03 / Firewall, firewallRules + implicitBehavior + verificationLog +
-   pfsenseLog): the three pfSense rules with intent + verification, the implicit-deny
-   explanation, and real terminal + filter.log evidence. Has a change-management
-   contextCard AND a screener-grade "Order matters" note (first-match shadowing). The
-   strongest documentation-discipline proof on the site.
-7. `VMInventory` (04 / VMs, vmInventory): per-VM table with a mixed-Linux contextCard
-   (netplan / ifupdown / NetworkManager hands-on).
-8. `SkillsMatrix` (05 / Skills, skillsMatrix + skillsOverview + certCoverage): a 3-col
-   overview, a category-filtered table mapping each lab element to A+/Network+/CCNA and
-   to scenario-anchored MSP client work, and honest exam-coverage bands.
-9. `Roadmap` (06 / Roadmap, phases): 5-phase timeline. Three states: complete (green),
-   in-progress (accent), planned (amber). Phase 3 (AD) defers to the live feed above
-   (no hardcoded count).
-10. `Certifications` (07 / Certifications, certs): cert cards by status + a Core 2
-    study-plan callout.
-11. `Career` (08 / Trajectory, careerStages): entry / network-engineer / long-term,
-    each with "bringing" (entry leads with de-risk signals incl. practical AI
-    utilization) vs "learning," plus a mid-funnel email CTA.
-12. `Contact` (09 / Contact, profile): the closing reach-channel card (email, phone,
-    LinkedIn, GitHub, location) + resume and email buttons.
+### 6.1 Producers (external, not in this repo)
 
-Layout-level (always present, in `layout.tsx`):
-- `Navigation` (sticky top nav, `top-0 z-40 h-14`, has an Email CTA).
-- `LabProgressStrip` (sticky live AD progress strip just under the nav, `top-14 z-30`).
-- `LogBackground` (animated scrolling log backdrop, desktop only, reduced-motion gated).
-- `Footer`.
+Two sibling GitHub Pages sites each publish their own `lab-status.json`:
 
-Shared / utility: `Section` (frame with contextCard), `HeroLabStat` (the live AD stat
-client island for the hero), `useLabStatus` (hook), `paths.ts` (URL helpers).
+| Lab | Guide repo | Status URL (absolute) | Data export in `portfolio.ts` |
+|---|---|---|---|
+| Active Directory | `chweaver/ad-lab-guide` | `https://chweaver.github.io/ad-lab-guide/lab-status.json` | `adLab.statusUrl` |
+| Linux | `chweaver/linux-lab-guide` | `https://chweaver.github.io/linux-lab-guide/lab-status.json` | `linuxLab.statusUrl` |
 
-Component conventions: named exports (not default), `@/` alias for imports, `'use
-client'` only where a component needs hooks or fetch (`HeroLabStat`, `SkillsMatrix`,
-`ADLabProgress`, `LabProgressStrip`, `ArtifactGallery`, `useLabStatus` are client; the
-rest, including `Hero` itself, are server components).
+The generator that builds each JSON (a script that parses per-phase markdown status in
+the guide and writes the JSON on push) lives **in those guide repos**, not here. To
+change lab progress shown on the portfolio, edit and push the relevant guide repo; the
+portfolio reflects it on the next page load with no redeploy of this repo. Do not try to
+"regenerate status" from this repo, there is nothing here to run.
 
----
+### 6.2 Consumer: `src/lib/useLabStatus.ts`
 
-## 7. The live Active Directory lab feature
+Client hook (`'use client'`). Signature:
 
-This is the site's freshest, strongest signal and it updates without a redeploy.
+```ts
+useLabStatus<T = LabStatus>(url: string = adLab.statusUrl): { data: T | null; failed: boolean }
+```
 
-- A sibling repo, `chweaver/ad-lab-guide` (a MkDocs site on GitHub Pages), publishes a
-  machine-readable status file at
-  `https://chweaver.github.io/ad-lab-guide/lab-status.json`, regenerated on every push
-  to that repo's main, so it is always current. Charlie builds and documents that guide
-  himself, using AI as a research and documentation accelerator he directs and verifies
-  (this is surfaced on the site as a deliberate AI-utilization signal; the AD lab build
-  itself is hands-on work).
-- `src/lib/useLabStatus.ts` is a shared client hook that fetches that URL and returns
-  `{ data, failed }`. Three consumers use it: `HeroLabStat` (the hero stat), the sticky
-  `LabProgressStrip`, and the `ADLabProgress` section. Each issues its own fetch to the
-  same URL; the browser HTTP cache de-dups the repeats (it is not a single shared
-  request).
-- `adLab.statusUrl` in `portfolio.ts` is an absolute URL, so it does not need basePath
-  prefixing.
+- Fetches the **absolute** URL once on mount (so **no basePath prefixing**, this is
+  why the feeds are absolute URLs). Returns `data: null` while loading, sets
+  `failed: true` on any network error or non-OK response. Multiple callers of the same
+  URL are de-duped by the browser HTTP cache.
+- Defaults to the AD feed, so `useLabStatus()` with no args is the AD lab. Pass
+  `useLabStatus<LinuxLabStatus>(linuxLab.statusUrl)` for the Linux lab.
 
-lab-status.json shape:
-```json
-{
-  "generatedAt": "ISO timestamp",
-  "guideBaseUrl": "https://chweaver.github.io/ad-lab-guide/",
-  "summary": { "total": 16, "buildOutTotal": 12, "buildOutDone": 6,
-               "done": 6, "next": 1, "planned": 5, "stretch": 4 },
-  "phases": [ { "id": 1, "title": "...", "status": "done|next|planned|stretch",
-               "track": "build-out|stretch", "path": "build-out/phase-01-install/" } ]
+### 6.3 The two JSON schemas (source of truth: `useLabStatus.ts`)
+
+AD lab guide (`LabStatus`):
+
+```ts
+interface LabStatus {
+  generatedAt: string;
+  guideBaseUrl: string;
+  summary: {
+    total: number;
+    buildOutTotal: number;   // headline denominator
+    buildOutDone: number;    // headline numerator
+    done: number; next: number; planned: number; stretch: number;
+  };
+  phases: { id: number; title: string; status: 'done'|'next'|'planned'|'stretch';
+            track: 'build-out'|'stretch'; path: string }[];
 }
 ```
-- Headline metric: `buildOutDone / buildOutTotal` (the build-out track is the main
-  metric, 12 core phases; stretch is 4 bonus phases).
-- Phase link: `guideBaseUrl + phase.path`.
-- Graceful failure / no flicker: nothing data-dependent renders before the client
-  mounts (no hydration mismatch). `HeroLabStat` falls back to a static snapshot and
-  only shows the live dot and "updated N days ago" when fresh feed data is in hand.
-  The strip hides on failure; the section shows a guide link.
 
-Source-of-truth rule: the live feed is authoritative for AD progress. Do NOT hardcode a
-phase count anywhere that the feed could outrun. `HeroLabStat` is wired to the feed;
-Roadmap Phase 3 defers to the feed; if you add any static AD copy, keep it qualitative
-("in progress") not numeric.
+Linux lab guide (`LinuxLabStatus`):
+
+```ts
+interface LinuxLabStatus {
+  generatedAt: string;
+  guideBaseUrl: string;
+  summary: {
+    totalLabs: number; labsComplete: number;
+    totalPhases: number; phasesDone: number; phasesNext: number; phasesPlanned: number;
+    overallPct: number;
+  };
+  labs: { id: string; title: string; order: number; path: string;
+          status: 'done'|'next'|'planned'|'stretch'; pct: number;
+          phasesTotal: number; phasesDone: number }[];
+  phases: { id: string; labId: string; labTitle: string; title: string;
+            status: 'done'|'next'|'planned'|'stretch'; anchor: string }[];
+}
+```
+
+`PhaseStatus = 'done' | 'next' | 'planned' | 'stretch'` is shared.
+
+### 6.4 Where the status renders
+
+| Feed | Component | What it shows |
+|---|---|---|
+| AD (default) | `HeroLabStat` | hero "AD build-out" stat, with a static snapshot fallback and "updated N days ago" |
+| AD | `LabProgressStrip` | sticky strip under the nav: a slim build-out progress bar; hides on fetch failure; explicit empty state when total is 0 |
+| AD | `ADLabProgress` | the "Live · AD Lab" section: full per-phase build-out + stretch lists |
+| Linux | `LinuxLabProgress` | the "Live · Linux Lab" section (currently last on the page) |
+| Linux | `TopologyGraph` | colors the ubuntu/rocky nodes by live lab status (done = green check, next = in progress, otherwise pending) |
+
+Source-of-truth rule: the live feed is authoritative for lab progress. Do **not**
+hardcode a phase or lab count anywhere the feed could outrun. Keep any static lab copy
+qualitative ("in progress", "planned"), not numeric.
 
 ---
 
-## 8. Build, local development, and deploy
+## 7. Page composition and key components
 
-Local dev:
-```
-npm install
-npm run dev      # http://localhost:3000
-```
+### 7.1 Page order (`src/app/page.tsx`, verified current)
 
-Production build (what CI runs, and what you must pass before committing):
-```
-npm run build    # next build, static export to ./out, runs the TypeScript pass
-```
-A clean build prints "Compiled successfully", a TypeScript pass with no errors, and
-"Generating static pages (3/3)".
+DOM order, with the numbered eyebrow each `Section` renders (numbered run 01 to 10, no
+gaps; the "Live" and "Evidence" sections are landmark sections without numbers):
 
-Regenerate the OG share card after editing its copy or brand:
-```
-node scripts/build-og-card.mjs   # rewrites public/og-card.png
-```
+1. `Hero` (`#top`): proof-led. Two-tier H1 (`profile.headlineLead` large +
+   `profile.headlineRest` smaller), at-a-glance strip (`heroGlance`), CTA row, stat grid
+   (`HeroLabStat` + static stats), built vs planned cards.
+2. `ReadyForWork` (`#readiness`): 01 / Readiness.
+3. `ADLabProgress` (`#ad-lab`): landmark "Live · AD Lab".
+4. `FirewallRules` (`#firewall`): 02 / Firewall.
+5. `NetworkTopology` (`#network`): 03 / Network (wraps `TopologyGraph`).
+6. `Projects` (`#projects`): 04 / Projects (outcome-first grid of `ProjectCard`).
+7. `VMInventory` (`#vms`): 05 / VMs.
+8. `LabOverview` (`#lab`): 06 / Lab environment.
+9. `SkillsMatrix` (`#skills`): 07 / Skills.
+10. `ArtifactGallery` (`#artifacts`): landmark "Evidence".
+11. `Certifications` (`#certs`): 08 / Certifications.
+12. `Roadmap` (`#plan`): 09 / Plan.
+13. `Contact` (`#contact`): 10 / Contact.
+14. `LinuxLabProgress` (`#linux-lab`): landmark "Live · Linux Lab" (at the very bottom
+    for now: the Linux labs are not started; see section 11).
 
-Deploy (`.github/workflows/deploy.yml`): on push to `main` (or manual dispatch), CI
-checks out, sets up Node 20, runs `npm ci`, runs `npm run build` with
-`GITHUB_PAGES_REPO` set to the repo name (so `next.config.mjs` computes the
-`/portfolio` basePath), uploads `out/`, and deploys to GitHub Pages. Typical run is
-about 45 to 60 seconds. The site is at https://chweaver.github.io/portfolio/.
+Layout-level, always present (`src/app/layout.tsx`): `Navigation` (sticky top,
+`top-0 z-40 h-14`), `LabProgressStrip` (sticky under nav, `top-14 z-30`),
+`LogBackground` (animated scrolling log backdrop, desktop only, reduced-motion gated),
+`Footer`, and a fixed `.bg-grid` texture div.
 
-basePath: in production the site is served under `/portfolio`. `next.config.mjs`
-derives `basePath`, `assetPrefix`, and `NEXT_PUBLIC_BASE_PATH` from
-`GITHUB_PAGES_REPO`. Next prefixes `<Link>` and `next/image` automatically. For raw
-`fetch()` or `<img src>` to local `/public` assets, use `publicAsset()` from
-`src/lib/paths.ts`. Absolute external URLs (like the lab feed) need no prefixing.
+### 7.2 NetworkTopology + TopologyGraph (the visual anchor)
 
-Note on OG images: social platforms cache them. After changing `og-card.png`, refresh
-the preview via the platform inspector (LinkedIn Post Inspector, X Card Validator) for
-already-shared links; new shares pick it up automatically.
+- `NetworkTopology.tsx` is a **server** component: a `Section` wrapper with the
+  `TopologyGraph`, a legend (subnet color chips + "green check = lab complete (live)" +
+  a link to the guide topology), and DNS-path / DHCP-authority info cards.
+- `TopologyGraph.tsx` is a **client** component and is a **hand-built inline SVG**. It is
+  NOT React Flow, NOT any graph/diagram library. It draws an internet -> home router ->
+  NAT -> pfSense chain, two subnet group boxes (LAN, LAB200), and per-host node cards,
+  all with literal `<rect>`, `<line>`, `<text>`, `<g>`, `<path>` at fixed coordinates
+  (`W = 940`, `H = 580`).
+  - Data source: `topologySubnets` and `topologyNodes` from `src/data/portfolio.ts`.
+  - Live state: `useLabStatus<LinuxLabStatus>(linuxLab.statusUrl)`. A node lights green
+    when all of its `labs` ids report `done`, shows "in progress" on `next`, otherwise
+    "pending". Nodes with no `labs` and `established: true` (DC01, WS01, pfSense) render
+    as built infrastructure.
+  - To add or move a host: edit `topologyNodes` (id, type, label, ip, subnet, role,
+    optional `labs`, optional `established`). Adjust the `boxes` layout constants in
+    `TopologyGraph.tsx` only if you add/remove a subnet column.
 
----
+### 7.3 Other notable components
 
-## 9. How to make a change end to end
+- `Section.tsx`: shared frame for numbered sections. Props: `id`, `eyebrow`, `title`,
+  `subtitle?`, `contextCard?`, `children`. `contextCard` renders a left-accent callout
+  (the one-line "so-what" for skimmers). Applies `scroll-mt-28` so anchors clear the
+  fixed nav + strip. Use it for any new section.
+- `ProjectCard.tsx`: outcome-first project tile (server). Props are the `Project` type
+  from `portfolio.ts`: `title, outcome, status ('done'|'in-progress'|'planned'),
+  problem, built, result, stack[], repo`. Status maps to existing pill classes
+  (`pill-green` / `pill-accent` / `pill-amber`); empty `built`/`result` fields are
+  skipped. Reuses `.card` and `.pill`, no new primitives.
+- `SkillsMatrix.tsx` (client): 3-col overview + a category-filtered table mapping each
+  lab element to A+/Network+/CCNA and MSP relevance, plus honest exam-coverage bands.
+- `ArtifactGallery.tsx` (client): "Evidence" screenshot grid with a lightbox. Its image
+  list is defined **inline** in the component (it maps files in `public/logs/`), NOT in
+  `portfolio.ts`.
+- `Navigation.tsx` (client): sticky nav with a curated jump list (`NAV_LINKS`, ordered
+  to match the page) and an Email CTA.
 
-1. Work from a fresh clone of the live repo. Do not edit any local zip download (a
-   download has no `.git` and can drift from `main`).
-   ```
-   git clone https://github.com/chweaver/portfolio.git
-   cd portfolio
-   npm install
-   ```
-2. Make the change. Prefer editing `src/data/portfolio.ts` for content. Touch
-   components only for structure or presentation. Match the design system.
-3. Verify: `npm run build` must pass (TypeScript clean, static export succeeds). For
-   visual checks, `npm run dev`. If you changed the OG card, run
-   `node scripts/build-og-card.mjs` and eyeball `public/og-card.png`.
-4. Commit. Author commits as Charlie (`Charlie Weaver <charliewgz6@gmail.com>`). Do not
-   add a Co-Authored-By AI trailer on this repo (owner preference). Use explicit-path
-   adds, write a scope-honest message, no em dashes.
-5. Push to `main`. The Actions workflow builds and deploys automatically.
-6. Verify live: wait for the Action to go green (repo Actions tab), then hard-refresh
-   https://chweaver.github.io/portfolio/ and confirm the change. Spot-check by grepping
-   the deployed HTML for expected strings.
+### 7.4 Client vs server split (verified)
 
----
-
-## 10. Conventions and hard rules
-
-- Honesty is non-negotiable. Do not invent experience, titles, metrics, or skills. The
-  audience is hiring managers who detect inflation instantly, and inflation is
-  disqualifying. Every claim must trace to something real in the lab, the repo, or a
-  passed cert. Translate lab work to MSP relevance as a skill-to-task MAPPING ("the same
-  workflow a client firewall change needs"), never as an implied production claim ("I
-  did this at a client"). If a claim has no backing, cut it or label it plainly (the
-  site already does this: "everything marked built is built," "familiar, not yet
-  hands-on," "no professional MSP tenure yet"). Preserve that honesty; it is a trust
-  asset, not a weakness. AI utilization is framed as a tool Charlie drives and verifies,
-  not work outsourced to AI.
-- No em dashes anywhere (copy, comments, commit messages). Use commas, periods,
-  colons, or parentheses.
-- Match the existing design system and voice. Changes are elevations, not redesigns.
-- Keep the stack: Next.js App Router + TypeScript + Tailwind, static export. No new
-  heavy dependencies without a clear reason. `npm run build` must pass.
-- Accessibility and performance are part of "polished": semantic HTML, alt text on
-  images, sufficient contrast, prefers-reduced-motion + focus-visible (both wired
-  globally), fast static load.
-- Code: named exports, `@/` path alias, `'use client'` only where hooks or fetch are
-  used.
+Server components by default. The 10 client islands (carry `'use client'`):
+`Navigation`, `LabProgressStrip`, `ADLabProgress`, `LinuxLabProgress`, `HeroLabStat`,
+`TopologyGraph`, `SkillsMatrix`, `ArtifactGallery`, `LogBackground`, and the
+`useLabStatus` hook. Everything else (Hero, Section, NetworkTopology, Projects,
+ProjectCard, FirewallRules, VMInventory, LabOverview, Roadmap, Certifications, Contact,
+ReadyForWork, Footer) is a server component. Add `'use client'` only when a component
+needs hooks, state, or fetch.
 
 ---
 
-## 11. Editing methodology (how to evaluate any change)
+## 8. Content authoring workflows
 
-Hold two lenses at once on every change:
+`src/data/portfolio.ts` is the single content spine. Almost all copy and data live
+there as named exports (`profile`, `summary`, `heroGlance`, `projects`, `firewallRules`,
+`skillsMatrix`, `certCoverage`, `certs`, `vmInventory`, `ipTable`, `topologySubnets`,
+`topologyNodes`, `nearTermPlan`, and more). Edit the data, not the components, for copy
+and list changes.
 
-1. MSP hiring manager: What does this prove? Would it survive a 20-second screen? What
-   MSP-relevant signal does it send (ticket and documentation discipline, networking
-   fundamentals, Windows/AD/M365, service-desk readiness, RMM/PSA awareness, certs)?
-   Does it de-risk the hire with evidence, or only claim? Serve the technical screener
-   too: a one-line "why this is the right answer" (first-match ordering, AGDLP nesting)
-   separates "looks real" from "understands it."
-2. Marketing and conversion: Is the value proposition immediate and above the fold? Is
-   it scannable (a busy reader skims, does not read)? Is the hierarchy right? Is there
-   a clear next action (contact, resume, view the lab)? Where does attention leak?
+**Update wording, a cert, a skill, a roadmap phase:** edit the relevant export in
+`portfolio.ts`. Run `npm run build`.
 
-Lead with the strongest proof (the live AD domain, the documented firewall lab, A+
-Core 1 passed). Cut filler. Keep one clear primary call to action with frictionless
-contact. Polish equals credibility: consistent voice, zero typos, tight spacing, a
-clean Open Graph card for shared links.
+**Add a project card:** add an entry to the `projects` array (it feeds the `Projects`
+section via `ProjectCard`). Keep `status` honest (`done` / `in-progress` / `planned`).
+The grid is balanced for three; do not pad to four with filler.
 
----
+**Add or move a topology host:** edit `topologyNodes` (and `topologySubnets` if adding a
+subnet) in `portfolio.ts`. Wire `labs` ids only if a `linux-lab-guide` lab actually
+builds that node, so the live status stays truthful.
 
-## 12. v3 baseline and open follow-ups
+**Update lab progress:** do it in the sibling guide repo (`ad-lab-guide` or
+`linux-lab-guide`), not here. The portfolio updates live (section 6).
 
-The site has shipped through three rounds, all live and build-verified:
-- v2 (2026-06-02): promoted Active Directory from "planned" to a live, in-progress
-  strength; added an in-progress Roadmap state; relabeled Microsoft 365 / ServiceNow /
-  Jira as "familiar, not yet hands-on"; removed a Python side project and the
-  Side-projects section.
-- v3 (2026-06-02, the senior rework): proof-led hero (positioning as the H1, name as an
-  eyebrow, display-size stats); the AD stat wired LIVE to the feed via `HeroLabStat`
-  with an honest snapshot fallback and "updated N days ago"; the AD section promoted to
-  slot 3; a `contextCard` "so-what" on every dense section (Lab, Network, Firewall, VMs,
-  AD); screener-grade annotations (firewall first-match ordering, AGDLP nesting); a
-  global focus-visible ring; raised table contrast; recruiter-grade SEO title and
-  description derived from `profile` (role, cert, Carmel / Indianapolis metro, honest
-  "no tenure yet" clause); Career "bringing" reordered to lead with de-risk + a
-  mid-funnel CTA; Contact renumbered to 09 (gap closed); Evidence gallery reframed to
-  active transparency with the lightbox taking initial focus.
-- OG card: rebuilt proof-led (role, live AD domain, A+, location) and generated from
-  `scripts/build-og-card.mjs`, with the proof lines in sans (Inter), monospace only on
-  the terminal prompt and footer URL.
-- AI utilization: the AD-lab guide is attributed to Charlie and framed as AI-accelerated
-  documentation he directs and verifies (AD section subtitle + a Career "bringing" line).
+**Add evidence screenshots:** drop the PNG in `public/logs/`, run
+`node scripts/convert-screenshots.mjs`, then add an entry to the inline list in
+`ArtifactGallery.tsx`.
 
-Open follow-ups (not yet done, safe to pick up):
-- Roadmap visual polish: optionally collapse phases 4-5 (Proxmox, Cisco) into a quieter
-  "Stretch goals" group. The honesty de-dup (Phase 3 defers to the feed) is already done.
-- ArtifactGallery lightbox: initial focus is set; a full focus-trap (keep Tab inside the
-  modal) is a further refinement.
-- Certifications: optionally reword the Core 2 study-plan callout to read more
-  proactive (velocity milestones) rather than as a plan.
+**Add a section:** create `src/components/Foo.tsx` using the `Section` frame (named
+export, `@/` imports), pull copy from `portfolio.ts`, import and place it in
+`src/app/page.tsx`, and give it the next eyebrow number (keep the numbered run gapless).
+
+**Change the OG card:** edit the SVG copy in `scripts/build-og-card.mjs`, run
+`node scripts/build-og-card.mjs`, eyeball `public/og-card.png`. Social platforms cache
+OG images, refresh via the platform inspector for already-shared links.
+
+**Add a page:** App Router. Create `src/app/<route>/page.tsx`. Remember static export +
+`trailingSlash` + basePath when linking; prefer `<Link>` / `next/image` (auto-prefixed).
 
 ---
 
-## 13. Quick reference
+## 9. Code style and conventions
+
+Enforced by `tsconfig.json` and the existing code (there is no ESLint/Prettier config to
+defer to, so match what is here).
+
+- **TypeScript strict** (`strict: true`, `noEmit`, `isolatedModules`, target `ES2022`,
+  `moduleResolution: bundler`, `jsx: react-jsx`). Keep it type-clean; `npm run build`
+  fails on type errors.
+- **Path alias:** `@/*` maps to `./src/*`. Import `@/components/...`, `@/data/portfolio`,
+  `@/lib/...`. Do not use deep relative chains.
+- **Named exports**, not default exports, for components (`export function Hero()`).
+- **`'use client'`** only where hooks, state, or fetch are used (see 7.4).
+- Components: one section/UI piece per file in `src/components/`, PascalCase filename
+  matching the export.
+- Styling: Tailwind utilities + the `@layer components` classes in `globals.css`
+  (`.container-narrow`, `.section-eyebrow`, `.section-title`, `.card`, `.pill`,
+  `.pill-green/.pill-amber/.pill-accent`, `.btn-primary/.btn-secondary`, `.link`,
+  `.codeblock`, `.accent-line`). Reuse these, do not invent one-off class soup or new
+  colors. Color/spacing/shadow tokens live in `tailwind.config.ts` (use them as
+  utilities: `bg-bg-card`, `text-ink-dim`, `text-accent`, `border-bg-border`,
+  `bg-signal-green`, etc.).
+- Typography: Inter (sans) for human takeaways/headings/body; JetBrains Mono (mono) for
+  evidence and terminal chrome (IPs, rule ids, logs, eyebrows, the footer URL).
+- Accessibility/motion: a global `prefers-reduced-motion: reduce` reset and a global
+  `:focus-visible` accent ring live in `globals.css`. Keep both. New motion must degrade
+  under reduced motion. The site is dark-theme only.
+
+---
+
+## 10. Written and display content rules
+
+Apply to any user-facing copy and to comments and commit messages:
+
+- **No em dashes anywhere.** Use commas, periods, colons, parentheses, or middots.
+- **No AI-tell phrasing.** Plain, professional, first-person, evidence-led. Verbs over
+  adjectives ("routed", "hardened", "verified"). Sentence case everywhere except mono
+  eyebrows and pills (UPPERCASE). No emoji.
+- **Honesty is non-negotiable.** Do not invent experience, titles, metrics, or skills.
+  Every claim must trace to something real in the lab, a repo, or a passed cert. Always
+  separate "built and verified" from "planned" and label it. Translate lab work to MSP
+  relevance as a skill-to-task mapping ("the same workflow a client firewall change
+  needs"), never as an implied production claim. AI utilization is framed as a tool
+  Charlie directs and verifies, not work outsourced to AI. Inflation is disqualifying for
+  this audience; preserve the existing honesty framing as a trust asset.
+
+---
+
+## 11. Constraints and gotchas (DO NOT)
+
+- **Do NOT replace the inline-SVG `NetworkTopology` / `TopologyGraph` with React Flow or
+  any graph/diagram library.** It is intentionally hand-built SVG. Extend it by editing
+  the SVG and the `topologyNodes`/`topologySubnets` data.
+- **Do NOT change the lab-status approach.** Keep the external pattern: the guide repos
+  generate and publish `lab-status.json`, and this site fetches it via absolute URL in
+  `useLabStatus`. Do not add a generator, a committed `lab-status.json`, or a build step
+  that bakes status in. Do not hardcode lab/phase counts the feed should own.
+- **Base-path traps:**
+  - basePath is empty locally but `/portfolio` in CI production. Never hardcode
+    `/portfolio` in paths.
+  - For raw `fetch()` or `<img src>` against `/public`, use `publicAsset()` from
+    `src/lib/paths.ts` (it adds basePath and URL-encodes the path). `<Link>` and
+    `next/image` are auto-prefixed by Next, do not double-prefix them.
+  - The lab-status feeds are absolute external URLs and must stay absolute (no
+    basePath).
+- **Filename encoding:** some `public/logs/` files have spaces (for example
+  `Firewall Log.webp`). Reference them through `publicAsset()` so they encode correctly
+  in production; a raw spaced path breaks on Pages.
+- **`images.unoptimized: true` is required** for static export. Do not remove it or use
+  the default `next/image` loader expecting on-the-fly optimization.
+- **`.nojekyll` in `public/` is required** so Pages serves the `_next/` directory. Do
+  not delete it.
+- **`next start` does nothing useful** here (static export). Preview the export with any
+  static server against `out/`, or just use `npm run dev`.
+- **`npm run lint` is effectively dead** (Next 16 removed `next lint`, no ESLint config).
+  Use `npx tsc --noEmit` and `npm run build` as the gates.
+- **Windows path quirks:** primary dev is Windows. Prefer the build scripts and Node
+  tooling (cross-platform) over shell-specific commands. Use forward slashes in code.
+- **Do not edit generated or ignored files:** `out/`, `.next/`, `next-env.d.ts`,
+  `public/og-card.png` (regenerate via the script), or anything under `.claude/`.
+
+---
+
+## 12. Environment notes
+
+- Primary dev environment is **Windows** (PowerShell is the default shell; a POSIX bash
+  is also available). Both work; commands in this doc are shell-neutral.
+- **Node:** CI uses Node 20 (LTS). Local was verified on Node 24. No `.nvmrc`/`engines`
+  pin exists. Use Node 20 LTS to match CI when in doubt.
+- **Python is NOT required for this repo.** (Python 3.11 happens to be on the dev
+  machine, but nothing here uses it. The lab-status generators that do use Python/scripts
+  live in the sibling guide repos.)
+- **sharp** is the only native dependency (used by the two `scripts/*.mjs`); it installs
+  prebuilt binaries via npm.
+
+---
+
+## 13. Git and commit conventions
+
+- **Branch off `main`.** Do not commit directly to `main`. Open a PR and merge (the
+  project history uses squash merges; merging triggers the deploy workflow).
+- **Author commits as Charlie:** `Charlie Weaver <charliewgz6@gmail.com>` (local git
+  user is `chweaver` / `charliewgz6@gmail.com`; GitHub squash-merge commits surface as
+  `Charlie <...@users.noreply.github.com>`, which is expected).
+- **Do NOT add a `Co-Authored-By` AI trailer** on this repo (owner preference). Keep
+  PR descriptions free of AI-generation markers too.
+- Use **explicit-path `git add`** (stage the files you changed, not `git add .`), a
+  scope-honest message, and no em dashes.
+- Before committing: `npm run build` must pass.
+- Pushing/merging to `main` deploys automatically; do not push or merge unless asked.
+
+---
+
+## 14. Known inconsistencies and cleanup backlog
+
+Audited state, worth fixing when convenient:
+
+- `README.md` is partly stale: it says "Next.js 14" and "React 18" (actual: Next
+  `^16.2.6`, React `18.3.1`), and its `Project layout` tree lists a `Career.tsx` that no
+  longer exists and omits most current components. AGENTS.md is canonical; align or trim
+  README to match.
+- `careerStages` and the Career section were removed (see the note at the bottom of
+  `portfolio.ts`); any lingering references in docs are stale.
+- `package.json` `scripts.lint` (`next lint`) is non-functional on Next 16 and there is
+  no ESLint config. Either wire a real lint (ESLint flat config) or drop the script.
+- `scripts.start` (`next start`) does not apply to a static export and can mislead.
+- No Node version pin (`.nvmrc`/`engines`); local Node 24 vs CI Node 20 drift. Consider
+  pinning to Node 20.
+- A stale local git worktree exists at `.claude/worktrees/optimistic-jackson-8240f2/`
+  (git-ignored, holds an old copy of `Hero.tsx`/`portfolio.ts`). Safe to delete locally.
+
+---
+
+## 15. Quick reference
 
 - Content: `src/data/portfolio.ts`
-- Sections wired: `src/app/page.tsx`
+- Sections wired: `src/app/page.tsx`; section frame: `src/components/Section.tsx`
 - Design tokens: `tailwind.config.ts`; component classes + focus/motion: `src/app/globals.css`
-- Live AD feed: `https://chweaver.github.io/ad-lab-guide/lab-status.json` via
-  `src/lib/useLabStatus.ts` (consumed by `HeroLabStat`, `LabProgressStrip`, `ADLabProgress`)
+- Topology (inline SVG): `src/components/TopologyGraph.tsx` (+ `NetworkTopology.tsx` wrapper)
+- Live lab feeds: `useLabStatus` in `src/lib/useLabStatus.ts`; URLs in `adLab` / `linuxLab`
+  (`portfolio.ts`); produced by sibling repos `ad-lab-guide` / `linux-lab-guide`
+- Base-path helpers: `src/lib/paths.ts` (`basePath()`, `publicAsset()`)
 - OG card: edit + rerun `node scripts/build-og-card.mjs` -> `public/og-card.png`
-- Build: `npm run build` (must pass). Deploy: push to `main`, Actions to Pages.
-- Live site: https://chweaver.github.io/portfolio/
+- Build/typecheck: `npm run build` / `npx tsc --noEmit` (must pass)
+- Deploy: push/merge to `main` -> Actions -> Pages. Live: https://chweaver.github.io/portfolio/
 ```
