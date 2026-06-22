@@ -8,7 +8,7 @@ export function NetworkTopology() {
       id="network"
       eyebrow="03 / Network"
       title="One network: AD and Linux behind a single pfSense"
-      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) runs the live AD domain; the Linux side (ubuntu, rocky) is in place as VMs. Its hardening labs (SSH, Samba, BIND9, rsync) are not started yet; each node turns green here as its lab completes, read live from the Linux lab guide, with the detail tracked at the bottom of this page."
+      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) runs the live AD domain; the Linux side (ubuntu, rocky) is in place as VMs. Each node turns green here as its hardening lab (SSH, Samba, BIND9, rsync) completes, read live from the Linux lab guide, with the per-lab detail tracked at the bottom of this page."
     >
       <div className="card p-6 overflow-hidden">
         <TopologyGraph />
@@ -38,7 +38,7 @@ export function NetworkTopology() {
           <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">DNS path</div>
           <div className="text-sm text-ink-dim leading-relaxed">
             pfSense Unbound listens on both internal interfaces and forwards to Cloudflare{' '}
-            <code className="font-mono text-accent">1.1.1.1</code>. The planned Linux DNS lab will add a BIND9 resolver on
+            <code className="font-mono text-accent">1.1.1.1</code>. The Linux DNS lab adds a BIND9 resolver on
             rocky-base to conditionally forward <code className="font-mono text-accent">corp.lab</code> to
             DC01.
           </div>
