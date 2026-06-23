@@ -1,36 +1,23 @@
 import { Hero } from '@/components/Hero';
-import { ReadyForWork } from '@/components/ReadyForWork';
+import { Projects } from '@/components/Projects';
 import { ADLabProgress } from '@/components/ADLabProgress';
-import { LinuxLabProgress } from '@/components/LinuxLabProgress';
-import { ArtifactGallery } from '@/components/ArtifactGallery';
 import { FirewallRules } from '@/components/FirewallRules';
 import { NetworkTopology } from '@/components/NetworkTopology';
-import { Projects } from '@/components/Projects';
-import { VMInventory } from '@/components/VMInventory';
-import { LabOverview } from '@/components/LabOverview';
 import { SkillsMatrix } from '@/components/SkillsMatrix';
-import { Certifications } from '@/components/Certifications';
-import { Roadmap } from '@/components/Roadmap';
+import { ArtifactGallery } from '@/components/ArtifactGallery';
 import { Contact } from '@/components/Contact';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ReadyForWork />
+      <Projects />
       <ADLabProgress />
       <FirewallRules />
       <NetworkTopology />
-      <Projects />
-      <VMInventory />
-      <LabOverview />
       <SkillsMatrix />
       <ArtifactGallery />
-      <Certifications />
-      <Roadmap />
       <Contact />
-      {/* Linux lab moved to the very bottom for now: the labs are not started yet. */}
-      <LinuxLabProgress />
     </>
   );
 }

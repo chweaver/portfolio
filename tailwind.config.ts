@@ -26,7 +26,9 @@ const config: Config = {
         ink: {
           DEFAULT: '#e5e7eb',
           dim: '#9ca3af',
-          faint: '#6b7280',
+          // Lightened from #6b7280 (about 3.8:1 on the page bg, fails WCAG AA for
+          // small text) to clear 4.5:1 for the small mono labels that use it.
+          faint: '#7c8492',
         },
         signal: {
           green: '#10b981',

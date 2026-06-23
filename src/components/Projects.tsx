@@ -6,7 +6,7 @@ export function Projects() {
   return (
     <Section
       id="projects"
-      eyebrow="04 / Projects"
+      eyebrow="Projects"
       title="Hands-on work, outcome first"
       contextCard="The homelab is the moat. Each card leads with the result, then the problem, what was built, and how it was verified. The detailed sections below are the underlying proof."
     >

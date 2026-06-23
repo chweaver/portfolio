@@ -21,7 +21,7 @@ export function Hero() {
       <div className="container-narrow relative">
         <div className="max-w-3xl">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
-            {profile.shortName} · {profile.location} · Indianapolis metro
+            {profile.shortName} · Indianapolis metro
           </p>
           <h1 className="mt-4 tracking-tight text-ink">
             <span className="block text-3xl md:text-5xl font-semibold leading-[1.12]">
@@ -31,13 +31,9 @@ export function Hero() {
               {profile.headlineRest}
             </span>
           </h1>
-          <p className="mt-5 font-mono text-sm accent-line">
-            CompTIA A+ Core 1 passed · Core 2 in progress · CCNA next
-          </p>
-          <p className="mt-5 text-ink-dim leading-relaxed">
-            Applying for tier-1 service desk, help desk, NOC, and junior sysadmin roles across the
-            Indianapolis metro. The lab on this page is the proof: a live Active Directory domain, a
-            segmented pfSense network, and multi-distro Linux, all documented and verified.
+          <p className="mt-5 max-w-2xl text-ink-dim leading-relaxed">
+            The lab below is the proof: a live Active Directory domain, a segmented pfSense network,
+            and multi-distro Linux, all documented and verified.
           </p>
 
           {/* At-a-glance strip: the 5-second recruiter scan. Hairline-separated
@@ -87,39 +83,7 @@ export function Hero() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <div className="card p-6">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-green" />
-              Built and verified
-            </h3>
-            <ul className="mt-4 space-y-2 text-sm text-ink-dim">
-              {summary.built.map((b) => (
-                <li key={b} className="flex gap-2">
-                  <span className="font-mono text-signal-green">✓</span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="card p-6">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-amber" />
-              Designed, not yet built
-            </h3>
-            <ul className="mt-4 space-y-2 text-sm text-ink-dim">
-              {summary.planned.map((p) => (
-                <li key={p} className="flex gap-2">
-                  <span className="font-mono text-signal-amber">○</span>
-                  <span>{p}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 border-t border-bg-border pt-4 text-sm italic text-ink-faint">
-              {summary.honesty}
-            </p>
-          </div>
-        </div>
+        <p className="mt-8 max-w-3xl text-sm text-ink-faint">{summary.honesty}</p>
       </div>
     </section>
   );

@@ -5,9 +5,9 @@ export function FirewallRules() {
   return (
     <Section
       id="firewall"
-      eyebrow="02 / Firewall"
+      eyebrow="Firewall"
       title="Define, test, document, explain"
-      contextCard="The point of this section: I can write a firewall rule, test it, document the intent, and verify it in the log. The same workflow a client firewall change needs. Three rules on the LAB200 interface, deny by default and permit by exception."
+      contextCard="Three rules on the LAB200 interface, deny by default and permit by exception. Each one written, tested, documented, and verified in the log, the same workflow a client firewall change needs."
     >
       <div className="grid gap-4 lg:grid-cols-3">
         {firewallRules.map((rule) => (

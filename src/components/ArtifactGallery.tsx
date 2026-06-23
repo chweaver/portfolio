@@ -105,7 +105,6 @@ export function ArtifactGallery() {
             <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
               <picture>
                 <source srcSet={webpSrc(a.file)} type="image/webp" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={pngSrc(a.file)}
                   alt={a.alt}
@@ -177,7 +176,6 @@ export function ArtifactGallery() {
           >
             <picture>
               <source srcSet={webpSrc(ARTIFACTS[openIndex].file)} type="image/webp" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={pngSrc(ARTIFACTS[openIndex].file)}
                 alt={ARTIFACTS[openIndex].alt}

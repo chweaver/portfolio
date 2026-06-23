@@ -6,9 +6,9 @@ export function NetworkTopology() {
   return (
     <Section
       id="network"
-      eyebrow="03 / Network"
+      eyebrow="Network"
       title="One network: AD and Linux behind a single pfSense"
-      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) runs the live AD domain; the Linux side (ubuntu, rocky) is in place as VMs. Each node turns green here as its hardening lab (SSH, Samba, BIND9, rsync) completes, read live from the Linux lab guide, with the per-lab detail tracked at the bottom of this page."
+      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) runs the live AD domain; the Linux side (ubuntu, rocky) is in place as VMs. Each node turns green here as its hardening lab (SSH, Samba, BIND9, rsync) completes, read live from the Linux lab guide."
     >
       <div className="card p-6 overflow-hidden">
         <TopologyGraph />
@@ -33,7 +33,7 @@ export function NetworkTopology() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
         <div className="card p-5">
           <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">DNS path</div>
           <div className="text-sm text-ink-dim leading-relaxed">
@@ -50,6 +50,13 @@ export function NetworkTopology() {
           <div className="text-sm text-ink-dim leading-relaxed">
             VMware DHCP is off on both VMnets so pfSense is the single authority. Two DHCP servers would
             mean duplicate offers and unpredictable leases.
+          </div>
+        </div>
+        <div className="card p-5">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2">Mixed Linux</div>
+          <div className="text-sm text-ink-dim leading-relaxed">
+            Three distros on purpose: Ubuntu (netplan), Debian (ifupdown), Rocky (NetworkManager). Client
+            shops run mixed Linux, so that is three network-config models, all configured by hand.
           </div>
         </div>
       </div>
