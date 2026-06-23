@@ -1,0 +1,7 @@
+# Treat binary assets as binary so git never applies text or EOL normalization.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary

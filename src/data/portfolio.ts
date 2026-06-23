@@ -92,7 +92,7 @@ export const summary = {
 // (profile.location, the certs list, the lab stack, current availability).
 export const heroGlance = [
   { k: 'Location', v: 'Carmel, IN · Indy metro' },
-  { k: 'Certs', v: 'A+ Core 1 passed · Core 2 June 2026' },
+  { k: 'Certs', v: 'A+ Core 1 passed · Core 2 July 2026' },
   { k: 'Stack', v: 'AD · pfSense · Linux' },
   { k: 'Status', v: 'Available now' },
 ] as const;
@@ -410,7 +410,7 @@ export const certs = [
     code: '220-1202',
     status: 'in-progress' as const,
     tier: 'In progress' as const,
-    target: 'Expected June 2026',
+    target: 'Scheduled July 2026',
     why: 'Operating systems, security, software troubleshooting, operational procedures. Second half of the A+.',
   },
   {
