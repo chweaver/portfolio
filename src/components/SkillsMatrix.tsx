@@ -174,7 +174,7 @@ export function SkillsMatrix() {
 
       <div className="mt-8 card p-6">
         <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
-          A+ Core 2: on track for June 2026
+          A+ Core 2: scheduled July 2026
         </div>
         <p className="text-sm text-ink-dim leading-relaxed">
           Core 1 (passed May 18, 2026) covered hardware, networking, and virtualization, most of which the
