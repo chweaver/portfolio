@@ -147,41 +147,6 @@ export const projects: Project[] = [
   },
 ];
 
-export const readiness = [
-  {
-    kicker: 'systems',
-    text: 'Windows, Linux, Active Directory basics, and network troubleshooting',
-  },
-  {
-    kicker: 'network',
-    text: 'Built and documented a segmented pfSense lab with verified firewall rules',
-  },
-  {
-    kicker: 'directory',
-    text: 'Practiced users, OUs, groups, domain controller setup, and AD structure',
-  },
-  {
-    kicker: 'documentation',
-    text: 'Writes clear documentation and separates built work from planned work',
-  },
-  {
-    kicker: 'tooling',
-    text: 'Comfortable learning PSA/RMM and Microsoft 365 workflows on the job',
-  },
-  {
-    kicker: 'target roles',
-    text: 'Service desk, help desk, NOC, technical alignment, and junior sysadmin',
-  },
-] as const;
-
-export const howIWork = [
-  'Verify before claiming',
-  'Document steps and outcomes',
-  'Keep changes reversible with snapshots and checkpoints',
-  'Ask clear questions and escalate with useful notes',
-  'Translate technical work into plain English',
-] as const;
-
 export const subnets = [
   {
     name: 'LAN',
@@ -206,57 +171,6 @@ export const ipTable = [
   { asset: 'ubuntu-base', nic: 'VMnet2', address: '192.168.100.10', mask: '/24', role: 'LAN SSH target' },
   { asset: 'debian-base', nic: 'VMnet2', address: '192.168.100.11', mask: '/24', role: 'LAN second host' },
   { asset: 'rocky-base', nic: 'VMnet3', address: '192.168.200.12', mask: '/24', role: 'LAB200 test client (originates inter-subnet traffic)' },
-];
-
-export const labEnvironment = {
-  purpose:
-    'I built and maintain a local virtualization lab to practice common MSP tasks safely: domain work, firewall changes, Linux triage, and rollbacks, without touching anything in production.',
-  platforms: [
-    'Windows 11 Pro',
-    'VMware Workstation Pro',
-    'Windows Server 2022',
-    'pfSense CE',
-    'Ubuntu Server',
-    'Debian',
-    'Rocky Linux',
-  ],
-  hardwareNote:
-    'Host: custom Ryzen 9 build, 32 GB DDR5, NVMe storage. The VM load runs well under host capacity, with named snapshots before every risky change.',
-} as const;
-
-export const vmInventory = [
-  {
-    name: 'pfsense-base',
-    os: 'pfSense CE 2.7.x',
-    proves: 'Routing, firewall policy, and DHCP/DNS authority for both subnets',
-    spec: '2 vCPU · 2 GB · WAN/VMnet8 + LAN/VMnet2 + OPT1/VMnet3',
-    ips: ['192.168.100.1', '192.168.200.1'],
-    snapshot: 'clean-rules-applied',
-  },
-  {
-    name: 'ubuntu-base',
-    os: 'Ubuntu Server 24.04.4 LTS',
-    proves: 'SSH target and day-to-day Linux troubleshooting practice',
-    spec: '2 vCPU · 2 GB · VMnet2',
-    ips: ['192.168.100.10'],
-    snapshot: 'ssh-baseline',
-  },
-  {
-    name: 'debian-base',
-    os: 'Debian 12 (bookworm)',
-    proves: 'Second LAN host: package and network-config differences from Ubuntu',
-    spec: '1 vCPU · 1 GB · VMnet2',
-    ips: ['192.168.100.11'],
-    snapshot: 'pristine',
-  },
-  {
-    name: 'rocky-base',
-    os: 'Rocky Linux 10.1 (Red Quartz)',
-    proves: 'RHEL-family exposure and the cross-subnet test traffic the firewall rules act on',
-    spec: '1 vCPU · 1 GB · VMnet3',
-    ips: ['192.168.200.12'],
-    snapshot: 'pristine',
-  },
 ];
 
 export const firewallRules = [
@@ -480,38 +394,6 @@ export const skillsOverview = [
   },
 ];
 
-export const nearTermPlan = [
-  {
-    label: 'Finish A+ Core 2',
-    detail: 'Core 1 passed May 18, 2026. Core 2 exam expected June 2026.',
-    status: 'in-progress' as const,
-  },
-  {
-    label: 'Complete the AD lab build-out',
-    detail:
-      'Group Policy is done. File shares, home folders, login scripts, and help-desk drills are next (phases 9-12, tracked live above).',
-    status: 'in-progress' as const,
-  },
-  {
-    label: 'Practice ticket-style troubleshooting drills',
-    detail: 'Password resets, account lockouts, drive mappings, and GPO checks, written up like tickets.',
-    status: 'planned' as const,
-  },
-  {
-    label: 'Earn a tier-1 MSP, help desk, or NOC seat',
-    detail: 'Indianapolis metro. Learn the PSA/RMM stack and ticket flow at production pace.',
-    status: 'planned' as const,
-  },
-  {
-    label: 'Start the foundation cert stack',
-    detail: 'CCNA, Azure Administrator (AZ-104), and Security+ alongside the day job: the networking, cloud, and security base for the MSP track, with Packet Tracer and Eve-NG labs in the background.',
-    status: 'planned' as const,
-  },
-];
-
-export const planClose =
-  'Near-term focus: earn a tier-1 MSP, help desk, or NOC role and build production experience. The longer arc is breadth across networking, cloud, and security, building toward owning and operating an MSP.';
-
 export const certTierOrder = ['Completed', 'In progress', 'Foundation · next'] as const;
 
 export const certs = [
@@ -557,28 +439,5 @@ export const certs = [
   },
 ];
 
-export const beyondFoundation =
-  'Beyond the foundation, the track is breadth over single-domain depth, building toward owning and operating an MSP.';
-
-export const mspBreadth = {
-  heading: 'MSP breadth · core direction',
-  items: [
-    'Azure Solutions Architect (AZ-305) and deeper Microsoft 365 administration',
-    'Virtualization (Hyper-V and VMware)',
-    'Backup and disaster recovery',
-    'MSP platform tooling (RMM/PSA: ConnectWise, NinjaOne, Datto)',
-    'Business operations: client management, sales, and service delivery',
-  ],
-};
-
-export const aspirationalCerts = {
-  heading: 'Long-term · security and governance',
-  items: [
-    'Microsoft Cloud and AI Security Engineer (SC-500)',
-    'GIAC Cloud Security Architecture and Design (GCAD)',
-    'IAPP AI Governance Professional (AIGP)',
-  ],
-};
-
-// careerStages removed in v4: the three-stage timeline read as future-heavy for an
-// entry-level screen. Near-term focus now lives in nearTermPlan above.
+// Long-term breadth (MSP-ownership track, security/governance certs) intentionally
+// omitted: too forward-looking for an entry-level screen.
