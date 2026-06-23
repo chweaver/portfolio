@@ -92,7 +92,7 @@ export const summary = {
 // (profile.location, the certs list, the lab stack, current availability).
 export const heroGlance = [
   { k: 'Location', v: 'Carmel, IN · Indy metro' },
-  { k: 'Certs', v: 'A+ Core 1 passed · Core 2 June 2026' },
+  { k: 'Certs', v: 'A+ Core 1 passed · Core 2 July 2026' },
   { k: 'Stack', v: 'AD · pfSense · Linux' },
   { k: 'Status', v: 'Available now' },
 ] as const;
@@ -111,20 +111,11 @@ export interface Project {
   built: string;
   result: string;
   stack: string[];
-  repo: string;
+  href: string;
+  linkLabel: string;
 }
 
 export const projects: Project[] = [
-  {
-    title: 'Active Directory domain',
-    outcome: 'corp.lab live: DC, OUs, AGDLP groups, first GPO',
-    status: 'in-progress',
-    problem: 'Stand up and run the identity layer a small shop depends on, end to end.',
-    built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, and a verified GPO.',
-    result: 'WS01 authenticates against corp.lab and policy applies on login. File shares, scripts, and help-desk drills (phases 9-12) are tracked live above.',
-    stack: ['Windows Server', 'Active Directory', 'GPO', 'DNS'],
-    repo: 'https://github.com/chweaver/ad-lab-guide',
-  },
   {
     title: 'Segmented pfSense network',
     outcome: '3 firewall rules, tested and logged',
@@ -133,7 +124,19 @@ export const projects: Project[] = [
     built: 'Two routed /24 subnets behind one pfSense, deny by default with permit by exception, plus DHCP and DNS authority.',
     result: 'SSH from LAB200 punches through to LAN, ping is dropped, both confirmed in the pfSense filter log.',
     stack: ['pfSense', 'TCP/IP', 'Firewall', 'VLAN', 'DHCP'],
-    repo: 'https://github.com/chweaver/portfolio',
+    href: 'https://github.com/chweaver/portfolio',
+    linkLabel: 'View the repo',
+  },
+  {
+    title: 'Active Directory domain',
+    outcome: 'corp.lab live: DC, OUs, AGDLP groups, first GPO',
+    status: 'in-progress',
+    problem: 'Stand up and run the identity layer a small shop depends on, end to end.',
+    built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, and a verified GPO.',
+    result: 'WS01 authenticates against corp.lab and policy applies on login. File shares, scripts, and help-desk drills (phases 9-12) are next.',
+    stack: ['Windows Server', 'Active Directory', 'GPO', 'DNS'],
+    href: adLab.guideBaseUrl,
+    linkLabel: 'Open the live AD lab guide',
   },
   {
     title: 'Linux lab build (4 labs)',
@@ -141,9 +144,10 @@ export const projects: Project[] = [
     status: 'planned',
     problem: 'Bridge Linux into the Windows domain the way a real mixed network runs.',
     built: '',
-    result: 'Not started yet. Scoped as four dependency-chained labs across Ubuntu and Rocky: hardened SSH feeding rsync backups, with Samba and BIND9 bridging into corp.lab. Tracked live at the bottom of this page once it begins.',
+    result: 'Not started yet. Scoped as four dependency-chained labs across Ubuntu and Rocky: hardened SSH feeding rsync backups, with Samba and BIND9 bridging into corp.lab.',
     stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync'],
-    repo: 'https://github.com/chweaver/linux-lab-guide',
+    href: linuxLab.guideBaseUrl,
+    linkLabel: 'Open the live Linux lab guide',
   },
 ];
 
@@ -410,7 +414,7 @@ export const certs = [
     code: '220-1202',
     status: 'in-progress' as const,
     tier: 'In progress' as const,
-    target: 'Expected June 2026',
+    target: 'Scheduled July 2026',
     why: 'Operating systems, security, software troubleshooting, operational procedures. Second half of the A+.',
   },
   {

@@ -1,0 +1,8 @@
+# Treat binary assets as binary so git never applies text or EOL normalization
+# (a PDF or image that gets CRLF-converted is corrupted).
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary

@@ -21,9 +21,8 @@ function Field({ label, body }: { label: string; body: string }) {
   );
 }
 
-export function ProjectCard({ title, outcome, status, problem, built, result, stack, repo }: Project) {
+export function ProjectCard({ title, outcome, status, problem, built, result, stack, href, linkLabel }: Project) {
   const s = STATUS_STYLE[status];
-  const repoLabel = repo.replace(/^https?:\/\//, '');
   return (
     <div className="card flex flex-col p-5">
       <div className="flex items-start justify-between gap-3">
@@ -46,12 +45,13 @@ export function ProjectCard({ title, outcome, status, problem, built, result, st
         ))}
       </div>
       <a
-        href={repo}
+        href={href}
         target="_blank"
         rel="noreferrer"
-        className="mt-3 font-mono text-[11px] text-ink-faint transition-colors hover:text-accent"
+        className="mt-4 inline-flex items-center gap-2 self-start rounded-md border border-accent/40 bg-accent/10 px-3 py-2 font-mono text-xs text-accent transition-colors hover:border-accent hover:bg-accent/20 hover:text-accent-glow"
       >
-        {repoLabel}
+        {linkLabel}
+        <span aria-hidden>↗</span>
       </a>
     </div>
   );
