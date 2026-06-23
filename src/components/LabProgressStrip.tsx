@@ -29,13 +29,6 @@ export function LabProgressStrip() {
     <div className="sticky top-14 z-30 border-b border-bg-border bg-bg/85 backdrop-blur-md">
       <a
         href="#ad-lab"
-        aria-label={
-          loading
-            ? 'Active Directory lab build-out progress, loading'
-            : empty
-              ? 'Active Directory lab status unavailable. Jump to live status.'
-              : `Active Directory lab build-out: ${buildOutDone} of ${buildOutTotal} phases, ${pct} percent. Jump to live status.`
-        }
         className="group container-narrow flex items-center gap-3 py-2 transition-colors"
       >
         <span className="section-eyebrow shrink-0 before:hidden sm:before:inline-block">Live AD Lab</span>
@@ -43,6 +36,7 @@ export function LabProgressStrip() {
         <div
           className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-bg-elevated"
           role="progressbar"
+          aria-label="AD lab build-out"
           aria-valuenow={loading || empty ? undefined : pct}
           aria-valuemin={0}
           aria-valuemax={100}

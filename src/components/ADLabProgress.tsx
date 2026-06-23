@@ -16,12 +16,12 @@ export function ADLabProgress() {
 
   const subtitle = (
     <>
-      The status below reads live from the{' '}
+      Read live from the{' '}
       <a href={adLab.guideBaseUrl} target="_blank" rel="noreferrer" className="text-accent underline-offset-2 hover:underline">
         AD lab guide
       </a>{' '}
-      I built and document myself, using AI as a research and documentation accelerator that I
-      direct and verify. It updates whenever I push to the guide, with no manual sync on this page.
+      I build and document myself (using AI as a documentation accelerator I direct and verify). It
+      updates on every push to the guide, no manual sync here.
     </>
   );
 
@@ -31,7 +31,7 @@ export function ADLabProgress() {
       eyebrow="Live · AD Lab"
       title="Active Directory lab, live status"
       subtitle={subtitle}
-      contextCard="A live Active Directory forest with a domain controller, organizational units, user accounts, and AGDLP security groups. The identity layer every Windows MSP client runs on. Permissions follow AGDLP: accounts into global groups, global groups into domain-local groups, and permissions on the domain-local group, the pattern that keeps access manageable as a client grows."
+      contextCard="A live AD forest: domain controller, OUs, users, and AGDLP security groups, the identity layer every Windows MSP client runs on. AGDLP nesting (accounts into global groups, global into domain-local, permissions on the domain-local group) keeps access manageable as a client grows."
     >
       {!data && !failed && (
         <div className="text-ink-faint text-sm font-mono">Loading lab status...</div>
@@ -77,12 +77,16 @@ function Loaded({ data }: { data: LabStatus }) {
             <span className="text-ink-faint"> / {buildOutTotal} phases</span>
           </div>
         </div>
-        <div className="h-2 w-full rounded-full bg-bg-elevated overflow-hidden">
-          <div
-            className="h-full bg-accent transition-all"
-            style={{ width: `${pct}%` }}
-            aria-label={`${pct}% complete`}
-          />
+        <div
+          className="h-2 w-full rounded-full bg-bg-elevated overflow-hidden"
+          role="progressbar"
+          aria-label="AD build-out progress"
+          aria-valuenow={pct}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuetext={`${pct}% complete, ${buildOutDone} of ${buildOutTotal} phases`}
+        >
+          <div className="h-full bg-accent transition-all" style={{ width: `${pct}%` }} />
         </div>
         {updated && (
           <p className="mt-3 font-mono text-xs text-ink-faint">Last updated {updated}</p>

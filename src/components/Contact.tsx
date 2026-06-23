@@ -9,9 +9,9 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      eyebrow="10 / Contact"
+      eyebrow="Contact"
       title="Let's talk"
-      subtitle="Available for tier-1 help desk, service desk, NOC, technical alignment, and junior sysadmin roles in the Indianapolis area. On-site, hybrid, or remote with an on-site option."
+      subtitle="Indianapolis metro. On-site, hybrid, or remote."
     >
       <div className="card p-8 md:p-10">
         <div className="grid gap-8 md:grid-cols-2">
