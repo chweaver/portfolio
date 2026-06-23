@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Navigation } from '@/components/Navigation';
 import { LabProgressStrip } from '@/components/LabProgressStrip';
@@ -10,6 +10,7 @@ import { publicAsset } from '@/lib/paths';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', display: 'swap' });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk', display: 'swap' });
 
 const siteTitle = `${profile.shortName}, MSP Tier-1 Service Desk Candidate | Active Directory + pfSense Lab | CompTIA A+ | ${profile.location.split(',')[0]} (Indianapolis metro)`;
 const siteDescription = `Entry-level MSP candidate, ${profile.age}. Live Active Directory domain, routed pfSense lab, CompTIA A+ Core 1 passed, documented and verified. No professional MSP tenure yet.`;
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrains.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-screen font-sans antialiased">
         <div className="bg-grid" aria-hidden="true" />
         <LogBackground />
