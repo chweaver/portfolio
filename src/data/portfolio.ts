@@ -112,6 +112,10 @@ export interface Project {
   result: string;
   stack: string[];
   repo: string;
+  // Custom label for the outbound link button (falls back to the repo host/path).
+  linkLabel?: string;
+  // Span the full projects row (md:col-span-3) for a card with much more text.
+  wide?: boolean;
 }
 
 export const projects: Project[] = [
@@ -123,7 +127,19 @@ export const projects: Project[] = [
     built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, and a verified GPO.',
     result: 'WS01 authenticates against corp.lab and policy applies on login. File shares, scripts, and help-desk drills (phases 9-12) are tracked live above.',
     stack: ['Windows Server', 'Active Directory', 'GPO', 'DNS'],
-    repo: 'https://github.com/chweaver/ad-lab-guide',
+    repo: adLab.guideBaseUrl,
+    linkLabel: 'Open the AD lab guide',
+  },
+  {
+    title: 'Linux lab build (4 labs)',
+    outcome: 'Planned: SSH hardening, Samba/AD, BIND9, rsync',
+    status: 'planned',
+    problem: 'Bridge Linux into the Windows domain the way a real mixed network runs.',
+    built: '',
+    result: 'Not started yet. Scoped as four dependency-chained labs across Ubuntu and Rocky: hardened SSH feeding rsync backups, with Samba and BIND9 bridging into corp.lab.',
+    stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync'],
+    repo: linuxLab.guideBaseUrl,
+    linkLabel: 'Open the Linux lab guide',
   },
   {
     title: 'Segmented pfSense network',
@@ -134,6 +150,7 @@ export const projects: Project[] = [
     result: 'SSH from LAB200 punches through to LAN, ping is dropped, both confirmed in the pfSense filter log.',
     stack: ['pfSense', 'TCP/IP', 'Firewall', 'VLAN', 'DHCP'],
     repo: 'https://github.com/chweaver/portfolio',
+    linkLabel: 'View the repo',
   },
   {
     title: 'Self-hosted AI workspace (Odysseus)',
@@ -144,6 +161,7 @@ export const projects: Project[] = [
     result: 'My daily driver. I can rebuild the whole stack on another machine from a setup script and a git bundle, and a Python battery of ten known-answer traps scores each model so model choice comes from measured behavior, not guessing.',
     stack: ['Docker', 'Docker Compose', 'Linux', 'Ollama', 'Python'],
     repo: '',
+    wide: true,
   },
 ];
 
