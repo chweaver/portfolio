@@ -103,18 +103,10 @@ body {
   .card {
     @apply rounded-xl border border-bg-border bg-bg-card/60 backdrop-blur-sm shadow-card transition-all duration-200;
   }
-  .card:hover {
-    @apply border-accent/30;
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.04) inset,
-      0 8px 24px rgba(0, 0, 0, 0.35),
-      0 0 24px rgba(34, 211, 238, 0.08);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .card:hover {
-      transform: translateY(-2px);
-    }
-  }
+  /* Cards are static content panels, not links: no hover lift or glow, so the
+     hover state never implies clickability. Genuinely clickable elements (the
+     Evidence thumbnails, the details toggles, the project link buttons) carry
+     their own explicit hover. */
 
   .accent-line {
     background: linear-gradient(90deg, #67e8f9 0%, #22d3ee 50%, #a5f3fc 100%);

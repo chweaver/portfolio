@@ -52,6 +52,18 @@ export function ProjectCard({
         <Field label="Result" body={result} />
       </div>
 
+      {repo && (
+        <a
+          href={repo}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-flex items-center gap-2 self-start rounded-md bg-accent px-4 py-2 font-mono text-sm font-medium text-bg transition-all hover:bg-accent-glow hover:shadow-[0_0_0_1px_rgba(103,232,249,0.4),0_0_24px_rgba(34,211,238,0.35)]"
+        >
+          {label}
+          <span aria-hidden>↗</span>
+        </a>
+      )}
+
       <div className="mt-4 flex flex-wrap gap-1.5 border-t border-bg-border pt-4">
         {stack.map((tag) => (
           <span key={tag} className="pill">
@@ -59,17 +71,6 @@ export function ProjectCard({
           </span>
         ))}
       </div>
-      {repo && (
-        <a
-          href={repo}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-4 inline-flex items-center gap-2 self-start rounded-md border border-accent/40 bg-accent/10 px-3 py-2 font-mono text-xs text-accent transition-colors hover:border-accent hover:bg-accent/20 hover:text-accent-glow"
-        >
-          {label}
-          <span aria-hidden>↗</span>
-        </a>
-      )}
     </div>
   );
 }
