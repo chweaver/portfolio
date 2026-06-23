@@ -66,8 +66,8 @@ export const profile = {
   tagline: 'Entry-level IT technician for tier-1 MSP, help desk, and NOC roles in the Indianapolis metro, with hands-on Active Directory, pfSense, and Linux lab experience.',
   // Full headline kept as the canonical string (SEO/meta). The hero renders it in
   // two tiers for scannability: headlineLead large, headlineRest smaller.
-  headline: 'Entry-level IT technician ready for tier-1 MSP work, with hands-on Active Directory, pfSense, Linux, and documentation experience.',
-  headlineLead: 'Entry-level IT technician ready for tier-1 MSP work',
+  headline: 'IT technician ready for tier-1 MSP work, with hands-on Active Directory, pfSense, Linux, and documentation experience.',
+  headlineLead: 'IT technician ready for tier-1 MSP work',
   headlineRest: 'with hands-on Active Directory, pfSense, Linux, and documentation experience.',
   labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
@@ -149,8 +149,7 @@ export const projects: Project[] = [
     built: 'Two routed /24 subnets behind one pfSense, deny by default with permit by exception, plus DHCP and DNS authority.',
     result: 'SSH from LAB200 punches through to LAN, ping is dropped, both confirmed in the pfSense filter log.',
     stack: ['pfSense', 'TCP/IP', 'Firewall', 'VLAN', 'DHCP'],
-    repo: 'https://github.com/chweaver/portfolio',
-    linkLabel: 'View the repo',
+    repo: '',
   },
   {
     title: 'Self-hosted AI workspace (Odysseus)',
