@@ -136,14 +136,14 @@ export const projects: Project[] = [
     repo: 'https://github.com/chweaver/portfolio',
   },
   {
-    title: 'Linux lab build (4 labs)',
-    outcome: 'Planned: SSH hardening → Samba/AD → BIND9 → rsync',
-    status: 'planned',
-    problem: 'Bridge Linux into the Windows domain the way a real mixed network runs.',
-    built: '',
-    result: 'Not started yet. Scoped as four dependency-chained labs across Ubuntu and Rocky: hardened SSH feeding rsync backups, with Samba and BIND9 bridging into corp.lab. Tracked live at the bottom of this page once it begins.',
-    stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync'],
-    repo: 'https://github.com/chweaver/linux-lab-guide',
+    title: 'Self-hosted AI workspace (Odysseus)',
+    outcome: 'Private AI workspace running as a multi-container Docker stack on my own GPU',
+    status: 'done',
+    problem: 'I wanted real reps deploying and maintaining containerized services over time, not just standing one up once, and an AI workspace that keeps my data on my own machine instead of a third-party API.',
+    built: 'Four-service Docker Compose stack (app, ChromaDB, SearXNG, ntfy) on Docker Desktop with WSL2, with the models served by Ollama on the host. They kept offloading to the CPU and crawling on a 12 GB card, so I capped their context windows with Modelfiles, turned on flash attention and KV-cache quantization, limited Ollama to one loaded model, and moved the model store to its own SSD to get everything back on the GPU. Locked the container down with an outbound firewall, ran it non-root, kept the model API on localhost, and put the app behind login with per-user permissions.',
+    result: 'My daily driver. I can rebuild the whole stack on another machine from a setup script and a git bundle, and a Python battery of ten known-answer traps scores each model so model choice comes from measured behavior, not guessing.',
+    stack: ['Docker', 'Docker Compose', 'Linux', 'Ollama', 'Python'],
+    repo: '',
   },
 ];
 
