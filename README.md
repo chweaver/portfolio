@@ -1,71 +1,49 @@
-# Charlie Weaver — Portfolio Site
+# Charlie Weaver, Portfolio
 
-Personal portfolio site built from the Home Lab v2 and MSP Career Roadmap document. Next.js 14 (App Router) + Tailwind CSS, statically exported for GitHub Pages.
+Personal IT/MSP career portfolio. Next.js (App Router), statically exported and deployed
+to GitHub Pages at https://chweaver.github.io/portfolio/.
 
-## Local development
+For the full operating guide (architecture, the live lab-status pipeline, conventions,
+and gotchas), see [AGENTS.md](AGENTS.md). It is the canonical reference; this README is
+just a quick start.
 
-```powershell
+## Quick start
+
+```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
 ```
 
-Open http://localhost:3000.
+## Build and deploy
 
-## Production build
-
-```powershell
-npm run build
+```bash
+npm run build    # static export to ./out (this is also the CI gate)
 ```
 
-The static export lands in `./out`.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and deploys to
+GitHub Pages. In CI the workflow sets `GITHUB_PAGES_REPO`, so `next.config.mjs` serves
+the site under the `/portfolio` base path.
 
-## Deploying to GitHub Pages
+## Where things live
 
-1. Create a new public GitHub repo (e.g. `chweaver/portfolio`).
-2. Push this directory to the repo's `main` branch.
-3. In the repo settings → Pages, set **Source** to **GitHub Actions**.
-4. Push to `main` — the workflow at `.github/workflows/deploy.yml` builds and deploys automatically.
+- Content: `src/data/portfolio.ts` (the single content spine, almost all copy and data).
+- Page composition: `src/app/page.tsx`.
+- Components: `src/components/` (one file per section or UI piece).
+- Design tokens: `tailwind.config.ts`; component classes and motion: `src/app/globals.css`.
+- Live lab status: `src/lib/useLabStatus.ts` fetches `lab-status.json` published by the
+  sibling repos `chweaver/ad-lab-guide` and `chweaver/linux-lab-guide`.
 
-The site lives at `https://<user>.github.io/<repo>/`. The `next.config.mjs` reads the repo name from the `GITHUB_PAGES_REPO` env var (set in the workflow) so paths resolve correctly.
+## Scripts
 
-### User/org page deployment
+```bash
+npm run dev        # local dev server
+npm run build      # static export to ./out
+npm run typecheck  # tsc --noEmit
+npm run lint       # eslint
 
-If you'd rather host at the root — `https://chweaver.github.io/` instead of `/<repo>/` — name the repo `chweaver.github.io` and leave `GITHUB_PAGES_REPO` unset (or empty). The config will skip the `basePath` automatically.
-
-## Editing content
-
-All copy lives in `src/data/portfolio.ts`. Update there; the components consume the data.
-
-## Stack
-
-- Next.js 14 (App Router, `output: 'export'`)
-- React 18
-- Tailwind CSS 3
-- TypeScript
-- Fonts: Inter + JetBrains Mono via `next/font/google`
-
-## Project layout
-
+node scripts/build-og-card.mjs       # regenerate public/og-card.png
+node scripts/convert-screenshots.mjs # regenerate .webp for new public/logs PNGs
 ```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout, fonts, nav, footer
-│   ├── page.tsx            # Composes the sections
-│   └── globals.css         # Tailwind + custom utilities
-├── components/
-│   ├── Navigation.tsx
-│   ├── Hero.tsx
-│   ├── Section.tsx         # Reusable section shell
-│   ├── LabOverview.tsx
-│   ├── NetworkTopology.tsx # Inline SVG topology diagram
-│   ├── FirewallRules.tsx
-│   ├── VMInventory.tsx
-│   ├── SkillsMatrix.tsx    # Client-side filterable table
-│   ├── Roadmap.tsx         # Vertical phase timeline
-│   ├── Certifications.tsx
-│   ├── Career.tsx
-│   ├── Contact.tsx
-│   └── Footer.tsx
-└── data/
-    └── portfolio.ts        # All copy in one place
-```
+
+Stack: Next.js 16, React 18, TypeScript (strict), Tailwind CSS 3, static export. Node 20
+in CI.
