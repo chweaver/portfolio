@@ -66,9 +66,9 @@ export const profile = {
   tagline: 'Entry-level IT technician for tier-1 MSP, help desk, and NOC roles in the Indianapolis metro, with hands-on Active Directory, pfSense, and Linux lab experience.',
   // Full headline kept as the canonical string (SEO/meta). The hero renders it in
   // two tiers for scannability: headlineLead large, headlineRest smaller.
-  headline: 'Help desk and tier-1 MSP support, backed by a live homelab: Active Directory, pfSense, and multi-distro Linux, all documented and verified.',
+  headline: 'Help desk and tier-1 MSP support, backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
   headlineLead: 'Help desk and tier-1 MSP support.',
-  headlineRest: 'Backed by a live homelab: Active Directory, pfSense, and multi-distro Linux, all documented and verified.',
+  headlineRest: 'Backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
   labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
 
