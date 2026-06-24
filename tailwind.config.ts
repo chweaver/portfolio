@@ -32,7 +32,9 @@ const config: Config = {
           DEFAULT: '#28323f', // body
           strong: '#161d27', // headings, key values
           dim: '#586577', // secondary text
-          faint: '#8a96a6', // mono labels, captions
+          // Spec value #8a96a6 is ~3:1 on white (fails AA for small text); darkened
+          // to clear 4.5:1 for the small mono labels/captions that use it.
+          faint: '#646d7c',
         },
         signal: {
           green: '#1e8a5a',

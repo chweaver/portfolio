@@ -31,13 +31,12 @@ export function ProjectCard({
   stack,
   repo,
   linkLabel,
-  wide,
 }: Project) {
   const s = STATUS_STYLE[status];
   const label = linkLabel ?? (repo ? repo.replace(/^https?:\/\//, '') : '');
   return (
     <div
-      className={`card flex flex-col overflow-hidden p-5 transition-all duration-200 hover:-translate-y-[3px] hover:shadow-lift${wide ? ' md:col-span-3' : ''}`}
+      className="card flex flex-col overflow-hidden p-5 transition-all duration-200 hover:-translate-y-[3px] hover:shadow-lift"
       style={{ borderTop: `3px solid ${s.edge}` }}
     >
       <div className="flex items-start justify-between gap-3">
@@ -46,9 +45,7 @@ export function ProjectCard({
       </div>
       <div className={`mt-1.5 font-mono text-xs leading-relaxed ${s.text}`}>{outcome}</div>
 
-      <div
-        className={`mt-4 flex-1 ${wide ? 'grid gap-x-8 gap-y-3 md:grid-cols-3' : 'flex flex-col gap-3'}`}
-      >
+      <div className="mt-4 flex-1 flex flex-col gap-3">
         <Field label="Problem" body={problem} />
         <Field label="Built" body={built} />
         <Field label="Result" body={result} />

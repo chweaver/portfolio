@@ -17,7 +17,7 @@ const C = {
   border: '#dbe1e9',
   ink: '#161d27',
   inkDim: '#586577',
-  inkFaint: '#8a96a6',
+  inkFaint: '#646d7c',
   accent: '#2c5bd6',
   accentWash: '#eaf0fc',
   done: '#1e8a5a',

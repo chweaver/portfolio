@@ -14,13 +14,13 @@ export function NetworkTopology() {
         <TopologyGraph />
         <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] text-ink-dim">
           <span className="inline-flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#22d3ee' }} /> LAN 192.168.100.0/24
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#2c5bd6' }} /> LAN 192.168.100.0/24
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> LAB200 192.168.200.0/24
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#1e8a5a' }} /> LAB200 192.168.200.0/24
           </span>
           <span className="inline-flex items-center gap-1.5 text-signal-green">
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#10b981' }} /> green check = lab complete (live)
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: '#1e8a5a' }} /> green check = lab complete (live)
           </span>
           <a
             href={`${linuxLab.guideBaseUrl}topology/`}
