@@ -83,7 +83,7 @@ export function SkillsMatrix() {
                 onClick={() => setFilter(f.key)}
                 className={`rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors ${
                   filter === f.key
-                    ? 'bg-accent text-bg'
+                    ? 'bg-accent text-white'
                     : 'border border-bg-border bg-bg-elevated text-ink-dim hover:text-accent hover:border-accent/40'
                 }`}
               >

@@ -102,7 +102,7 @@ export function ArtifactGallery() {
             onClick={() => setOpenIndex(i)}
             className="card group overflow-hidden p-0 text-left hover:border-accent/40 transition-colors"
           >
-            <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
+            <div className="relative aspect-[16/10] overflow-hidden bg-bg-elevated">
               <picture>
                 <source srcSet={webpSrc(a.file)} type="image/webp" />
                 <img
