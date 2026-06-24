@@ -34,11 +34,6 @@ export function Hero() {
               {profile.headlineRest}
             </span>
           </h1>
-          <p className="mt-5 max-w-2xl text-ink-dim leading-relaxed">
-            The lab below is the proof: a live Active Directory domain, a segmented pfSense network,
-            and multi-distro Linux, all documented and verified.
-          </p>
-
           {/* At-a-glance strip: the 5-second recruiter scan. Hairline-separated
               cells via a 1px gap over a border-colored background. */}
           <div className="mt-8 grid max-w-[880px] grid-cols-2 gap-px overflow-hidden rounded-xl border border-bg-border bg-bg-border md:grid-cols-4">

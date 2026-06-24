@@ -31,7 +31,7 @@ export function ADLabProgress() {
       eyebrow="Live · AD Lab"
       title="Active Directory lab, live status"
       subtitle={subtitle}
-      contextCard="A live AD forest: domain controller, OUs, users, and AGDLP security groups, the identity layer every Windows MSP client runs on. AGDLP nesting (accounts into global groups, global into domain-local, permissions on the domain-local group) keeps access manageable as a client grows."
+      contextCard="The identity layer every Windows MSP client runs on. AGDLP nesting (accounts into global groups, global into domain-local, permissions on the domain-local group) keeps access manageable as a client grows."
     >
       {!data && !failed && (
         <div className="text-ink-faint text-sm font-mono">Loading lab status...</div>

@@ -46,7 +46,7 @@ export function SkillsMatrix() {
       id="skills"
       eyebrow="Skills & certifications"
       title="What I can work with"
-      contextCard="Each lab element maps to A+, Network+, and CCNA objectives. The full table is one click below."
+      contextCard="Each lab element maps to A+, Network+, and CCNA objectives."
     >
       <div className="grid gap-4 md:grid-cols-3">
         {skillsOverview.map((col) => (

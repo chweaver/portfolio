@@ -8,7 +8,7 @@ export function NetworkTopology() {
       id="network"
       eyebrow="Network"
       title="One network: AD and Linux behind a single pfSense"
-      contextCard="Two routed subnets behind a single pfSense. The Windows side (DC01, WS01) runs the live AD domain; the Linux side (ubuntu, rocky) is in place as VMs. Each node turns green here as its hardening lab (SSH, Samba, BIND9, rsync) completes, read live from the Linux lab guide."
+      contextCard="DC01 and WS01 on LAN run the live AD domain; ubuntu-base and rocky-base on LAB200 are the Linux side. Each node turns green as its hardening lab (SSH, Samba, BIND9, rsync) completes, read live from the Linux lab guide."
     >
       <div className="card p-6 overflow-hidden">
         <TopologyGraph />

@@ -19,10 +19,9 @@ export function Navigation() {
   return (
     <header className="sticky top-0 z-40 border-b border-bg-border bg-bg-card/80 backdrop-blur-md backdrop-saturate-150">
       <div className="container-narrow flex h-[62px] items-center justify-between gap-3">
-        <a href="#top" className="flex items-center font-mono text-sm font-medium">
-          <span className="text-accent">charlie@</span>
-          <span className="text-ink-strong">homelab</span>
-          <span className="text-accent">:~$</span>
+        <a href="#top" className="flex items-center gap-2">
+          <span className="inline-block h-2 w-2 rounded-sm bg-accent" aria-hidden="true" />
+          <span className="font-display text-sm font-semibold text-ink-strong">{profile.shortName}</span>
         </a>
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
