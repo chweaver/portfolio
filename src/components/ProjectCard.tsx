@@ -1,15 +1,14 @@
 import { type Project } from '@/data/portfolio';
 
 // Outcome-first project tile. Leads with the result, then a problem -> built ->
-// result body, the stack, and an obvious link button out to the source (hidden
-// when a project has no public URL). Reuses the design-system .card and .pill
-// classes (no new primitives), so this stays a server component.
+// result body, the stack, and a link out to the source (hidden when a project
+// has no public URL). Reuses the design-system .card and .pill classes.
 // `wide` makes a card span the full grid row (md:col-span-3) and lay its body
 // out in columns, for a project that carries much more text than the others.
-const STATUS_STYLE: Record<Project['status'], { className: string; label: string }> = {
-  done: { className: 'pill-green', label: 'done' },
-  'in-progress': { className: 'pill-accent', label: 'in progress' },
-  planned: { className: 'pill-amber', label: 'planned' },
+const STATUS_STYLE: Record<Project['status'], { className: string; label: string; text: string; edge: string }> = {
+  done: { className: 'pill-green', label: 'done', text: 'text-signal-green', edge: '#1e8a5a' },
+  'in-progress': { className: 'pill-accent', label: 'in progress', text: 'text-accent', edge: '#2c5bd6' },
+  planned: { className: 'pill-amber', label: 'planned', text: 'text-ink-dim', edge: '#6b7787' },
 };
 
 function Field({ label, body }: { label: string; body: string }) {
@@ -37,12 +36,15 @@ export function ProjectCard({
   const s = STATUS_STYLE[status];
   const label = linkLabel ?? (repo ? repo.replace(/^https?:\/\//, '') : '');
   return (
-    <div className={`card flex flex-col p-5${wide ? ' md:col-span-3' : ''}`}>
+    <div
+      className={`card flex flex-col overflow-hidden p-5 transition-all duration-200 hover:-translate-y-[3px] hover:shadow-lift${wide ? ' md:col-span-3' : ''}`}
+      style={{ borderTop: `3px solid ${s.edge}` }}
+    >
       <div className="flex items-start justify-between gap-3">
-        <h3 className="text-lg font-semibold tracking-tight text-ink">{title}</h3>
+        <h3 className="text-lg font-semibold tracking-tight text-ink-strong">{title}</h3>
         <span className={`pill ${s.className} shrink-0`}>{s.label}</span>
       </div>
-      <div className="mt-1.5 font-mono text-xs leading-relaxed text-accent">{outcome}</div>
+      <div className={`mt-1.5 font-mono text-xs leading-relaxed ${s.text}`}>{outcome}</div>
 
       <div
         className={`mt-4 flex-1 ${wide ? 'grid gap-x-8 gap-y-3 md:grid-cols-3' : 'flex flex-col gap-3'}`}
@@ -57,7 +59,7 @@ export function ProjectCard({
           href={repo}
           target="_blank"
           rel="noreferrer"
-          className="mt-4 inline-flex items-center gap-2 self-start rounded-md bg-accent px-4 py-2 font-mono text-sm font-medium text-bg transition-all hover:bg-accent-glow hover:shadow-[0_0_0_1px_rgba(103,232,249,0.4),0_0_24px_rgba(34,211,238,0.35)]"
+          className="mt-4 inline-flex items-center gap-2 self-start rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-dim"
         >
           {label}
           <span aria-hidden>↗</span>

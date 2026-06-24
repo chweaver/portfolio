@@ -7,6 +7,23 @@ const W = 940;
 const H = 580;
 const cx = W / 2;
 
+// Daylight Ops light palette for the diagram. Subnet colors are overridden here
+// (the data carries the old dark-theme cyan/green) so the light topology reads
+// as slate-blue + green on white rather than neon on dark.
+const SUBNET_COLOR: Record<string, string> = { lan: '#2c5bd6', lab200: '#1e8a5a' };
+const C = {
+  surface: '#ffffff',
+  surface2: '#f7f9fb',
+  border: '#dbe1e9',
+  ink: '#161d27',
+  inkDim: '#586577',
+  inkFaint: '#8a96a6',
+  accent: '#2c5bd6',
+  accentWash: '#eaf0fc',
+  done: '#1e8a5a',
+};
+const subColor = (id: string): string => SUBNET_COLOR[id] ?? C.accent;
+
 const chain = {
   internet: { y: 34 },
   router: { y: 78, w: 130, h: 34 },
@@ -17,7 +34,7 @@ const pfBottom = chain.pfsense.y + chain.pfsense.h;
 
 const boxTop = 312;
 const boxH = 240;
-// Two subnets now fill the canvas: LAN (DC01, WS01, ubuntu) on the left,
+// Two subnets fill the canvas: LAN (DC01, WS01, ubuntu) on the left,
 // LAB200 (rocky) on the right. LAN is wider because it holds more hosts.
 const boxes: Record<string, { x: number; w: number }> = {
   lan: { x: 24, w: 560 },
@@ -44,7 +61,7 @@ function layout(): Placed[] {
       const rowStart = box.x + (box.w - rowTotal) / 2;
       placed.push({
         ...n,
-        color: sn.color,
+        color: subColor(sn.id),
         x: rowStart + (i % perRow) * (CARD_W + GAP),
         y: boxTop + 50 + Math.floor(i / perRow) * (CARD_H + GAP),
       });
@@ -68,8 +85,8 @@ function Icon({ type, color }: { type: TopoNodeType; color: string }) {
         <g>
           <rect x={0} y={0} width={14} height={5} rx={1} fill={color} opacity={0.9} />
           <rect x={0} y={7} width={14} height={5} rx={1} fill={color} opacity={0.55} />
-          <circle cx={3} cy={2.5} r={1} fill="#0a0e14" />
-          <circle cx={3} cy={9.5} r={1} fill="#0a0e14" />
+          <circle cx={3} cy={2.5} r={1} fill={C.surface} />
+          <circle cx={3} cy={9.5} r={1} fill={C.surface} />
         </g>
       );
     case 'workstation':
@@ -108,7 +125,7 @@ export function TopologyGraph() {
     >
       <defs>
         <marker id="topo-arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M0,-5L10,0L0,5" fill="#475569" />
+          <path d="M0,-5L10,0L0,5" fill={C.inkFaint} />
         </marker>
         <style>{`
           .topo-flow { stroke-dasharray: 5 6; animation: topoflow 1.4s linear infinite; }
@@ -120,10 +137,11 @@ export function TopologyGraph() {
       {/* Subnet group boxes */}
       {topologySubnets.map((sn) => {
         const b = boxes[sn.id];
+        const col = subColor(sn.id);
         return (
           <g key={sn.id}>
-            <rect x={b.x} y={boxTop} width={b.w} height={boxH} rx={14} fill={`${sn.color}0d`} stroke={sn.color} strokeOpacity={0.3} />
-            <text x={b.x + 16} y={boxTop + 26} fill={sn.color} fontSize={11} fontFamily="var(--font-jetbrains, ui-monospace)" letterSpacing={0.5}>
+            <rect x={b.x} y={boxTop} width={b.w} height={boxH} rx={14} fill={`${col}0d`} stroke={col} strokeOpacity={0.35} />
+            <text x={b.x + 16} y={boxTop + 26} fill={col} fontSize={11} fontFamily="var(--font-plex-mono, ui-monospace)" letterSpacing={0.5}>
               {sn.label}
             </text>
           </g>
@@ -132,33 +150,33 @@ export function TopologyGraph() {
 
       {/* pfSense -> subnet connectors with animated flow */}
       {topologySubnets.map((sn) => (
-        <line key={`edge-${sn.id}`} className="topo-flow" x1={cx} y1={pfBottom} x2={boxCenter(sn.id)} y2={boxTop} stroke={sn.color} strokeOpacity={0.5} strokeWidth={1.5} />
+        <line key={`edge-${sn.id}`} className="topo-flow" x1={cx} y1={pfBottom} x2={boxCenter(sn.id)} y2={boxTop} stroke={subColor(sn.id)} strokeOpacity={0.55} strokeWidth={1.5} />
       ))}
 
       {/* Top chain */}
-      <circle cx={cx} cy={chain.internet.y} r={20} fill="#0f141b" stroke="#1f2937" />
-      <text x={cx} y={chain.internet.y + 4} textAnchor="middle" fill="#9ca3af" fontSize={10} fontFamily="ui-monospace">internet</text>
+      <circle cx={cx} cy={chain.internet.y} r={20} fill={C.surface} stroke={C.border} />
+      <text x={cx} y={chain.internet.y + 4} textAnchor="middle" fill={C.inkDim} fontSize={10} fontFamily="ui-monospace">internet</text>
 
-      <rect x={cx - chain.router.w / 2} y={chain.router.y} width={chain.router.w} height={chain.router.h} rx={6} fill="#0f141b" stroke="#1f2937" />
-      <text x={cx} y={chain.router.y + 22} textAnchor="middle" fill="#9ca3af" fontSize={10.5} fontFamily="ui-monospace">home router</text>
+      <rect x={cx - chain.router.w / 2} y={chain.router.y} width={chain.router.w} height={chain.router.h} rx={6} fill={C.surface} stroke={C.border} />
+      <text x={cx} y={chain.router.y + 22} textAnchor="middle" fill={C.inkDim} fontSize={10.5} fontFamily="ui-monospace">home router</text>
 
-      <rect x={cx - chain.nat.w / 2} y={chain.nat.y} width={chain.nat.w} height={chain.nat.h} rx={6} fill="#0f141b" stroke="#1f2937" />
-      <text x={cx} y={chain.nat.y + 22} textAnchor="middle" fill="#9ca3af" fontSize={10.5} fontFamily="ui-monospace">VMnet8 (NAT)</text>
+      <rect x={cx - chain.nat.w / 2} y={chain.nat.y} width={chain.nat.w} height={chain.nat.h} rx={6} fill={C.surface} stroke={C.border} />
+      <text x={cx} y={chain.nat.y + 22} textAnchor="middle" fill={C.inkDim} fontSize={10.5} fontFamily="ui-monospace">VMnet8 (NAT)</text>
 
-      <rect x={cx - chain.pfsense.w / 2} y={chain.pfsense.y} width={chain.pfsense.w} height={chain.pfsense.h} rx={8} fill="#0f141b" stroke="#22d3ee" strokeWidth={1.5} />
-      <text x={cx} y={chain.pfsense.y + 26} textAnchor="middle" fill="#22d3ee" fontSize={12.5} fontFamily="ui-monospace" fontWeight={600}>pfSense CE 2.7.x</text>
-      <text x={cx} y={chain.pfsense.y + 44} textAnchor="middle" fill="#9ca3af" fontSize={10} fontFamily="ui-monospace">LAN .100.1 · LAB200 .200.1</text>
+      <rect x={cx - chain.pfsense.w / 2} y={chain.pfsense.y} width={chain.pfsense.w} height={chain.pfsense.h} rx={8} fill={C.accentWash} stroke={C.accent} strokeWidth={1.5} />
+      <text x={cx} y={chain.pfsense.y + 26} textAnchor="middle" fill={C.accent} fontSize={12.5} fontFamily="ui-monospace" fontWeight={600}>pfSense CE 2.7.x</text>
+      <text x={cx} y={chain.pfsense.y + 44} textAnchor="middle" fill={C.inkDim} fontSize={10} fontFamily="ui-monospace">LAN .100.1 · LAB200 .200.1</text>
 
-      <line x1={cx} y1={chain.internet.y + 20} x2={cx} y2={chain.router.y} stroke="#475569" markerEnd="url(#topo-arrow)" />
-      <line x1={cx} y1={chain.router.y + chain.router.h} x2={cx} y2={chain.nat.y} stroke="#475569" markerEnd="url(#topo-arrow)" />
-      <line x1={cx} y1={chain.nat.y + chain.nat.h} x2={cx} y2={chain.pfsense.y} stroke="#475569" markerEnd="url(#topo-arrow)" />
+      <line x1={cx} y1={chain.internet.y + 20} x2={cx} y2={chain.router.y} stroke={C.inkFaint} markerEnd="url(#topo-arrow)" />
+      <line x1={cx} y1={chain.router.y + chain.router.h} x2={cx} y2={chain.nat.y} stroke={C.inkFaint} markerEnd="url(#topo-arrow)" />
+      <line x1={cx} y1={chain.nat.y + chain.nat.h} x2={cx} y2={chain.pfsense.y} stroke={C.inkFaint} markerEnd="url(#topo-arrow)" />
 
       {/* Node cards */}
       {placed.map((n) => {
         const state = stateFor(n);
         const isDone = state === 'done';
         const isProgress = state === 'progress';
-        const stroke = isDone ? '#10b981' : n.color;
+        const stroke = isDone ? C.done : n.color;
         const stateLabel =
           state === 'done' ? 'complete' : state === 'progress' ? 'in progress' : state === 'pending' ? 'pending' : null;
         return (
@@ -167,33 +185,33 @@ export function TopologyGraph() {
               width={CARD_W}
               height={CARD_H}
               rx={7}
-              fill="#141b24"
+              fill={C.surface}
               stroke={stroke}
-              strokeOpacity={isDone ? 1 : isProgress ? 0.9 : 0.4}
+              strokeOpacity={isDone ? 1 : isProgress ? 0.9 : 0.5}
               strokeWidth={isDone ? 2 : 1}
               strokeDasharray={isProgress ? '4 3' : undefined}
-              style={isDone ? { filter: 'drop-shadow(0 0 6px rgba(16,185,129,0.45))' } : undefined}
+              style={isDone ? { filter: 'drop-shadow(0 2px 6px rgba(30,138,90,0.28))' } : { filter: 'drop-shadow(0 1px 2px rgba(20,40,80,0.06))' }}
             />
             <g transform="translate(12, 13)">
               <Icon type={n.type} color={n.color} />
             </g>
-            <text x={CARD_W - 12} y={22} textAnchor="end" fill="#e5e7eb" fontSize={11.5} fontFamily="ui-monospace">{n.label}</text>
+            <text x={CARD_W - 12} y={22} textAnchor="end" fill={C.ink} fontSize={11.5} fontFamily="ui-monospace">{n.label}</text>
             <text x={CARD_W - 12} y={40} textAnchor="end" fill={n.color} fontSize={11} fontFamily="ui-monospace">{n.ip}</text>
             {n.role && (
-              <text x={CARD_W - 12} y={58} textAnchor="end" fill="#6b7280" fontSize={9.5} fontFamily="ui-monospace">{n.role}</text>
+              <text x={CARD_W - 12} y={58} textAnchor="end" fill={C.inkFaint} fontSize={9.5} fontFamily="ui-monospace">{n.role}</text>
             )}
             {stateLabel && (
-              <text x={12} y={CARD_H - 10} fill={isDone ? '#10b981' : isProgress ? '#22d3ee' : '#6b7280'} fontSize={9} fontFamily="ui-monospace">
+              <text x={12} y={CARD_H - 10} fill={isDone ? C.done : isProgress ? C.accent : C.inkFaint} fontSize={9} fontFamily="ui-monospace">
                 {stateLabel}
               </text>
             )}
             {n.established && (
-              <text x={CARD_W - 12} y={CARD_H - 10} textAnchor="end" fill="#6b7280" fontSize={8.5} fontFamily="ui-monospace">established</text>
+              <text x={CARD_W - 12} y={CARD_H - 10} textAnchor="end" fill={C.inkFaint} fontSize={8.5} fontFamily="ui-monospace">established</text>
             )}
             {isDone && (
               <g transform={`translate(${CARD_W - 16}, ${CARD_H - 16})`}>
-                <circle r={9} fill="#10b981" />
-                <path d="M-4 0l3 3l5 -6" fill="none" stroke="#0a0e14" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <circle r={9} fill={C.done} />
+                <path d="M-4 0l3 3l5 -6" fill="none" stroke={C.surface} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
               </g>
             )}
           </g>
