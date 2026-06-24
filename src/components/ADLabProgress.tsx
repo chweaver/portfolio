@@ -20,8 +20,7 @@ export function ADLabProgress() {
       <a href={adLab.guideBaseUrl} target="_blank" rel="noreferrer" className="text-accent underline-offset-2 hover:underline">
         AD lab guide
       </a>{' '}
-      I build and document myself (using AI as a documentation accelerator I direct and verify). It
-      updates on every push to the guide, no manual sync here.
+      I build and document myself. It updates on every push to the guide.
     </>
   );
 
@@ -31,7 +30,7 @@ export function ADLabProgress() {
       eyebrow="Live · AD Lab"
       title="Active Directory lab, live status"
       subtitle={subtitle}
-      contextCard="The identity layer every Windows MSP client runs on. AGDLP nesting (accounts into global groups, global into domain-local, permissions on the domain-local group) keeps access manageable as a client grows."
+      contextCard="The identity layer every Windows MSP client runs on. AGDLP group nesting keeps access manageable as a client grows."
     >
       {!data && !failed && (
         <div className="text-ink-faint text-sm font-mono">Loading lab status...</div>

@@ -155,9 +155,9 @@ export const projects: Project[] = [
     title: 'Self-hosted AI workspace (Odysseus)',
     outcome: 'Private AI workspace running as a multi-container Docker stack on my own GPU',
     status: 'done',
-    problem: 'I wanted real reps deploying and maintaining containerized services over time, not just standing one up once, and an AI workspace that keeps my data on my own machine instead of a third-party API.',
-    built: 'Four-service Docker Compose stack (app, ChromaDB, SearXNG, ntfy) on Docker Desktop with WSL2, with the models served by Ollama on the host. They kept offloading to the CPU and crawling on a 12 GB card, so I capped their context windows with Modelfiles, turned on flash attention and KV-cache quantization, limited Ollama to one loaded model, and moved the model store to its own SSD to get everything back on the GPU. Locked the container down with an outbound firewall, ran it non-root, kept the model API on localhost, and put the app behind login with per-user permissions.',
-    result: 'My daily driver. I can rebuild the whole stack on another machine from a setup script and a git bundle, and a Python battery of ten known-answer traps scores each model so model choice comes from measured behavior, not guessing.',
+    problem: 'I wanted real reps running containerized services over time, and an AI workspace that keeps my data on my own machine.',
+    built: 'Four-service Docker Compose stack (app, ChromaDB, SearXNG, ntfy) with models served by Ollama. When they offloaded to the CPU on a 12 GB card, I capped context windows, turned on flash attention and KV-cache quantization, and moved the model store to its own SSD to keep everything on the GPU. Hardened it: outbound-only firewall, non-root, model API on localhost, app behind per-user login.',
+    result: 'My daily driver, rebuildable on any machine from a script and a git bundle. A Python test battery scores each model, so model choice is measured, not guessed.',
     stack: ['Docker', 'Docker Compose', 'Linux', 'Ollama', 'Python'],
     repo: '',
     wide: true,
@@ -391,7 +391,7 @@ export const certCoverage: { exam: string; band: string; level: CoverageLevel; n
 ];
 
 export const coverageMethodology =
-  'Self-assessed against the published blueprints. Bands reflect what the lab and prior work directly cover; study and exam prep close the remainder. Not a substitute for the exams themselves.';
+  'Self-assessed against the published blueprints. Bands reflect what the lab covers directly; study closes the rest.';
 
 export const skillsOverview = [
   {
@@ -444,7 +444,7 @@ export const certs = [
     status: 'queued' as const,
     tier: 'Foundation · next' as const,
     target: 'Cloud and M365',
-    why: 'Cloud and Microsoft 365 administration: identity, tenants, and the Azure and M365 stack MSPs run for clients.',
+    why: 'Identity, tenants, and the Azure and M365 stack MSPs run for clients.',
   },
   {
     name: 'CompTIA Security+',
