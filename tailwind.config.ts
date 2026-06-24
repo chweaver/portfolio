@@ -4,42 +4,47 @@ const config: Config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-space-grotesk)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-jetbrains)', 'ui-monospace', 'monospace'],
+        sans: ['var(--font-plex-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-bricolage)', 'var(--font-plex-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-plex-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
+        // Daylight Ops: warm light "operational" palette. Token names kept from
+        // the prior dark theme so utilities (bg-bg-card, text-ink-dim, etc.)
+        // cascade to the new values.
         bg: {
-          DEFAULT: '#0a0e14',
-          elevated: '#0f141b',
-          card: '#141b24',
-          border: '#1f2937',
+          DEFAULT: '#eef1f5', // paper (cool light mist)
+          elevated: '#f7f9fb', // surface-2: pills, sunken rows, table headers
+          card: '#ffffff', // surface: cards / panels
+          border: '#dbe1e9', // hairline borders
+          'border2': '#c5ceda', // stronger border: ghost buttons, node pills (bg-bg-border2)
         },
         accent: {
-          DEFAULT: '#22d3ee',
-          dim: '#0891b2',
-          glow: '#67e8f9',
+          DEFAULT: '#2c5bd6', // slate blue
+          dim: '#234ebe', // accent text on light (AA-safe), and hover
+          glow: '#234ebe',
+          wash: '#eaf0fc', // accent-tinted backgrounds
         },
         ink: {
-          DEFAULT: '#e5e7eb',
-          dim: '#9ca3af',
-          // Lightened from #6b7280 (about 3.8:1 on the page bg, fails WCAG AA for
-          // small text) to clear 4.5:1 for the small mono labels that use it.
-          faint: '#7c8492',
+          DEFAULT: '#28323f', // body
+          strong: '#161d27', // headings, key values
+          dim: '#586577', // secondary text
+          faint: '#8a96a6', // mono labels, captions
         },
         signal: {
-          green: '#10b981',
-          amber: '#f59e0b',
-          red: '#ef4444',
+          green: '#1e8a5a',
+          amber: '#c77a12',
+          red: '#c0392b',
         },
       },
       boxShadow: {
-        glow: '0 0 24px rgba(34, 211, 238, 0.15)',
-        card: '0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px rgba(0,0,0,0.35)',
+        sm: '0 1px 2px rgba(20,40,80,0.05)',
+        card: '0 10px 26px -18px rgba(20,40,80,0.4), 0 1px 2px rgba(20,40,80,0.04)',
+        lift: '0 18px 38px -20px rgba(20,40,80,0.45)',
+        glow: '0 8px 18px -10px rgba(44,91,214,0.7)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

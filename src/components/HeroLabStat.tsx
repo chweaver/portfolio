@@ -35,11 +35,11 @@ export function HeroLabStat() {
             aria-hidden
           />
         )}
-        <div className="font-mono text-5xl md:text-6xl text-accent tabular-nums leading-none">
+        <div className="font-mono text-4xl text-accent tabular-nums leading-none">
           {done}/{total}
         </div>
       </div>
-      <div className="mt-2 text-sm text-ink">AD build-out</div>
+      <div className="mt-2 text-sm font-medium text-ink">AD build-out</div>
       <div className="font-mono text-xs text-ink-faint">
         {live && updated ? `phases done, ${updated}` : 'phases done'}
       </div>

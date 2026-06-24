@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
+import { Bricolage_Grotesque, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import { Navigation } from '@/components/Navigation';
-import { LabProgressStrip } from '@/components/LabProgressStrip';
 import { Footer } from '@/components/Footer';
-import { LogBackground } from '@/components/LogBackground';
 import { profile } from '@/data/portfolio';
 import { publicAsset } from '@/lib/paths';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', display: 'swap' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk', display: 'swap' });
+// Daylight Ops type system: Bricolage Grotesque (display) + IBM Plex Sans (body)
+// + IBM Plex Mono (mono). Bricolage is a variable font, so no weight list.
+const bricolage = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-bricolage', display: 'swap' });
+const plexSans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-plex-sans', display: 'swap' });
+const plexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-plex-mono', display: 'swap' });
 
 const siteTitle = `${profile.shortName}, MSP Tier-1 Service Desk Candidate | Active Directory + pfSense Lab | CompTIA A+ | ${profile.location.split(',')[0]} (Indianapolis metro)`;
 const siteDescription = `Entry-level MSP candidate, ${profile.age}. Live Active Directory domain, routed pfSense lab, CompTIA A+ Core 1 passed, documented and verified. No professional MSP tenure yet.`;
@@ -37,12 +37,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${bricolage.variable} ${plexSans.variable} ${plexMono.variable}`}>
       <body className="min-h-screen font-sans antialiased">
-        <div className="bg-grid" aria-hidden="true" />
-        <LogBackground />
         <Navigation />
-        <LabProgressStrip />
         <main>{children}</main>
         <Footer />
       </body>

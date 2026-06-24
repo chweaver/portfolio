@@ -1,6 +1,7 @@
 import { profile, summary, heroGlance } from '@/data/portfolio';
 import { publicAsset } from '@/lib/paths';
 import { HeroLabStat } from './HeroLabStat';
+import { HeroStatusPill } from './HeroStatusPill';
 
 const STATS = [
   { label: 'Subnets routed', value: '2', sub: 'LAN + LAB200' },
@@ -13,21 +14,23 @@ export function Hero() {
   // (and the nav logo link) clamps to scroll 0 instead of landing slightly scrolled
   // down with the sticky bars overlapping the hero.
   return (
-    <section id="top" className="scroll-mt-40 relative overflow-hidden pt-16 pb-14 md:pt-24 md:pb-20">
-      <div
-        className="pointer-events-none absolute inset-x-0 -top-16 h-72 bg-[radial-gradient(closest-side,rgba(34,211,238,0.18),transparent_70%)] blur-3xl"
-        aria-hidden
-      />
+    <section id="top" className="scroll-mt-40 relative pt-14 pb-14 md:pt-20 md:pb-20">
       <div className="container-narrow relative">
         <div className="max-w-3xl">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
+          <div className="mb-7">
+            <HeroStatusPill />
+          </div>
+          <p className="font-mono text-xs uppercase tracking-[0.07em] font-medium text-ink-faint">
+            <span className="text-accent" aria-hidden>
+              &#9656;{' '}
+            </span>
             {profile.shortName} · Indianapolis metro
           </p>
-          <h1 className="mt-4 tracking-tight text-ink">
-            <span className="block text-3xl md:text-5xl font-semibold leading-[1.12]">
+          <h1 className="mt-4 tracking-[-0.035em] text-ink-strong">
+            <span className="block text-[2.1rem] md:text-[3.4rem] font-bold leading-[1.04]">
               {profile.headlineLead}
             </span>
-            <span className="mt-3 block text-xl md:text-2xl font-normal leading-snug text-ink-dim">
+            <span className="mt-4 block text-lg md:text-2xl font-normal leading-snug tracking-tight text-ink-dim">
               {profile.headlineRest}
             </span>
           </h1>
@@ -74,10 +77,10 @@ export function Hero() {
           <HeroLabStat />
           {STATS.map((s) => (
             <div key={s.label} className="card p-5">
-              <div className="font-mono text-5xl md:text-6xl text-ink tabular-nums leading-none">
+              <div className="font-mono text-4xl text-ink-strong tabular-nums leading-none">
                 {s.value}
               </div>
-              <div className="mt-2 text-sm text-ink">{s.label}</div>
+              <div className="mt-2 text-sm font-medium text-ink">{s.label}</div>
               <div className="font-mono text-xs text-ink-faint">{s.sub}</div>
             </div>
           ))}

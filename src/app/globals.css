@@ -2,26 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===================== Daylight Ops tokens =====================
+   Warm light "operational" palette. The hex live in tailwind.config.ts for the
+   utilities; these CSS vars cover the status washes/borders and the few values
+   utilities do not express, used by the component classes and bespoke pieces. */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
+
+  --accent-wash: #eaf0fc;
+  --border-strong: #c5ceda;
+
+  --done: #1e8a5a; --done-wash: #e6f2ec; --done-border: #b7dcc8;
+  --live: #2c5bd6; --live-wash: #eaf0fc; --live-border: #c2d3f4;
+  --next: #c77a12; --next-wash: #fbf1e0; --next-border: #ecd3a6;
+  --plan: #6b7787; --plan-wash: #eef1f4; --plan-border: #d4dae2;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Visible keyboard focus on every interactive element. The near-black theme makes
-   the browser default outline easy to lose, so set an explicit accent ring. */
-:focus-visible {
-  outline: 2px solid #22d3ee;
-  outline-offset: 2px;
-  border-radius: 2px;
+body {
+  background: #eef1f5;
+  color: #28323f;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Respect prefers-reduced-motion. The rest of this file only opts motion IN
-   under no-preference, so without this reset the bare transition and animation
-   utilities (the AD lab progress bar fill, the nav pulse dot, smooth anchor
-   scrolling) would still play for users who asked for reduced motion. */
+/* Visible keyboard focus on every interactive element, in the brand accent. */
+:focus-visible {
+  outline: 2.5px solid #2c5bd6;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Respect prefers-reduced-motion: zero out the opt-in motion (the AD progress
+   bar fill, the hero status pulse dot, smooth anchor scrolling). */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -35,174 +52,114 @@ html {
   }
 }
 
-body {
-  background: #0a0e14;
-  color: #e5e7eb;
-  -webkit-font-smoothing: antialiased;
-  background-image:
-    radial-gradient(at 80% -10%, rgba(34, 211, 238, 0.08) 0px, transparent 50%),
-    radial-gradient(at 10% 100%, rgba(34, 211, 238, 0.05) 0px, transparent 50%);
-  background-attachment: fixed;
-}
-
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: -1px -1px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 80%);
-}
-
 ::selection {
-  background: rgba(34, 211, 238, 0.25);
-  color: #f0f9ff;
+  background: #2c5bd6;
+  color: #fff;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0e14;
+  background: #eef1f5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2937;
+  background: #c5ceda;
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #8a96a6;
 }
 
 @layer base {
-  /* Space Grotesk is the display face: applied to every real heading (the hero
-     h1, section h2s via .section-title, card h3s). Body copy stays Inter (set on
-     <body> via font-sans) and labels/code stay JetBrains Mono (font-mono on the
-     element), so this rule only re-faces titles. */
+  /* Bricolage Grotesque is the display face for every real heading. Body copy
+     is IBM Plex Sans (font-sans on body) and labels/code are IBM Plex Mono. */
   h1,
   h2,
   h3 {
-    font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-bricolage), var(--font-plex-sans), system-ui, sans-serif;
+    color: #161d27;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   .container-narrow {
-    @apply mx-auto max-w-6xl px-6 lg:px-8;
+    @apply mx-auto max-w-6xl px-5 sm:px-7;
   }
 
   .section-title {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight text-ink;
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-ink-strong;
   }
 
   .section-eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-accent inline-flex items-center gap-2;
+    @apply font-mono text-xs uppercase tracking-[0.07em] font-medium text-ink-faint inline-flex items-center gap-2;
   }
   .section-eyebrow::before {
     content: '';
     display: inline-block;
     width: 14px;
     height: 1px;
-    background: currentColor;
-    opacity: 0.6;
+    background: #2c5bd6;
+    opacity: 0.8;
   }
 
+  /* White content panel: hairline border + soft layered shadow, no glow. */
   .card {
-    @apply rounded-xl border border-bg-border bg-bg-card/60 backdrop-blur-sm shadow-card transition-all duration-200;
+    @apply rounded-xl border border-bg-border bg-bg-card shadow-card;
   }
-  /* Cards are static content panels, not links: no hover lift or glow, so the
-     hover state never implies clickability. Genuinely clickable elements (the
-     Evidence thumbnails, the details toggles, the project link buttons) carry
-     their own explicit hover. */
 
   .accent-line {
-    background: linear-gradient(90deg, #67e8f9 0%, #22d3ee 50%, #a5f3fc 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #2c5bd6;
   }
 
   .btn-primary {
-    @apply rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-medium text-bg transition-all duration-200;
+    @apply inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 font-sans text-sm font-semibold text-white shadow-glow transition-all duration-200;
   }
   .btn-primary:hover {
-    @apply bg-accent-glow;
-    box-shadow: 0 0 0 1px rgba(103, 232, 249, 0.4), 0 0 24px rgba(34, 211, 238, 0.35);
+    @apply -translate-y-px bg-accent-dim;
   }
 
   .btn-secondary {
-    @apply rounded-md border border-bg-border bg-bg-elevated px-4 py-2.5 font-mono text-sm text-ink transition-colors hover:border-accent/40 hover:text-accent;
+    @apply inline-flex items-center gap-2 rounded-lg border border-bg-border2 bg-bg-card px-5 py-3 font-sans text-sm font-semibold text-ink shadow-sm transition-colors duration-200;
+  }
+  .btn-secondary:hover {
+    @apply border-accent text-accent-dim;
   }
 
   .pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-bg-border bg-bg-elevated px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-ink-dim;
+    @apply inline-flex items-center gap-1.5 rounded-md border border-bg-border bg-bg-elevated px-2.5 py-1 font-mono text-[11px] uppercase tracking-wide text-ink-dim;
   }
 
   .pill-accent {
-    @apply border-accent/30 bg-accent/10 text-accent;
+    color: var(--live);
+    background: var(--live-wash);
+    border-color: var(--live-border);
   }
 
   .pill-green {
-    @apply border-signal-green/30 bg-signal-green/10 text-signal-green;
+    color: var(--done);
+    background: var(--done-wash);
+    border-color: var(--done-border);
   }
 
   .pill-amber {
-    @apply border-signal-amber/30 bg-signal-amber/10 text-signal-amber;
+    color: var(--next);
+    background: var(--next-wash);
+    border-color: var(--next-border);
   }
 
   .link {
-    @apply text-accent hover:text-accent-glow underline-offset-4 hover:underline transition-colors;
+    @apply text-accent-dim underline-offset-4 hover:underline transition-colors;
   }
 
+  /* The one dark surface kept: terminal / config / log readouts stay dark as a
+     deliberate accent against the light page. */
   .codeblock {
-    @apply rounded-lg border border-bg-border bg-black/40 p-4 font-mono text-[13px] leading-relaxed text-ink overflow-x-auto;
-  }
-}
-
-.log-background {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity 240ms ease;
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .log-background {
-    display: block;
-  }
-}
-
-.log-background-stream {
-  font-family: var(--font-jetbrains), ui-monospace, monospace;
-  font-size: 10px;
-  line-height: 1.5;
-  color: #4ade80;
-  white-space: pre;
-  margin: 0;
-  padding: 1rem 1.5rem;
-}
-
-@keyframes log-scroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .log-background-stream {
-    animation: log-scroll 600s linear infinite;
-    will-change: transform;
+    @apply rounded-lg border p-4 font-mono text-[13px] leading-relaxed overflow-x-auto;
+    background: #0f141b;
+    border-color: #1f2937;
+    color: #cbd5e1;
   }
 }
