@@ -75,6 +75,9 @@ export const profile = {
   headline: 'Help desk and tier-1 MSP support, backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
   headlineLead: 'Help desk and tier-1 MSP support.',
   headlineRest: 'Backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
+  // Short trajectory line in the hero: makes the network-engineering goal explicit
+  // without repeating the MSP/help-desk framing already in the headline.
+  aim: 'The longer game is network engineering. The routed, firewalled lab is the groundwork, and CCNA is the next cert.',
   labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
 
@@ -102,6 +105,19 @@ export const heroGlance = [
   { k: 'Stack', v: 'AD · pfSense · Linux' },
   { k: 'Status', v: 'Available now' },
 ] as const;
+
+// Compact credential path shown on the right of the hero: a curated, ordered view
+// that makes the network-engineering trajectory explicit. States stay honest and in
+// sync with `certs` below (A+ Core 1 passed, Core 2 in progress, CCNA the next cert).
+export const heroCertRoadmap = {
+  caption: 'The path toward network engineering',
+  steps: [
+    { name: 'A+ Core 1', code: '220-1201', state: 'done', note: 'Passed' },
+    { name: 'A+ Core 2', code: '220-1202', state: 'current', note: 'In progress, July 2026' },
+    { name: 'CCNA', code: '200-301', state: 'next', note: 'Routing and switching', flag: 'Network track' },
+    { name: 'AZ-104 and Security+', code: '', state: 'later', note: 'Cloud and security baseline' },
+  ],
+} as const;
 
 // Outcome-first projects grid. This is the scannable index a hiring manager
 // reads in a couple of seconds: result first, then problem / built / result and
