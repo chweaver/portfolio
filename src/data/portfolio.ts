@@ -77,7 +77,7 @@ export const profile = {
   headlineRest: 'Backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
   // Short trajectory line in the hero: makes the network-engineering goal explicit
   // without repeating the MSP/help-desk framing already in the headline.
-  aim: 'The longer game is network engineering. The routed, firewalled lab is the groundwork, and CCNA is the next cert.',
+  aim: 'My goal is network engineering. The routed, firewalled lab is the foundation, and CCNA is my next cert.',
   labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
 
