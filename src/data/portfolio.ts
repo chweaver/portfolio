@@ -4,6 +4,12 @@ export const adLab = {
   statusUrl: 'https://chweaver.github.io/ad-lab-guide/lab-status.json',
 } as const;
 
+// A short troubleshooting reflection shown in the AD lab section: the bug from the
+// home-folder / folder-redirection phase that taught me the most. Kept honest and
+// specific, the methodical-elimination story an MSP wants to see.
+export const adLabReflection =
+  'The part I learned the most from was a folder redirection bug that threw no error and just silently refused to work. I ruled out share and NTFS permissions, folder ownership, GPO scope, Fast Logon Optimization, and client-to-DC networking, reading the raw event logs the whole way, before tracing it to a "grant exclusive rights" setting that was fighting with my share\'s permissions.';
+
 // The Linux lab guide reports status exactly like the AD lab guide: a small script
 // parses the per-phase `**Status:**` lines and publishes lab-status.json with the
 // site. The portfolio fetches it live on load (useLabStatus), so finishing a lab
@@ -74,13 +80,13 @@ export const profile = {
 
 export const summary = {
   built: [
-    'Live Active Directory domain (corp.lab): domain controller, OUs, users, AGDLP groups, a domain-joined Windows 11 client, and a verified first GPO',
+    'Live Active Directory domain (corp.lab): domain controller, OUs, users, AGDLP groups, a domain-joined Windows 11 client, a verified first GPO, file shares, and redirected home folders',
     'Segmented pfSense lab routing two subnets, with three firewall rules tested and logged',
     'Ubuntu, Debian, and Rocky Linux VMs with hand-configured networking',
     'Public documentation: this site, the AD lab guide, and named snapshots at every clean state',
   ],
   planned: [
-    'AD file shares, home folders, login scripts, and help-desk drills (phases 9-12)',
+    'AD login scripts and help-desk drills (the remaining build-out phases, tracked live)',
     'Monitoring for pfSense and the domain controller',
     'Proxmox and Cisco lab phases alongside CCNA study',
   ],
@@ -125,7 +131,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     problem: 'Stand up and run the identity layer a small shop depends on, end to end.',
     built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, and a verified GPO.',
-    result: 'WS01 authenticates against corp.lab and policy applies on login. File shares, scripts, and help-desk drills (phases 9-12) are tracked live above.',
+    result: 'WS01 authenticates against corp.lab and policy applies on login. Shares and redirected home folders are in; login scripts and help-desk drills are tracked live above.',
     stack: ['Windows Server', 'Active Directory', 'GPO', 'DNS'],
     repo: adLab.guideBaseUrl,
     linkLabel: 'Open the AD lab guide',

@@ -1,7 +1,7 @@
 'use client';
 
 import { Section } from './Section';
-import { adLab } from '@/data/portfolio';
+import { adLab, adLabReflection } from '@/data/portfolio';
 import { useLabStatus, type LabPhase, type LabStatus, type PhaseStatus } from '@/lib/useLabStatus';
 
 const STATUS_PILL: Record<PhaseStatus, { className: string; label: string }> = {
@@ -49,6 +49,11 @@ export function ADLabProgress() {
       )}
 
       {data && <Loaded data={data} />}
+
+      <div className="card mt-10 p-6">
+        <div className="section-eyebrow mb-3">What it taught me</div>
+        <p className="text-sm leading-relaxed text-ink-dim">{adLabReflection}</p>
+      </div>
     </Section>
   );
 }
