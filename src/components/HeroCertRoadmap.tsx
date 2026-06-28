@@ -27,7 +27,7 @@ export function HeroCertRoadmap() {
               />
             )}
             <span
-              className={`relative z-10 mt-[5px] h-[11px] w-[11px] shrink-0 rounded-full border-2 ${DOT[s.state]} ${s.state === 'current' ? 'animate-pulse-slow' : ''}`}
+              className={`relative z-10 mt-[5px] h-[11px] w-[11px] shrink-0 rounded-full border-2 ${DOT[s.state]} ${(s.state as string) === 'current' ? 'animate-pulse-slow' : ''}`}
               aria-hidden
             />
             <div className="min-w-0">

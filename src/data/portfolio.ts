@@ -101,19 +101,18 @@ export const summary = {
 // (profile.location, the certs list, the lab stack, current availability).
 export const heroGlance = [
   { k: 'Location', v: 'Carmel, IN · Indy metro' },
-  { k: 'Certs', v: 'A+ Core 1 passed · Core 2 July 2026' },
+  { k: 'Certs', v: 'CompTIA A+ certified · June 2026' },
   { k: 'Stack', v: 'AD · pfSense · Linux' },
   { k: 'Status', v: 'Available now' },
 ] as const;
 
 // Compact credential path shown on the right of the hero: a curated, ordered view
 // that makes the network-engineering trajectory explicit. States stay honest and in
-// sync with `certs` below (A+ Core 1 passed, Core 2 in progress, CCNA the next cert).
+// sync with `certs` below (CompTIA A+ certified, CCNA the next cert).
 export const heroCertRoadmap = {
   caption: 'The path toward network engineering',
   steps: [
-    { name: 'A+ Core 1', code: '220-1201', state: 'done', note: 'Passed' },
-    { name: 'A+ Core 2', code: '220-1202', state: 'current', note: 'In progress, July 2026' },
+    { name: 'CompTIA A+', code: '', state: 'done', note: 'Certified June 2026' },
     { name: 'CCNA', code: '200-301', state: 'next', note: 'Routing and switching', flag: 'Network track' },
     { name: 'AZ-104 and Security+', code: '', state: 'later', note: 'Cloud and security baseline' },
   ],
@@ -387,16 +386,10 @@ export type CoverageLevel = 'light' | 'light-to-moderate' | 'moderate' | 'strong
 
 export const certCoverage: { exam: string; band: string; level: CoverageLevel; notes: string }[] = [
   {
-    exam: 'A+ 220-1201 (Core 1)',
-    band: 'Moderate',
-    level: 'moderate',
-    notes: 'Virtualization and PC hardware are direct. Mobile devices, printers, and OS imaging are not in the lab.',
-  },
-  {
-    exam: 'A+ 220-1202 (Core 2)',
+    exam: 'CompTIA A+ (220-1201 + 220-1202)',
     band: 'Light-to-moderate',
     level: 'light-to-moderate',
-    notes: 'Linux install and config are direct. Remote-access hardening, backup, and most Windows-side OS, mobile, and macOS objectives are not in the lab yet.',
+    notes: 'Virtualization, PC hardware, and Linux install and config are direct. Mobile, printers, OS imaging, macOS, and most Windows-side OS, remote-access, and backup objectives are not in the lab.',
   },
   {
     exam: 'Network+ N10-009',
@@ -433,24 +426,16 @@ export const skillsOverview = [
   },
 ];
 
-export const certTierOrder = ['Completed', 'In progress', 'Foundation · next'] as const;
+export const certTierOrder = ['Completed', 'Foundation · next'] as const;
 
 export const certs = [
   {
-    name: 'CompTIA A+ Core 1',
-    code: '220-1201',
+    name: 'CompTIA A+',
+    code: '220-1201 + 220-1202',
     status: 'passed' as const,
     tier: 'Completed' as const,
-    target: 'Passed May 18, 2026',
-    why: 'Hardware, networking, virtualization, mobile devices. First half of the MSP gatekeeper cert.',
-  },
-  {
-    name: 'CompTIA A+ Core 2',
-    code: '220-1202',
-    status: 'in-progress' as const,
-    tier: 'In progress' as const,
-    target: 'Scheduled July 2026',
-    why: 'Operating systems, security, software troubleshooting, operational procedures. Second half of the A+.',
+    target: 'Certified June 2026',
+    why: 'Hardware, networking, virtualization, operating systems, security, and software troubleshooting. The MSP gatekeeper credential, both cores complete.',
   },
   {
     name: 'Cisco CCNA',

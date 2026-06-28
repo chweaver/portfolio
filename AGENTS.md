@@ -20,7 +20,7 @@ The audience is a busy MSP hiring manager or technical recruiter who decides in 
 20 seconds. The site proves, with evidence, that Charlie already works like a methodical
 junior tech: he builds, documents, verifies, and is honest about scope. The signature
 proof is a live, routed, firewalled home lab and a live Active Directory domain, with
-CompTIA A+ Core 1 passed.
+CompTIA A+ certified (both cores, June 2026).
 
 - Live URL: https://chweaver.github.io/portfolio/
 - Repo: https://github.com/chweaver/portfolio (public)
