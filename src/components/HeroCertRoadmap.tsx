@@ -1,7 +1,7 @@
 import { heroCertRoadmap } from '@/data/portfolio';
 
-// Dot treatment per state. `next` (CCNA) is a hollow accent ring to read as the
-// upcoming network-engineering milestone; `current` pulses; `done` is filled green.
+// Dot treatment per state. `next` (Security+) is a hollow accent ring for the
+// immediate next cert; `current` pulses; `done` is filled green.
 const DOT: Record<string, string> = {
   done: 'bg-signal-green border-signal-green',
   current: 'bg-accent border-accent',

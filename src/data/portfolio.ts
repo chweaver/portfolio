@@ -77,7 +77,7 @@ export const profile = {
   headlineRest: 'Backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
   // Short trajectory line in the hero: makes the network-engineering goal explicit
   // without repeating the MSP/help-desk framing already in the headline.
-  aim: 'My goal is network engineering. The routed, firewalled lab is the foundation, and CCNA is my next cert.',
+  aim: 'My goal is network engineering. The routed, firewalled lab is the foundation; Security+ is next, then CCNA.',
   labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
 } as const;
 
@@ -108,13 +108,14 @@ export const heroGlance = [
 
 // Compact credential path shown on the right of the hero: a curated, ordered view
 // that makes the network-engineering trajectory explicit. States stay honest and in
-// sync with `certs` below (CompTIA A+ certified, CCNA the next cert).
+// sync with `certs` below (CompTIA A+ certified, Security+ next, then CCNA).
 export const heroCertRoadmap = {
   caption: 'The path toward network engineering',
   steps: [
     { name: 'CompTIA A+', code: '', state: 'done', note: 'Certified June 2026' },
-    { name: 'CCNA', code: '200-301', state: 'next', note: 'Routing and switching', flag: 'Network track' },
-    { name: 'AZ-104 and Security+', code: '', state: 'later', note: 'Cloud and security baseline' },
+    { name: 'CompTIA Security+', code: 'SY0-701', state: 'next', note: 'Security baseline' },
+    { name: 'CCNA', code: '200-301', state: 'later', note: 'Routing and switching', flag: 'Network track' },
+    { name: 'AZ-104', code: '', state: 'later', note: 'Cloud and M365' },
   ],
 } as const;
 
@@ -438,6 +439,14 @@ export const certs = [
     why: 'Hardware, networking, virtualization, operating systems, security, and software troubleshooting. The MSP gatekeeper credential, both cores complete.',
   },
   {
+    name: 'CompTIA Security+',
+    code: 'SY0-701',
+    status: 'queued' as const,
+    tier: 'Foundation · next' as const,
+    target: 'Security baseline',
+    why: 'Threats, identity, and risk: the security floor for client work.',
+  },
+  {
     name: 'Cisco CCNA',
     code: '200-301 v1.1',
     status: 'queued' as const,
@@ -452,14 +461,6 @@ export const certs = [
     tier: 'Foundation · next' as const,
     target: 'Cloud and M365',
     why: 'Identity, tenants, and the Azure and M365 stack MSPs run for clients.',
-  },
-  {
-    name: 'CompTIA Security+',
-    code: 'SY0-701',
-    status: 'queued' as const,
-    tier: 'Foundation · next' as const,
-    target: 'Security baseline',
-    why: 'Threats, identity, and risk: the security floor for client work.',
   },
 ];
 
