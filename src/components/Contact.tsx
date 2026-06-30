@@ -2,9 +2,6 @@ import { Section } from './Section';
 import { profile } from '@/data/portfolio';
 import { publicAsset } from '@/lib/paths';
 
-const PHONE_DISPLAY = '(463) 710-5540';
-const PHONE_TEL = '+14637105540';
-
 export function Contact() {
   return (
     <Section
@@ -45,13 +42,6 @@ export function Contact() {
               >
                 <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">email</span>
                 <span className="font-mono text-sm text-ink group-hover:text-accent">{profile.email}</span>
-              </a>
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="flex items-center justify-between rounded-lg border border-bg-border bg-bg-elevated px-4 py-3 hover:border-accent/40 hover:bg-accent/5 transition-colors group"
-              >
-                <span className="font-mono text-xs uppercase tracking-wider text-ink-faint">phone</span>
-                <span className="font-mono text-sm text-ink group-hover:text-accent">{PHONE_DISPLAY}</span>
               </a>
               <a
                 href={profile.linkedin}
