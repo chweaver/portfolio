@@ -5,7 +5,7 @@ import { useLabStatus } from '@/lib/useLabStatus';
 // Live AD lab status, relocated from the old sticky strip into the hero pill
 // (Daylight Ops puts the live proof up top, not in a separate bar). Reads the
 // same feed; falls back to the last-known snapshot while loading or on failure.
-const SNAPSHOT = { done: 8, total: 12 };
+const SNAPSHOT = { done: 5, total: 7 };
 
 export function HeroStatusPill() {
   const { data, failed } = useLabStatus();

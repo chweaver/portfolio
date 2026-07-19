@@ -10,7 +10,7 @@ export interface LabPhase {
   id: number;
   title: string;
   status: PhaseStatus;
-  track: 'build-out' | 'stretch';
+  track: 'build-out' | 'planned' | 'stretch';
   path: string;
 }
 

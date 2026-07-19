@@ -231,7 +231,7 @@ interface LabStatus {
     done: number; next: number; planned: number; stretch: number;
   };
   phases: { id: number; title: string; status: 'done'|'next'|'planned'|'stretch';
-            track: 'build-out'|'stretch'; path: string }[];
+            track: 'build-out'|'planned'|'stretch'; path: string }[];
 }
 ```
 
@@ -262,7 +262,7 @@ interface LinuxLabStatus {
 |---|---|---|
 | AD (default) | `HeroLabStat` | hero "AD build-out" stat, with a static snapshot fallback and "updated N days ago" |
 | AD | `LabProgressStrip` | sticky strip under the nav: a slim build-out progress bar; hides on fetch failure; explicit empty state when total is 0 |
-| AD | `ADLabProgress` | the "Live · AD Lab" section: full per-phase build-out + stretch lists |
+| AD | `ADLabProgress` | the "Live · AD Lab" section: a 30-second skim, one line per phase across three track groups (build-out / planned / stretch), each linking to the guide |
 | Linux | `TopologyGraph` | colors the ubuntu/rocky nodes by live lab status (done = green check, next = in progress, otherwise pending) |
 
 The AD feed has three consumers; the Linux feed now has exactly one (`TopologyGraph`).
@@ -291,8 +291,8 @@ DOM order (component, anchor id, eyebrow):
    CTA row (Resume download + Email), stat grid (`HeroLabStat` + static stats), built vs
    planned cards.
 2. `Projects` (`#projects`, eyebrow "Projects"): outcome-first grid of `ProjectCard`.
-3. `ADLabProgress` (`#ad-lab`, eyebrow "Live · AD Lab"): full per-phase build-out +
-   stretch lists from the live AD feed.
+3. `ADLabProgress` (`#ad-lab`, eyebrow "Live · AD Lab"): 30-second skim of the live AD
+   feed, one line per phase grouped by track (build-out / planned / stretch).
 4. `FirewallRules` (`#firewall`, eyebrow "Firewall").
 5. `NetworkTopology` (`#network`, eyebrow "Network"): wraps `TopologyGraph`.
 6. `SkillsMatrix` (`#skills`, eyebrow "Skills & certifications"): skills overview +
@@ -382,7 +382,7 @@ section via `ProjectCard`). Keep `status` honest (`done` / `in-progress` / `plan
 The grid is balanced for three; do not pad to four with filler.
 
 **Add or move a topology host:** edit `topologyNodes` (and `topologySubnets` if adding a
-subnet) in `portfolio.ts`. Wire `labs` ids only if a `linux-lab-guide` lab actually
+subnet) in `portfolio.ts`. Wire `labs` ids only if a `linux-lab-guide` lab
 builds that node, so the live status stays truthful.
 
 **Update lab progress:** do it in the sibling guide repo (`ad-lab-guide` or
