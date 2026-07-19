@@ -59,6 +59,7 @@ export const topologyNodes: TopoNode[] = [
   { id: 'ws01', type: 'workstation', label: 'WS01 (Win 11)', ip: '192.168.100.20', subnet: 'lan', role: 'Domain client', established: true },
   { id: 'ubuntu', type: 'server', label: 'ubuntu-base', ip: '192.168.100.10', subnet: 'lan', role: 'Ubuntu Server (LAN)', labs: ['ssh', 'samba'] },
   { id: 'rocky', type: 'server', label: 'rocky-base', ip: '192.168.200.12', subnet: 'lab200', role: 'Rocky Linux (LAB200)', labs: ['bind9', 'rsync'] },
+  { id: 'ops01', type: 'server', label: 'ops01', ip: '192.168.200.20', subnet: 'lab200', role: 'Ubuntu Server (LAB200)', labs: ['syslog', 'monitoring', 'patching'] },
 ];
 
 export const profile = {
@@ -153,13 +154,13 @@ export const projects: Project[] = [
     linkLabel: 'Open the AD lab guide',
   },
   {
-    title: 'Linux lab build (4 labs)',
-    outcome: 'Planned: SSH hardening, Samba/AD, BIND9, rsync',
+    title: 'Linux lab build (7 labs)',
+    outcome: 'Planned: SSH hardening, Samba/AD, BIND9, rsync, central logs, monitoring, patching',
     status: 'planned',
-    problem: 'Bridge Linux into the Windows domain the way a real mixed network runs.',
+    problem: 'Bridge Linux into the Windows domain the way a real mixed network runs, then operate it: logs, metrics, patches.',
     built: '',
-    result: 'Not started yet. Scoped as four dependency-chained labs across Ubuntu and Rocky: hardened SSH feeding rsync backups, with Samba and BIND9 bridging into corp.lab.',
-    stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync'],
+    result: 'Not started yet. Scoped as seven dependency-chained labs across Ubuntu, Rocky, and a new ops01 host: hardened SSH feeding rsync backups, Samba and BIND9 bridging into corp.lab, then centralized rsyslog logging, Prometheus + Grafana monitoring on Docker, and automated patching with a rehearsed rollback.',
+    stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync', 'rsyslog', 'Prometheus', 'Docker'],
     repo: linuxLab.guideBaseUrl,
     linkLabel: 'Open the Linux lab guide',
   },
