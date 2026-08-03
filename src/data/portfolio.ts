@@ -4,11 +4,10 @@ export const adLab = {
   statusUrl: 'https://chweaver.github.io/ad-lab-guide/lab-status.json',
 } as const;
 
-// A short troubleshooting reflection shown in the AD lab section: the bug from the
-// home-folder / folder-redirection phase that taught me the most. Kept honest and
-// specific, the methodical-elimination story an MSP wants to see.
+// A short troubleshooting reflection shown in the AD lab section: what the
+// build-out actually taught, kept plain and specific.
 export const adLabReflection =
-  'The part I learned the most from was a folder redirection bug that threw no error and just silently refused to work. I ruled out share and NTFS permissions, folder ownership, GPO scope, Fast Logon Optimization, and client-to-DC networking, reading the raw event logs the whole way, before tracing it to a "grant exclusive rights" setting that was fighting with my share\'s permissions.';
+  'Most of what stuck came from things breaking. A domain join that fails is usually DNS. Group Policy problems rarely announce themselves, so you live in the event logs. The worst was folder redirection silently refusing to work: I ruled out permissions, ownership, GPO scope, and networking one at a time before tracing it to a "grant exclusive rights" setting fighting my share\'s permissions.';
 
 // The Linux lab guide reports status exactly like the AD lab guide: a small script
 // parses the per-phase `**Status:**` lines and publishes lab-status.json with the
@@ -79,7 +78,7 @@ export const profile = {
   // Short trajectory line in the hero: makes the network-engineering goal explicit
   // without repeating the MSP/help-desk framing already in the headline.
   aim: 'My goal is network engineering. The routed, firewalled lab is the foundation; Security+ is next, then CCNA.',
-  labPhase: 'Network lab complete, Active Directory lab in progress (tracked live from the lab guide)',
+  labPhase: 'Network lab complete, Active Directory and Linux labs in progress (tracked live from the lab guides)',
 } as const;
 
 export const summary = {
@@ -155,11 +154,11 @@ export const projects: Project[] = [
   },
   {
     title: 'Linux lab build (7 labs)',
-    outcome: 'Planned: SSH hardening, Samba/AD, BIND9, rsync, central logs, monitoring, patching',
-    status: 'planned',
+    outcome: 'Lab 1 underway: key-only SSH, locked-down sshd, ufw + fail2ban live',
+    status: 'in-progress',
     problem: 'Bridge Linux into the Windows domain the way a real mixed network runs, then operate it: logs, metrics, patches.',
-    built: '',
-    result: 'Not started yet. Scoped as seven dependency-chained labs across Ubuntu, Rocky, and a new ops01 host: hardened SSH feeding rsync backups, Samba and BIND9 bridging into corp.lab, then centralized rsyslog logging, Prometheus + Grafana monitoring on Docker, and automated patching with a rehearsed rollback.',
+    built: 'On ubuntu-base: key-based login proven before password auth went off, sshd locked down through a 99-hardening.conf drop-in, ufw deny-by-default, and fail2ban watching the auth log.',
+    result: 'Lab 1 (SSH hardening) is in progress, tracked live below. Six labs queued after it: Samba on the domain, BIND9, rsync backups, then rsyslog, Prometheus + Grafana on Docker, and automated patching on ops01.',
     stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync', 'rsyslog', 'Prometheus', 'Docker'],
     repo: linuxLab.guideBaseUrl,
     linkLabel: 'Open the Linux lab guide',

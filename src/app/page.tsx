@@ -1,6 +1,7 @@
 import { Hero } from '@/components/Hero';
 import { Projects } from '@/components/Projects';
 import { ADLabProgress } from '@/components/ADLabProgress';
+import { LinuxLabProgress } from '@/components/LinuxLabProgress';
 import { FirewallRules } from '@/components/FirewallRules';
 import { NetworkTopology } from '@/components/NetworkTopology';
 import { SkillsMatrix } from '@/components/SkillsMatrix';
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Projects />
       <ADLabProgress />
+      <LinuxLabProgress />
       <FirewallRules />
       <NetworkTopology />
       <SkillsMatrix />

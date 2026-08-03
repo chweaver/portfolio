@@ -89,7 +89,7 @@ Versions are exact, from `package.json` (not guessed).
 |- src/
     |- app/
     |   |- layout.tsx             root layout: fonts, SEO/OG metadata (from profile), renders
-    |   |                         bg-grid + LogBackground + Navigation + LabProgressStrip + main + Footer
+    |   |                         Navigation + main + Footer
     |   |- page.tsx               the one page: imports and orders every section (see section 7)
     |   |- globals.css            Tailwind layers, design-system component classes, reduced-motion reset, focus ring
     |- components/                one file per section / UI piece (16 files, see section 7)
@@ -261,14 +261,14 @@ interface LinuxLabStatus {
 | Feed | Component | What it shows |
 |---|---|---|
 | AD (default) | `HeroLabStat` | hero "AD build-out" stat, with a static snapshot fallback and "updated N days ago" |
-| AD | `LabProgressStrip` | sticky strip under the nav: a slim build-out progress bar; hides on fetch failure; explicit empty state when total is 0 |
-| AD | `ADLabProgress` | the "Live · AD Lab" section: a 30-second skim, one line per phase across three track groups (build-out / planned / stretch), each linking to the guide |
+| AD | `HeroStatusPill` | hero status pill: live "N/M phases done, next: ..." with a snapshot fallback while loading or on failure |
+| AD | `ADLabProgress` | the "Live · AD Lab" section: compact by default (progress line, the current phase, a done summary), with the full three-track phase list and the reflection behind show/hide disclosures |
+| Linux | `LinuxLabProgress` | the "Live · Linux Lab" section: progress line + one row per lab (7 rows), with the in-progress lab's per-phase breakdown behind a disclosure |
 | Linux | `TopologyGraph` | colors the ubuntu/rocky nodes by live lab status (done = green check, next = in progress, otherwise pending) |
 
-The AD feed has three consumers; the Linux feed now has exactly one (`TopologyGraph`).
-There is no longer a `LinuxLabProgress` section component (it was cut in the 8-section
-restructure), but `useLabStatus<LinuxLabStatus>` and the `LinuxLabStatus` types remain in
-use by the topology graph, so keep both schemas.
+The AD feed has three consumers; the Linux feed has two (`LinuxLabProgress` and
+`TopologyGraph`). `LinuxLabProgress` imports `STATUS_PILL` and `formatUpdated` from
+`ADLabProgress` so the two live sections stay visually identical.
 
 Source-of-truth rule: the live feed is authoritative for lab progress. Do **not**
 hardcode a phase or lab count anywhere the feed could outrun. Keep any static lab copy
@@ -280,7 +280,7 @@ qualitative ("in progress", "planned"), not numeric.
 
 ### 7.1 Page order (`src/app/page.tsx`, verified current)
 
-The page was deliberately cut to **8 proof-led sections** (the old 14-section layout
+The page was deliberately cut to **9 proof-led sections** (the old 14-section layout
 was over-long; see `docs/portfolio-review.md`). Eyebrows are **no longer numbered**:
 `Section` renders the `eyebrow` string verbatim, so use a short label, not `01 /`.
 
@@ -291,26 +291,31 @@ DOM order (component, anchor id, eyebrow):
    CTA row (Resume download + Email), stat grid (`HeroLabStat` + static stats), built vs
    planned cards.
 2. `Projects` (`#projects`, eyebrow "Projects"): outcome-first grid of `ProjectCard`.
-3. `ADLabProgress` (`#ad-lab`, eyebrow "Live · AD Lab"): 30-second skim of the live AD
-   feed, one line per phase grouped by track (build-out / planned / stretch).
-4. `FirewallRules` (`#firewall`, eyebrow "Firewall").
-5. `NetworkTopology` (`#network`, eyebrow "Network"): wraps `TopologyGraph`.
-6. `SkillsMatrix` (`#skills`, eyebrow "Skills & certifications"): skills overview +
+3. `ADLabProgress` (`#ad-lab`, eyebrow "Live · AD Lab"): compact 2-second read of the
+   live AD feed (progress line, current phase, done summary); the full per-phase list
+   and the reflection sit behind show/hide disclosures.
+4. `LinuxLabProgress` (`#linux-lab`, eyebrow "Live · Linux Lab"): same compact pattern
+   for the Linux feed: progress line + one row per lab (7 rows), the in-progress lab's
+   phase breakdown behind a disclosure.
+5. `FirewallRules` (`#firewall`, eyebrow "Firewall").
+6. `NetworkTopology` (`#network`, eyebrow "Network"): wraps `TopologyGraph`.
+7. `SkillsMatrix` (`#skills`, eyebrow "Skills & certifications"): skills overview +
    filtered mapping table + exam coverage, with the **certifications folded into this
    same section** (no separate `Certifications` component anymore).
-7. `ArtifactGallery` (`#artifacts`, eyebrow "Evidence"): screenshot grid + lightbox.
-8. `Contact` (`#contact`, eyebrow "Contact").
+8. `ArtifactGallery` (`#artifacts`, eyebrow "Evidence"): screenshot grid + lightbox.
+9. `Contact` (`#contact`, eyebrow "Contact").
 
 Cut in the restructure (do not expect these files): `ReadyForWork`, `VMInventory`,
-`LabOverview`, `Certifications` (folded into `SkillsMatrix`), `Roadmap`, and
-`LinuxLabProgress`. Their backing data (`vmInventory`, `nearTermPlan`, `careerStages`)
-was also removed from `portfolio.ts`.
+`LabOverview`, `Certifications` (folded into `SkillsMatrix`), and `Roadmap`. Their
+backing data (`vmInventory`, `nearTermPlan`, `careerStages`) was also removed from
+`portfolio.ts`. (`LinuxLabProgress` was cut then too, but a compact version was
+reinstated once Lab 1 started.)
 
-Layout-level, always present (`src/app/layout.tsx`): `Navigation` (sticky top),
-`LabProgressStrip` (sticky under nav), `LogBackground` (animated scrolling log backdrop,
-desktop only, reduced-motion gated), `Footer`, and a fixed `.bg-grid` texture div.
-`Navigation`'s `NAV_LINKS` (Projects, AD Lab, Firewall, Network, Skills, Evidence) must
-stay in sync with the section anchors above.
+Layout-level, always present (`src/app/layout.tsx`): `Navigation` (sticky top) and
+`Footer`. (The old `LabProgressStrip`, `LogBackground`, and `.bg-grid` layers were
+removed in the Daylight Ops reskin; the live strip's job moved into `HeroStatusPill`.)
+`Navigation`'s `NAV_LINKS` (Projects, AD Lab, Linux Lab, Firewall, Network, Skills,
+Evidence) must stay in sync with the section anchors above.
 
 ### 7.2 NetworkTopology + TopologyGraph (the visual anchor)
 
@@ -357,9 +362,9 @@ stay in sync with the section anchors above.
 ### 7.4 Client vs server split (verified)
 
 Server components by default. The 8 client islands (carry `'use client'`):
-`Navigation`, `LabProgressStrip`, `ADLabProgress`, `HeroLabStat`, `TopologyGraph`,
-`SkillsMatrix`, `ArtifactGallery`, `LogBackground` (plus the `useLabStatus` hook in
-`src/lib`). Everything else (Hero, Section, NetworkTopology, Projects, ProjectCard,
+`Navigation`, `ADLabProgress`, `LinuxLabProgress`, `HeroLabStat`, `HeroStatusPill`,
+`TopologyGraph`, `SkillsMatrix`, `ArtifactGallery` (plus the
+`useLabStatus` hook in `src/lib`). Everything else (Hero, Section, NetworkTopology, Projects, ProjectCard,
 FirewallRules, Contact, Footer) is a server component. Add `'use client'` only when a
 component needs hooks, state, or fetch.
 
@@ -396,7 +401,7 @@ builds that node, so the live status stays truthful.
 export, `@/` imports), pull copy from `portfolio.ts`, import and place it in
 `src/app/page.tsx`, give it a short text `eyebrow` (not a number), and add its anchor to
 `NAV_LINKS` in `Navigation.tsx` if it should appear in the nav. Resist re-bloating the
-page: 8 sections is intentional (see `docs/portfolio-review.md`).
+page: 9 sections is intentional (see `docs/portfolio-review.md`).
 
 **Change the OG card:** edit the SVG copy in `scripts/build-og-card.mjs`, run
 `node scripts/build-og-card.mjs`, eyeball `public/og-card.png`. Social platforms cache
@@ -536,9 +541,9 @@ Audited state, worth fixing when convenient:
 - `nearTermPlan`, `vmInventory`, and `careerStages` data plus their `Roadmap`,
   `VMInventory`, `LabOverview`, `ReadyForWork`, and `Certifications` components were
   removed in the restructure. Any lingering reference to them anywhere is stale.
-- The `LinuxLabStatus` schema and `useLabStatus<LinuxLabStatus>` are still used (by
-  `TopologyGraph`) even though the `LinuxLabProgress` section was cut. Keep the Linux
-  schema; do not delete it as dead code.
+- The `LinuxLabStatus` schema and `useLabStatus<LinuxLabStatus>` are used by both
+  `LinuxLabProgress` and `TopologyGraph`. Keep the Linux schema; do not delete it as
+  dead code.
 - No Node version pin (`.nvmrc`/`engines`); local dev vs CI Node 20 can drift. Consider
   pinning to Node 20.
 - `docs/portfolio-review.md` and the `_deliverables/*.md` runbooks are working notes, not
@@ -555,7 +560,7 @@ Audited state, worth fixing when convenient:
 - Topology (inline SVG): `src/components/TopologyGraph.tsx` (+ `NetworkTopology.tsx` wrapper)
 - Live lab feeds: `useLabStatus` in `src/lib/useLabStatus.ts`; URLs in `adLab` / `linuxLab`
   (`portfolio.ts`); produced by sibling repos `ad-lab-guide` / `linux-lab-guide`. AD feed:
-  hero stat + strip + AD section. Linux feed: topology graph only.
+  hero stat + hero pill + AD section. Linux feed: Linux section + topology graph.
 - Base-path helpers: `src/lib/paths.ts` (`basePath()`, `publicAsset()`)
 - OG card: edit + rerun `node scripts/build-og-card.mjs` -> `public/og-card.png`
 - Gates: `npm run build` (hard, CI), `npm run typecheck`, `npm run lint` (all must pass)
