@@ -6,7 +6,7 @@ export function FirewallRules() {
     <Section
       id="firewall"
       eyebrow="Firewall"
-      title="Define, test, document, explain"
+      title="Three rules, verified in the log"
       contextCard="Deny by default, permit by exception. Each rule written, tested, and verified in the log - the same workflow a client firewall change needs."
     >
       <div className="grid gap-4 lg:grid-cols-3">
