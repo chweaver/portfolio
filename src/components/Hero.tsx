@@ -7,7 +7,7 @@ import { HeroCertRoadmap } from './HeroCertRoadmap';
 const STATS = [
   { label: 'Subnets routed', value: '2', sub: 'LAN + LAB200' },
   { label: 'Firewall rules', value: '3', sub: 'pass / block / pass' },
-  { label: 'Lab VMs', value: '6', sub: 'pfSense + 2 Windows + 3 Linux' },
+  { label: 'Lab VMs', value: '7', sub: 'pfSense + 2 Windows + 4 Linux' },
 ];
 
 export function Hero() {

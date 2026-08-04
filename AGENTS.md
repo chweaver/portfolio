@@ -288,8 +288,8 @@ DOM order (component, anchor id, eyebrow):
 
 1. `Hero` (`#top`, no `Section` wrapper): proof-led. Two-tier H1
    (`profile.headlineLead` + `profile.headlineRest`), at-a-glance strip (`heroGlance`),
-   CTA row (Resume download + Email), stat grid (`HeroLabStat` + static stats), built vs
-   planned cards.
+   CTA row (Resume download + Email), stat grid (`HeroLabStat` + static stats), the
+   honesty line (`summary.honesty`), and the cert roadmap card (`HeroCertRoadmap`).
 2. `Projects` (`#projects`, eyebrow "Projects"): outcome-first grid of `ProjectCard`.
 3. `ADLabProgress` (`#ad-lab`, eyebrow "Live · AD Lab"): compact 2-second read of the
    live AD feed (progress line, current phase, done summary); the full per-phase list
@@ -374,7 +374,7 @@ component needs hooks, state, or fetch.
 
 `src/data/portfolio.ts` is the single content spine (about 440 lines). Almost all copy
 and data live there as named exports: `adLab`, `linuxLab`, `topologySubnets`,
-`topologyNodes`, `profile`, `summary`, `heroGlance`, `projects`, `subnets`, `ipTable`,
+`topologyNodes`, `profile`, `summary`, `heroGlance`, `projects`, `ipTable`,
 `firewallRules`, `implicitBehavior`, `verificationLog`, `pfsenseLog`, `skillsMatrix`,
 `certCoverage`, `coverageMethodology`, `skillsOverview`, `certTierOrder`, `certs`. Edit
 the data, not the components, for copy and list changes.

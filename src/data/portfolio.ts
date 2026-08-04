@@ -68,7 +68,6 @@ export const profile = {
   email: 'charliewgz6@gmail.com',
   linkedin: 'https://www.linkedin.com/in/charlie-weaver-it/',
   github: 'https://github.com/chweaver',
-  age: 20,
   tagline: 'Entry-level IT technician for tier-1 MSP, help desk, and NOC roles in the Indianapolis metro, with hands-on Active Directory, pfSense, and Linux lab experience.',
   // Full headline kept as the canonical string (SEO/meta). The hero renders it in
   // two tiers for scannability: headlineLead large, headlineRest smaller.
@@ -78,21 +77,11 @@ export const profile = {
   // Short trajectory line in the hero: makes the network-engineering goal explicit
   // without repeating the MSP/help-desk framing already in the headline.
   aim: 'My goal is network engineering. The routed, firewalled lab is the foundation; Security+ is in progress, then CCNA.',
-  labPhase: 'Network lab complete, Active Directory and Linux labs in progress (tracked live from the lab guides)',
 } as const;
 
+// The hero renders only `honesty`; the built/planned arrays were removed with
+// the old hero cards.
 export const summary = {
-  built: [
-    'Live Active Directory domain (corp.lab): domain controller, OUs, users, AGDLP groups, a domain-joined Windows 11 client, a verified first GPO, file shares, and redirected home folders',
-    'Segmented pfSense lab routing two subnets, with three firewall rules tested and logged',
-    'Ubuntu, Debian, and Rocky Linux VMs with hand-configured networking',
-    'Public documentation: this site, the AD and Linux lab guides, and named snapshots at every clean state',
-  ],
-  planned: [
-    'AD login scripts and help-desk drills (the remaining build-out phases, tracked live)',
-    'Monitoring for pfSense and the domain controller',
-    'Proxmox and Cisco lab phases alongside CCNA study',
-  ],
   honesty:
     'No professional MSP tenure yet. Built items are complete and verified; planned items are labeled separately.',
 };
@@ -185,23 +174,6 @@ export const projects: Project[] = [
     wide: true,
   },
 ];
-
-export const subnets = [
-  {
-    name: 'LAN',
-    cidr: '192.168.100.0/24',
-    gateway: '192.168.100.1',
-    vmnet: 'VMnet2',
-    color: 'cyan',
-  },
-  {
-    name: 'LAB200',
-    cidr: '192.168.200.0/24',
-    gateway: '192.168.200.1',
-    vmnet: 'VMnet3',
-    color: 'green',
-  },
-] as const;
 
 export const ipTable = [
   { asset: 'pfSense WAN', nic: 'VMnet8 (NAT)', address: '192.168.19.133 (DHCP)', mask: '/24', role: 'Uplink to host NAT pool' },
@@ -374,7 +346,7 @@ export const skillsMatrix: SkillRow[] = [
     category: 'cisco',
   },
   {
-    element: 'Eve-NG Pro installed (post-A+ activation)',
+    element: 'Eve-NG Pro installed (activated after the A+)',
     aplus: '1201 4.1',
     netplus: 'n/a',
     ccna: '6.1',
