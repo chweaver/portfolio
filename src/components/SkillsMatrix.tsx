@@ -177,7 +177,7 @@ export function SkillsMatrix() {
           CompTIA A+: certified June 2026
         </div>
         <p className="text-sm text-ink-dim leading-relaxed">
-          Both cores passed. Next up is Security+, then CCNA.
+          Both cores passed. Security+ is in progress; CCNA is next.
         </p>
       </div>
     </Section>

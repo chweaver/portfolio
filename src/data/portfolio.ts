@@ -77,7 +77,7 @@ export const profile = {
   headlineRest: 'Backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
   // Short trajectory line in the hero: makes the network-engineering goal explicit
   // without repeating the MSP/help-desk framing already in the headline.
-  aim: 'My goal is network engineering. The routed, firewalled lab is the foundation; Security+ is next, then CCNA.',
+  aim: 'My goal is network engineering. The routed, firewalled lab is the foundation; Security+ is in progress, then CCNA.',
   labPhase: 'Network lab complete, Active Directory and Linux labs in progress (tracked live from the lab guides)',
 } as const;
 
@@ -108,12 +108,12 @@ export const heroGlance = [
 
 // Compact credential path shown on the right of the hero: a curated, ordered view
 // that makes the network-engineering trajectory explicit. States stay honest and in
-// sync with `certs` below (CompTIA A+ certified, Security+ next, then CCNA).
+// sync with `certs` below (CompTIA A+ certified, Security+ in progress, then CCNA).
 export const heroCertRoadmap = {
   caption: 'The path toward network engineering',
   steps: [
     { name: 'CompTIA A+', code: '', state: 'done', note: 'Certified June 2026' },
-    { name: 'CompTIA Security+', code: 'SY0-701', state: 'next', note: 'Security baseline' },
+    { name: 'CompTIA Security+', code: 'SY0-701', state: 'current', note: 'In progress' },
     { name: 'CCNA', code: '200-301', state: 'later', note: 'Routing and switching', flag: 'Network track' },
     { name: 'AZ-104', code: '', state: 'later', note: 'Cloud and M365' },
   ],
@@ -441,7 +441,7 @@ export const certs = [
   {
     name: 'CompTIA Security+',
     code: 'SY0-701',
-    status: 'queued' as const,
+    status: 'in-progress' as const,
     tier: 'Foundation · next' as const,
     target: 'Security baseline',
     why: 'Threats, identity, and risk: the security floor for client work.',
