@@ -92,7 +92,7 @@ export function ArtifactGallery() {
       id="artifacts"
       eyebrow="Evidence"
       title="Captured from the running lab"
-      subtitle="Direct exports from the pfSense web UI, plus the real filter.log, dhcpd.log, and system.log under public/logs. Click any thumbnail for full size."
+      subtitle="Screenshots straight from the pfSense web UI, plus the raw filter.log, dhcpd.log, and system.log published with this site. Click any thumbnail for full size."
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {ARTIFACTS.map((a, i) => (

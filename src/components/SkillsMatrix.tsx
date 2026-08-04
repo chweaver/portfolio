@@ -177,9 +177,7 @@ export function SkillsMatrix() {
           CompTIA A+: certified June 2026
         </div>
         <p className="text-sm text-ink-dim leading-relaxed">
-          The full CompTIA A+ is complete, both exams passed. It is the gatekeeper credential for MSP and
-          help-desk work, covering hardware, networking, virtualization, operating systems, security, and
-          software troubleshooting. Next up is Security+, then CCNA.
+          Both cores passed. Next up is Security+, then CCNA.
         </p>
       </div>
     </Section>

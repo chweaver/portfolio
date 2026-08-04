@@ -8,7 +8,7 @@ export function Projects() {
       id="projects"
       eyebrow="Projects"
       title="Hands-on work, outcome first"
-      contextCard="The homelab is the moat. Outcome first; the proof is in the sections below."
+      contextCard="The homelab is the proof. The detail is in the sections below."
     >
       <div className="grid items-stretch gap-[18px] md:grid-cols-3">
         {projects.map((p) => (

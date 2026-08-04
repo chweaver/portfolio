@@ -7,7 +7,7 @@ export function FirewallRules() {
       id="firewall"
       eyebrow="Firewall"
       title="Three rules, verified in the log"
-      contextCard="Deny by default, permit by exception. Each rule written, tested, and verified in the log - the same workflow a client firewall change needs."
+      contextCard="Deny by default, permit by exception. Each rule written, tested, and verified in the log: the same workflow a client firewall change needs."
     >
       <div className="grid gap-4 lg:grid-cols-3">
         {firewallRules.map((rule) => (

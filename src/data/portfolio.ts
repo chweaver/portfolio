@@ -86,7 +86,7 @@ export const summary = {
     'Live Active Directory domain (corp.lab): domain controller, OUs, users, AGDLP groups, a domain-joined Windows 11 client, a verified first GPO, file shares, and redirected home folders',
     'Segmented pfSense lab routing two subnets, with three firewall rules tested and logged',
     'Ubuntu, Debian, and Rocky Linux VMs with hand-configured networking',
-    'Public documentation: this site, the AD lab guide, and named snapshots at every clean state',
+    'Public documentation: this site, the AD and Linux lab guides, and named snapshots at every clean state',
   ],
   planned: [
     'AD login scripts and help-desk drills (the remaining build-out phases, tracked live)',
@@ -100,7 +100,7 @@ export const summary = {
 // At-a-glance hero strip: the 5-second recruiter scan. Values trace to real data
 // (profile.location, the certs list, the lab stack, current availability).
 export const heroGlance = [
-  { k: 'Location', v: 'Carmel, IN · Indy metro' },
+  { k: 'Location', v: 'Carmel, IN · Indianapolis metro' },
   { k: 'Certs', v: 'CompTIA A+ certified · June 2026' },
   { k: 'Stack', v: 'AD · pfSense · Linux' },
   { k: 'Status', v: 'Available now' },
@@ -147,18 +147,18 @@ export const projects: Project[] = [
     status: 'in-progress',
     problem: 'Stand up and run the identity layer a small shop depends on, end to end.',
     built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, and a verified GPO.',
-    result: 'WS01 authenticates against corp.lab and policy applies on login. Shares and redirected home folders are in; login scripts and help-desk drills are tracked live above.',
+    result: 'WS01 authenticates against corp.lab and policy applies on login. Shares and redirected home folders are in; login scripts and help-desk drills are tracked live below.',
     stack: ['Windows Server', 'Active Directory', 'GPO', 'DNS'],
     repo: adLab.guideBaseUrl,
     linkLabel: 'Open the AD lab guide',
   },
   {
-    title: 'Linux lab build (7 labs)',
+    title: 'Linux lab build',
     outcome: 'Lab 1 underway: key-only SSH, locked-down sshd, ufw + fail2ban live',
     status: 'in-progress',
     problem: 'Bridge Linux into the Windows domain the way a real mixed network runs, then operate it: logs, metrics, patches.',
     built: 'On ubuntu-base: key-based login proven before password auth went off, sshd locked down through a 99-hardening.conf drop-in, ufw deny-by-default, and fail2ban watching the auth log.',
-    result: 'Lab 1 (SSH hardening) is in progress, tracked live below. Six labs queued after it: Samba on the domain, BIND9, rsync backups, then rsyslog, Prometheus + Grafana on Docker, and automated patching on ops01.',
+    result: 'Lab 1 (SSH hardening) is in progress, tracked live below. Queued after it: Samba on the domain, BIND9, rsync backups, then rsyslog, Prometheus + Grafana on Docker, and automated patching on ops01.',
     stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync', 'rsyslog', 'Prometheus', 'Docker'],
     repo: linuxLab.guideBaseUrl,
     linkLabel: 'Open the Linux lab guide',
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     problem: 'Design, apply, and verify a real client-style firewall policy.',
     built: 'Two routed /24 subnets behind one pfSense, deny by default with permit by exception, plus DHCP and DNS authority.',
     result: 'SSH from LAB200 punches through to LAN, ping is dropped, both confirmed in the pfSense filter log.',
-    stack: ['pfSense', 'TCP/IP', 'Firewall', 'VLAN', 'DHCP'],
+    stack: ['pfSense', 'TCP/IP', 'Firewall', 'Routing', 'DHCP'],
     repo: '',
   },
   {
@@ -402,7 +402,7 @@ export const certCoverage: { exam: string; band: string; level: CoverageLevel; n
     exam: 'CCNA 200-301 v1.1',
     band: 'Light',
     level: 'light',
-    notes: 'Single Packet Tracer scene to date. IOS configuration, OSPF, services on IOS, security, wireless, and automation are the Phase 5 ramp.',
+    notes: 'Single Packet Tracer topology to date. IOS configuration, OSPF, services on IOS, security, wireless, and automation come with CCNA study.',
   },
 ];
 

@@ -121,7 +121,7 @@ export function TopologyGraph() {
       viewBox={`0 0 ${W} ${H}`}
       className="w-full h-auto"
       role="img"
-      aria-label="Homelab network topology: internet through pfSense to the LAN and LAB200 subnets, with Linux servers marked complete as their lab finishes"
+      aria-label="Homelab network topology: internet through pfSense to the LAN and LAB200 subnets, with Linux servers marked complete as their labs finish"
     >
       <defs>
         <marker id="topo-arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="6" markerHeight="6" orient="auto">

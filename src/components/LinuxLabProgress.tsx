@@ -28,7 +28,7 @@ export function LinuxLabProgress() {
       eyebrow="Live · Linux Lab"
       title="Linux lab, live status"
       subtitle={subtitle}
-      contextCard="Bridging Linux into the Windows domain the way a real mixed network runs, then operating it: logs, metrics, patches."
+      contextCard="One lab per service: harden SSH, join the domain, then add DNS, backups, logging, monitoring, and patching."
     >
       {!data && !failed && (
         <div className="text-ink-faint text-sm font-mono">Loading lab status...</div>
