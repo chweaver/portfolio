@@ -17,7 +17,15 @@ export function Contact() {
             <ul className="space-y-2 text-ink">
               <li className="flex gap-2">
                 <span className="font-mono text-signal-green">→</span>
-                <span>Tier-1 service desk / help desk technician</span>
+                <span>IT support / help desk technician</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="font-mono text-signal-green">→</span>
+                <span>Desktop support / computer technician</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="font-mono text-signal-green">→</span>
+                <span>Tier-1 MSP service desk</span>
               </li>
               <li className="flex gap-2">
                 <span className="font-mono text-signal-green">→</span>

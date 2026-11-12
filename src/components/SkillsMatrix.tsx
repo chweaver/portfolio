@@ -48,7 +48,7 @@ export function SkillsMatrix() {
       title="What I can work with"
       contextCard="Each lab element maps to A+, Network+, and CCNA objectives."
     >
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {skillsOverview.map((col) => (
           <div key={col.column} className="card p-5">
             <div className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
@@ -101,7 +101,7 @@ export function SkillsMatrix() {
                     <th className="px-4 py-3 font-normal">A+</th>
                     <th className="px-4 py-3 font-normal">Net+</th>
                     <th className="px-4 py-3 font-normal">CCNA</th>
-                    <th className="px-4 py-3 font-normal min-w-[260px]">MSP application</th>
+                    <th className="px-4 py-3 font-normal min-w-[260px]">On the job</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -177,7 +177,7 @@ export function SkillsMatrix() {
           CompTIA A+: certified June 2026
         </div>
         <p className="text-sm text-ink-dim leading-relaxed">
-          Both cores passed. Security+ is in progress; CCNA is next.
+          Both cores passed. Network+ is in progress; CCNA is next.
         </p>
       </div>
     </Section>

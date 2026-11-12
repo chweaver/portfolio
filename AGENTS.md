@@ -13,14 +13,16 @@ parentheses, or middots.
 ## 1. Project overview
 
 A statically exported personal career portfolio for Charles "Charlie" Weaver, aimed at
-landing an entry-level role at a networking-focused MSP (managed service provider):
-tier-1 service desk, help desk, NOC, or junior sysadmin.
+landing an entry-level IT support role: IT support or help desk technician, desktop
+support, tier-1 MSP service desk, NOC, or junior sysadmin. The headline pitch is
+"IT support technician" (broad on purpose: schools, companies, and MSPs).
 
-The audience is a busy MSP hiring manager or technical recruiter who decides in roughly
+The audience is a busy hiring manager or technical recruiter who decides in roughly
 20 seconds. The site proves, with evidence, that Charlie already works like a methodical
 junior tech: he builds, documents, verifies, and is honest about scope. The signature
-proof is a live, routed, firewalled home lab and a live Active Directory domain, with
-CompTIA A+ certified (both cores, June 2026).
+proof is a live, routed, firewalled home lab, a live Active Directory domain, and a
+Proxmox home server, with CompTIA A+ certified (both cores, June 2026) and Network+ in
+progress.
 
 - Live URL: https://chweaver.github.io/portfolio/
 - Repo: https://github.com/chweaver/portfolio (public)
@@ -293,7 +295,9 @@ DOM order (component, anchor id, eyebrow):
    (`profile.headlineLead` + `profile.headlineRest`), at-a-glance strip (`heroGlance`),
    CTA row (Resume download + Email), stat grid (`HeroLabStat` + static stats), the
    honesty line (`summary.honesty`), and the cert roadmap card (`HeroCertRoadmap`).
-2. `Projects` (`#projects`, eyebrow "Projects"): outcome-first grid of `ProjectCard`.
+2. `Projects` (`#projects`, eyebrow "Projects"): outcome-first grid of `ProjectCard`,
+   then the "Outside the lab" strip (`outsideLab`: PC builds and family and friends
+   support, stated at the level Charlie reported it).
 3. `ADLabProgress` (`#ad-lab`, eyebrow "Live · AD Lab"): compact 2-second read of the
    live AD feed (progress line, current phase, done summary); the full per-phase list
    and the reflection sit behind show/hide disclosures.
@@ -377,7 +381,7 @@ component needs hooks, state, or fetch.
 
 `src/data/portfolio.ts` is the single content spine (about 440 lines). Almost all copy
 and data live there as named exports: `adLab`, `linuxLab`, `topologySubnets`,
-`topologyNodes`, `profile`, `summary`, `heroGlance`, `projects`, `ipTable`,
+`topologyNodes`, `profile`, `summary`, `heroGlance`, `projects`, `outsideLab`, `ipTable`,
 `firewallRules`, `implicitBehavior`, `verificationLog`, `pfsenseLog`, `skillsMatrix`,
 `certCoverage`, `coverageMethodology`, `skillsOverview`, `certTierOrder`, `certs`. Edit
 the data, not the components, for copy and list changes.
@@ -387,7 +391,8 @@ the data, not the components, for copy and list changes.
 
 **Add a project card:** add an entry to the `projects` array (it feeds the `Projects`
 section via `ProjectCard`). Keep `status` honest (`done` / `in-progress` / `planned`).
-The grid is balanced for three; do not pad to four with filler.
+The grid is three across; a card with much more text sets `wide` to span the full row
+(the Proxmox server and the AI workspace do). Do not pad the grid with filler.
 
 **Add or move a topology host:** edit `topologyNodes` (and `topologySubnets` if adding a
 subnet) in `portfolio.ts`. Wire `labs` ids only if a `linux-lab-guide` lab

@@ -13,61 +13,70 @@ const RESUME = {
   name: 'Charles Weaver',
   contact: ['Carmel, IN', 'charliewgz6@gmail.com', 'linkedin.com/in/charlie-weaver-it', 'chweaver.github.io/portfolio'],
   summary:
-    'Hands-on IT technician, CompTIA A+ certified, Security+ in progress. I taught myself by building and running a full home lab the way a real shop would: plan each change, document it, test it. Customer-facing work taught me to stay calm and solve problems for people under pressure, which is the core of good help desk support.',
+    "CompTIA A+ certified, with Network+ in progress. My hands-on experience comes from a home lab I built and document: a Windows Server 2022 Active Directory domain, a Proxmox VE server, a pfSense-segmented network, and Linux servers. I've built or rebuilt 6 to 10 PCs for other people and handle tech support for family and friends. I've also worked customer-facing jobs where I regularly ran the store solo.",
   skills: [
-    ['Systems', 'Windows 10 and 11, Windows Server 2022, Active Directory, Group Policy, Linux (Ubuntu, Debian, Rocky)'],
-    ['Networking', 'TCP/IP, DNS, DHCP, VLANs, subnetting, pfSense firewalls'],
-    ['Virtualization', 'VMware Workstation Pro, Docker'],
-    ['Tools', 'Git, Bash'],
+    ['Systems', 'Windows 10 and 11, Windows Server 2022, Linux (Ubuntu, Debian, Rocky), macOS, Chrome OS'],
+    ['Active Directory', 'Users, security groups, Group Policy, file shares, folder redirection, login scripts, drive maps'],
+    ['Networking', 'TCP/IP, DNS, DHCP, VLANs, subnetting, pfSense firewall rules, network segmentation'],
+    ['Virtualization', 'Proxmox VE (VMs, containers, GPU passthrough, backups), VMware Workstation Pro, Docker'],
+    ['Hardware and support', 'PC building and repair, part diagnosis and replacement, printers, home Wi-Fi and networks'],
+    ['Tools', 'Git, Bash, PowerShell basics, Python'],
     ['Familiar, not yet hands-on', 'Microsoft 365, ServiceNow, Jira'],
-    ['Hardware', 'PC building, troubleshooting, storage configuration'],
   ],
   projects: [
     {
       title: 'Active Directory Domain Lab',
       status: 'In progress, documented',
       bullets: [
-        'Run a live Windows Server 2022 domain with users, security groups, Group Policy, file shares, and redirected home folders, the same setup a small business would use.',
-        'Joined a Windows 11 client to the domain and verified logins, policies, and folder redirection all apply correctly.',
-        'Every phase is written up as a public step-by-step guide on my lab guide sites, linked from my portfolio.',
+        'Run a Windows Server 2022 domain controller with a domain-joined Windows 11 workstation; create and manage user accounts, security groups, and Group Policy objects.',
+        'Configured file shares, redirected home folders, login scripts, and mapped drives, each verified at user login.',
+        'Every phase is written up as a public step-by-step guide, linked from my portfolio.',
+      ],
+    },
+    {
+      title: 'Proxmox Home Server',
+      status: 'Running',
+      bullets: [
+        'Built a Proxmox VE host from spare parts and run virtual machines and containers on it: local AI with GPU passthrough, Home Assistant, DNS, and a game server, with restore-tested backups.',
+        'Traced a no-power failure to a dead power supply, replaced it, and brought every guest back up.',
       ],
     },
     {
       title: 'pfSense Firewall Lab',
       status: 'Complete, documented',
       bullets: [
-        'Built a two-subnet virtual network routed through a pfSense firewall in VMware.',
-        'Wrote deny-by-default rules that allow only specific SSH traffic, then proved they work with live tests and firewall log captures.',
+        'Built a two-subnet network routed through a pfSense firewall in VMware, wrote deny-by-default rules that allow only specific SSH traffic, and proved them with live tests and firewall log captures.',
       ],
     },
     {
       title: 'Linux Server Lab',
       status: 'Ongoing',
       bullets: [
-        'Hand-configured Ubuntu, Debian, and Rocky Linux servers, each using a different network configuration method.',
-        'They serve as the test machines behind the firewall lab, with snapshots taken before every change.',
+        "Hand-configured Ubuntu, Debian, and Rocky Linux servers with each distribution's native network tooling, then completed and validated SSH hardening on Ubuntu (key-only login, ufw, fail2ban).",
       ],
     },
   ],
   experience: [
     {
-      title: 'Deli and Prepared Foods Associate, Whole Foods Market, Indianapolis, IN',
-      dates: 'March 2026 to April 2026',
-      bullets: ['Customer service in a high-volume retail environment with strict food safety standards.'],
+      title: 'Informal IT support, family and friends',
+      dates: 'Ongoing',
+      bullets: [
+        'Built or rebuilt 6 to 10 PCs for other people.',
+        'Repair and upgrades, Wi-Fi and home networks, phone and account help, printers and smart home devices.',
+      ],
     },
     {
-      title: 'Shift Supervisor, SubDaze, Zionsville, IN',
+      title: 'Team Member, SubDaze, Zionsville, IN',
       dates: 'July 2025 to October 2025',
       bullets: [
-        'Supervised a small team during peak hours and resolved most customer issues without escalation.',
-        'Handled cash, inventory checks, and end-of-shift documentation.',
+        'Regularly operated the store solo, handling customers, POS, and closing tasks without on-site backup.',
+        'Managed cash accountability and end-of-shift documentation.',
       ],
     },
   ],
   education: [
     'CompTIA A+ (220-1201 and 220-1202): Certified June 2026',
-    'CompTIA Security+ (SY0-701): In preparation, exam targeted for late August 2026',
-    'CCNA (200-301): Planned',
+    'CompTIA Network+ (N10-009): In progress. CCNA (200-301): Planned next',
     'Carmel High School, Graduated 2024',
   ],
 };

@@ -12,8 +12,8 @@ const bricolage = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-br
 const plexSans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-plex-sans', display: 'swap' });
 const plexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-plex-mono', display: 'swap' });
 
-const siteTitle = `${profile.shortName}, MSP Tier-1 Service Desk Candidate | Active Directory + pfSense Lab | CompTIA A+ | ${profile.location.split(',')[0]} (Indianapolis metro)`;
-const siteDescription = `Entry-level MSP candidate. Live Active Directory domain, routed pfSense lab, CompTIA A+ certified, documented and verified. No professional MSP tenure yet.`;
+const siteTitle = `${profile.shortName}, IT Support Technician | Active Directory + pfSense + Proxmox Lab | CompTIA A+ | ${profile.location.split(',')[0]} (Indianapolis metro)`;
+const siteDescription = `Entry-level IT support technician. Live Active Directory domain, routed pfSense lab, Proxmox home server, CompTIA A+ certified, documented and verified.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chweaver.github.io'),

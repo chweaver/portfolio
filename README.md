@@ -1,6 +1,6 @@
 # Charlie Weaver, Portfolio
 
-Personal IT/MSP career portfolio. Next.js (App Router), statically exported and deployed
+Personal IT career portfolio. Next.js (App Router), statically exported and deployed
 to GitHub Pages at https://chweaver.github.io/portfolio/.
 
 For the full operating guide (architecture, the live lab-status pipeline, conventions,
@@ -42,6 +42,7 @@ npm run typecheck  # tsc --noEmit
 npm run lint       # eslint
 
 node scripts/build-og-card.mjs       # regenerate public/og-card.png
+node scripts/build-resume.mjs        # regenerate public/Charlie-Weaver-Resume.pdf
 node scripts/convert-screenshots.mjs # regenerate .webp for new public/logs PNGs
 ```
 
