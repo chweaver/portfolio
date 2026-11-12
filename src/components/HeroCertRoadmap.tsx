@@ -1,6 +1,6 @@
 import { heroCertRoadmap } from '@/data/portfolio';
 
-// Dot treatment per state. `current` (Security+) pulses for the cert in
+// Dot treatment per state. `current` (Network+) pulses for the cert in
 // progress; `next` is a hollow accent ring; `done` is filled green.
 const DOT: Record<string, string> = {
   done: 'bg-signal-green border-signal-green',

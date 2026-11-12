@@ -16,7 +16,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container-narrow mt-4 font-mono text-xs text-ink-faint">
-        Available for tier-1 MSP, help desk, and NOC roles · Indianapolis metro
+        Available for IT support, help desk, and desktop support roles · Indianapolis metro
       </div>
     </footer>
   );

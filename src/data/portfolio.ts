@@ -5,7 +5,7 @@ export const adLab = {
 } as const;
 
 // A short troubleshooting reflection shown in the AD lab section: what the
-// build-out actually taught, kept plain and specific.
+// build-out taught, kept plain and specific.
 export const adLabReflection =
   'Most of what stuck came from things breaking. A domain join that fails is usually DNS. Group Policy problems rarely announce themselves, so you live in the event logs. The worst was folder redirection silently refusing to work: I ruled out permissions, ownership, GPO scope, and networking one at a time before tracing it to a "grant exclusive rights" setting fighting my share\'s permissions.';
 
@@ -68,41 +68,41 @@ export const profile = {
   email: 'charliewgz6@gmail.com',
   linkedin: 'https://www.linkedin.com/in/charlie-weaver-it/',
   github: 'https://github.com/chweaver',
-  tagline: 'Entry-level IT technician for tier-1 MSP, help desk, and NOC roles in the Indianapolis metro, with hands-on Active Directory, pfSense, and Linux lab experience.',
+  tagline: 'Entry-level IT support technician in the Indianapolis metro, CompTIA A+ certified, with hands-on Active Directory, pfSense, Linux, and Proxmox experience from a documented home lab.',
   // Full headline kept as the canonical string (SEO/meta). The hero renders it in
   // two tiers for scannability: headlineLead large, headlineRest smaller.
-  headline: 'Help desk and tier-1 MSP support, backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
-  headlineLead: 'Help desk and tier-1 MSP support.',
-  headlineRest: 'Backed by a live homelab: Active Directory, pfSense, and Linux, documented and verified.',
+  headline: 'IT support technician, backed by a live homelab: Active Directory, pfSense, Linux, and a Proxmox server, documented and verified.',
+  headlineLead: 'IT support technician.',
+  headlineRest: 'Backed by a live homelab: Active Directory, pfSense, Linux, and a Proxmox server, documented and verified.',
   // Short trajectory line in the hero: makes the network-engineering goal explicit
-  // without repeating the MSP/help-desk framing already in the headline.
-  aim: 'My goal is network engineering. The routed, firewalled lab is the foundation; Security+ is in progress, then CCNA.',
+  // without repeating the support framing already in the headline.
+  aim: 'My goal is network engineering. The routed, firewalled lab is the foundation; Network+ is in progress, then CCNA.',
 } as const;
 
 // The hero renders only `honesty`; the built/planned arrays were removed with
 // the old hero cards.
 export const summary = {
   honesty:
-    'No professional MSP tenure yet. Built items are complete and verified; planned items are labeled separately.',
+    'Looking for my first IT role. Everything here is self-built: built items are complete and verified, and planned items are labeled separately.',
 };
 
 // At-a-glance hero strip: the 5-second recruiter scan. Values trace to real data
 // (profile.location, the certs list, the lab stack, current availability).
 export const heroGlance = [
   { k: 'Location', v: 'Carmel, IN · Indianapolis metro' },
-  { k: 'Certs', v: 'CompTIA A+ certified · June 2026' },
-  { k: 'Stack', v: 'AD · pfSense · Linux' },
+  { k: 'Certs', v: 'CompTIA A+ certified · Network+ in progress' },
+  { k: 'Stack', v: 'AD · pfSense · Linux · Proxmox' },
   { k: 'Status', v: 'Available now' },
 ] as const;
 
 // Compact credential path shown on the right of the hero: a curated, ordered view
 // that makes the network-engineering trajectory explicit. States stay honest and in
-// sync with `certs` below (CompTIA A+ certified, Security+ in progress, then CCNA).
+// sync with `certs` below (CompTIA A+ certified, Network+ in progress, then CCNA).
 export const heroCertRoadmap = {
   caption: 'The path toward network engineering',
   steps: [
     { name: 'CompTIA A+', code: '', state: 'done', note: 'Certified June 2026' },
-    { name: 'CompTIA Security+', code: 'SY0-701', state: 'current', note: 'In progress' },
+    { name: 'CompTIA Network+', code: 'N10-009', state: 'current', note: 'In progress' },
     { name: 'CCNA', code: '200-301', state: 'later', note: 'Routing and switching', flag: 'Network track' },
     { name: 'AZ-104', code: '', state: 'later', note: 'Cloud and M365' },
   ],
@@ -132,22 +132,22 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: 'Active Directory domain',
-    outcome: 'corp.lab live: DC, OUs, AGDLP groups, first GPO',
+    outcome: 'corp.lab live: DC, OUs, AGDLP groups, GPOs, file services, login scripts',
     status: 'in-progress',
     problem: 'Stand up and run the identity layer a small shop depends on, end to end.',
-    built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, and a verified GPO.',
-    result: 'WS01 authenticates against corp.lab and policy applies on login. Shares and redirected home folders are in; login scripts and help-desk drills are tracked live below.',
-    stack: ['Windows Server', 'Active Directory', 'GPO', 'DNS'],
+    built: 'Domain controller on Server 2022, organizational units, users, AGDLP groups, a domain-joined Windows 11 client, Group Policy, file shares with home folders and folder redirection, a GPO login script, and drive maps targeted by security group.',
+    result: 'WS01 authenticates against corp.lab and policy applies on login: redirected folders, the login script, and the IT drive map are all verified on the client. Progress through the rest of the guide is tracked live below.',
+    stack: ['Windows Server', 'Active Directory', 'GPO', 'File shares', 'DNS'],
     repo: adLab.guideBaseUrl,
     linkLabel: 'Open the AD lab guide',
   },
   {
     title: 'Linux lab build',
-    outcome: 'Lab 1 underway: key-only SSH, locked-down sshd, ufw + fail2ban live',
+    outcome: 'Lab 1 complete: key-only SSH, locked-down sshd, ufw + fail2ban, validated',
     status: 'in-progress',
     problem: 'Bridge Linux into the Windows domain the way a real mixed network runs, then operate it: logs, metrics, patches.',
     built: 'On ubuntu-base: key-based login proven before password auth went off, sshd locked down through a 99-hardening.conf drop-in, ufw deny-by-default, and fail2ban watching the auth log.',
-    result: 'Lab 1 (SSH hardening) is in progress, tracked live below. Queued after it: Samba on the domain, BIND9, rsync backups, then rsyslog, Prometheus + Grafana on Docker, and automated patching on ops01.',
+    result: 'Lab 1 (SSH hardening) is complete and validated: key login works, password and root logins are refused, and fail2ban bans repeated failures. Queued after it: Samba on the domain, BIND9, rsync backups, then rsyslog, Prometheus + Grafana on Docker, and automated patching on ops01.',
     stack: ['Linux', 'OpenSSH', 'Samba', 'BIND9', 'rsync', 'rsyslog', 'Prometheus', 'Docker'],
     repo: linuxLab.guideBaseUrl,
     linkLabel: 'Open the Linux lab guide',
@@ -163,17 +163,43 @@ export const projects: Project[] = [
     repo: '',
   },
   {
+    title: 'Proxmox home server',
+    outcome: 'One Proxmox host running local AI, Home Assistant, DNS, and a game server',
+    status: 'done',
+    problem: 'Run real services on real hardware, not just lab VMs, and keep them running.',
+    built: 'Proxmox VE on a server I assembled from spare parts (Ryzen 9 3950X, 32 GB RAM, RTX 2080). The GPU is passed through to a container that serves local AI models with Ollama, alongside a Whisper speech-to-text container, a Home Assistant VM, a Technitium DNS container, and a Minecraft server VM.',
+    result: 'When the server stopped powering on, I traced the fault to a failed power supply, replaced it, and brought every guest back up. Backups are restore-tested: I restored a container backup to a throwaway ID, confirmed the service came up, then removed the copy.',
+    stack: ['Proxmox VE', 'LXC', 'GPU passthrough', 'Ollama', 'Whisper', 'Home Assistant', 'Technitium DNS', 'Backup and restore'],
+    repo: '',
+    wide: true,
+  },
+  {
     title: 'Self-hosted AI workspace (Odysseus)',
     outcome: 'Private AI workspace running as a multi-container Docker stack on my own GPU',
     status: 'done',
     problem: 'I wanted real reps running containerized services over time, and an AI workspace that keeps my data on my own machine.',
     built: 'Four-service Docker Compose stack (app, ChromaDB, SearXNG, ntfy) with models served by Ollama. When they offloaded to the CPU on a 12 GB card, I capped context windows, turned on flash attention and KV-cache quantization, and moved the model store to its own SSD to keep everything on the GPU. Hardened it: outbound-only firewall, non-root, model API on localhost, app behind per-user login.',
-    result: 'My daily driver, rebuildable on any machine from a script and a git bundle. A Python test battery scores each model, so model choice is measured, not guessed.',
+    result: 'My daily driver, rebuildable on any machine from a script and a git bundle, which is how it also runs on the Proxmox server. A Python test battery scores each model, so model choice is measured, not guessed.',
     stack: ['Docker', 'Docker Compose', 'Linux', 'Ollama', 'Python'],
     repo: '',
     wide: true,
   },
 ];
+
+// Support work for real people, outside the lab: shown as a strip under the
+// projects grid. Every line is something Charlie reported directly; keep the
+// wording at that level (no invented counts, clients, or outcomes).
+export const outsideLab = {
+  eyebrow: 'Outside the lab',
+  title: 'Hands-on support for real people',
+  items: [
+    { k: 'PC builds', v: 'Built or rebuilt 6 to 10 PCs for other people.' },
+    {
+      k: 'Family and friends support',
+      v: 'PC repair and upgrades, Wi-Fi and home network problems, phone and account help, printers and smart home devices.',
+    },
+  ],
+} as const;
 
 export const ipTable = [
   { asset: 'pfSense WAN', nic: 'VMnet8 (NAT)', address: '192.168.19.133 (DHCP)', mask: '/24', role: 'Uplink to host NAT pool' },
@@ -362,7 +388,7 @@ export const certCoverage: { exam: string; band: string; level: CoverageLevel; n
     exam: 'CompTIA A+ (220-1201 + 220-1202)',
     band: 'Light-to-moderate',
     level: 'light-to-moderate',
-    notes: 'Virtualization, PC hardware, and Linux install and config are direct. Mobile, printers, OS imaging, macOS, and most Windows-side OS, remote-access, and backup objectives are not in the lab.',
+    notes: 'Virtualization, PC hardware, and Linux install and config are direct. Mobile, printers, OS imaging, macOS, and most Windows-side OS and remote-access objectives are not in the lab.',
   },
   {
     exam: 'Network+ N10-009',
@@ -384,7 +410,12 @@ export const coverageMethodology =
 export const skillsOverview = [
   {
     column: 'Operating Systems',
-    items: ['Windows', 'Linux (Ubuntu, Debian, Rocky)', 'Basic shell'],
+    items: [
+      'Windows 10 and 11, Windows Server 2022',
+      'Linux (Ubuntu, Debian, Rocky)',
+      'macOS and Chrome OS (user level)',
+      'Basic shell',
+    ],
   },
   {
     column: 'Networking',
@@ -394,7 +425,16 @@ export const skillsOverview = [
     column: 'Identity and Tooling',
     items: [
       'Active Directory: domain controller, OUs, users, AGDLP groups',
+      'Group Policy, file shares, folder redirection, login scripts, drive maps',
       'Microsoft 365, ServiceNow, Jira: familiar, not yet hands-on',
+    ],
+  },
+  {
+    column: 'Servers and Hardware',
+    items: [
+      'Proxmox VE: VMs, containers, GPU passthrough, restore-tested backups',
+      'VMware Workstation Pro, Docker',
+      'PC builds, diagnosis, and part replacement',
     ],
   },
 ];
@@ -408,22 +448,22 @@ export const certs = [
     status: 'passed' as const,
     tier: 'Completed' as const,
     target: 'Certified June 2026',
-    why: 'Hardware, networking, virtualization, operating systems, security, and software troubleshooting. The MSP gatekeeper credential, both cores complete.',
+    why: 'Hardware, networking, virtualization, operating systems, security, and software troubleshooting. The baseline credential for IT support work, both cores complete.',
   },
   {
-    name: 'CompTIA Security+',
-    code: 'SY0-701',
+    name: 'CompTIA Network+',
+    code: 'N10-009',
     status: 'in-progress' as const,
     tier: 'Foundation · next' as const,
-    target: 'Security baseline',
-    why: 'Threats, identity, and risk: the security floor for client work.',
+    target: 'Networking baseline',
+    why: 'Vendor-neutral networking: addressing, routing and switching concepts, wireless, and troubleshooting. The step between A+ and CCNA.',
   },
   {
     name: 'Cisco CCNA',
     code: '200-301 v1.1',
     status: 'queued' as const,
     tier: 'Foundation · next' as const,
-    target: 'Networking foundation',
+    target: 'Routing and switching',
     why: 'Routing, switching, and the fundamentals behind every client network.',
   },
   {
